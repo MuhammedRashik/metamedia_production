@@ -1,7 +1,7 @@
 export default {
     port :3003,
     mongo:{
-        uri:'mongodb+srv://rashik:Rashik123@e-commerce.lcrkvvf.mongodb.net/meta-story-service?retryWrites=true&w=majority'
+        uri:'mongodb://rashik:Rashik123@ac-q62iedk-shard-00-00.lcrkvvf.mongodb.net:27017,ac-q62iedk-shard-00-01.lcrkvvf.mongodb.net:27017,ac-q62iedk-shard-00-02.lcrkvvf.mongodb.net:27017/meta-story-service?ssl=true&replicaSet=atlas-14cn37-shard-0&authSource=admin&retryWrites=true&w=majority&appName=E-commerce'
         // uri:'mongodb://127.0.0.1:27017/Meta-storyservice'
     }
 }

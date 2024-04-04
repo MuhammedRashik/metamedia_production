@@ -7,14 +7,8 @@ WORKDIR /app
 # Copy only the package.json and package-lock.json to leverage Docker cache
 COPY package*.json ./
 
-# Set environment variables for npm
-ENV NPM_CONFIG_LOGLEVEL warn
-ENV NPM_CONFIG_PROGRESS false
-ENV NPM_CONFIG_COLOR false
-ENV NPM_CONFIG_REGISTRY https://registry.npmjs.org/
-
 # Install dependencies using npm
-RUN npm install --force
+RUN npm install 
 
 # Copy the entire project files to the working directory
 COPY . .
