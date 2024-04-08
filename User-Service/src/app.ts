@@ -13,7 +13,7 @@ import session, { SessionOptions,MemoryStore,SessionData } from "express-session
 import helmet from "helmet";
 import { body } from 'express-validator'
 import { sanitizeData } from './utils/sanitize/sanitizeData'
-
+import path from 'path'
 const store = new MemoryStore();
 const app=express()
 getDb(config)
@@ -54,9 +54,9 @@ declare module 'express-session' {
  app.use(express.urlencoded({ extended: false }));
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
  app.use(express.static('public/'))
+//  app.use(express.static(path.join(__dirname, '../public')));
+ app.use('/api/user/profile', express.static('public/profile')) 
 
-
- const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
  app.use(
     cors({
       origin:"http://meta-media.in",

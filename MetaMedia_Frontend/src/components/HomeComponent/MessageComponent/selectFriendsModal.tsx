@@ -167,7 +167,7 @@ formData.append('image', data.image);
       >
           <div className="w-3/12 flex justify-center items-center">
             <img
-              src={`http://localhost:3000/profile/${user?.profile?.profileUrl}`}
+              src={`http://meta-media.in/api/user/profile/${user?.profile?.profileUrl}`}
               className="w-14 h-14 rounded-full border border-[#C1506D]"
               alt=""
             />

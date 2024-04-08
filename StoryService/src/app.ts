@@ -35,7 +35,7 @@ const server=http.createServer(app)
  app.use(express.urlencoded({ extended: false }));
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
  app.use(express.static('public/'))
-
+ app.use('/api/story/story', express.static('public/profile')) 
 //  const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
  app.use(
     cors({

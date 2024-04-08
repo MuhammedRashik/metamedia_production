@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
         - name: meta-story-service
-          image: raziiik/meta-story-service:latest
-        
+          image: metamedia/meta-story-service:latest
+          ports:
+            - containerPort: 3003
+          volumeMounts:           
+            - name: public-volume  
+              mountPath: /app/public  
+      volumes:                   
+        - name: public-volume   
+          emptyDir: {}           
 
 ---
 # story-service.yaml

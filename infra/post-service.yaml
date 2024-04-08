@@ -15,10 +15,19 @@ spec:
       labels:
         app: post
     spec:
+     
       containers:
         - name: meta-post-service
-          image: raziiik/meta-post-service:latest
-        
+          image: metamedia/meta-post-service:latest
+          ports:
+            - containerPort: 3002
+          volumeMounts:           
+            - name: post-public-volume  
+              mountPath: /app/public
+      volumes:                   
+        - name: post-public-volume   
+          emptyDir: {}
+         
 
 ---
 # post-service.yaml

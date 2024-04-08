@@ -58,7 +58,7 @@ const Post = () => {
                         <>
                           <img
                             className="w-full h-full object-cover "
-                            src={`http://localhost:3002/img/${item.mediaUrl[0]}`}
+                            src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
                             alt=""
                           />
                         </>
@@ -72,7 +72,7 @@ const Post = () => {
                             loop
                           >
                             <source
-                              src={`http://localhost:3002/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
+                              src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
                               type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                             />
                           </video>

@@ -78,12 +78,12 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                               userData?.profile.startsWith('https://graph') ?
                               profile
                               :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
-                            `http://localhost:3000/profile/${userData?.profile}`
+                            `http://meta-media.in/api/user/profile/${userData?.profile}`
                             :
                               myStory?.[0]?.[0]?.storyUrl
-                                ? `http://localhost:3003/story/${myStory?.[0]?.[0]?.storyUrl}`
+                                ? `http://meta-media.in/api/story/story/${myStory?.[0]?.[0]?.storyUrl}`
                                 : userData?.profile ?
-                                `http://localhost:3000/profile/${userData?.profile}`
+                                `http://meta-media.in/api/user/profile/${userData?.profile}`
                                 : profile
                                
                             }
@@ -97,10 +97,10 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                               userData?.profile.startsWith('https://graph') ?
                               profile
                               :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
-                            `http://localhost:3000/profile/${userData?.profile}`
+                            `http://meta-media.in/api/user/profile/${userData?.profile}`
                            
                                 : userData?.profile ?
-                                `http://localhost:3000/profile/${userData?.profile}`
+                                `http://meta-media.in/api/user/profile/${userData?.profile}`
                                 : profile
                             }
                             alt="S"
@@ -128,9 +128,9 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                                 className="h-28 w-full rounded-lg blur-[1px]"
                                 src={`${
                                   stories && !value.data[0]?.storyUrl.startsWith('https://')
-                                    ? `http://localhost:3003/story/${value.data[0]?.storyUrl}`
+                                    ? `http:/meta-media.in/api/story/story/${value.data[0]?.storyUrl}`
                                     : value?.profile ?
-                                     `http://localhost:3000/profile/${value?.profile}`
+                                     `http://meta-media.in/api/user/profile/${value?.profile}`
                                      : profile
                                 }`}
                                 alt=""
@@ -140,7 +140,7 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                                   className="rounded-full p-0.5 h-16 w-16 z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                   src={`${
                                     stories && !value.data[0]?.storyUrl.startsWith('https://' && value?.profile)
-                                      ? `http://localhost:3000/profile/${value?.profile}`
+                                      ? `http://meta-media.in/api/user/profile/${value?.profile}`
                                       : "https://www.shutterstock.com/image-vector/gray-avatar-icon-design-photo-600nw-1274338147.jpg"
                                   }`}
                                   alt="S"

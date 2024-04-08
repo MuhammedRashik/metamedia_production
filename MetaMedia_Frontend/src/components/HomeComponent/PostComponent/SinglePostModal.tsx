@@ -405,10 +405,10 @@ const SinglePostModal = ({ render, setRender }: any) => {
                     <>
                       <img
                         className="object-contain opacity-100 w-full h-full"
-                        src={`http://localhost:3002/img/${images[imageIndex]}`}
+                        src={`http://meta-media.in/api/post/img/${images[imageIndex]}`}
                         alt=""
                       />
-                    </>
+                    </> 
                   )}
                   {singlePost.postType == "video" && (
                     <>
@@ -417,7 +417,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                         controls
                       >
                         <source
-                          src={`http://localhost:3002/img/${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
+                          src={`http://meta-media.in/api/post/img/${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
                           type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                         />
                       </video>
@@ -488,7 +488,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                   <div className="h-full w-1/6 flex items-center justify-center">
                     <img
                       className="w-12 h-12 border-2 border-amber-100 rounded-full"
-                      src={`http://localhost:3000/profile/${postUser?.profile?.profileUrl}`}
+                      src={`http://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
                       alt=""
                     />
                   </div>
@@ -507,12 +507,14 @@ const SinglePostModal = ({ render, setRender }: any) => {
                   </div>
                 </div>
                 <div className=" w-full  h-full overflow-y-auto flex flex-col p-1">
-                  {/* one comment  */}
-                  <div className="flex justify-between w-full  items-center border-b ">
+                 
+                  
+                   {/* one comment  */}
+                   <div className="flex justify-between w-full  items-center border-b ">
                     <div className="h-full w-1/6  flex justify-center items-start p-1">
                       <img
                         className="w-10 h-10 rounded-full"
-                        src={`http://localhost:3000/profile/${postUser?.profile?.profileUrl}`}
+                        src={`http://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
                         alt=""
                       />
                     </div>
@@ -528,6 +530,10 @@ const SinglePostModal = ({ render, setRender }: any) => {
                     <div className="h-full w-1/6 flex justify-center items-start p-1 pt-2"></div>
                   </div>
                   {/* one comment end */}
+                  
+                   
+                   
+                 
                   {singlePost?.comments?.length > 0 ? (
                     <>
 
@@ -535,7 +541,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
 
                       {singlePost.comments.slice().reverse().map((item: any) => {
                        
-
+  
                         return (
                           <>
                             <div
@@ -545,7 +551,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                               <div className="h-full w-1/6  flex justify-center items-start p-1">
                                 <img
                                   className="w-10 h-10 rounded-full"
-                                  src={`http://localhost:3000/profile/${item?.profile}`}
+                                  src={`http://meta-media.in/api/user/profile/${item?.profile}`}
                                   alt=""
                                 />
                               </div>

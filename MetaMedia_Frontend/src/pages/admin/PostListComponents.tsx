@@ -109,7 +109,7 @@ const PostListComponents = () => {
                               className="object-cover w-full h-full rounded-sm"
                               src={
                                 data.mediaUrl[0]
-                                  ? `http://localhost:3002/img/${data?.mediaUrl[0]}`
+                                  ? `http://meta-media.in/api/post/img/${data?.mediaUrl[0]}`
                                   : ``
                               }
                               alt=""

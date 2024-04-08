@@ -76,7 +76,7 @@ console.log(notifications,'--------5555555555');
 <div className="w-full h-20  flex justify-between  border rounded-md flex-none" key={item._id}>
             <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
               <img
-               src={`http://localhost:3000/profile/${item?.senderUserData.profile?.profileUrl}`}
+               src={`http://meta-media.in/api/user/profile/${item?.senderUserData.profile?.profileUrl}`}
                 className="w-[50px] h-[50px]  rounded-full border border-[#C1506D]"
                 alt=""
               />
@@ -97,7 +97,7 @@ console.log(notifications,'--------5555555555');
             </div>
             <div className="h-full w-3/12  p-2 flex justify-center items-center">
               <img
-                src={`http://localhost:3002/img/${item.action_details.post_image}`}
+                src={`http://meta-media.in/api/post/img/${item.action_details.post_image}`}
                 className="w-full h-5/6 object-cover"
                 alt=""
               />
@@ -112,7 +112,7 @@ console.log(notifications,'--------5555555555');
 <div className="w-full h-20  flex justify-between  border rounded-md flex-none" key={item._id}>
             <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
               <img
-               src={`http://localhost:3000/profile/${item?.senderUserData.profile?.profileUrl}`}
+               src={`http://meta-media.in/api/user/profile/${item?.senderUserData.profile?.profileUrl}`}
                 className="w-[50px] h-[50px]  rounded-full border border-[#C1506D]"
                 alt=""
               />
@@ -135,7 +135,7 @@ console.log(notifications,'--------5555555555');
             </div>
             <div className="h-full w-3/12  p-2 flex justify-center items-center">
               <img
-                src={`http://localhost:3002/img/${item.action_details.post_image}`}
+                src={`http://meta-media.in/api/post/img/${item.action_details.post_image}`}
                 className="w-full h-5/6 object-cover"
                 alt=""
               />

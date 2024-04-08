@@ -521,7 +521,7 @@ console.log(data,"DATTA,,,,,,,,<<<<<<<<<<<<<<<<<");
                                             className="w-6 h-6  rounded-full"
                                             src={user?.profile?.startsWith('https://graph')
                                             ? `${user?.profile}`
-                                            : `http://localhost:3000/profile/${user?.profile}`}
+                                            : `http://meta-media.in/api/user/profile/${user?.profile}`}
                                             alt={`image`}
                                           />
                                           {user.name}

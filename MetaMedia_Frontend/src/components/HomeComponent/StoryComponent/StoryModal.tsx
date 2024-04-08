@@ -63,7 +63,7 @@ useEffect(()=>{
 
 const getSignatureForUpload = async (folder:string) => {
   try {
-    const res = await axios.post("http://localhost:3003/api/story/getSignature", { folder });
+    const res = await axios.post("http://meta-media.in/api/story/getSignature", { folder });
     return res.data;
   } catch (error) {
     console.error(error);

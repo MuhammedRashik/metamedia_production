@@ -87,7 +87,7 @@ const Aside = ({
                       )
                         ? `${userData.profile}`
                         : userData.profile
-                        ? `http://localhost:3000/profile/${userData?.profile}`
+                        ? `http://meta-media.in/api/user/profile/${userData?.profile}`
                         : `${profile}`
                     }
                     alt="Profile Picture"

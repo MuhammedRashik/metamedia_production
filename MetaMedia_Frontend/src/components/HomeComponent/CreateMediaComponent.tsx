@@ -28,7 +28,7 @@ const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
                   src={  userData?.profile.startsWith('https://graph') ?
                   profile
                     : userData?.profile ?
-                    `http://localhost:3000/profile/${userData?.profile}`
+                    `http://meta-media.in/api/user/profile/${userData?.profile}`
                     : profile}
                   className="sm:w-12 sm:h-12 h-10 w-10 rounded-full  border-2 border-[#C1506D]"
                   alt=""

@@ -116,7 +116,7 @@ const MessageListComponent = ({
 
 
   useEffect(() => {
-    setSocket(io("http://localhost:8081"));
+    setSocket(io("http://meta-media.in"));  
   }, []);
 
   if (messages) {
@@ -468,7 +468,7 @@ const MessageListComponent = ({
                 messages?.data?.profile?.startsWith("https://")
                   ? `${messages?.data?.profile}`
                   : messages?.data?.profile
-                  ? `http://localhost:3000/profile/${messages?.data?.profile}`
+                  ? `http://meta-media.in/api/user/profile/${messages?.data?.profile}`
                   : `${profile}`
               }
               alt=""
@@ -560,7 +560,7 @@ const MessageListComponent = ({
                         {data?.type == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`http://localhost:3005/chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -571,7 +571,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`http://localhost:3005/chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -586,7 +586,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`http://localhost:3005/Chat/${data.message}`}
+                                src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(data?.time)}
@@ -600,7 +600,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`http://localhost:3005/chat/${data.message}`}
+                                src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(data?.time)}
@@ -613,7 +613,7 @@ const MessageListComponent = ({
                         ) : data?.type == "voice_note" ? (
                           <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`http://localhost:3005/Chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -624,7 +624,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "voice_note" ? (
                           <span className="px-4 py-2 rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`http://localhost:3005/Chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -651,7 +651,7 @@ const MessageListComponent = ({
                         messages?.data?.profile?.startsWith("https://")
                           ? `${messages?.data?.profile}`
                           : messages?.data?.profile
-                          ? `http://localhost:3000/profile/${messages?.data?.profile}`
+                          ? `http://meta-media.in/api/user/profile/${messages?.data?.profile}`
                           : `${profile}`
                       }
                       alt="My profile"
@@ -667,7 +667,7 @@ const MessageListComponent = ({
                         {data?.type == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`http://localhost:3005/chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -692,7 +692,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`http://localhost:3005/chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -726,7 +726,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`http://localhost:3005/Chat/${data.message}`}
+                                src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               />
                               <ChevronDown
                                 className="absolute top-0 right-0 size-5"
@@ -773,7 +773,7 @@ const MessageListComponent = ({
                                 />
                               )}
                               <source
-                                src={`http://localhost:3005/chat/${data.message}`}
+                                src={`http://meta-media.in/api/chat/chat/${data.message}`}
                               />
                             </video>
                             <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
@@ -783,7 +783,7 @@ const MessageListComponent = ({
                         ) : data?.type == "voice_note" ? (
                           <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`http://localhost:3005/Chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -808,7 +808,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "voice_note" ? (
                           <span className="px-4 py-2 rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`http://localhost:3005/Chat/${data.message}`}
+                              src={`http://meta-media.in/api/chat/Chat/${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />

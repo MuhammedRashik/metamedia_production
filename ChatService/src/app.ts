@@ -22,7 +22,9 @@ socketConfig()
 const server=http.createServer(app)
 
  chatConsumer(dependencies)
+ app.use('/api/chat/chat', express.static('Public/Chat')) 
 app.use(debounceMiddleware)
+
 app.use('/api',routes(dependencies))
 
 serverConfig(server,config).startServer()

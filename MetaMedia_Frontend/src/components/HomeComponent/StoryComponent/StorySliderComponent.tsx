@@ -186,7 +186,7 @@ const StorySliderComponent = ({
                   className={`w-10 absolute h-10 top-5 left-2 border-2 border-[#C1506D] rounded-full  text-black  `}
                   src={
                     currentProfile
-                      ? `http://localhost:3000/profile/${currentProfile}`
+                      ? `http://meta-media.in/api/user/profile/${currentProfile}`
                       : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                   }
                 />
@@ -313,7 +313,7 @@ const StorySliderComponent = ({
         </>
       ) : (
         <img
-          src={`http://localhost:3003/story/${story?.storyUrl}`}
+          src={`http://meta-media.in/api/story/story/${story?.storyUrl}`}
           alt=""
           // onLoad={()=>setHideTrain(false)}
           // onLoad={() => setVideo(false)}

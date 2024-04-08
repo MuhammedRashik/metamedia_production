@@ -107,7 +107,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                       <div className="w-full h-36  flex items-center justify-around mt-7">
                         <div className=" w-full h-full flex justify-center items-center ">
                           <img
-                            src={`http://localhost:3005/Chat/${groupData.profile}`}
+                            src={`http://meta-media.in/api/chat/Chat/${groupData.profile}`}
                             className="w-28 h-28 object-fill rounded-full"
                             alt=""
                           />
@@ -138,7 +138,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                                   <>
                                     <div className="w-[187px] h-44 bg-green-100">
                                       <img
-                                        src={`http://localhost:3005/Chat/${item.content}`}
+                                        src={`http://meta-media.in/api/chat/Chat/${item.content}`}
                                         className="w-full h-full object-cover"
                                         alt=""
                                       />
@@ -153,7 +153,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                                       <video
                                         controls
                                         muted
-                                        src={`http://localhost:3005/Chat/${item.content}`}
+                                        src={`http://meta-media.in/api/chat/Chat/${item.content}`}
                                         className="w-full h-full object-cover"
                                       ></video>
                                     </div>
@@ -194,7 +194,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                       <div key={index} className="w-full h-full flex items-center border rounded-md p-2">
                         <div className="w-3/12 h-full flex justify-center items-center">
                           <img
-                            src={`http://localhost:3000/profile/${memberDetails.profile.profileUrl}`}
+                            src={`http://meta-media.in/api/user/profile/${memberDetails.profile.profileUrl}`}
                             className="w-14 h-14 object-fill rounded-full"
                             alt=""
                           />

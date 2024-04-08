@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: meta-client-service
-          image: raziiik/meta-client-service:latest
+          image: metamedia/meta-client-service:latest
         
 
 ---

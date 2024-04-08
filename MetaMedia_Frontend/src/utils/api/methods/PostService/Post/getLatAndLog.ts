@@ -7,7 +7,7 @@ const bakendData={
 }
 
     const response = await  axios.create({
-        baseURL:'http://localhost:3002',
+        baseURL:'http://meta-media.in/api/post',
         withCredentials : true,
     }).post(getLatAndLong_Api,bakendData );
 

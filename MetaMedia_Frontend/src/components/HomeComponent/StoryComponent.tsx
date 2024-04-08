@@ -31,12 +31,12 @@ const Story = ({setShowStory,setAddStory}:any) => {
                           userData?.profile.startsWith('https://graph') ?
                           profile
                           :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
-                        `http://localhost:3000/profile/${userData?.profile}`
+                        `http://meta-media.in/api/user/profile/${userData?.profile}`
                         :
                           myStory?.[0]?.[0]?.storyUrl
-                            ? `http://localhost:3003/story/${myStory?.[0]?.[0]?.storyUrl}`
+                            ? `http://meta-media.in/api/story/story/${myStory?.[0]?.[0]?.storyUrl}`
                             : userData?.profile ?
-                            `http://localhost:3000/profile/${userData?.profile}`
+                            `http://meta-media.in/api/user/profile/${userData?.profile}`
                             : profile
                         }
                         alt="S"
@@ -55,9 +55,9 @@ const Story = ({setShowStory,setAddStory}:any) => {
                         onClick={() => setShowStory(value.userId)}
                         src={`${
                           stories && !value.data[0]?.storyUrl.startsWith('https://')
-                            ? `http://localhost:3003/story/${value.data[0]?.storyUrl}`
+                            ? `http://meta-media.in/api/story/story/${value.data[0]?.storyUrl}`
                             : value?.profile ?
-                             `http://localhost:3000/profile/${value?.profile}`
+                             `http://meta-media.in/api/user/profile/${value?.profile}`
                              : profile
                         }`}
                         alt="S"

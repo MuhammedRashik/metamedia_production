@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
         - name: meta-auth-service
-          image: raziiik/meta-auth-service:latest
-        
+          image: metamedia/meta-auth-service:latest
+          ports:
+            - containerPort: 3001
+          volumeMounts:           
+            - name: public-volume  
+              mountPath: /app/public  
+      volumes:                   
+        - name: public-volume   
+          emptyDir: {}           
 
 ---
 # auth-service.yaml

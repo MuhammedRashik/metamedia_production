@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
         - name: meta-chat-service
-          image: raziiik/meta-chat-service:latest
-        
+          image: metamedia/meta-chat-service:latest
+          ports:
+            - containerPort: 3005
+          volumeMounts:           
+            - name: chat-public-volume  
+              mountPath: /app/public  
+      volumes:                   
+        - name: chat-public-volume   
+          emptyDir: {}           
 
 ---
 # chat-service.yaml

@@ -133,7 +133,7 @@ const HighlightSliderComponent = ({
             userData.profile?.startsWith("https://graph.facebook.com/")
               ? `${userData.profile}`
               : userData.profile
-              ? `http://localhost:3000/profile/${userData.profile}`
+              ? `http://meta-media.in/api/user/profile/${userData.profile}`
               : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
           }
         />
@@ -180,7 +180,7 @@ const HighlightSliderComponent = ({
         <>
           <img
             key={index}
-            src={`http://localhost:3003/story/${highlight}`}
+            src={`http://meta-media.in/api/story/story/${highlight}`}
             alt=""
             className={`w-full h-[40%] sm:h-[70%] md:h-[80%] border-2 rounded-lg border-black ${
               index === currentIndex ? "" : "hidden"

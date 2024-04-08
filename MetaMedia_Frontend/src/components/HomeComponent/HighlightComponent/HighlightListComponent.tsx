@@ -100,7 +100,7 @@ const HighlightListComponent = ({
                         onClick={() => handleClick(item?.id, item?.storyUrl)}
                       >
                         <img
-                          src={`http://localhost:3003/story/${item?.storyUrl}`}
+                          src={`http://meta-media.in/api/story/story/${item?.storyUrl}`}
                           alt=""
                         />
                       </div>

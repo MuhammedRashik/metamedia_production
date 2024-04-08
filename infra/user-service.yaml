@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
         - name: meta-user-service
-          image: raziiik/meta-user-service:latest
-        
+          image: metamedia/meta-user-service:latest
+          ports:
+            - containerPort: 3000
+          volumeMounts:           
+            - name: user-public-volume  
+              mountPath: /app/public  
+      volumes:                   
+        - name: user-public-volume   
+          emptyDir: {}           
 
 ---
 # user-service.yaml
@@ -34,4 +41,3 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
-

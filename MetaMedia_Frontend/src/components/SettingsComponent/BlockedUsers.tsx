@@ -88,7 +88,7 @@ const BlockedUsers = ({ setBlockedUsers }: any) => {
                           val.profile?.startsWith("https://graph.facebook.com/")
                             ? `${val.profile}`
                             : val.profile
-                            ? `http://localhost:3000/profile/${val.profile}`
+                            ? `http://meta-media.in/api/user/profile/${val.profile}`
                             : profile
                         }
                         alt=""
