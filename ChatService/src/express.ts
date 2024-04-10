@@ -17,4 +17,4 @@ const expresscofig=(app:Express):void=>{
     
 }
 
-export default expresscofig
+export default expresscofig 

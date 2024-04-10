@@ -49,7 +49,7 @@ const Chart = ({userData,postData}:any) => {
   return (
     <div className='border  p-5 w-full h-full rounded-md bg-white shadow-lg '>
       {postData.length > 0 && userData.length > 0 && (
-        <ReactApexChart options={data.options} series={data.series} type="area" height={330} />
+        <ReactApexChart options={data.options}  series={data.series} type="area" height={330} />
       )}
     </div>
   );

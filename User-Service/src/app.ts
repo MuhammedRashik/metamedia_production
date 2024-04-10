@@ -54,7 +54,7 @@ declare module 'express-session' {
  app.use(express.urlencoded({ extended: false }));
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
  app.use(express.static('public/'))
-//  app.use(express.static(path.join(__dirname, '../public')));
+
  app.use('/api/user/profile', express.static('public/profile')) 
 
  app.use(

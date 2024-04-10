@@ -20,12 +20,9 @@ connectDB(config)
 const store = new MemoryStore();
 expresscofig(app)
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIEPARSERSECRET));
-app.use(express.static('public/'));
-app.use('/api/post/img', express.static('public/img')) 
+
 app.use(
     cors({
       origin:"http://meta-media.in",
@@ -45,6 +42,9 @@ app.use(
       store: store,
     } as SessionOptions)
   );
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public/'))
+app.use('/api/post/img', express.static('public/img')) 
 
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()
