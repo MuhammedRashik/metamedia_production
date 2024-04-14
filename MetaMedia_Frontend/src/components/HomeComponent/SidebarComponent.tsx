@@ -11,15 +11,14 @@ import {
   ImagePlusIcon,
   Film,
   Radio,
-  Menu,
   User,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { toast } from "sonner";
 
-const Sidebar = ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
+
+const Sidebar = ({ open,setAddStory,setIsAddPost }: any) => {
   const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);

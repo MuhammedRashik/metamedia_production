@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {  useRef, useState } from 'react';
 import {  JitsiMeeting } from '@jitsi/react-sdk';
 import { toast } from 'sonner';
 import { useSelector } from 'react-redux';
@@ -14,13 +14,15 @@ console.log(token,"LLLOO");
 
     const apiRef :any= useRef();
     const [ logItems, updateLog ]:any = useState([]);
-    const [ showNew, toggleShowNew ]:any = useState(false);
+
     const [ knockingParticipants, updateKnockingParticipants ]:any = useState([]);
 
     const printEventOutput = (payload:any) => {
         updateLog((items:any) => [ ...items, JSON.stringify(payload) ]);
     };
 
+    console.log(knockingParticipants,logItems);
+    
     const handleAudioStatusChange = (payload:any, feature:any) => {
         if (payload.muted) {
             updateLog((items:any) => [ ...items, `${feature} off` ])

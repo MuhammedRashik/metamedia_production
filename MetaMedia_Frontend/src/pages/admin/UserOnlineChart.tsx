@@ -1,8 +1,8 @@
 import ReactApexChart from 'react-apexcharts';
-
+import { ApexOptions } from "apexcharts";
 const UserOnlineChart = () => {
     const series = [44, 55];
-    const options = {
+    const options:ApexOptions = {
         chart: {
             type: 'donut',
             height: 550, 

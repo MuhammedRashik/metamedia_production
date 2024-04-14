@@ -11,8 +11,9 @@ const AudiCall=()=>{
     
         const apiRef :any= useRef();
         const [ logItems, updateLog ]:any = useState([]);
-        const [ showNew, toggleShowNew ]:any = useState(false);
+     
         const [ knockingParticipants, updateKnockingParticipants ]:any = useState([]);
+    console.log(logItems,knockingParticipants);
     
         const printEventOutput = (payload:any) => {
             updateLog((items:any) => [ ...items, JSON.stringify(payload) ]);

@@ -4,7 +4,7 @@ import {
 } from "../../utils/formValidation/ChangePasswordValidation";
 import { ChangePasswordFunction } from "../../utils/api/methods/AuthService/post";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+
 import { Eye, EyeOff, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ const ChangePasswordComponent = ({ changePassword,setChangePassword }: any) => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setConfirmShowPassword] = useState(false);
-  const Navigate = useNavigate();
+
   const wrapperRef: any = useRef(null);
   const userData=useSelector((state:any)=>state.persisted.user.userData)
 

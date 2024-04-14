@@ -1,6 +1,5 @@
 import { X } from "lucide-react";
-import React, { useState } from "react";
-import { addHighlightFunction } from "../../../utils/api/methods";
+
 
 const AddHighlightComponent = ({
   highlightName,

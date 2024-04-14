@@ -2,16 +2,14 @@ import {
   ArrowBigLeft,
   ArrowBigRight,
   ArrowLeft,
-  Divide,
-  LogIn,
   MapPin,
-  Users,
+
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearImages } from "../../../../utils/ReduxStore/Slice/postSlice";
 import { toast } from "sonner";
-import { PostData } from "../../../../utils/interface/postInterface";
+
 import { AddPostFuntion } from "../../../../utils/api/methods/PostService/Post/addPost";
 import { Base64 } from "js-base64";
 import { searchLocationFuntion } from "../../../../utils/api/methods/PostService/Post/searchLocaation";

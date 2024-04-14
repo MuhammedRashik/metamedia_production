@@ -3,9 +3,7 @@ import useMediaQuery from "../../utils/costumHook/mediaqueri";
 import PostScroll from "./PostScrollComponent";
 import Story from "./StoryComponent";
 import Suggestion from "./SuggestionComponent";
-import { SetSidebarOpenFunction } from "../../pages/user/Home";
-import ShowStoryComponent from "./StoryComponent/ShowStoryComponent";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllStoriesFunction } from "../../utils/api/methods/StoryService/Story/get";
 import { addOtherUserStories } from "../../utils/ReduxStore/Slice/storySlice";
 

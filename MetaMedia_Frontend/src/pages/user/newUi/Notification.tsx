@@ -4,7 +4,7 @@ import { GetNotificationOfUserFunction } from "../../../utils/api/methods/ChatSe
 import { toast } from "sonner";
 
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
-import { Annoyed } from "lucide-react";
+
 import moment from 'moment';
 const Notification = ({ setOpenNotification }: any) => {
 

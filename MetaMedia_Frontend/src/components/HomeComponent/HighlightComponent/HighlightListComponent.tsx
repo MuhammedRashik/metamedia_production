@@ -1,7 +1,6 @@
 import { X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
-  getStoriesFunction,
   addNewHighlightFunction,
 } from "../../../utils/api/methods";
 import { toast } from "sonner";

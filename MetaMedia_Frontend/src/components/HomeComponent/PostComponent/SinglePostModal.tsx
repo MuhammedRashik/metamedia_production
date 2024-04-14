@@ -22,7 +22,6 @@ import {
 } from "../../../utils/ReduxStore/Slice/singlePostSlice";
 
 
-import { color } from "framer-motion";
 
 import { LikePostFuntion } from "../../../utils/api/methods/PostService/Post/likePost";
 import { toast } from "sonner";
@@ -43,9 +42,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
     (state: any) => state.persisted.singlePost.singlePost
   );
   const Navigate = useNavigate();
-  const isSinglePostModal = useSelector(
-    (state: any) => state.persisted.singlePost.isSinglePostModal
-  );
+ 
   const postUserData = useSelector(
     (state: any) => state.persisted.singlePost.postUserData
   );
@@ -71,6 +68,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
+console.log(setImages,setPostUser,setPostCreaetedDate);
 
   const imageLeftClick = () => {
     setImageIndex((prevIndex) =>
@@ -150,7 +148,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
     }
   };
 
-  const handleReplay = () => {};
+
 
   const hanldeDelete = async () => {
     const data = {

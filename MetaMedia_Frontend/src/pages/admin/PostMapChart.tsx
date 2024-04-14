@@ -30,7 +30,7 @@ const PostMapChart=()=>{
             const chart = chartWrapper.getChart();
             const selection = chart.getSelection();
             if (selection.length === 0) return;
-            const region = data[selection[0].row + 1];
+          
             
           },
         },

@@ -113,6 +113,8 @@ const MessageListComponent = ({
   const navigate = useNavigate();
   const [videoCall, setVideoCall] = useState(false);
 
+  console.log(recordedAudioBlob,);
+  
 
 
   useEffect(() => {
@@ -145,12 +147,15 @@ const MessageListComponent = ({
   }, [videoCall, handleSubmitForm]);
 
   useEffect(() => {
-    socket?.on("room:join", (data: any) => {});
+    socket?.on("room:join", (data: any) => {
+      console.log(data);
+      
+    });
   }, [socket, videoCall]);
 
 
   const handleJoinRoom = useCallback((data: any) => {
-    const { email, room } = data;
+    const { room } = data;
     navigate(`/videoCall/${room}`);
   }, []);
 
@@ -390,7 +395,6 @@ const MessageListComponent = ({
     const date = new Date(lastMessageDate);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
     const twelveHourFormat = hours % 12 || 12;
     return `${twelveHourFormat}:${minutes < 10 ? "0" : ""}${minutes}`;
   };

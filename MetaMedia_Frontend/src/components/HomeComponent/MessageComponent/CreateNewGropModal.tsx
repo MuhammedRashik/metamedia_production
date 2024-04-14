@@ -1,7 +1,7 @@
 import { Camera, Pencil, ScrollText, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import { object, string, number } from 'zod';
+
 import {addAdmin,addDescription,addFile,addTitle} from '../../../utils/ReduxStore/Slice/newGropSlice'
 import { useDispatch, useSelector } from 'react-redux';
 const CreateNewGroupModal = ({ setewGroup }: any) => {

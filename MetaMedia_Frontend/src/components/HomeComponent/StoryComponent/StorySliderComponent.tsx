@@ -23,7 +23,6 @@ const StorySliderComponent = ({
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(0);
-  const [video, setVideo] = useState<boolean>(false);
   const [hideTrains, setHideTrain] = useState<boolean>(false);
   const [currentStory, setCurrentStory] = useState<any>([]);
   const [currentProfile, setCurrentProfile] = useState("");

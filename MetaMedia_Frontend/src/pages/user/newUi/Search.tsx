@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { Search, XCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { GetSearchUserDataFunction } from "../../../utils/api/methods/UserService/get";

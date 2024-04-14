@@ -1,13 +1,11 @@
 
-import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import {RegisterFormData,useRegisterValidate,} from "../../utils/formValidation/SignUpValidation";
 import { FacebookAuth ,GoogleAuth} from "../../utils/firebase/firebase";
 import { addUser, clearUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { addToken } from "../../utils/ReduxStore/Slice/tokenSlice";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   GetUserDataFunction,
   LoginWithFacebook,

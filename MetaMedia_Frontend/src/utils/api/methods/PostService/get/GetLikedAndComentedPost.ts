@@ -1,7 +1,7 @@
 
 
 import axios from 'axios';
-import { GetLikedAndComentedPost_Api, getUserPosts_Api } from '../../../endpoints/common';
+import { GetLikedAndComentedPost_Api } from '../../../endpoints/common';
 export const GetLikedAndComentedPostFunction = (userId:any) => {  
  try {
     console.log(userId,"userIduserIduserId");

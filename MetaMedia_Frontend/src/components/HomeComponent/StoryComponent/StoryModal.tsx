@@ -27,6 +27,9 @@ const StoryModal = ({ setAddStory }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const post = useSelector((state: any) => state.persisted.post.videos);
 
+
+  console.log(loading);
+  
   useEffect(()=>{
     if(selectedFile?.type?.startsWith('video/') && back==false){
       console.log("setIsVideosetIsVideosetIsVideo");

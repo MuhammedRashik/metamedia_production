@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";

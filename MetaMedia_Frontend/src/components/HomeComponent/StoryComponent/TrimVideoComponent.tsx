@@ -13,7 +13,7 @@ import {
   import { toast } from "sonner";
   import { Slider, Spin } from "antd";
   import { Button } from "antd";
-  import { X } from "lucide-react";
+
 import { addVideo, clearVideos } from "../../../utils/ReduxStore/Slice/postSlice";
 
   function sliderValueToVideoTime(duration: any, sliderValue: any) {
@@ -22,7 +22,7 @@ import { addVideo, clearVideos } from "../../../utils/ReduxStore/Slice/postSlice
 
 const TrimVideoComponent=({croppedImage}:any)=>{
 
-    const dispatch = useDispatch();
+  
     const ffmpegRef = useRef(new FFmpeg());
     const ffmpeg = ffmpegRef.current;
   
@@ -33,6 +33,8 @@ const TrimVideoComponent=({croppedImage}:any)=>{
     const [gifUrl, setGifUrl] = useState();
     const [sliderValues, setSliderValues] = useState([0, 100]);
     const [processing, setProcessing] = useState(false);
+    console.log(setVideoFile,gifUrl);
+    
 useEffect(() => {
     // loading ffmpeg on startup
     const load = async () => {

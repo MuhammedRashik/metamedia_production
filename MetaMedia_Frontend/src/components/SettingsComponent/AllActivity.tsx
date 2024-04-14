@@ -1,11 +1,11 @@
-import { ChevronRight, CircleUser, Heart, MessageCircle, X } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import {  CircleUser, Heart, MessageCircle} from "lucide-react";
+import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { GetLikedAndComentedPostFunction } from "../../utils/api/methods/PostService/get/GetLikedAndComentedPost";
 import { getUserByIdFuntion } from "../../utils/api/methods/UserService/post";
 import { addPostData, clearPostData, clearPostUserData, isSinglePostModalOpen, setPostUserData } from "../../utils/ReduxStore/Slice/singlePostSlice";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const AllActivity = () => {
   const userData = useSelector((state: any) => state.persisted.user.userData);

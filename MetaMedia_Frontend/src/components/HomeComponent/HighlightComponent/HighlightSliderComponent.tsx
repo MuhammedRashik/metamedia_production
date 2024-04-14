@@ -12,7 +12,6 @@ import { toast } from "sonner";
 const HighlightSliderComponent = ({
   openHighlight,
   setOpenHighlight,
-  durationPerImage,
   setHighlightList,
   setHighlightName,
   setDeleteHighlight,

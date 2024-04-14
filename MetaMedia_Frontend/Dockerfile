@@ -1,5 +1,6 @@
 # Use a specific version of Node.js
-FROM node:18.16.1
+FROM --platform=linux/amd64 node:21.6.0
+
 
 # Set the working directory in the container
 WORKDIR /app
@@ -7,8 +8,9 @@ WORKDIR /app
 # Copy only the package.json and package-lock.json to leverage Docker cache
 COPY package*.json ./
 
-# Install dependencies using npm
-RUN npm install 
+
+# Install dependencies using Yarn
+RUN yarn install --force
 
 # Copy the entire project files to the working directory
 COPY . .

@@ -8,12 +8,13 @@ const config: Config.InitialOptions = {
   testEnvironment: 'jsdom',
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['<rootDir>/src/**/*.test.(ts|tsx)'],
+  testMatch: ['<rootDir>/src/**/*.test.{js,jsx,ts,tsx}'],
 
   // A map from regular expressions to paths to transformers
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '\\.(webp)$': 'jest-transform-stub',
+    "^.+\\.(css|less)$": "./src/styleMock.ts"
   },
 
   // Indicates whether each individual test should be reported during the run
@@ -31,11 +32,17 @@ const config: Config.InitialOptions = {
   // An array of regexp pattern strings that are matched against all source file paths before transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
+  moduleNameMapper: {
+    "\\.(s?css|less)$": "identity-obj-proxy"
+  },
+  
+ 
   // Indicates whether to use watch mode or not
   watch: false,
 
   // Indicates whether to use watch mode only to rerun tests related to changed files
   watchAll: false,
+  
 };
 
 export default config;

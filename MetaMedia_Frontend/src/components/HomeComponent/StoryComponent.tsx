@@ -1,5 +1,4 @@
-import { useState } from "react";
-import StoryCard from "./storycardComponent";
+
 import { useSelector } from "react-redux";
 import profile from '../../assets/profile.webp'
 
@@ -47,7 +46,7 @@ const Story = ({setShowStory,setAddStory}:any) => {
                 {stories[0]?.length !== 0 &&
                 stories[0]?.map((value: any,index:number) => {
                   return(
-                <div className="w-16 h-16 sm:w-20 sm:h-20 border-2 rounded-full border-[#C1506D] justify-center mr-2 sm:mr-7">
+                <div key={index}  className="w-16 h-16 sm:w-20 sm:h-20 border-2 rounded-full border-[#C1506D] justify-center mr-2 sm:mr-7">
                   <div className="w-full h-full flex justify-center items-center">
                     <div className="w-[58px] h-[58px] sm:w-[72px] sm:h-[72px] border flex justify-center items-center rounded-full">
                       <img

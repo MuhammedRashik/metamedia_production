@@ -26,6 +26,9 @@ const PostScroll = ({ data, render, setRender }: any) => {
       setLiked(false);
     }
   }, []);
+
+  console.log(liked);
+  
   const handlePostClick = async (item: any) => {
     const responce = await getUserByIdFuntion(item.userId);
     console.log(responce.data,"DATTT");

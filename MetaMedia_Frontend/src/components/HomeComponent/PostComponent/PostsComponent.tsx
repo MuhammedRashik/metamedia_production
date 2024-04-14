@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import  { useEffect, useState } from "react";
+import {  useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { getAllPostOfUserFunction } from "../../../utils/api/methods/PostService/get/getAllPostOfUser";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { toast } from "sonner";
-import { Play } from "lucide-react";
+
 import {
   addPostData,
   clearPostData,

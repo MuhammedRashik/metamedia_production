@@ -9,7 +9,7 @@ import {
   
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import AudioPlayer from 'react-h5-audio-player';
@@ -24,7 +24,6 @@ import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import {
   SendFileMessageFunction,
-  SendGroupMessageFunction,
   SendVoiceNoteFunction,
 } from "../../../utils/api/methods/ChatService/post/post";
 import {
@@ -33,11 +32,11 @@ import {
 import VoiceRecorder from "./VoiceRecorder";
 
 import profile from '../../../assets/profile.webp'
-import { set } from "react-hook-form";
 
 
 
-const GroupMessageComponent = ({ isGroupChat, aside, setClik, click,setIsVideoCall,setISGroupDetais }: any) => {
+
+const GroupMessageComponent = ({ isGroupChat, aside, click,setISGroupDetais }: any) => {
   const { group_id } = useParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [messages, setMessages]: any = useState([]);
@@ -56,6 +55,7 @@ const GroupMessageComponent = ({ isGroupChat, aside, setClik, click,setIsVideoCa
 
 
 
+console.log(joinVideoCall,recordedAudioBlob);
 
 
   const handleImageClick = () => {
@@ -370,7 +370,6 @@ const GroupMessageComponent = ({ isGroupChat, aside, setClik, click,setIsVideoCa
     const date = new Date(lastMessageDate);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
     const twelveHourFormat = hours % 12 || 12;
     return `${twelveHourFormat}:${minutes < 10 ? "0" : ""}${minutes}`;
   };
@@ -546,7 +545,6 @@ const GroupMessageComponent = ({ isGroupChat, aside, setClik, click,setIsVideoCa
 src={`http://meta-media.in/api/chat/Chat/${item.content}`}
 customAdditionalControls={[]} 
 style={{width:"300px", height:"80px"}}
-onPlay={e => console.log("onPlay")}
 
 />
 

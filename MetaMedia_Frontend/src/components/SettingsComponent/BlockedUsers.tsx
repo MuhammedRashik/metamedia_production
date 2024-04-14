@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import profile from "../../assets/profile.webp";
 import { BlockAndUnblockUserFunction } from "../../utils/api/methods/ChatService/post/post";

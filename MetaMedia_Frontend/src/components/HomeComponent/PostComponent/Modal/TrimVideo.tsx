@@ -25,7 +25,7 @@ function sliderValueToVideoTime(duration: any, sliderValue: any) {
 }
 const TrimVedio = ({ setPostState }: any) => {
   const post = useSelector((state: any) => state.persisted.post);
-  const dispatch = useDispatch();
+
   const ffmpegRef = useRef(new FFmpeg());
   const ffmpeg = ffmpegRef.current;
 
@@ -37,6 +37,8 @@ const TrimVedio = ({ setPostState }: any) => {
   const [sliderValues, setSliderValues] = useState([0, 100]);
   const [processing, setProcessing] = useState(false);
 
+  console.log(gifUrl,setVideoFile);
+  
   useEffect(() => {
     // loading ffmpeg on startup
     const load = async () => {

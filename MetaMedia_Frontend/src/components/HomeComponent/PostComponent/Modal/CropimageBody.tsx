@@ -1,4 +1,4 @@
-import CreatePostModalBody from "./CreatePostmodalBody";
+
 import { ArrowLeft, ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import Cropper from "react-easy-crop";
 import { useEffect, useState } from "react";
@@ -8,9 +8,7 @@ import {
   setAspectRatio,
   clearAspectRatio,
 } from "../../../../utils/ReduxStore/Slice/postSlice";
-import { AdvancedImage } from "@cloudinary/react";
 
-import { scale } from "@cloudinary/url-gen/actions/resize";
 
 import { Scaling, ZoomIn, ZoomOut } from "lucide-react";
 import { toast } from "sonner";
@@ -67,7 +65,6 @@ const CropImageBody = ({ setPostState }: any) => {
 
       const croppedImag = await getCroppedImage(
         selectedImageSrc,
-        croppedArea,
         croppedAreaPixels
       );
 
@@ -80,7 +77,6 @@ const CropImageBody = ({ setPostState }: any) => {
 
   const getCroppedImage = (
     imageSrc: any,
-    croppedArea: any,
     croppedAreaPixels: any
   ): any => {
     return new Promise((resolve, reject) => {

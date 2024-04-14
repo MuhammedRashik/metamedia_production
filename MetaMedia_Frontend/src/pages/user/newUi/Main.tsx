@@ -1,21 +1,12 @@
-import {
-  MoreVertical,
-  Radio,
-  Image,
-  Film,
-  Bookmark,
-  Send,
-  MessageCircle,
-  Heart,
-} from "lucide-react";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import webpush from 'web-push'
+// import webpush from 'web-push'
 // import { toast } from "sonner";
 import { getAllStoriesFunction } from "../../../utils/api/methods/StoryService/Story/get";
 import { addOtherUserStories } from "../../../utils/ReduxStore/Slice/storySlice";
 import { showAllPostFuntion } from "../../../utils/api/methods/PostService/get/showAllPost";
-import { SubcribeUserToSNSFunction, getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
+import {  getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { toast } from "sonner";
 import { PostScroll, Story } from "../../../components/HomeComponent";
 import CreateMediaComponent from "../../../components/HomeComponent/CreateMediaComponent";
@@ -37,6 +28,7 @@ const MainBody = ({  setShowStory, setAddStory, setIsAddPost,setIsAddLive }: Mai
     const [vapidPublickey,setVapidPublicKey]=useState("")
 
 
+console.log(vapidPublickey);
 
 
   const userData=useSelector((state:any)=>state.persisted.user.userData)
@@ -79,19 +71,19 @@ const MainBody = ({  setShowStory, setAddStory, setIsAddPost,setIsAddLive }: Mai
     });
   }
   
-  function subscribeUserToSNS(data:any) {
-    return new Promise((resolve:any, reject) => {
-      SubcribeUserToSNSFunction(data).then(response => {
-        if (response.status) {
-          resolve();
-        } else {
-          reject('Failed to subscribe user to SNS: ' + response.message);
-        }
-      }).catch(error => {
-        reject('Error subscribing user to SNS: ' + error);
-      });
-    });
-  }
+  // function subscribeUserToSNS(data:any) {
+  //   return new Promise((resolve:any, reject) => {
+  //     SubcribeUserToSNSFunction(data).then(response => {
+  //       if (response.status) {
+  //         resolve();
+  //       } else {
+  //         reject('Failed to subscribe user to SNS: ' + response.message);
+  //       }
+  //     }).catch(error => {
+  //       reject('Error subscribing user to SNS: ' + error);
+  //     });
+  //   });
+  // }
   
   function urlBase64ToUint8Array(base64String:any) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -148,9 +140,9 @@ const MainBody = ({  setShowStory, setAddStory, setIsAddPost,setIsAddLive }: Mai
     requestNotificationPermission()
       .then(() => {
         toast.success("Notification permission granted");
-        const notifiacation = new Notification('New Message', {
-          body: 'You have received a new message.',
-        });
+        // const notifiacation = new Notification('New Message', {
+        //   body: 'You have received a new message.',
+        // });
         const data = { userId: userData.userId };
         return generateVapidKeys(data);
       })
@@ -161,11 +153,11 @@ const MainBody = ({  setShowStory, setAddStory, setIsAddPost,setIsAddLive }: Mai
       })
       .then((deviceInfo:any) => {
         if (deviceInfo) {
-          const data = {
-            deviceInfo,
-            vapidPublicKey: vapidPublickey,
-            userId: userData.userId
-          };
+          // const data = {
+          //   deviceInfo,
+          //   vapidPublicKey: vapidPublickey,
+          //   userId: userData.userId
+          // };
           // return subscribeUserToSNS(data);
         } else {
           toast.error('Failed to get device information');

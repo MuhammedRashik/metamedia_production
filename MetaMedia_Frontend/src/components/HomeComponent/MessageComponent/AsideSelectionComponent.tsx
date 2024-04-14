@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux"
+
 import { useNavigate } from "react-router-dom"
 
 const AsideSelectionComponent=({setAside,setIsGroupChat}:any)=>{
 
-const userData=useSelector((state:any)=>state.persisted.user.userData)
     const naviagte=useNavigate()
     const handelFriends=()=>{
        

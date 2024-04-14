@@ -179,6 +179,8 @@ const CamaraModal = ({ imgSrc, setImgSrc, setCamaraOn, setPostState }: any) => {
 
   const [loading, setLoading] = useState(true);
 
+  console.log(loading);
+  
   useEffect(() => {
     // Simulating loading time for webcam
     const timeout = setTimeout(() => {

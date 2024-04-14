@@ -16,7 +16,7 @@ import { isSinglePostModalClose } from "../utils/ReduxStore/Slice/singlePostSlic
 import SinglePostModal from "../components/HomeComponent/PostComponent/SinglePostModal";
 import NewSignUp from "../pages/user/SignUp";
 import NewLogin from "../pages/user/Login";
-import { ErrorComponent } from "../components/ErrorComponents/ErrorComponent";
+
 
 const 
 UserRouter = () => {
@@ -31,7 +31,10 @@ UserRouter = () => {
    return (
     <>
     {isSinglePostModal && ( <> <SinglePostModal setRender={setRender} render={render} /> </> )}
+
     <Routes>
+
+
       <Route path="/*" element={<ProtectedAuthRoute> <Home setRender={setRender} render={render}/> </ProtectedAuthRoute> }/>
       <Route path="/signup" element={<SignUp />} />
       <Route path="/verifyOtp" element={<VerifyOtp />} />
@@ -44,6 +47,7 @@ UserRouter = () => {
       <Route path="/selectPost" element={<SinglePostModal/>} />
       <Route path="/newSignUp" element={<NewSignUp />}/>
       <Route path="/newLogin" element={<NewLogin />}/>
+
     </Routes>
     </>
   );

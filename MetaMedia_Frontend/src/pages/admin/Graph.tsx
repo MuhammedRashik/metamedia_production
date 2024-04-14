@@ -1,6 +1,13 @@
 
 import ReactApexChart from 'react-apexcharts';
-
+import { ApexOptions } from "apexcharts";
+interface Data {
+  series: {
+    name: string;
+    data: number[];
+  }[];
+  options: ApexOptions;
+}
 const Chart = ({userData,postData}:any) => {
   
 
@@ -29,17 +36,17 @@ const Chart = ({userData,postData}:any) => {
   const userCounts = getUserCountsByMonth();
   const postCounts = getPostCountsByMonth();
 
-  const data = {
+  const data:Data = {
     series: [
       { name: 'Users', data: userCounts },
       { name: 'Posts', data: postCounts }
     ],
-    options: {
+    options:  {
       chart: { height: 350, type: 'area' },
       dataLabels: { enabled: false },
       stroke: { curve: 'smooth' },
       xaxis: {
-        type: 'text',
+        type: 'category',
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       },
       tooltip: { x: { format: 'text' } },
