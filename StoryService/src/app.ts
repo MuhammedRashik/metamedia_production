@@ -30,6 +30,7 @@ const server=http.createServer(app)
     Token:string
   }
 }
+console.log('hi from stor service ');
 
  app.use(express.json());
  app.use(express.urlencoded({ extended: false }));
