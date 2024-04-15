@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - "../Auth-Service/**"
+      - "Auth-Service/**"
 jobs:
   build:
     runs-on: ubuntu-latest
