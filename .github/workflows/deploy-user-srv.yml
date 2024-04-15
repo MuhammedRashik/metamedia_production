@@ -1,4 +1,4 @@
-name: user-srv-workflow
+name: deploy-user-srv
 on:
   push:
     branches:
