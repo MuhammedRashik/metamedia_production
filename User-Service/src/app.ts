@@ -10,10 +10,10 @@ import {userconsumer} from './events/userconsumer'
 import {routes} from './adapters/routes'
 import dependencies from './frameworks/config/dependencies'
 import session, { SessionOptions,MemoryStore,SessionData } from "express-session";
-import helmet from "helmet";
-import { body } from 'express-validator'
-import { sanitizeData } from './utils/sanitize/sanitizeData'
-import path from 'path'
+// import helmet from "helmet";
+// import { body } from 'express-validator'
+// import { sanitizeData } from './utils/sanitize/sanitizeData'
+// import path from 'path'
 const store = new MemoryStore();
 const app=express()
 getDb(config)
@@ -30,7 +30,7 @@ dotenv.config()
 //   if (hasScript) {
 //     return res.status(400).send("Detected malicious script in request.");
 //   }
-//   next();
+//   next(); 
 // });
 //hih
 declare module 'express-session' {
@@ -49,7 +49,7 @@ declare module 'express-session' {
   }
 }
 
-
+ 
  app.use(express.json());
  app.use(express.urlencoded({ extended: false }));
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
@@ -63,7 +63,7 @@ declare module 'express-session' {
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true,
     })
-  );
+  ); 
 
   app.use(
     session({
