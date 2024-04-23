@@ -268,7 +268,7 @@ const Login = () => {
             >
               <div className="w-full h-24   flex justify-center md:justify-start  md:items-start items-center">
                 <h1 className="text-[#C1506D]  font-semibold font-sans text-2xl  md:text-center md:text-2xl  pl-5     ">
-                  Welcome Back !
+                  Welcome Back !1
                 </h1>
               </div>
               <div className="w-full h-32 flex  justify-center p-5 flex-col gap-2">
