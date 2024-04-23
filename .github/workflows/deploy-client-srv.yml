@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "Metamedia_Frontend/**"
+      - "MetaMedia_Frontend/**"
 
 jobs:
   build:
