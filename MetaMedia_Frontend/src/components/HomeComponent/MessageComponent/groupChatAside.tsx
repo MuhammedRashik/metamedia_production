@@ -75,7 +75,7 @@ const GroupChatAside=({setIsMore,isMore,setewGroup,setIsGroupChat,setAside,setCl
         
  {/* one div  */}
  <div className={`list flex cursor-pointer border-b border-gray-300 transition-all p-2 items-center   `} onClick={()=>handleGroupChat(item)}>
-        <img src={`http://meta-media.in/api/chat/Chat/${item.profile}`} alt="P"  className="rounded-full mr-2 w-[50px] h-[50px]"/>
+        <img src={`https://meta-media.in/api/chat/Chat/${item.profile}`} alt="P"  className="rounded-full mr-2 w-[50px] h-[50px]"/>
         <div className="info flex-1 ">
             <div className="flex flex-col">
                         <span className=" font-bold">{item.name}</span>

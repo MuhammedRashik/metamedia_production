@@ -1,5 +1,5 @@
 # Use a specific version of Node.js
-FROM --platform=linux/amd64 node:21.6.0
+FROM --platform=linux/amd64 node:18
 
 
 # Set the working directory in the container

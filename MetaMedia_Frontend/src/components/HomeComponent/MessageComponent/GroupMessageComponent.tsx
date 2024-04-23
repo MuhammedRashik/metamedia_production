@@ -169,7 +169,7 @@ console.log(joinVideoCall,recordedAudioBlob);
   const userData = useSelector((state: any) => state.persisted.user.userData);
 
   useEffect(() => {
-    setSocket(io("http://meta-media.in")); 
+    setSocket(io("https://meta-media.in")); 
   }, []);
   useEffect(()=>{
     if(socket && group_id !='index'){
@@ -384,7 +384,7 @@ console.log(joinVideoCall,recordedAudioBlob);
             <header className=" w-full flex items-center p-2 sm:p-3 border-b border-gray-300 bg-[#EBE9EF] ">
               <ArrowLeft className="mr-3 sm:hidden" />
               <img
-                src={`http://meta-media.in/api/chat/Chat/${groupData.profile}`}
+                src={`https://meta-media.in/api/chat/Chat/${groupData.profile}`}
                 alt="aa"
                 className="rounded-full mr-4 w-[35px] h-[35px]"
                 onClick={()=>setISGroupDetais(true)}
@@ -469,13 +469,13 @@ console.log(joinVideoCall,recordedAudioBlob);
 //                                     <>
 //                                     <audio controls>
 
-//   <source  src={`http://meta-media.in/api/chat/Chat/${item.content}`} type="audio/mpeg" />
+//   <source  src={`https://meta-media.in/api/chat/Chat/${item.content}`} type="audio/mpeg" />
  
 // </audio>
 //                        </>
                                     <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center bg-[#FADBE1] items-center  rounded-br-none  text-white gap-2">
                                     <AudioPlayer
-                                      src={`http://meta-media.in/api/chat/Chat/${item.content}`}
+                                      src={`https://meta-media.in/api/chat/Chat/${item.content}`}
                                       customAdditionalControls={[]}
                                       className="w-[200px] h-[80px] md:w-[300px]"
                                     />
@@ -490,7 +490,7 @@ console.log(joinVideoCall,recordedAudioBlob);
                                     <>
                                       <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`http://meta-media.in/api/chat/chat/${item.content}`}
+                              src={`https://meta-media.in/api/chat/chat/${item.content}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -508,7 +508,7 @@ console.log(joinVideoCall,recordedAudioBlob);
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`http://meta-media.in/api/chat/Chat/${item.content}`}
+                                src={`https://meta-media.in/api/chat/Chat/${item.content}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(item?.timestamp)}
@@ -542,7 +542,7 @@ console.log(joinVideoCall,recordedAudioBlob);
                                     <span className="px-4 py-2 rounded-lg text-sm md:text-base inline-block rounded-bl-none bg-gray-300 text-gray-600">
                                     <AudioPlayer
 
-src={`http://meta-media.in/api/chat/Chat/${item.content}`}
+src={`https://meta-media.in/api/chat/Chat/${item.content}`}
 customAdditionalControls={[]} 
 style={{width:"300px", height:"80px"}}
 
@@ -556,7 +556,7 @@ style={{width:"300px", height:"80px"}}
                                   <>
                                     <img
                                         className="w-60 h-60 object-cover rounded-md border  "
-                                      src={`http://meta-media.in/api/chat/Chat/${item.content}`}
+                                      src={`https://meta-media.in/api/chat/Chat/${item.content}`}
                                       alt=""
                                     />
                                   </>
@@ -569,7 +569,7 @@ style={{width:"300px", height:"80px"}}
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`http://meta-media.in/api/chat/Chat/${item.content}`}
+                                src={`https://meta-media.in/api/chat/Chat/${item.content}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(item?.timestamp)}
@@ -588,7 +588,7 @@ style={{width:"300px", height:"80px"}}
                               userDetails[item.sender_id]?.profile?.profileUrl.startsWith("https://")
                                 ? `${userDetails[item.sender_id]?.profile.profileUrl}`
                                 : userDetails[item.sender_id]?.profile.profileUrl
-                                ? `http://meta-media.in/api/user/profile/${userDetails[item.sender_id]?.profile.profileUrl}`
+                                ? `https://meta-media.in/api/user/profile/${userDetails[item.sender_id]?.profile.profileUrl}`
                                 : `${profile}`
                             }
                               alt="Profile"

@@ -95,7 +95,7 @@ const PostsComponent = ({ postLength, render, setRender }: any) => {
                       <>
                         <img
                           className=" border border-amber-10 w-full h-full rounded-md object-fill"
-                          src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
+                          src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
                           alt=""
                         />
                       </>
@@ -111,7 +111,7 @@ const PostsComponent = ({ postLength, render, setRender }: any) => {
                         >
                           <source
                             className="w-full h-full object-fill"
-                            src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
+                            src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
                             type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                           />
                         </video>
@@ -135,7 +135,7 @@ const PostsComponent = ({ postLength, render, setRender }: any) => {
                       <>
                         <img
                           className=" border border-amber-10 w-full rounded-md h-full object-fill"
-                          src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
+                          src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
                           alt=""
                         />
                       </>
@@ -151,7 +151,7 @@ const PostsComponent = ({ postLength, render, setRender }: any) => {
                         >
                           <source
                             className="w-full h-full object-fill"
-                            src={`http://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
+                            src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
                             type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                           />
                         </video>

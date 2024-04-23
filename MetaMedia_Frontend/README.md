@@ -52,7 +52,7 @@ npm install @hookform/resolvers/zod --legacy-peer-deps
           console.log(res.data,"res.datares.data");
           const { secure_url } = res.data
 
-          // await axios.post("http://meta-media.in/api/story/addStoryVideo",{secure_url})
+          // await axios.post("https://meta-media.in/api/story/addStoryVideo",{secure_url})
           console.log("File upload success ...");
           setLoading(false)
         } catch (error) {

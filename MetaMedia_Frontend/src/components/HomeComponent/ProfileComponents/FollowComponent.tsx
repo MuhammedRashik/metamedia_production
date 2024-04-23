@@ -146,7 +146,7 @@ const FollowComponent = ({
                         )
                           ? `${val.profile}`
                           : val.profile
-                          ? `http://meta-media.in/api/user/profile/${val.profile}`
+                          ? `https://meta-media.in/api/user/profile/${val.profile}`
                           : profile
                       }
                       alt=""
@@ -179,7 +179,7 @@ const FollowComponent = ({
                         )
                           ? `${val.profile}`
                           : val.profile
-                          ? `http://meta-media.in/api/user/profile/${val.profile}`
+                          ? `https://meta-media.in/api/user/profile/${val.profile}`
                           : profile
                       }
                       alt=""

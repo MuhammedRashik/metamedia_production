@@ -403,7 +403,7 @@ console.log(setImages,setPostUser,setPostCreaetedDate);
                     <>
                       <img
                         className="object-contain opacity-100 w-full h-full"
-                        src={`http://meta-media.in/api/post/img/${images[imageIndex]}`}
+                        src={`https://meta-media.in/api/post/img/${images[imageIndex]}`}
                         alt=""
                       />
                     </> 
@@ -415,7 +415,7 @@ console.log(setImages,setPostUser,setPostCreaetedDate);
                         controls
                       >
                         <source
-                          src={`http://meta-media.in/api/post/img/${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
+                          src={`https://meta-media.in/api/post/img/${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
                           type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                         />
                       </video>
@@ -486,7 +486,7 @@ console.log(setImages,setPostUser,setPostCreaetedDate);
                   <div className="h-full w-1/6 flex items-center justify-center">
                     <img
                       className="w-12 h-12 border-2 border-amber-100 rounded-full"
-                      src={`http://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
+                      src={`https://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
                       alt=""
                     />
                   </div>
@@ -512,7 +512,7 @@ console.log(setImages,setPostUser,setPostCreaetedDate);
                     <div className="h-full w-1/6  flex justify-center items-start p-1">
                       <img
                         className="w-10 h-10 rounded-full"
-                        src={`http://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
+                        src={`https://meta-media.in/api/user/profile/${postUser?.profile?.profileUrl}`}
                         alt=""
                       />
                     </div>
@@ -549,7 +549,7 @@ console.log(setImages,setPostUser,setPostCreaetedDate);
                               <div className="h-full w-1/6  flex justify-center items-start p-1">
                                 <img
                                   className="w-10 h-10 rounded-full"
-                                  src={`http://meta-media.in/api/user/profile/${item?.profile}`}
+                                  src={`https://meta-media.in/api/user/profile/${item?.profile}`}
                                   alt=""
                                 />
                               </div>

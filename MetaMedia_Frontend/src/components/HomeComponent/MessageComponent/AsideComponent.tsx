@@ -86,7 +86,7 @@ const AsideComponent = ({
                             data?.profile?.startsWith("https://")
                               ? `${data?.profile}`
                               : data?.profile
-                              ? `http://meta-media.in/api/user/profile/${data?.profile}`
+                              ? `https://meta-media.in/api/user/profile/${data?.profile}`
                               : `${profile}`
                           }
                           alt="P"
@@ -130,7 +130,7 @@ const AsideComponent = ({
                           data?.profile?.startsWith("https://")
                             ? `${data?.profile}`
                             : data?.profile
-                            ? `http://meta-media.in/api/user/profile/${data?.profile}`
+                            ? `https://meta-media.in/api/user/profile/${data?.profile}`
                             : `${profile}`
                         }
                         alt="P"

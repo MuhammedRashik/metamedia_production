@@ -415,7 +415,7 @@ const Sidebar = ({ open,setAddStory,setIsAddPost }: any) => {
                     userData.profile?.startsWith("https://graph.facebook.com/")
                       ? `${userData.profile}`
                       : userData.profile
-                        ? `http://meta-media.in/api/user/profile/${userData.profile}`
+                        ? `https://meta-media.in/api/user/profile/${userData.profile}`
                         : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                   }
                 />

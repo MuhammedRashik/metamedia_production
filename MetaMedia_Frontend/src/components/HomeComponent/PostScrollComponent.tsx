@@ -76,7 +76,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
               src={
                 data.userData?.profile?.profileUrl.startsWith("https://graph")
                   ? data.userData?.profile?.profileUrl
-                  : `http://meta-media.in/api/user/profile/${data.userData?.profile?.profileUrl}`
+                  : `https://meta-media.in/api/user/profile/${data.userData?.profile?.profileUrl}`
               }
               alt=""
             />
@@ -93,7 +93,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
               <>
                 <img
                   className="w-full h-full "
-                  src={`http://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
+                  src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
                   alt=""
                 />
               </>
@@ -105,7 +105,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
                   controls
                 >
                   <source
-                    src={`http://meta-media.in/api/post/img/${data.mediaUrl[0]}`} // Provide the source URL of the video
+                    src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`} // Provide the source URL of the video
                     type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                   />
                 </video>

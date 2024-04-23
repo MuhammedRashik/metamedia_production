@@ -7,7 +7,7 @@ export const showAllPostFuntion=async()=>{
 
 try {
    const responce = await  axios.create({
-      baseURL:'http://meta-media.in/api/post',
+      baseURL:'https://meta-media.in/api/post',
       withCredentials : true,
   }).get(showAllPost_Api)
    return responce.data

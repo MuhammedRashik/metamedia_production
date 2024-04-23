@@ -123,7 +123,7 @@ const SearchComponent = ({ setOpenSearch,setRender,render }: any) => {
                             data.profile?.startsWith("https://graph.facebook.com/")
                               ? `${data.profile}`
                               : data.profile
-                                ? `http://meta-media.in/api/user/profile/${data.profile}`
+                                ? `https://meta-media.in/api/user/profile/${data.profile}`
                                 : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                           }
                         className="w-14 h-14 rounded-full object-fill  border-2  border-[#C1506D]"

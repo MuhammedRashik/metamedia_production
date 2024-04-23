@@ -153,7 +153,7 @@ const NewSideBar = ({setOpenNotification, setOpenSearch}:any) => {
                  src={  userData?.profile.startsWith('https://graph') ?
                  profile
                    : userData?.profile ?
-                   `http://meta-media.in/api/user/profile/${userData?.profile}`
+                   `https://meta-media.in/api/user/profile/${userData?.profile}`
                    : profile}
                   className="rounded-full w-full h-full border-2 border-[#C1506D] object-fill"
                   alt=""

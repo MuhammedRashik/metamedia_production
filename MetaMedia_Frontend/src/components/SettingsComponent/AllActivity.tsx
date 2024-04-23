@@ -105,7 +105,7 @@ const path = fullPath.pop();
         posts.map((data: any, index: number) => (
           <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4">
             <div className="h-full">
-              <img src={`http://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
+              <img src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
               onClick={()=>handlePostClick(data)}
               className="w-full h-full rounded-md" />
             </div>
@@ -117,7 +117,7 @@ const path = fullPath.pop();
         comments.map((data: any, index: number) => (
           <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4">
             <div className="h-full">
-              <img src={`http://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
+              <img src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
               onClick={()=>handlePostClick(data)}
               className="w-full h-full rounded-md" />
             </div>
@@ -129,7 +129,7 @@ const path = fullPath.pop();
         saved.map((data: any, index: number) => (
           <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4">
             <div className="h-full">
-              <img src={`http://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
+              <img src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`} alt=""
               onClick={()=>handlePostClick(data)}
               className="w-full h-full rounded-md" />
             </div>

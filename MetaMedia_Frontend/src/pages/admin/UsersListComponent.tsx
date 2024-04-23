@@ -117,7 +117,7 @@ const UsersListComponent = () => {
                                 )
                                   ? `${data?.profile}`
                                   : data?.profile
-                                  ? `http://meta-media.in/api/user/profile/${data?.profile}`
+                                  ? `https://meta-media.in/api/user/profile/${data?.profile}`
                                   : `${profile}`
                               }
                               alt=""

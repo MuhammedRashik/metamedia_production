@@ -42,7 +42,7 @@ console.log(data,'this is data');
 
 console.log(userId,'ths is is id');   
         const response = await  axios.create({
-            baseURL:'http://meta-media.in/api/post',
+            baseURL:'https://meta-media.in/api/post',
             headers: {'Content-Type' : 'multipart/form-data'},
             withCredentials : true,
         }).post(AddPost_Api, formData);

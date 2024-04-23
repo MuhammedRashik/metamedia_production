@@ -147,7 +147,7 @@ const checkUser = useMemo(
                     userData.profile?.startsWith("https://graph.facebook.com/")
                       ? `${currentUser?.profile?.profileUrl}`
                       : currentUser?.profile?.profileUrl
-                      ? `http://meta-media.in/api/user/profile/${currentUser?.profile?.profileUrl}`
+                      ? `https://meta-media.in/api/user/profile/${currentUser?.profile?.profileUrl}`
                       : `${profile}`
                   }
                   alt="Profile"

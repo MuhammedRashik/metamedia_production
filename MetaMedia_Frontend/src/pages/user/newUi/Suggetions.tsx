@@ -69,7 +69,7 @@ const Suggetions = () => {
                           <>
                             <img
                               className="lg:w-10 lg:h-10 rounded-full   "
-                              src={`http://meta-media.in/api/user/profile/${item?.profile?.profileUrl}`}
+                              src={`https://meta-media.in/api/user/profile/${item?.profile?.profileUrl}`}
                               alt=""
                             />
                           </>

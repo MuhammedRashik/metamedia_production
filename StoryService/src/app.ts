@@ -40,7 +40,7 @@ console.log('hi from stor service ');
 //  const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
  app.use(
     cors({
-      origin:"http://meta-media.in",
+      origin:"https://meta-media.in",
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true,
     })
