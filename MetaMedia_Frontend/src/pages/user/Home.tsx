@@ -33,7 +33,7 @@ import GroupAudioCallRoom from "../../components/HomeComponent/MessageComponent/
 export interface SetSidebarOpenFunction {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Home = ({ render,setRender}:any) => {
+const   Home = ({ render,setRender}:any) => {
   const [addStories, setAddStories] = useState<boolean>(false);
   const [deleteStory, setDeleteStory] = useState<boolean>(false);
   const [showStory,setShowStory] = useState("")
