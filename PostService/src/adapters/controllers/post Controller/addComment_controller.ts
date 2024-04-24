@@ -8,9 +8,6 @@ export default (dependecies: any) => {
     const data = { postId, userId, content,userName,userProfile };
 
  
-
-
-
     const responce = await addComment_UseCase(dependecies).executeFunction(data);
     if (responce.status) {
       const data={
