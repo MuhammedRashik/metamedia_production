@@ -1,16 +1,33 @@
-import { Canvas } from "@react-three/fiber";
-import Experience from '../components/MetaComponents/Test'
 
-const MetaRouter=()=>{
-    return (
+import CharacterSelection from "../components/MetaComponents/CharacterSelection";
+import LoadingScreenComponent from "../components/MetaComponents/LoadingScreen";
+import { useEffect, useState } from "react";
+
+const MetaRouter = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setIsLoading(false);
+//     }, 6000);
+//     return () => clearTimeout(timer);
+//   }, []);
+
+  
+  
+  
+  return (
+    <>
+      {isLoading && (
         <>
-        
-    <Canvas shadows camera={{ position: [3, 3, 3], fov: 30 }}>
-    <color attach="background" args={["#ececec"]} />
-    <Experience />
-    </Canvas>
+          <LoadingScreenComponent />
         </>
-    )
-}
+      )}
+      <div className="w-screen h-screen fixed">
+        <CharacterSelection/>
+      </div>
+    </>
+  );
+};
 
-export default MetaRouter
+export default MetaRouter;

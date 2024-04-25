@@ -74,7 +74,7 @@ const socketConfig=()=>{
  
    socket.on("peer:nego:done", ({ to, ans }) => {
      io.to(to).emit("peer:nego:final", { from: socket.id, ans });
-   });
+   });		
 
 
    socket.on("joinGroup", (data) => {

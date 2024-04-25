@@ -4,7 +4,7 @@ import { OrbitControls } from "@react-three/drei";
   return (
     <>
       <OrbitControls />
-      <mesh>
+      <mesh >
         <boxGeometry />
         <meshNormalMaterial />
       </mesh>
