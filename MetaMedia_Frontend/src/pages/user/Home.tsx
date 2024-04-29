@@ -78,6 +78,7 @@ const   Home = ({ render,setRender}:any) => {
     }, [dispatch, userData.userId]);
   
   const allowedPaths = ["/", "/post"];
+ console.log("I AM CHECKER");
  
   return (
     <>
