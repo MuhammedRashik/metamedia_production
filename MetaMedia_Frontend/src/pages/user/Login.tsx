@@ -79,6 +79,7 @@ const Login = () => {
           dispatch(clearUser());
           dispatch(addUser(data));
           dispatch(addToken(response.data.accesstoken));
+          localStorage.setItem('accesstoken',response.data.accesstoken)
 
           if (response?.data?.newUser) {
             toast.success(response?.data?.message);
@@ -108,6 +109,7 @@ const Login = () => {
             dispatch(clearUser());
             dispatch(addUser(data));
             dispatch(addToken(response.data.accesstoken));
+            localStorage.setItem('accesstoken',response.data.accesstoken)
 
             // await SaveUserDataInRedux(userData)
             toast.success(response?.data?.message);
@@ -159,7 +161,7 @@ const Login = () => {
           dispatch(clearUser());
           dispatch(addUser(data));
           dispatch(addToken(response.data.accesstoken));
-
+          localStorage.setItem('accesstoken',response.data.accesstoken)
           if (response?.data?.newUser) {
             toast.success(response?.data?.message);
             Navigate("/chooseinterest", { replace: true });
@@ -188,7 +190,7 @@ const Login = () => {
             dispatch(clearUser());
             dispatch(addUser(data));
             dispatch(addToken(response.data.accesstoken));
-
+            localStorage.setItem('accesstoken',response.data.accesstoken)
             // await SaveUserDataInRedux(userData)
             toast.success(response?.data?.message);
             Navigate("/", { replace: true });
@@ -228,6 +230,7 @@ const Login = () => {
         dispatch(addAdminToken(userExist.data.accesstoken));
         toast.success(response?.data?.data?.message);
         Navigate("/admin", { replace: true });
+        localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
       const userEmail:any = {email: userExist?.data?.user?.email };
      
@@ -250,10 +253,10 @@ const Login = () => {
       dispatch(clearUser());
       dispatch(addUser(userData));
       dispatch(addToken(userExist.data.accesstoken));
+      localStorage.setItem('accesstoken',userExist.data.accesstoken)
       toast.success(response?.data?.data?.message);
       Navigate("/", { replace: true });
     }
-
     }
   };
 
@@ -268,7 +271,7 @@ const Login = () => {
             >
               <div className="w-full h-24   flex justify-center md:justify-start  md:items-start items-center">
                 <h1 className="text-[#C1506D]  font-semibold font-sans text-2xl  md:text-center md:text-2xl  pl-5     ">
-                  Welcome Back ! !
+                  Welcome Back !
                 </h1>
               </div>
               <div className="w-full h-32 flex  justify-center p-5 flex-col gap-2">
@@ -341,7 +344,7 @@ const Login = () => {
                     alt=""
                   />
                   <p onClick={handleGoogle}
-                   className="text-sm pl-2">Sign in with google</p>
+                   className="text-sm pl-2">Google</p>
                 </div>
                 <div className="w-5/12 border h-10 rounded-md border-[#C1506D] items-center flex pl-2 justify-center">
                   <img
@@ -350,7 +353,7 @@ const Login = () => {
                     alt=""
                   />
                   <p onClick={SignInWithFacebook}
-                  className="text-sm pl-2">Sign in with Facebook</p>
+                  className="text-sm pl-2">Facebook</p>
                 </div>
               </div>
             </form>
