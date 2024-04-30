@@ -273,7 +273,7 @@ const SignUp = () => {
                     className="w-6 h-6 rounded-full object-fill"
                     alt=""
                   />
-                  <p onClick={handleGoogle} className="text-sm pl-2">Sign in with google</p>
+                  <p onClick={handleGoogle} className="text-sm pl-2">Google</p>
                 </div>
                 <div className="w-5/12 border h-10 rounded-md border-[#C1506D] items-center flex pl-2 justify-center">
                   <img
@@ -281,7 +281,7 @@ const SignUp = () => {
                     className="w-6 h-6 rounded-full object-fill"
                     alt=""
                   />
-                  <p onClick={SignInWithFacebook} className="text-sm pl-2">Sign in with Facebook</p>
+                  <p onClick={SignInWithFacebook} className="text-sm pl-2">Facebook</p>
                 </div>
               </div>
             </form>

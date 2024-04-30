@@ -1,8 +1,7 @@
 import { Film, Image, MoreVertical, Radio } from 'lucide-react'
-import  { useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import profile from '../../assets/profile.webp'
-
 
 const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
   const [currentMedia, setCurrentMedia] = useState<any>("");
