@@ -15,6 +15,7 @@ export const CHAT_URL = 'https://meta-media.in/api/chat';
 
 export const ADMIN_URL = 'https://meta-media.in/api/admin'; 
 
+export const META_URL= "http://localhost:3006/api/meta"
 
 export const axiosPrivet = axios.create({
     baseURL:AUTH_URL,
