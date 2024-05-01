@@ -1,0 +1,44 @@
+# 3d-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 3d-deployment
+  labels:
+    app: 3d
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 3d
+  template:
+    metadata:
+      labels:
+        app: 3d
+    spec:
+      containers:
+        - name: meta-3d-service
+          image: metamedia/meta-3d-service:latest
+          ports:
+            - containerPort: 3006
+          volumeMounts:           
+            - name: public-volume  
+              mountPath: /app/public  
+      volumes:                   
+        - name: public-volume   
+          emptyDir: {}           
+
+---
+# 3d-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: meta-3d-service
+spec:
+  selector:
+    app: 3d
+  ports:
+    - name: 3d
+      protocol: TCP
+      port: 3006
+      targetPort: 3006
+
