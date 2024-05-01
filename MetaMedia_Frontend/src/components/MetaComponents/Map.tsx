@@ -38,7 +38,10 @@ const Map = () => {
            
             const getUserData=async()=>{
                 const response=await GetUserDataByIdFunction(userData.userId)
+                console.log(response,'RESSSPONCE FROM THE #DUSER');
+                
                 if(response.status){
+                
                     clearMetaUser()
                     addMetaUser(response.data)
                    if(response.data.charactorName==""){
