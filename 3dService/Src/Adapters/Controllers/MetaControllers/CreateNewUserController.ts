@@ -12,7 +12,7 @@ export default (dependecies: any) => {
     if (response.status) {
       res.status(200).json({ status: true, data: response.data });
     } else {
-      res.status(400).json({ status: false,message:response.message});
+      res.json({ status: false,message:response.message});
     }
   };
   return createNewUserController;
