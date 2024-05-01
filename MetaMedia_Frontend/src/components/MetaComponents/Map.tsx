@@ -2,7 +2,7 @@
 import ErangleMap from '../MetaComponents/Models/ErangleMap'
 import { Canvas ,useThree} from '@react-three/fiber';
 import { OrbitControls ,Environment} from '@react-three/drei';
-import Plaza from '../MetaComponents/Models/Plaza'
+
 import CyberCity from '../MetaComponents/Models/CyberCity'
 import Glass from '../MetaComponents/Models/Glass'
 import ChinaCity from './Models/ChinaCity'
