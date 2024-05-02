@@ -100,7 +100,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
               className="lg:w-10 lg:h-10 font-roboto rounded-full lg:ml-6 lg:mt-1 md:ml-3  md:border-2 border-amber-100 border-2 lg:border-2 w-10 h-10 md:w-12 md:h-12 "
               onClick={()=>NavigateToUserProfile(data.userData.basicInformation.userId)}
               src={
-                data.userData?.profile?.profileUrl.startsWith("https://graph")
+                data.userData?.profile?.profileUrl?.startsWith("https://graph")
                   ? data.userData?.profile?.profileUrl
                   : `https://meta-media.in/api/user/profile/${data.userData?.profile?.profileUrl}`
               }

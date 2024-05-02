@@ -35,7 +35,7 @@ const CreatePostModalBody = ({ setIsAddPost, setPostState }: any) => {
         const file = files[i];
 
         // Check if the file is an image
-        if (file.type.startsWith("image/")) {
+        if (file.type?.startsWith("image/")) {
           const reader = new FileReader();
 
           reader.onload = (e: any) => {
@@ -49,7 +49,7 @@ const CreatePostModalBody = ({ setIsAddPost, setPostState }: any) => {
           setPostState(2);
         }
         // Check if the file is a video
-        else if (file.type.startsWith("video/")) {
+        else if (file.type?.startsWith("video/")) {
           
           console.log(file,'THIS SIS VEDIO FILE');
       

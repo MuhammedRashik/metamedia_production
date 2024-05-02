@@ -13,11 +13,11 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
     (state: any) => state.persisted.story.otherUsersStoryData
   );
   console.log(myStory,"myStory");
-  console.log(myStory?.[0]?.[0]?.storyUrl.startsWith('https://'),"myStory?.[0]?.[0]?.storyUrl.startsWith('video/'");
-  console.log(userData?.profile.startsWith('https://graph'),"userData?.profile");
+  console.log(myStory?.[0]?.[0]?.storyUrl?.startsWith('https://'),"myStory?.[0]?.[0]?.storyUrl?.startsWith('video/'");
+  console.log(userData?.profile?.startsWith('https://graph'),"userData?.profile");
   
   console.log(myStory?.[0]?.[0]?.storyUrl,":myStory?.[0]?.[0]?.storyUrlmyStory?.[0]?.[0]?.storyUrl");
-  console.log(myStory?.[0]?.[0]?.storyUrl.startsWith('https://graph'),"myStory?.[0]?.[0]?.storyUrl.startsWith('https://graph')");
+  console.log(myStory?.[0]?.[0]?.storyUrl?.startsWith('https://graph'),"myStory?.[0]?.[0]?.storyUrl?.startsWith('https://graph')");
   
 
   const renderSidebar = () => {
@@ -75,9 +75,9 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                           <img
                             className="h-28 w-full rounded-lg blur-[1px]"
                             src={
-                              userData?.profile.startsWith('https://graph') ?
+                              userData?.profile?.startsWith('https://graph') ?
                               profile
-                              :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
+                              :myStory?.[0]?.[0]?.storyUrl?.startsWith('https://') ? 
                             `https://meta-media.in/api/user/profile/${userData?.profile}`
                             :
                               myStory?.[0]?.[0]?.storyUrl
@@ -94,9 +94,9 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                           <img
                             className="rounded-full p-0.5 h-16 w-16 z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                             src={
-                              userData?.profile.startsWith('https://graph') ?
+                              userData?.profile?.startsWith('https://graph') ?
                               profile
-                              :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
+                              :myStory?.[0]?.[0]?.storyUrl?.startsWith('https://') ? 
                             `https://meta-media.in/api/user/profile/${userData?.profile}`
                            
                                 : userData?.profile ?
@@ -127,7 +127,7 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                                 onClick={() => setShowStory(value.userId)}
                                 className="h-28 w-full rounded-lg blur-[1px]"
                                 src={`${
-                                  stories && !value.data[0]?.storyUrl.startsWith('https://')
+                                  stories && !value.data[0]?.storyUrl?.startsWith('https://')
                                     ? `http:/meta-media.in/api/story/story/${value.data[0]?.storyUrl}`
                                     : value?.profile ?
                                      `https://meta-media.in/api/user/profile/${value?.profile}`
@@ -139,7 +139,7 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
                                 <img
                                   className="rounded-full p-0.5 h-16 w-16 z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                   src={`${
-                                    stories && !value.data[0]?.storyUrl.startsWith('https://' && value?.profile)
+                                    stories && !value.data[0]?.storyUrl?.startsWith('https://' && value?.profile)
                                       ? `https://meta-media.in/api/user/profile/${value?.profile}`
                                       : "https://www.shutterstock.com/image-vector/gray-avatar-icon-design-photo-600nw-1274338147.jpg"
                                   }`}
