@@ -16,24 +16,29 @@ import { GetUserDataByIdFunction } from '../../utils/api/methods/MetaService/get
 import { toast } from 'sonner';
 import {addMetaUser,clearMetaUser} from '../../utils/ReduxStore/Slice/metaUserSlice'
 import { CreateNewUserFunction } from '../../utils/api/methods/MetaService/post';
+import BlackManModel from "./Models/BlackMan";
 const Map = () => {
     const userData = useSelector((state: any) => state.persisted.user.userData);
     const metauserData=useSelector((state:any)=>state.persisted.metaUser.metaUserData)
+    const [isFirstPersonView, setIsFirstPersonView] = useState(false);
     const navigate=useNavigate()
     const [isLoading, setIsLoading] = useState(true);
     const [isCameraAnimated, setIsCameraAnimated] = useState(false);
   
+  
+
     const handleModelLoaded = () => {
       setIsLoading(false);
       setIsCameraAnimated(true); 
     };
   
+    
 
 
     useEffect(()=>{
         console.log('hereee',userData);
         if(Object.keys(userData).length === 0){
-            navigate('/login')  
+            // navigate('/login')  
         }else{
            
             const getUserData=async()=>{
@@ -67,7 +72,19 @@ const Map = () => {
     },[userData])
 
 
+//  useEffect(() => {
+//         if (isFirstPersonView) {
+         
+//             camera.position.set(0,0,0);
 
+            
+//             camera.rotation.set(0,0,0);
+//         }
+//     }, [isFirstPersonView, camera]);
+
+    const handleCameraAnimationComplete = () => {
+        setIsFirstPersonView(true);
+    };
 
 
 
@@ -80,8 +97,11 @@ const Map = () => {
             <directionalLight position={[-10, -10, -10]} castShadow intensity={7} />
             <ambientLight intensity={1} color={"red"} />
             <OrbitControls position={[0, 0, 0]} />
+           <group position={[-5,3.8,0]} >
+           <BlackManModel selectedImote={"idle"}/>
+           </group>
             <ChinaCity onModelLoaded={handleModelLoaded} />
-            {isCameraAnimated && <CameraAnimation />}
+            {isCameraAnimated && <CameraAnimation handleCameraAnimationComplete={handleCameraAnimationComplete} />}
           </Canvas>
           {isLoading && <LoadingScreen />}
         </div>
@@ -89,7 +109,7 @@ const Map = () => {
     );
   };
   
-  const CameraAnimation = () => {
+  const CameraAnimation = ({handleCameraAnimationComplete}:any) => {
     const { camera } = useThree();
   
     useEffect(() => {
@@ -108,17 +128,19 @@ const Map = () => {
   
         if (t < 1) {
           requestAnimationFrame(animateCamera);
+        }else{
+            handleCameraAnimationComplete()
         }
       };
   
       animateCamera();
   
       return () => {
-        // Cleanup function
+        
       };
     }, [camera]);
   
-    return null; // This component doesn't render anything
+    return null; 
   };
   
   export default Map;
