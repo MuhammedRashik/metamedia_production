@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {  JitsiMeeting } from '@jitsi/react-sdk';
 import { toast } from 'sonner';
 import { useSelector } from 'react-redux';
@@ -8,21 +8,17 @@ interface JistyVedioCallProps {}
 
 const JistyVedioCall: React.FC<JistyVedioCallProps> = () => {
 const userData=useSelector((state:any)=>state.persisted.user.userData)
-console.log(userData,'HHHHHDDDAA');
-const token=useSelector((state:any)=>state.persisted.token.token)
-console.log(token,"LLLOO");
+const token = localStorage.getItem('accesstoken')
 
     const apiRef :any= useRef();
     const [ logItems, updateLog ]:any = useState([]);
-
+    const [ showNew, toggleShowNew ]:any = useState(false);
     const [ knockingParticipants, updateKnockingParticipants ]:any = useState([]);
 
     const printEventOutput = (payload:any) => {
         updateLog((items:any) => [ ...items, JSON.stringify(payload) ]);
     };
 
-    console.log(knockingParticipants,logItems);
-    
     const handleAudioStatusChange = (payload:any, feature:any) => {
         if (payload.muted) {
             updateLog((items:any) => [ ...items, `${feature} off` ])
@@ -68,9 +64,7 @@ console.log(token,"LLLOO");
         apiRef.current.on('knockingParticipant', handleKnockingParticipant);
     };
 
-    const handleReadyToClose = () => {
-        toast.error("SUUUU")
-       
+    const handleReadyToClose = () => {       
         alert('Ready to close...');
     };
 

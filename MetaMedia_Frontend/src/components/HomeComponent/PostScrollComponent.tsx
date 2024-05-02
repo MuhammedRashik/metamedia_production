@@ -31,7 +31,6 @@ const PostScroll = ({ data, render, setRender }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
 
   const hanldeSave = async (postId: string) => {
-    console.log(postId, "postIdpostId");
 
     const data = {
       postId: postId,
@@ -46,8 +45,6 @@ const PostScroll = ({ data, render, setRender }: any) => {
 
   const handlePostClick = async (item: any) => {
     const response = await getUserByIdFuntion(item.userId);
-    console.log(response.data, "DATTT");
-
     if (response.status) {
       dispatch(clearPostData());
       dispatch(clearPostUserData());
@@ -60,7 +57,6 @@ const PostScroll = ({ data, render, setRender }: any) => {
   };
 
   const like = async () => {
-    // const {postId,userId} =req.body
     const datas = {
       userId: userData.userId,
       postId: data._id,
@@ -72,9 +68,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
   };
 
   const AddComment = async () => {
-    try {
-      console.log(data,"datadata");
-      
+    try {      
       const messageData = {
         postId: data._id,
         userId: userData.userId,

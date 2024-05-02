@@ -47,7 +47,6 @@ const Profile = ({ render, setRender }: any) => {
 
   const currentPath:any=pathname.split('/')
   const path = currentPath.splice(currentPath.length-2,1).toString()
-  
 
 const checkUser = useMemo(
     () => async () => {
@@ -68,7 +67,6 @@ const checkUser = useMemo(
       followedUserId: id,
     };
     const response: any = await followUserFunction(data);
-    toast.success(response.data.message);
 
     if (response.data.status) {
       try {

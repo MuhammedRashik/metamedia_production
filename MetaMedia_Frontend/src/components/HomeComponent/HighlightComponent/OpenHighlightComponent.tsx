@@ -1,5 +1,4 @@
 import { X } from 'lucide-react'
-
 import HighlightSliderComponent from './HighlightSliderComponent'
 
 const OpenHighlightComponent = ({openHighlight , setOpenHighlight, setHighlightList, setHighlightName,setDeleteHighlight}:any) => {

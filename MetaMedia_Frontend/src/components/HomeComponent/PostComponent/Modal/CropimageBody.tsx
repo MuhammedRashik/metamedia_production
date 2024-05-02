@@ -1,4 +1,3 @@
-
 import { ArrowLeft, ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import Cropper from "react-easy-crop";
 import { useEffect, useState } from "react";
@@ -8,8 +7,6 @@ import {
   setAspectRatio,
   clearAspectRatio,
 } from "../../../../utils/ReduxStore/Slice/postSlice";
-
-
 import { Scaling, ZoomIn, ZoomOut } from "lucide-react";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,15 +58,13 @@ const CropImageBody = ({ setPostState }: any) => {
     croppedAreaPixels: { x: number; y: number; width: number; height: number }
   ) => {
     try {
-      console.log("HHHH", croppedAreaPixels, "LLLL", croppedArea);
-
       const croppedImag = await getCroppedImage(
         selectedImageSrc,
+        croppedArea,
         croppedAreaPixels
       );
 
       await setCroppedImage(croppedImag);
-      console.log("saved", croppedImage);
     } catch (error: any) {
       toast.error(error);
     }
@@ -77,6 +72,7 @@ const CropImageBody = ({ setPostState }: any) => {
 
   const getCroppedImage = (
     imageSrc: any,
+    croppedArea: any,
     croppedAreaPixels: any
   ): any => {
     return new Promise((resolve, reject) => {
@@ -125,10 +121,6 @@ const CropImageBody = ({ setPostState }: any) => {
   };
 
   useEffect(() => {
-    console.log("Cropped Images:", croppedImages);
-  }, [croppedImages]);
-
-  useEffect(() => {
     if (isfinish) {
       dispatch(clearImages());
       dispatch(addImage(croppedImages));
@@ -150,7 +142,6 @@ const CropImageBody = ({ setPostState }: any) => {
   };
 
   const switchToPrevImage = () => {
-    console.log("PREV");
     if (selectedImageIndex > 0) {
       setCroppedImages(croppedImages.slice(0, -1));
       setSelectedImageIndex(selectedImageIndex - 1);
@@ -162,13 +153,8 @@ const CropImageBody = ({ setPostState }: any) => {
 
   // Function to handle proceeding to next step
   const handleNextStep = async () => {
-    console.log("Hello", croppedImages);
-
     await setCroppedImages([...croppedImages, croppedImage]);
-
     await setIsfinish(true);
-
-    console.log("HELLO---", croppedImages);
   };
 
   return (
@@ -185,7 +171,7 @@ const CropImageBody = ({ setPostState }: any) => {
               </p>
               {selectedImageIndex === imglength - 1 ? (
                 <p
-                  className="text-teal-800 font-bold text-md"
+                  className="text-black font-bold text-md"
                   onClick={handleNextStep}
                 >
                   Next
@@ -199,7 +185,7 @@ const CropImageBody = ({ setPostState }: any) => {
           </div>
 
           <div className="w-full h-full ">
-            <div className="flex justify-center w-full h-[600px] flex-col ">
+            <div className="flex justify-center w-full h-[400px] md:h-[600px] flex-col ">
               <div className="w-full h-[90%] flex justify-center">
                 <Cropper
                   image={selectedImageSrc}
@@ -269,15 +255,15 @@ const CropImageBody = ({ setPostState }: any) => {
                 </div>
                 {openSelectSize && (
                   <>
-                    <div className="fixed  flex-col  w-24 h-24 ml-[500px] border  rounded bg-white p-1.5">
+                    <div className="fixed bg-white flex-col w-20 h-20 right-0 bottom-12 md:right-1/3 border rounded p-1.5">
                       <div
-                        className="p-2 w-full flex justify-center border rounded text-black "
+                        className="p-1 w-full flex justify-center border rounded text-black "
                         onClick={() => changeSize([1 / 1])}
                       >
                         1:1
                       </div>
                       <div
-                        className="p-2 w-full flex justify-center border rounded text-black"
+                        className="p-1 w-full flex justify-center border rounded text-black"
                         onClick={() => changeSize([4 / 5])}
                       >
                         4:5

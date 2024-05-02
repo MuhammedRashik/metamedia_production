@@ -14,12 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { isSinglePostModalClose } from "../utils/ReduxStore/Slice/singlePostSlice";
 import SinglePostModal from "../components/HomeComponent/PostComponent/SinglePostModal";
-import NewSignUp from "../pages/user/SignUp";
-import NewLogin from "../pages/user/Login";
 
-
-const 
-UserRouter = () => {
+const UserRouter = () => {
   const isSinglePostModal = useSelector((state: any) => state.persisted.singlePost.isSinglePostModal);
   const dispach=useDispatch()
   const [render,setRender]:any=useState(false)
@@ -31,10 +27,7 @@ UserRouter = () => {
    return (
     <>
     {isSinglePostModal && ( <> <SinglePostModal setRender={setRender} render={render} /> </> )}
-
     <Routes>
-
-
       <Route path="/*" element={<ProtectedAuthRoute> <Home setRender={setRender} render={render}/> </ProtectedAuthRoute> }/>
       <Route path="/signup" element={<SignUp />} />
       <Route path="/verifyOtp" element={<VerifyOtp />} />
@@ -45,9 +38,6 @@ UserRouter = () => {
       <Route path="/addprofile" element={<AddProfile />} />
       <Route path="/selectMod" element={<Mods />} />
       <Route path="/selectPost" element={<SinglePostModal/>} />
-      <Route path="/newSignUp" element={<NewSignUp />}/>
-      <Route path="/newLogin" element={<NewLogin />}/>
-
     </Routes>
     </>
   );
