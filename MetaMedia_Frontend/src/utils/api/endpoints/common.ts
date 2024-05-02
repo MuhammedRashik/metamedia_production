@@ -1,4 +1,4 @@
-import { AUTH_URL,CHAT_URL,HIGHLIGHT_URL,POST_URL,STORY_URL,USER_URL} from '../baseUrl/axios.baseUrl' 
+import { AUTH_URL,CHAT_URL,HIGHLIGHT_URL,META_URL,POST_URL,STORY_URL,USER_URL} from '../baseUrl/axios.baseUrl' 
 
 // AUTH SERVICE
 
@@ -92,3 +92,9 @@ export const sendFileMessage_Api=`${CHAT_URL}/groupSendFile`
 export const SendFileForMessage_Api=`${CHAT_URL}/singleUserSendFile`
 export const GetNotificationOfUser_Api=`${CHAT_URL}/getNoficationOfAUser`
 
+
+//META
+
+export const GetUserDataById_Api=`${META_URL}/getUserDataById`
+export const SelectNewCharactor_Api=`${META_URL}/selectNewCharactor`
+export const CreateNewUser_Api=`${META_URL}/createNewUser`

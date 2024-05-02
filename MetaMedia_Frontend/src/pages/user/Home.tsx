@@ -93,8 +93,8 @@ const Home = ({ render, setRender }: any) => {
       )}
       <div className="fixed w-screen h-screen bg-[#ece9f0] flex justify-center items-center ">
         <div className="w-full h-full flex flex-col-reverse sm:flex-row justify-start overflow-y-auto ">
-          {!currentRoute.startsWith("/videoCall") &&
-            !currentRoute.startsWith("/audioCall") && (
+          {!currentRoute?.startsWith("/videoCall") &&
+            !currentRoute?.startsWith("/audioCall") && (
               <NewSideBar
                 setOpenNotification={setOpenNotification}
                 setOpenSearch={setOpenSearch}

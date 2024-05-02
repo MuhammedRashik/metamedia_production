@@ -27,9 +27,9 @@ const Story = ({setShowStory,setAddStory}:any) => {
                             : setShowStory(userData.userId)
                         }
                         src={
-                          userData?.profile.startsWith('https://graph') ?
+                          userData?.profile?.startsWith('https://graph') ?
                           profile
-                          :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
+                          :myStory?.[0]?.[0]?.storyUrl?.startsWith('https://') ? 
                         `https://meta-media.in/api/user/profile/${userData?.profile}`
                         :
                           myStory?.[0]?.[0]?.storyUrl
@@ -53,7 +53,7 @@ const Story = ({setShowStory,setAddStory}:any) => {
                         className="w-[58px] h-[58px] sm:w-[72px] sm:h-[72px] rounded-full"
                         onClick={() => setShowStory(value.userId)}
                         src={`${
-                          stories && !value.data[0]?.storyUrl.startsWith('https://')
+                          stories && !value.data[0]?.storyUrl?.startsWith('https://')
                             ? `https://meta-media.in/api/story/story/${value.data[0]?.storyUrl}`
                             : value?.profile ?
                              `https://meta-media.in/api/user/profile/${value?.profile}`

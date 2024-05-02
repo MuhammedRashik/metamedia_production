@@ -348,9 +348,9 @@ const MessageListComponent = ({
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
         let messageType: string;
-        if (file.type.startsWith("image/")) {
+        if (file.type?.startsWith("image/")) {
           messageType = "image";
-        } else if (file.type.startsWith("video/")) {
+        } else if (file.type?.startsWith("video/")) {
           messageType = "video";
         } else {
           messageType = "file";

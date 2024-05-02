@@ -51,7 +51,7 @@ const FollowComponent = ({
   useEffect(()=>{    
     (async()=>{
     if(searchUser.length && searchUser.trim()!==""){
-        const searchedUsers = users.filter((item:any) => item.fullName.toLowerCase().startsWith(searchUser));
+        const searchedUsers = users.filter((item:any) => item.fullName.toLowerCase()?.startsWith(searchUser));
         setfollowing(searchedUsers)
         setfollowers(searchedUsers)
     }else{      

@@ -17,7 +17,7 @@ const   MessageComponent = ({setIsVideoCall}:any) => {
 
   useEffect(() => {
     const path = window.location.pathname;
-   if (path.startsWith("/group")) {
+   if (path?.startsWith("/group")) {
       setIsGroupChat(true)
     } else {
       setIsGroupChat(false)

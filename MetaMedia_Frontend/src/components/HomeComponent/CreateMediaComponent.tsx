@@ -24,7 +24,7 @@ const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
             <div className="w-full h-[130px]  flex justify-between  ">
               <div className="w-full h-[110px]  flex items-center pl-5 gap-2 ">
                 <img
-                  src={  userData?.profile.startsWith('https://graph') ?
+                  src={  userData?.profile?.startsWith('https://graph') ?
                   profile
                     : userData?.profile ?
                     `https://meta-media.in/api/user/profile/${userData?.profile}`
