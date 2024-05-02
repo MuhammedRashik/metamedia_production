@@ -3,7 +3,7 @@ import CharacterSelection from '../components/MetaComponents/CharacterSelection'
 import Loader from '../components/MetaComponents/LoadingScreen';
 import { useEffect, useState } from 'react';
 import Map from '../components/MetaComponents/Map'
-
+import { Canvas ,useThree} from '@react-three/fiber';
 const MetaRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const MetaRouter = () => {
     <>
     <Routes>
      
-        <Route path="/*" element={<Map/>} />
+        <Route path="/*" element={ <Map/> } />
         <Route path="/charectorSelection" element={isLoading ? <Loader /> : <CharacterSelection />}/>
           
       
