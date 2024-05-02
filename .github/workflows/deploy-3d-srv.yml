@@ -1,0 +1,60 @@
+name: deploy-auth-srv
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "3dService/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up environment variables
+        env:
+          SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          SECURE: ${{ secrets.SECURE }}
+          COOKIEPARSERSECRET: ${{ secrets.COOKIEPARSERSECRET }}
+          ACCESS_EXPIRY: ${{ secrets.ACCESS_EXPIRY }}
+          REFRESH_EXPIRY: ${{ secrets.REFRESH_EXPIRY }}
+          ACCESS_SECRET_KEY: ${{ secrets.ACCESS_SECRET_KEY }}
+          REFRESH_SECRET_KEY: ${{ secrets.REFRESH_SECRET_KEY }}
+
+        run: |
+       
+          echo "SESSION_SECRET_KEY=${SESSION_SECRET_KEY}" >> 3dService/.env
+          echo "JWT_SECRET=${JWT_SECRET}" >> 3dService/.env
+          echo "NODE_ENV=${NODE_ENV}" >> 3dService/.env
+          echo "SECURE=${SECURE}" >> 3dService/.env
+          echo "COOKIEPARSERSECRET=${COOKIEPARSERSECRET}" >> 3dService/.env
+          echo "BUCKET_NAME=${BUCKET_NAME}" >> 3dService/.env
+          echo "BUCKET_REGIONE=${BUCKET_REGIONE}" >> 3dService/.env
+          echo "BUCKET_ACCESS_KEY=${BUCKET_ACCESS_KEY}" >> 3dService/.env
+          echo "BUCET_SECRETACCESKEY=${BUCET_SECRETACCESKEY}" >> 3dService/.env
+          echo "ACCESS_EXPIRY=${ACCESS_EXPIRY}" >> 3dService/.env
+          echo "REFRESH_EXPIRY=${REFRESH_EXPIRY}" >> 3dService/.env
+          echo "ACCESS_SECRET_KEY=${ACCESS_SECRET_KEY}" >> 3dService/.env
+          echo "REFRESH_SECRET_KEY=${REFRESH_SECRET_KEY}" >> 3dService/.env
+
+      - run: cd 3dService/ && docker build -t metamedia/meta-3d-service .
+
+      - run: docker login -u ${{secrets.DOCKER_USERNAME}}  -p ${{secrets.DOCKER_PASSWORD}}
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+
+      - run: docker push metamedia/meta-3d-service
+
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+
+      - run: doctl kubernetes cluster kubeconfig save 1cc49ce4-63a0-4db3-a5f4-e8b3e667f868
+
+      - run: kubectl rollout restart deployment 3d-deployment
