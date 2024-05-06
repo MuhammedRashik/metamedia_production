@@ -6,6 +6,7 @@ export const createAccessToken = (
   AccessTokensecretkey: string,
   Expiration: string
 ) => {
+console.log(user,"useruser");
 
   const token = jwt.sign({ user }, AccessTokensecretkey, {
     expiresIn: Expiration,
@@ -39,11 +40,9 @@ export const decodeRefreshToken=(token:string)=>{
   let playload:any
   return jwt.verify(token,refreshSecret,(err:any,decode:any)=>{
     if(err){
-        console.log(err,'Error');
         return {status:false,message:"error in jwt sign"}
     }else{
         playload=decode
-        console.log(playload,"PAYY");
         return {status:true,message:"error in jwt sign", data:playload}
     }
 })
