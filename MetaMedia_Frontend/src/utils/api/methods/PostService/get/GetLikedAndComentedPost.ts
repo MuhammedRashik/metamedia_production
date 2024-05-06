@@ -1,14 +1,9 @@
-
-
-import axios from 'axios';
-import { GetLikedAndComentedPost_Api } from '../../../endpoints/common';
-export const GetLikedAndComentedPostFunction = (userId:any) => {  
- try {
-    console.log(userId,"userIduserIduserId");
-    
-   return axios.create({ withCredentials: true }).get(`${GetLikedAndComentedPost_Api}?id=${userId}`);
-
- } catch (error) {
-   return error;
- }
+import { GetLikedAndComentedPost_Api } from "../../../endpoints/common";
+import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+export const GetLikedAndComentedPostFunction = (userId: any) => {
+  try {
+    return axiosInstance.get(`${GetLikedAndComentedPost_Api}?id=${userId}`);
+  } catch (error) {
+    return error;
+  }
 };

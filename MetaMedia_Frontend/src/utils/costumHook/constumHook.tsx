@@ -1,115 +1,108 @@
-import { useDispatch } from "react-redux";
-import {Refresh} from '../api/methods/AuthService/get'
-import { addToken } from "../ReduxStore/Slice/tokenSlice";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import {axiosPrivet} from '../api/baseUrl/axios.baseUrl'
-import { getUserByIdFuntion } from "../api/methods/UserService/post";
-import { editUser } from "../ReduxStore/Slice/userSlice";
+import axios from "axios";
 
+const axiosInstance = axios.create({
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+const axiosFormDataInstance = axios.create({
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+});
 
-export const useAccessToken=()=>{
-    const dispach=useDispatch()
-    const Access=async()=>{
-        const responce:any=await Access()
-        console.log(responce,'RESSS');
-        dispach(addToken(responce.data))
-        return responce.data
+axiosInstance.interceptors.request.use(
+  config => {
+    const accessToken = localStorage.getItem('accesstoken')    
+  if (accessToken) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return config;
+},
+error => {
+  return Promise.reject(error);
+}
+);
+
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    console.log("Axiox ERROR");        
+    console.log(error.response.data.errMessage,"error.responseerror.response");
+    
+    const originalRequest = error.config;
+    if(error.response.status === 403 ){
+      localStorage.removeItem('accesstoken')
     }
-    return Access
-}
-
-export const useAxiosPrivete=()=>{
-    const access= useAccessToken()
-    const accesToken = useSelector((store: any) => store.token.token);
-
-    useEffect(()=>{
-        const requestInterceptor= axiosPrivet.interceptors.request.use(
+    if (error.response.status === 401 && !originalRequest._retry) {      
+      originalRequest._retry = true;
+      try {
+        const route:any = 'http://localhost:3001/api/auth/refresh'
+        const refreshResponse = await axiosInstance.post(route);        
+        const newAccessToken = refreshResponse.data.token;
+        console.log("New Accesstoken ==>", newAccessToken);
+        localStorage.setItem('accesstoken', newAccessToken); // Update in storage
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return axiosInstance(originalRequest);
+    } catch (err) {
+        console.log(err);
+        console.log(window.location.href ,"window.location.href window.location.href window.location.href ");
         
-            (config:any)=>{
-                if (!config.headers["Authorization"]) {
-                    config.headers["Authorization"] = `Bearer ${accesToken}`;
-                  }
+        window.location.href = '/login';
+        console.error('Refresh token failed:', err);
+    }
+    }
+    return Promise.reject(error);
+  }
+);
 
-                  if(shouldAttachMultipartHeader(config)){
-                    config.headers["Content-Type"] = "multipart/form-data";
-                    config.isMultipartHeaderAdded = true;
-                  }
+    // For Images
 
-                  return config
-            },
-            (error)=>{
-                Promise.reject(error)
-            }
-        )
-        
-
-
-    const responseInterceptor=axiosPrivet.interceptors.response.use(
-        (response)=>response,
-
-        async (error)=>{
-            const prevRequest = error?.config;
-
-            if(error.responce.status==403 && !prevRequest?.sent){
-                prevRequest.sent = true;
-
-                const newAccesstoken=await access();
-                console.log('new Acces token in responce',newAccesstoken);
-                prevRequest.headers["Authorization"] = `Bearer ${newAccesstoken}`;
-
-                if (prevRequest.isMultipartHeaderAdded) {
-                    prevRequest.headers["Content-Type"] = "multipart/form-data";
-                  }
-
-            }
-
-            return Promise.reject(error);
-        }
-    )
-
-    return () => {
-        axiosPrivet.interceptors.request.eject(requestInterceptor);
-        axiosPrivet.interceptors.response.eject(responseInterceptor);
-      };
-    },[accesToken,access])
-
-    return axiosPrivet
+axiosFormDataInstance.interceptors.request.use(
+  config => {
+    const accessToken = localStorage.getItem('accesstoken')
+  if (accessToken) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return config;
+},
+error => {
+  return Promise.reject(error);
 }
+);
 
-const shouldAttachMultipartHeader = (config:any) => {
-    const isPostMethod = config.method === 'post';
-    const isPatchMethod = config.method === 'patch';
-    const isPutMethod = config.method === 'put';
+axiosFormDataInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const route:any = 'http://localhost:3001/api/auth/refresh';
+        const refreshResponse = await axiosFormDataInstance.post(route);        
+        const newAccessToken = refreshResponse.data.token;
+        console.log("New Accesstoken ==>" , newAccessToken);
+        localStorage.setItem('accesstoken', newAccessToken); // Update in storage
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return axiosFormDataInstance(originalRequest);
+      } catch (err) {
+        console.log(err);        
+        // await handleLogout()
+        console.error('Refresh token failed:', err);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
-    const shouldAttach =
-      (isPostMethod || isPatchMethod || isPutMethod)
-     
-    return shouldAttach;
-  };
+export {
+  axiosFormDataInstance,
+  axiosInstance
+} 
 
-
-  export const StoreUserData = () => {
-    const dispatch = useDispatch();
-    const userData = useSelector((state: any) => state.persisted.user.userData);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await getUserByIdFuntion(userData.userId);
-          if (response?.status) {
-            dispatch(editUser(response.data.socialConections));
-          } else {
-            throw new Error("Failed to fetch user data");
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      };
-  
-      fetchData();
-  
-    }, [dispatch, userData.userId]);
-  
-    return null; 
-  };
