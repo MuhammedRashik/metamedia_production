@@ -214,7 +214,6 @@ const Login = () => {
      
       toast.error(userExist?.data?.message);
     } else {
-     
       console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
       if(userExist.data.admin){
         const userEmail = { email: userExist?.data?.user?.email };
