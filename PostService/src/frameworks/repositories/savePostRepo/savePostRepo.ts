@@ -20,6 +20,8 @@ export default {
        }
 
       
+
+
 const responce=await postData.save()
 
 if(responce){
@@ -29,6 +31,7 @@ if(responce){
 }
 
      
+
     }
     
  } catch (error) {

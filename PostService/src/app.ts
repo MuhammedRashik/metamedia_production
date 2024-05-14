@@ -4,7 +4,6 @@ import connectDB from '../config/db.connect'
 import {routes} from './adapters/routes'
 import config from '../config/config'
 import expresscofig from './express'
-// import express from 'express'
 import dependencies from '../src/frameworks/config/dependencies'
 import dotenv from 'dotenv'
 const cookieParser = require("cookie-parser");

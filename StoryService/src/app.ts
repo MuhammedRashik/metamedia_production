@@ -59,12 +59,6 @@ console.log('hi from stor service ');
     } as SessionOptions)
   );
 
-// app.use("/api/v1/authsetting",(req: Request ,res:Response)=>{
-//   console.log(req.body,"bodyssss");
-//   req.session.Token = req.body.refreshToken
-//   res.status(200).json({status:true})
-// })
-
  app.use('/api',routes(dependencies))
 
 serverConfig(server,config).startServer()
