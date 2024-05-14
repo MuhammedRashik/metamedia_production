@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {      
       originalRequest._retry = true;
       try {
-        const route:any = 'http://localhost:3001/api/auth/refresh'
+        const route:any = 'https://meta-media.in/api/auth/refresh'
         const refreshResponse = await axiosInstance.post(route);        
         const newAccessToken = refreshResponse.data.token;
         console.log("New Accesstoken ==>", newAccessToken);
