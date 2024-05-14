@@ -1,5 +1,5 @@
 import {kafka} from '../../config/kafkaClient'
-import { createUserController } from '../adapters/consumeController/userController'
+import { createUserController } from '../Adapters/ConsumeController/userController'
 // import { userController } from '../adapters/consumeController'
 // import {createUser} from './consumerhandler'
 

@@ -6,9 +6,9 @@ import getDb from '../config/db'
 import express ,{Request,Response}from 'express'
 const cookieParser = require('cookie-parser');
 import cors from 'cors'
-import {userconsumer} from './events/userconsumer'
-import {routes} from './adapters/routes'
-import dependencies from './frameworks/config/dependencies'
+import {userconsumer} from './Events/userconsumer'
+import {routes} from './Adapters/Routes'
+import dependencies from './Frameworks/config/dependencies'
 import session, { SessionOptions,MemoryStore,SessionData } from "express-session";
 // import helmet from "helmet";
 // import { body } from 'express-validator'
