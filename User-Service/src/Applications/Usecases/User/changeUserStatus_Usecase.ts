@@ -1,4 +1,4 @@
-import { userProducer } from "../../../events/userProducer";
+import { userProducer } from "../../../Events/userProducer";
 
 export const ChangeUserStatus_Usecase = (dependencies: any) => {
   const {repository: { userRepository },} = dependencies;
