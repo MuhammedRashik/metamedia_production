@@ -10,9 +10,7 @@ const socketConfig=()=>{
   const emailToSocketIdMap = new Map();
  const socketidToEmailMap = new Map();
  
-  io.on('connection', (socket: Socket) => {
-   console.log("USER CONNECTED",socket?.id);
-   
+  io.on('connection', (socket: Socket) => {   
    socket.on('addUser', userId => {
      const isUserExist = users.find((user:any) => user.userId === userId);
      if (!isUserExist) {
