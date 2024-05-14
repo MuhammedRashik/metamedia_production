@@ -42,7 +42,9 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const route:any = 'https://meta-media.in/api/auth/refresh'
-        const refreshResponse = await axiosInstance.post(route);        
+        const refreshResponse = await axios.post(route);      
+        console.log(refreshResponse,"refreshResponse");
+          
         const newAccessToken = refreshResponse.data.token;
         console.log("New Accesstoken ==>", newAccessToken);
         localStorage.setItem('accesstoken', newAccessToken); // Update in storage
