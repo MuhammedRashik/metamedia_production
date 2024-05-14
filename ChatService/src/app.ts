@@ -4,13 +4,13 @@ import dotenv from 'dotenv'
 import config from '../config/config'
 import getDb from '../config/db'
 import express, { NextFunction, Request, Response } from 'express'
-import {routes} from './adapters/routes'
+import {routes} from './Adapters/routes'
 import dependencies from './frameworks/config/dependencies'
 import { Server, Socket } from 'socket.io';
-import { debounceMiddleware } from './events/DebouncingMiddleware'
+import { debounceMiddleware } from './Events/DebouncingMiddleware'
 import expressConfig from './express'
 import socketConfig from './socket'
-import { chatConsumer } from './events/KafkaConsumer'
+import { chatConsumer } from './Events/KafkaConsumer'
 const app=express()
 expressConfig(app)
 dotenv.config()

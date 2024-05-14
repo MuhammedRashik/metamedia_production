@@ -1,4 +1,4 @@
-import storyRepository from "./StoryRepository";
+import storyRepository from "./storyRepository";
 
 export {
     storyRepository

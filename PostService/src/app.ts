@@ -1,10 +1,10 @@
 import http from 'http'
 import serverConfig from './server'
 import connectDB from '../config/db.connect'
-import {routes} from './adapters/routes'
+import {routes} from './adapters/Routes'
 import config from '../config/config'
 import expresscofig from './express'
-import dependencies from '../src/frameworks/config/dependencies'
+import dependencies from './frameworks/config/dependencies'
 import dotenv from 'dotenv'
 const cookieParser = require("cookie-parser");
 import express, { Express,Request,Response } from "express";

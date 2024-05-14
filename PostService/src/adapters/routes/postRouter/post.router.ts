@@ -1,7 +1,7 @@
 const { check, validationResult } = require('express-validator');
 import express from 'express'
 import {postController} from '../../controllers'
-import { upload } from '../../multer/multerSetUp'
+import { upload } from '../../Multer/multerSetUp'
 const verifyToken=require ('metamedia_auth')
 import {validateComment,validateDeleteComment,validateReportPost,validateDeletePost} from '../../Validation'
 import authMiddleware from '../../../Middleware/authMiddleware';

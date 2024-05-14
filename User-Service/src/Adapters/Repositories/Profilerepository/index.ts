@@ -1,4 +1,4 @@
-import profileRepository from "./profile.repository"
+import profileRepository from "./profileRepository"
 
 export {
         profileRepository
