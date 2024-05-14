@@ -1,4 +1,4 @@
-import User from "../database/schema"
+import User from "../MongoDb/schema"
 
 export default {
   addProfile: async (data: any, id: string) => {
