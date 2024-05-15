@@ -12,7 +12,7 @@ import expressConfig from './express'
 import socketConfig from './socket'
 import { chatConsumer } from './Events/KafkaConsumer'
 const app=express()
-expressConfig(app)
+expressConfig(app)  
 dotenv.config()
 getDb(config) 
 export const io: Server = require('socket.io')(8081, {
