@@ -229,6 +229,8 @@ const Login = () => {
         dispatch(addAdminToken(userExist.data.accesstoken));
         toast.success(response?.data?.data?.message);
         Navigate("/admin", { replace: true });
+        console.log(userExist.data,"userExist.data");
+        
         localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
       const userEmail:any = {email: userExist?.data?.user?.email };
