@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 import AdminRouter from "./Routes/AdminRouter";
 import UserRouter from "./Routes/UserRouter";
 import MetaRouter from "./Routes/MetaRouter";
-
+  
 function App() {
   return (
     <>
@@ -18,5 +18,5 @@ function App() {
     </>
   );
 }
-
+ 
 export default App;

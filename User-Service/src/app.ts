@@ -17,9 +17,12 @@ import session, { SessionOptions,MemoryStore,SessionData } from "express-session
 const store = new MemoryStore();
 const app=express()
 getDb(config)
-
+  
 const server=http.createServer(app)
 dotenv.config()
+
+
+
 
 // app.use(body().trim().escape());
 
@@ -64,7 +67,7 @@ declare module 'express-session' {
       credentials: true,
     })
   ); 
-
+  
   app.use(
     session({
       secret: "1234666",
