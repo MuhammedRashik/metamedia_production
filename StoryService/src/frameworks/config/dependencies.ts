@@ -1,4 +1,4 @@
-import { storyRepository,highlightRepository } from '../../Adapters/Repositories'
+import { storyRepository,highlightRepository } from '../../Adapter/Repositories'
 import { AddStory_useCase,GetHighlightData_Usecase,getTheNumberOfStories_Usecase,DeleteStory_Usecase,addNewHighlight_Usecase,getStories_Usecase,DeleteHighlight_Usecase,getAllStories_Usecase,getMyAllStoriesForHighlight_Usecase } from '../../Applications/Usecases'
 
 
