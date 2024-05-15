@@ -233,9 +233,13 @@ const Login = () => {
         
         localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
+        console.log("I AM ELSE");
+        
       const userEmail:any = {email: userExist?.data?.user?.email };
      
       const response: any = await GetUserDataFunction(userEmail);
+      console.log(response,"response");
+      
       const userData: ResponseData = {
         email: response.data.user.email ?? "",
         name: response.data.user.name ?? "",
@@ -254,6 +258,8 @@ const Login = () => {
       dispatch(clearUser());
       dispatch(addUser(userData));
       dispatch(addToken(userExist.data.accesstoken));
+      console.log(userExist.data.accesstoken,"userExist.data.accesstoken");
+      
       localStorage.setItem('accesstoken',userExist.data.accesstoken)
       toast.success(response?.data?.data?.message);
       Navigate("/", { replace: true });
