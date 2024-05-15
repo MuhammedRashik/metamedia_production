@@ -1,6 +1,6 @@
 import express from 'express'
 import { HighlightController } from '../../Controllers'
-import authMiddlewawre from '../../../Utils/Middleware/authMiddleware'
+import authMiddlewawre from '../../../Util/Middleware/authMiddleware'
 export default (dependencies:any)=> {
     const router = express()
     const {getHighlightsController,addNewHighlightController,deleteHighlightController} = HighlightController(dependencies)

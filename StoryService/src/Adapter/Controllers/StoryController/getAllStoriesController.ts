@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { decodeDataFromHeaders } from "../../../Utils/Jwt";
+import { decodeDataFromHeaders } from "../../../Util/Jwt";
 
 export default (dependencies:any)=>{
     const {useCase:{getAllStories_Usecase}}=dependencies

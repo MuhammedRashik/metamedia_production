@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { postProducer } from "../../../Events/kafkaProducer";
+import { postProducer } from "../../../Event/kafkaProducer";
 export default (dependecies: any) => {
   const { addComment_UseCase } = dependecies.useCase;
   const addCommentController = async (req: Request, res: Response) => {
