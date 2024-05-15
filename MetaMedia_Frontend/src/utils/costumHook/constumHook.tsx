@@ -44,6 +44,8 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {      
       originalRequest._retry = true;
       try {
+        console.log("GOING TO REFRESH");
+        
         const route:any = 'https://meta-media.in/api/auth/refresh'
         const refreshResponse = await axios.post(route);      
         console.log(refreshResponse,"refreshResponse");
@@ -57,7 +59,7 @@ axiosInstance.interceptors.response.use(
         console.log(err);
         console.log(window.location.href ,"window.location.href window.location.href window.location.href ");
         
-        window.location.href = '/login';
+        // window.location.href = '/login';
         console.error('Refresh token failed:', err);
     }
     }
