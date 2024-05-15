@@ -14,7 +14,7 @@ import { chatConsumer } from './Events/KafkaConsumer'
 const app=express()
 expressConfig(app)
 dotenv.config()
-getDb(config)
+getDb(config) 
 export const io: Server = require('socket.io')(8081, {
   cors: { origin: 'https://meta-media.in' }
 });

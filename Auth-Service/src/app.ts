@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { authConsumer } from './events/authConsumer'
 const cookieParser = require('cookie-parser');
-const app=express()
+const app=express() 
 const server=http.createServer(app)
 dotenv.config()
 getDb(config)
