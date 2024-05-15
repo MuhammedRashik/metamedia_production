@@ -34,7 +34,7 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     console.log("Axiox ERROR");        
-    console.log(error.response,"error.response");
+    console.log(error,"error");
     console.log(error.response.data.errMessage,"error.responseerror.response");
     
     const originalRequest = error.config;
@@ -87,6 +87,8 @@ axiosFormDataInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log(error,"errr");
+    
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
