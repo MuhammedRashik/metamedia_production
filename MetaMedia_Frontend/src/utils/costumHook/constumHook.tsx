@@ -16,6 +16,8 @@ const axiosFormDataInstance = axios.create({
 axiosInstance.interceptors.request.use(
   config => {
     const accessToken = localStorage.getItem('accesstoken')    
+    console.log(accessToken,"accessToken from local storage to request");
+    
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
@@ -32,6 +34,7 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     console.log("Axiox ERROR");        
+    console.log(error.response,"error.response");
     console.log(error.response.data.errMessage,"error.responseerror.response");
     
     const originalRequest = error.config;
