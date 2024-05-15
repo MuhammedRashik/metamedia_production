@@ -10,6 +10,7 @@ import {
   getUsersByName_Api,
   getuserById_Api,
 } from "../../endpoints/common";
+import axios from 'axios'
 import {axiosFormDataInstance, axiosInstance} from "../../../../utils/costumHook/constumHook";
 
 export const EditProfileFunction = (data: any) => {
@@ -74,7 +75,7 @@ export const getUserByIdFuntion = async (data: any) => {
 
 export const GetUsersDataByIdFunction = async (data: any) => {
   try {
-    return axiosInstance.post(GetUsersData_Api, data);
+    return axios.post(GetUsersData_Api, data);
   } catch (error) {
     console.log(error,"err");
   }
