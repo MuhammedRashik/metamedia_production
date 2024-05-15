@@ -7,7 +7,7 @@ import express ,{Request,Response}from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import {routes} from './Adapter/Routes'
-import dependencies from './Frameworks/Config/dependencies'
+import dependencies from './Framework/Config/dependencies'
 import session, { SessionOptions,MemoryStore,SessionData } from "express-session";
 const store = new MemoryStore();
 const app=express()
