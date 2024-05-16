@@ -11,7 +11,8 @@ import SendVoiceMessageController from "./SendVoiceMessageController";
 import groupSendFileController from "./groupSendFileController";
 import singleUserSendFileController from "./singleUserSendFileController";
 import deleteMessageController from "./deleteMessageController";
-import GetNotificationOfAUserController from "./GetNotificationOfAUserController";
+import GetNotificationOfAUserController from "./GetNotificationOfAUserController"; 
+
 export default (dependencies:any)=>{
     return{
         Conversation:Conversation(dependencies),
