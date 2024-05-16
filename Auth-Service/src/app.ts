@@ -60,6 +60,5 @@ app.use(
 expresscofig(app)
 
 authConsumer(dependencies)
-
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()
