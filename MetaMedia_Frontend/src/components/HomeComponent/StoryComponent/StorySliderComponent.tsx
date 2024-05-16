@@ -1,10 +1,17 @@
-import {ChevronLeft,ChevronLeftCircle,ChevronRight,ChevronRightCircle,MoreVertical,} from "lucide-react";
-import {ThreeDots} from 'react-loader-spinner'
+import {
+  ChevronLeft,
+  ChevronLeftCircle,
+  ChevronRight,
+  ChevronRightCircle,
+  MoreVertical,
+} from "lucide-react";
+import { ThreeDots } from "react-loader-spinner";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteStoryFunction } from "../../../utils/api/methods";
 import { toast } from "sonner";
+import { img_Story_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 interface ImageSliderProps {
   setShowStory: any;
@@ -23,6 +30,7 @@ const StorySliderComponent = ({
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(0);
+  const [video, setVideo] = useState<boolean>(false);
   const [hideTrains, setHideTrain] = useState<boolean>(false);
   const [currentStory, setCurrentStory] = useState<any>([]);
   const [currentProfile, setCurrentProfile] = useState("");
@@ -32,9 +40,7 @@ const StorySliderComponent = ({
 
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const myStory = useSelector((state: any) => state.persisted.story.storyData);
-  const stories = useSelector(
-    (state: any) => state.persisted.story.otherUsersStoryData
-  );
+  const stories = useSelector((state: any) => state.persisted.story.otherUsersStoryData);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -51,7 +57,6 @@ const StorySliderComponent = ({
       const story = stories[0]?.filter(
         (value: any) => value.userId == showStory
       );
-      console.log(story[0], "story[0]");
       if (story?.length) {
         setCurrentStory(story[0].data);
         setCurrentProfile(story[0]?.profile);
@@ -138,7 +143,7 @@ const StorySliderComponent = ({
       setWatchedStory(currentIndex);
       const interval = setInterval(() => {
         nextImage();
-        setHideTrain(true)
+        setHideTrain(true);
         setLoading(0);
       }, durationPerImage);
       return () => clearInterval(interval);
@@ -153,7 +158,6 @@ const StorySliderComponent = ({
     const response: any = await deleteStoryFunction(data);
     setLoading(0);
     if (response?.data?.status) {
-      toast.success(response.data.message);
       setDeleteStory(!deleteStory);
       setIsOpen(false);
       setCurrentIndex(0);
@@ -164,14 +168,12 @@ const StorySliderComponent = ({
       } else {
         setShowStory("");
       }
-    } else {
-      toast.error(response.data.message);
     }
   };
 
   return (
-    <div className="flex justify-center items-center w-[100%] bg-black rounded-lg h-[80%] mt-5 mb-36 relative">
-      <div className="flex justify-center w-full absolute top-2">
+    <div className="flex justify-center w-full h-full mt-32 md:mt-14 sm:mt-5 mb-36 relative">
+      <div className="flex justify-center w-full sm:w-[500px] md:w-full h-40 absolute top-2">
         {currentStory.map((_: any, index: number) => {
           console.log(currentStory, "currentStorycurrentStory");
 
@@ -185,7 +187,7 @@ const StorySliderComponent = ({
                   className={`w-10 absolute h-10 top-5 left-2 border-2 border-[#C1506D] rounded-full  text-black  `}
                   src={
                     currentProfile
-                      ? `https://meta-media.in/api/user/profile/${currentProfile}`
+                      ? `${img_User_baseUrl}${currentProfile}`
                       : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                   }
                 />
@@ -193,7 +195,7 @@ const StorySliderComponent = ({
               {!hideTrains && (
                 <div
                   key={index}
-                  className={`w-full h-1 rounded-full mx-0.5 ${
+                  className={`w-full sm:w-96 md:w-full h-1 rounded-full mx-0.5 ${
                     index >= watchedStory ? "bg-amber-50" : "bg-[#C1506D]"
                   }`}
                 >
@@ -213,13 +215,15 @@ const StorySliderComponent = ({
         })}
       </div>
       <div className="absolute top-7 right-1 z-20">
-        <MoreVertical onClick={toggleDropdown} className="text-amber-50 mr-3" />
-        {isOpen && (
+        {userData.userId == showStory && (
+          <MoreVertical
+            onClick={toggleDropdown}
+            className="text-amber-50 mr-3"
+          />
+        )}
+        {isOpen && userData.userId == showStory && (
           <div className="absolute top-6 right-0 w-40 bg-[#FADBE1] rounded-tr-none border-black rounded-lg shadow-lg z-10 border">
             <ul>
-              <li className="py-2 px-4 hover:bg-[#C1506D] boder-b text-black border-black hover:text-amber-50 rounded-lg rounded-b-none rounded-tr-none border-b cursor-pointer">
-                Forward
-              </li>
               {userData.userId == showStory ? (
                 <li
                   className="py-2 px-4 hover:bg-[#C1506D] rounded-t-none text-black hover:text-amber-50 rounded-lg cursor-pointer"
@@ -228,12 +232,7 @@ const StorySliderComponent = ({
                   Delete
                 </li>
               ) : (
-                <li
-                  className="py-2 px-4 hover:bg-[#C1506D] rounded-t-none text-black hover:text-amber-50 rounded-lg cursor-pointer"
-                  onClick={deleteStories}
-                >
-                  Download
-                </li>
+                ""
               )}
             </ul>
           </div>
@@ -241,14 +240,14 @@ const StorySliderComponent = ({
       </div>
 
       <button
-        className="fixed right-20 top-1/2 transform -translate-y-1/2"
+        className="hidden md:flex fixed right-0 md:right-20 top-1/2 transform -translate-y-1/2"
         onClick={nextUser}
       >
         <ChevronRightCircle size={30} className="text-white" />
       </button>
 
       <button
-        className="fixed left-20 top-1/2 transform -translate-y-1/2"
+        className="hidden md:flex fixed left-0 md:left-20 top-1/2 transform -translate-y-1/2"
         onClick={prevUser}
       >
         <ChevronLeftCircle size={30} className="text-white" />
@@ -256,7 +255,7 @@ const StorySliderComponent = ({
 
       {currentStory?.length > 1 && (
         <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10"
+          className="fixed md:absolute right-0 top-1/2 md:h-60 flex md:justify-start transform -translate-y-1/2 z-10"
           onClick={nextImage}
         >
           <ChevronRight className="text-white" />
@@ -264,63 +263,65 @@ const StorySliderComponent = ({
       )}
       {currentStory?.length > 1 && (
         <button
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10"
+          className="fixed md:absolute left-0 top-1/2 md:h-60 flex md:justify-start transform -translate-y-1/2 z-10"
           onClick={prevImage}
         >
           <ChevronLeft className="text-white" />
         </button>
       )}
-{currentStory?.map((story: any, index: number) => {
-  const isCurrentVideo = story?.storyUrl?.startsWith("https://") && currentIndex === index;
-  const isCurrentPhoto = !story?.storyUrl.startsWith("https") && currentIndex === index;
-  if(isCurrentVideo && !hideTrains){
-    setHideTrain(true)
-  }
-  if(isCurrentPhoto && hideTrains){
-    setHideTrain(false)
-  }
-  return (
-    <>
-      {isCurrentVideo ? (
-        <>
-          {!videoLoaded && (
-            <p className="">
-              <ThreeDots
-                visible={true}
-                height="80"
-                width="80"
-                color="#C1506D"
-                radius="9"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
+      {currentStory?.map((story: any, index: number) => {
+        const isCurrentVideo =
+          story?.storyUrl?.startsWith("https://") && currentIndex === index;
+        const isCurrentPhoto =
+          !story?.storyUrl.startsWith("https") && currentIndex === index;
+        if (isCurrentVideo && !hideTrains) {
+          setHideTrain(true);
+        }
+        if (isCurrentPhoto && hideTrains) {
+          setHideTrain(false);
+        }
+        return (
+          <>
+            {isCurrentVideo ? (
+              <>
+                {!videoLoaded && (
+                  <p className="">
+                    <ThreeDots
+                      visible={true}
+                      height="80"
+                      width="80"
+                      color="#C1506D"
+                      radius="9"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                    />
+                  </p>
+                )}
+                <video
+                  src={story?.storyUrl}
+                  controls
+                  muted
+                  autoPlay
+                  onPlayCapture={() => setVideoLoaded(true)}
+                  // onLoadStart={setHideTrain(true)}
+                  onLoad={() => setHideTrain(true)}
+                  onLoadedData={handleLoadedData}
+                  onEnded={nextImage}
+                  style={{ display: videoLoaded ? "block" : "none" }}
+                ></video>
+              </>
+            ) : (
+              <img
+                src={`${img_Story_baseUrl}${story?.storyUrl}`}
+                alt=""
+                // onLoad={()=>setHideTrain(false)}
+                // onLoad={() => setVideo(false)}
+                className={` h-[40%] sm:h-[70%] md:h-[80%] w-42 md:w-full border-2 rounded-lg border-black  ${
+                  index === currentIndex ? "" : "hidden"
+                }`}
               />
-            </p>
-          )}
-          <video
-            src={story?.storyUrl}
-            controls
-            muted
-            autoPlay
-            onPlayCapture={()=>setVideoLoaded(true)}
-            // onLoadStart={setHideTrain(true)}
-            onLoad={()=>setHideTrain(true)}
-            onLoadedData={handleLoadedData}
-            onEnded={nextImage}
-            style={{ display: videoLoaded ? "block" : "none" }}
-          ></video>
-        </>
-      ) : (
-        <img
-          src={`https://meta-media.in/api/story/story/${story?.storyUrl}`}
-          alt=""
-          // onLoad={()=>setHideTrain(false)}
-          // onLoad={() => setVideo(false)}
-          className={`w-full h-full border-2 rounded-lg border-black ${
-            index === currentIndex ? "" : "hidden"
-          }`}
-        />
-      )}
+            )}
             <div className="absolute -bottom-8 font-medium shadow-black cursor-pointer">
               <p
                 className={`text-white  ${

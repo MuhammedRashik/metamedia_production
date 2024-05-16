@@ -2,6 +2,7 @@ import { Film, Image, MoreVertical, Radio } from 'lucide-react'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import profile from '../../assets/profile.webp'
+import { img_User_baseUrl } from '../../utils/common/baseUrl';
 
 const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
   const [currentMedia, setCurrentMedia] = useState<any>("");
@@ -24,10 +25,10 @@ const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
             <div className="w-full h-[130px]  flex justify-between  ">
               <div className="w-full h-[110px]  flex items-center pl-5 gap-2 ">
                 <img
-                  src={  userData?.profile?.startsWith('https://graph') ?
+                  src={  userData?.profile.startsWith('https://graph') ?
                   profile
                     : userData?.profile ?
-                    `https://meta-media.in/api/user/profile/${userData?.profile}`
+                    `${img_User_baseUrl}${userData?.profile}`
                     : profile}
                   className="sm:w-12 sm:h-12 h-10 w-10 rounded-full  border-2 border-[#C1506D]"
                   alt=""

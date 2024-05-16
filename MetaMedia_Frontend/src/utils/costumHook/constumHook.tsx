@@ -16,8 +16,6 @@ const axiosFormDataInstance = axios.create({
 axiosInstance.interceptors.request.use(
   config => {
     const accessToken = localStorage.getItem('accesstoken')    
-    console.log(accessToken,"accessToken from local storage to request");
-    
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
@@ -34,7 +32,6 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     console.log("Axiox ERROR");        
-    console.log(error,"error");
     console.log(error.response.data.errMessage,"error.responseerror.response");
     
     const originalRequest = error.config;
@@ -44,12 +41,8 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {      
       originalRequest._retry = true;
       try {
-        console.log("GOING TO REFRESH");
-        
-        const route:any = 'https://meta-media.in/api/auth/refresh'
-        const refreshResponse = await axios.post(route);      
-        console.log(refreshResponse,"refreshResponse");
-          
+        const route:any = 'http://localhost:3001/api/auth/refresh'
+        const refreshResponse = await axiosInstance.post(route);        
         const newAccessToken = refreshResponse.data.token;
         console.log("New Accesstoken ==>", newAccessToken);
         localStorage.setItem('accesstoken', newAccessToken); // Update in storage
@@ -59,7 +52,7 @@ axiosInstance.interceptors.response.use(
         console.log(err);
         console.log(window.location.href ,"window.location.href window.location.href window.location.href ");
         
-        // window.location.href = '/login';
+        window.location.href = '/login';
         console.error('Refresh token failed:', err);
     }
     }
@@ -87,8 +80,6 @@ axiosFormDataInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(error,"errr");
-    
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;

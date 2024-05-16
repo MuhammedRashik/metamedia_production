@@ -1,5 +1,5 @@
 
-import User from "../MongoDb/schema"
+import User from "../database/schema"
 import webpush from 'web-push'
 import { subscribeToSNS ,publishToSNS} from "./aws";
 

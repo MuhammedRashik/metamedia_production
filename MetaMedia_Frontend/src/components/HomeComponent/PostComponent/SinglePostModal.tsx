@@ -30,6 +30,7 @@ import { UpdateCommentFuntion } from "../../../utils/api/methods/PostService/Pos
 import { DeleteCommentFuntion } from "../../../utils/api/methods/PostService/Post/deleteComment";
 import { DeleteReplayFunction } from "../../../utils/api/methods/PostService/Post/deleteReplay";
 import { SavePostFunction } from "../../../utils/api/methods/PostService/Post/savePost";
+import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const SinglePostModal = ({ render, setRender }: any) => {
   const dispatch = useDispatch();
@@ -389,7 +390,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                     <>
                       <img
                         className="object-contain opacity-100 w-full h-full "
-                        src={`http://:3002/img/${images[imageIndex]}`}
+                        src={`${img_Post_baseUrl}${images[imageIndex]}`}
                         alt=""
                       />
                     </>
@@ -401,7 +402,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                         controls
                       >
                         <source
-                          src={`http://:3002/img/${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
+                          src={`${img_Post_baseUrl}${singlePost.mediaUrl[0]}`} // Provide the source URL of the video
                           type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                         />
                       </video>
@@ -523,7 +524,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                         NavigateToUserProfile(postUser.basicInformation.userId)
                       }
                       className="w-8 h-8 md:w-12 md:h-12 border-2 border-black rounded-full"
-                      src={`http://:3000/profile/${postUser?.profile?.profileUrl}`}
+                      src={`${img_User_baseUrl}${postUser?.profile?.profileUrl}`}
                       alt=""
                     />
                   </div>
@@ -561,7 +562,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                                 <div className="h-full w-1/6  flex justify-center items-start p-1">
                                   <img
                                     className="w-6 md:w-10 h-6 md:h-10 rounded-full"
-                                    src={`http://:3000/profile/${item?.profile}`}
+                                    src={`${img_User_baseUrl}${item?.profile}`}
                                     alt=""
                                   />
                                 </div>
@@ -791,6 +792,11 @@ const SinglePostModal = ({ render, setRender }: any) => {
               </div>
             </div>
           </div>
+          {/* <div className="h-full w-10 flex items-center ">
+            <button className="w-9 h-9 p-1.5 opacity-100 bg-white rounded-full hidden">
+              <ChevronRight />
+            </button>
+          </div> */}
         </div>
       </div>
     </>

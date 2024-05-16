@@ -1,10 +1,10 @@
 import {Radio,ChevronDown,X} from 'lucide-react'
 import { useEffect, useState } from 'react'
-
+import { toast } from 'sonner'
 import {addLiveName,addLiveUser,clearLiveName,clearLiveUsers,clearLiveId,setLiveId} from '../../../utils/ReduxStore/Slice/liveSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-const CreateLive = ({setIsAddLive}:any)=>{
+const CreateLive = ({setIsAddLive,setIsGoLive}:any)=>{
     const user = useSelector((state: any) => state.persisted.user.userData);
    
     console.log(user,'this is users');

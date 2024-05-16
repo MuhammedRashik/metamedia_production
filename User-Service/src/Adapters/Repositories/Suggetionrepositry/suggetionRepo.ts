@@ -1,4 +1,4 @@
-import User from "../MongoDb/schema";
+import User from "../database/schema";
 
 export const getUsersByIds = async (userIds: any) => {
     try {

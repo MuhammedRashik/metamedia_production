@@ -3,6 +3,7 @@ import profile from "../../../assets/profile.webp";
 import { Link, useParams } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import { useEffect } from "react";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const AsideComponent = ({
   conversations,
@@ -82,7 +83,7 @@ const AsideComponent = ({
                             data?.profile?.startsWith("https://")
                               ? `${data?.profile}`
                               : data?.profile
-                              ? `https://meta-media.in/api/user/profile/${data.userData?.profile?.profileUrl}`
+                              ? `${img_User_baseUrl}${data?.profile}`
                               : `${profile}`
                           }
                           alt="P"

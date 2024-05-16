@@ -21,8 +21,6 @@ export default (dependecies: any) => {
       email,
       password
     );    
-    console.log(response,"response");
-    
     //access token
     if (!response.status) {
       res.json({ message: response?.message, status: false });

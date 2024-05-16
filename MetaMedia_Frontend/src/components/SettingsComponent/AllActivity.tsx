@@ -16,6 +16,7 @@ import {
   setPostUserData,
 } from "../../utils/ReduxStore/Slice/singlePostSlice";
 import { Link, useLocation } from "react-router-dom";
+import { img_Post_baseUrl } from "../../utils/common/baseUrl";
 
 const AllActivity = () => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
@@ -121,7 +122,7 @@ const AllActivity = () => {
                   >
                     <div className="h-full">
                       <img
-                        src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
+                        src={`${img_Post_baseUrl}${data.mediaUrl[0]}`}
                         alt=""
                         onClick={() => handlePostClick(data)}
                         className="w-full h-full rounded-md"
@@ -144,7 +145,7 @@ const AllActivity = () => {
                   >
                     <div className="h-full">
                       <img
-                        src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
+                        src={`${img_Post_baseUrl}${data.mediaUrl[0]}`}
                         alt=""
                         onClick={() => handlePostClick(data)}
                         className="w-full h-full rounded-md"
@@ -167,7 +168,7 @@ const AllActivity = () => {
                   >
                     <div className="h-full">
                       <img
-                        src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
+                        src={`${img_Post_baseUrl}${data.mediaUrl[0]}`}
                         alt=""
                         onClick={() => handlePostClick(data)}
                         className="w-full h-full rounded-md"

@@ -5,6 +5,7 @@ import {
 } from "../../../utils/api/methods";
 import { getMyAllStoriesForHighLightListFunction } from "../../../utils/api/methods/StoryService/Story/post";
 import { useSelector } from "react-redux";
+import { img_Story_baseUrl } from "../../../utils/common/baseUrl";
 
 const HighlightListComponent = ({
   highlightName,
@@ -95,7 +96,7 @@ const HighlightListComponent = ({
                         onClick={() => handleClick(item?.id, item?.storyUrl)}
                       >
                         <img
-                          src={`https://meta-media.in/api/story/story/${item?.storyUrl}`}
+                          src={`${img_Story_baseUrl}${item?.storyUrl}`}
                           alt=""
                         />
                       </div>

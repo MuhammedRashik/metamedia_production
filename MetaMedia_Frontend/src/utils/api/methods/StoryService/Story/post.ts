@@ -1,5 +1,5 @@
 import { AddHighlight_Api, AddStory_Api, AddVideos_Api, DeleteStory_Api, getMyAllStoriesForHighLightList_Api } from "../../../endpoints/common";
-import {axiosFormDataInstance, axiosInstance} from "../../../../../utils/costumHook/constumHook";
+import {axiosFormDataInstance, axiosInstance} from "../../../../costumHook/constumHook";
 
 export const addHighlightFunction = (data: any) => {
   try {

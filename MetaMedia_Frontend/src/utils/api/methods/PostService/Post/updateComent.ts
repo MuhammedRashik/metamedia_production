@@ -1,5 +1,5 @@
 import { UpdateComment_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const UpdateCommentFuntion = async (data: any) => {
   try {

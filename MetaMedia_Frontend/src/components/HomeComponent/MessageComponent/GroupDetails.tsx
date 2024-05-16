@@ -7,6 +7,7 @@ import {
 } from "../../../utils/api/methods/ChatService/get/get";
 import { toast } from "sonner";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
+import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const GroupDetails = ({ setISGroupDetais }: any) => {
   const { group_id } = useParams();
@@ -107,7 +108,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                       <div className="w-full h-36  flex items-center justify-around mt-7">
                         <div className=" w-full h-full flex justify-center items-center ">
                           <img
-                            src={`https://meta-media.in/api/chat/Chat/${groupData.profile}`}
+                            src={`${img_Chat_baseUrl}${groupData.profile}`}
                             className="w-28 h-28 object-fill rounded-full"
                             alt=""
                           />
@@ -138,7 +139,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                                   <>
                                     <div className="w-[187px] h-44 bg-green-100">
                                       <img
-                                        src={`https://meta-media.in/api/chat/Chat/${item.content}`}
+                                        src={`${img_Chat_baseUrl}${item.content}`}
                                         className="w-full h-full object-cover"
                                         alt=""
                                       />
@@ -153,7 +154,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                                       <video
                                         controls
                                         muted
-                                        src={`https://meta-media.in/api/chat/Chat/${item.content}`}
+                                        src={`${img_Chat_baseUrl}${item.content}`}
                                         className="w-full h-full object-cover"
                                       ></video>
                                     </div>
@@ -194,7 +195,7 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
                       <div key={index} className="w-full h-full flex items-center border rounded-md p-2">
                         <div className="w-3/12 h-full flex justify-center items-center">
                           <img
-                            src={`https://meta-media.in/api/user/profile/${memberDetails.profile.profileUrl}`}
+                            src={`${img_User_baseUrl}${memberDetails.profile.profileUrl}`}
                             className="w-14 h-14 object-fill rounded-full"
                             alt=""
                           />

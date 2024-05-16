@@ -1,5 +1,5 @@
 import { SavePost_api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const SavePostFunction = async (data: any) => {
   try {

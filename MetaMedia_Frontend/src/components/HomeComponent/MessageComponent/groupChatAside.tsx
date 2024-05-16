@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
+import { img_Chat_baseUrl } from "../../../utils/common/baseUrl";
 
 const GroupChatAside = ({
   setIsMore,
@@ -88,7 +89,7 @@ const GroupChatAside = ({
                       onClick={() => handleGroupChat(item)}
                     >
                       <img
-                        src={`https://meta-media.in/api/chat/chat/${item.profile}`}
+                        src={`${img_Chat_baseUrl}${item.profile}`}
                         alt="P"
                         className="rounded-full mr-2 w-[50px] h-[50px]"
                       />

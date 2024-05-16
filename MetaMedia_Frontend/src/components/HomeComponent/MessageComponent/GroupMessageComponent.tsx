@@ -7,7 +7,7 @@ import {
   Files,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import AudioPlayer from "react-h5-audio-player";
@@ -22,14 +22,12 @@ import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 import {
   SendFileMessageFunction,
-  SendGroupMessageFunction,
   SendVoiceNoteFunction,
 } from "../../../utils/api/methods/ChatService/post/post";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import VoiceRecorder from "./VoiceRecorder";
-
 import profile from "../../../assets/profile.webp";
-import { set } from "react-hook-form";
+import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const GroupMessageComponent = ({
   isGroupChat,
@@ -78,9 +76,9 @@ const GroupMessageComponent = ({
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
         let messageType: string;
-        if (file.type?.startsWith("image/")) {
+        if (file.type.startsWith("image/")) {
           messageType = "image";
-        } else if (file.type?.startsWith("video/")) {
+        } else if (file.type.startsWith("video/")) {
           messageType = "video";
         } else {
           messageType = "file";
@@ -157,7 +155,7 @@ const GroupMessageComponent = ({
   const userData = useSelector((state: any) => state.persisted.user.userData);
 
   useEffect(() => {
-    setSocket(io("https://meta-media.in"));
+    setSocket(io("http://localhost:8081"));
   }, []);
   useEffect(() => {
     if (socket && group_id != "index") {
@@ -342,7 +340,7 @@ const GroupMessageComponent = ({
             <header className=" w-full flex items-center p-2 sm:p-3 border-b border-gray-300 bg-[#EBE9EF] ">
               <ArrowLeft className="mr-3 sm:hidden" />
               <img
-                src={`https://meta-media.in/api/chat/chat/${groupData.profile}`}
+                src={`${img_Chat_baseUrl}${groupData.profile}`}
                 alt="aa"
                 className="rounded-full mr-4 w-[35px] h-[35px]"
                 onClick={() => setISGroupDetais(true)}
@@ -434,16 +432,9 @@ const GroupMessageComponent = ({
                                     </>
                                   )}
                                   {item.type == "voice_note" && (
-                                    //                                     <>
-                                    //                                     <audio controls>
-
-                                    //   <source  src={`https://meta-media.in/api/chat/chat/${item.content}`} type="audio/mpeg" />
-
-                                    // </audio>
-                                    //                        </>
                                     <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center bg-[#FADBE1] items-center  rounded-br-none  text-white gap-2">
                                       <AudioPlayer
-                                        src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                        src={`${img_Chat_baseUrl}${item.content}`}
                                         customAdditionalControls={[]}
                                         className="w-[200px] h-[80px] md:w-[300px]"
                                       />
@@ -457,7 +448,7 @@ const GroupMessageComponent = ({
                                     <>
                                       <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                                         <img
-                                          src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                          src={`${img_Chat_baseUrl}${item.content}`}
                                           alt=""
                                           className="relative rounded-lg object-cover w-full h-full"
                                         />
@@ -475,7 +466,7 @@ const GroupMessageComponent = ({
                                           className="relative rounded-lg object-cover w-full h-full"
                                         >
                                           <source
-                                            src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                            src={`${img_Chat_baseUrl}${item.content}`}
                                           />
                                           <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                             {DateToTime(item?.timestamp)}
@@ -507,7 +498,7 @@ const GroupMessageComponent = ({
                                   <>
                                     <span className="px-4 py-2 rounded-lg text-sm md:text-base inline-block rounded-bl-none bg-gray-300 text-gray-600">
                                       <AudioPlayer
-                                        src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                        src={`${img_Chat_baseUrl}${item.content}`}
                                         customAdditionalControls={[]}
                                         style={{
                                           width: "300px",
@@ -523,7 +514,7 @@ const GroupMessageComponent = ({
                                   <>
                                     <img
                                       className="w-60 h-60 object-cover rounded-md border  "
-                                      src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                      src={`${img_Chat_baseUrl}${item.content}`}
                                       alt=""
                                     />
                                   </>
@@ -536,7 +527,7 @@ const GroupMessageComponent = ({
                                         className="relative rounded-lg object-cover w-full h-full"
                                       >
                                         <source
-                                          src={`https://meta-media.in/api/chat/chat/${item.content}`}
+                                          src={`${img_Chat_baseUrl}${item.content}`}
                                         />
                                         <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                           {DateToTime(item?.timestamp)}
@@ -554,14 +545,14 @@ const GroupMessageComponent = ({
                               src={
                                 userDetails[
                                   item.sender_id
-                                ]?.profile?.profileUrl?.startsWith("https://")
+                                ]?.profile?.profileUrl.startsWith("https://")
                                   ? `${
                                       userDetails[item.sender_id]?.profile
                                         .profileUrl
                                     }`
                                   : userDetails[item.sender_id]?.profile
                                       .profileUrl
-                                  ? `http://:3000/profile/${
+                                  ? `${img_User_baseUrl}${
                                       userDetails[item.sender_id]?.profile
                                         .profileUrl
                                     }`

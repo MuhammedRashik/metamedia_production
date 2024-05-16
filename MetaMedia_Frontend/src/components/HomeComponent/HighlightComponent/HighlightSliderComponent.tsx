@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DeleteHighlightFunction } from "../../../utils/api/methods/StoryService/Highlight/post";
 import { toast } from "sonner";
+import { img_Story_baseUrl } from "../../../utils/common/baseUrl";
 
 const HighlightSliderComponent = ({
   openHighlight,
@@ -131,7 +132,7 @@ const HighlightSliderComponent = ({
             userData.profile?.startsWith("https://graph.facebook.com/")
               ? `${userData.profile}`
               : userData.profile
-              ? `https://meta-media.in/api/user/profile/${userData.profile}`
+              ? `${img_User_baseUrl}${userData.profile}`
               : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
           }
         />
@@ -178,7 +179,7 @@ const HighlightSliderComponent = ({
         <>
           <img
             key={index}
-            src={`https://meta-media.in/api/story/story/${highlight}`}
+            src={`${img_Story_baseUrl}${highlight}`}
             alt=""
             className={`h-[40%] sm:h-[70%] md:h-[80%] w-42 md:w-full border-2 rounded-lg border-black ${
               index === currentIndex ? "" : "hidden"

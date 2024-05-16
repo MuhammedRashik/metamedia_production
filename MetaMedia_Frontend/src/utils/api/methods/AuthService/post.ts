@@ -94,7 +94,7 @@ export const ChangePasswordFunction = async (data: any) => {
 };
 export const GetUserDataFunction = async (data: any) => {
   try {
-    return axios.post(GetUserData_Api, data);
+    return axiosInstance.post(GetUserData_Api, data);
   } catch (error) {
     console.log(error, "err");
   }

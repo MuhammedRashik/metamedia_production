@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { addMembers } from "../../../utils/ReduxStore/Slice/newGropSlice";
 import { CreateNewGroupFuntion } from "../../../utils/api/methods/ChatService/post/post";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 const SelectFriendsModal = ({ setewGroup }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const GroupData = useSelector((state: any) => state.persisted.group);
@@ -143,7 +144,7 @@ const SelectFriendsModal = ({ setewGroup }: any) => {
                     >
                       <div className="w-3/12 flex justify-center items-center">
                         <img
-                          src={`http://:3000/profile/${user?.profile?.profileUrl}`}
+                          src={`${img_User_baseUrl}${user?.profile?.profileUrl}`}
                           className="w-14 h-14 rounded-full border border-[#C1506D]"
                           alt=""
                         />

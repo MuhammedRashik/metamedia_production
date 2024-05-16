@@ -1,5 +1,5 @@
 import { ReplayToComment_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const AddReplayToCommentFunction = async (data: any) => {
   try {

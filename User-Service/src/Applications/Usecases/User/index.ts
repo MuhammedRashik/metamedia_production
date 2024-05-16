@@ -5,7 +5,7 @@ import { getAllUsers_usecasse } from "./getAllUsersUseCase";
 import { getUsersById_Usecase } from "./getUserByIdUsecase";
 import { getUsersByName_Usecase } from "./getUsersByNameUsecase";
 import { getUsersDataById_Usecase } from "./getUsersDataByIdUsecase";
-import { BlockAndUnblockUser_Usecase } from "./blockAndUnblockUser_Usecase";
+import { BlockAndUnblockUser_Usecase } from "./BlockAndUnblockUser_Usecase";
 import { getAllUsersData_usecase } from "./getAllUsersData_usecase";
 import { getSearchUser_Usecase } from "./getSearchUserUsecase";
 import { followUser_Usecase } from "./followUserUsecase";

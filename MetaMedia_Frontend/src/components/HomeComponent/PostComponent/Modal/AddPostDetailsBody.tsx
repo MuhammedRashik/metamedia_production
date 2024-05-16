@@ -15,6 +15,7 @@ import { getLatAndLogFuntion } from "../../../../utils/api/methods/PostService/P
 import { useNavigate } from "react-router-dom";
 import { getUsersByNameFunction } from "../../../../utils/api/methods/UserService/post";
 import profile from "../../../../assets/profile.webp";
+import { img_User_baseUrl } from "../../../../utils/common/baseUrl";
 const AddPostDetailsBody = ({
   setIsAddPost,
   setPostState,
@@ -340,7 +341,7 @@ const AddPostDetailsBody = ({
                           )
                             ? `${user.userData.profile}`
                             : user.userData.profile
-                            ? `http://:3000/profile/${user.userData.profile}`
+                            ? `${img_User_baseUrl}${user.userData.profile}`
                             : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                         }
                         alt=""
@@ -512,7 +513,7 @@ const AddPostDetailsBody = ({
                                                   "https://graph"
                                                 )
                                                   ? `${user?.profile}`
-                                                  : `http://:3000/profile/${user?.profile}`
+                                                  : `${img_User_baseUrl}${user?.profile}`
                                               }
                                               alt={`image`}
                                             />

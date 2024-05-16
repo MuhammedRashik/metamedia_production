@@ -1,4 +1,4 @@
-import {userRepository,profileRepository,suggetionRepo} from '../../Adapters/Repositories'
+import {userRepository,profileRepository,suggetionRepo} from '../../adapters/repositories'
 import {addProfileUsecase,editUserUsecase,AddProfileImageUsecase} from '../../Applications/Usecases'
 import {createUserUsecase} from'../../Applications/ConsumeUsecases'
 

@@ -1,5 +1,5 @@
 import { ReportPost_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const ReportPostFunction = async (data: any) => {
   try {

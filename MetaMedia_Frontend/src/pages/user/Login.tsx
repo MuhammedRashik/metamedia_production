@@ -82,7 +82,6 @@ const Login = () => {
           localStorage.setItem('accesstoken',response.data.accesstoken)
 
           if (response?.data?.newUser) {
-            toast.success(response?.data?.message);
             Navigate("/chooseinterest", { replace: true });
           } else {
             const userEmail = { email: response?.data?.user?.email };
@@ -112,7 +111,6 @@ const Login = () => {
             localStorage.setItem('accesstoken',response.data.accesstoken)
 
             // await SaveUserDataInRedux(userData)
-            toast.success(response?.data?.message);
             Navigate("/", { replace: true });
           }
         } else {
@@ -163,7 +161,6 @@ const Login = () => {
           dispatch(addToken(response.data.accesstoken));
           localStorage.setItem('accesstoken',response.data.accesstoken)
           if (response?.data?.newUser) {
-            toast.success(response?.data?.message);
             Navigate("/chooseinterest", { replace: true });
           } else {
             const userEmail = { email: response?.data?.user?.email };
@@ -192,7 +189,6 @@ const Login = () => {
             dispatch(addToken(response.data.accesstoken));
             localStorage.setItem('accesstoken',response.data.accesstoken)
             // await SaveUserDataInRedux(userData)
-            toast.success(response?.data?.message);
             Navigate("/", { replace: true });
           }
         } else {
@@ -214,6 +210,7 @@ const Login = () => {
      
       toast.error(userExist?.data?.message);
     } else {
+     
       console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
       if(userExist.data.admin){
         const userEmail = { email: userExist?.data?.user?.email };
@@ -227,19 +224,12 @@ const Login = () => {
         dispatch(clearAdmin());
         dispatch(addAdminData(adminData));
         dispatch(addAdminToken(userExist.data.accesstoken));
-        toast.success(response?.data?.data?.message);
         Navigate("/admin", { replace: true });
-        console.log(userExist.data,"userExist.data");
-        
         localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
-        console.log("I AM ELSE");
-        
       const userEmail:any = {email: userExist?.data?.user?.email };
      
       const response: any = await GetUserDataFunction(userEmail);
-      console.log(response,"response");
-      
       const userData: ResponseData = {
         email: response.data.user.email ?? "",
         name: response.data.user.name ?? "",
@@ -258,10 +248,7 @@ const Login = () => {
       dispatch(clearUser());
       dispatch(addUser(userData));
       dispatch(addToken(userExist.data.accesstoken));
-      console.log(userExist.data.accesstoken,"userExist.data.accesstoken");
-      
       localStorage.setItem('accesstoken',userExist.data.accesstoken)
-      toast.success(response?.data?.data?.message);
       Navigate("/", { replace: true });
     }
     }

@@ -8,7 +8,7 @@ export default (dependencies:any)=>{
     const {chooseInterestController,getUserDataController,ChangeUserStatusController,followUserController,getSearchUserController,getAllUsersDataController,getAllUserForChatController,getUsersDataByIdController,getUsersByNameController,getUserById_Controller,savePostController,suggetionController,generatevapidKeysController,SubcribeToAwsSNSController,BlockAndUnblockUserController}=userController(dependencies)
     const {addProfileController,editProfileController,addProfileImageController}=profileController(dependencies)
 
-    router.post('/getUserData' , getUserDataController)
+    router.post('/getUserData' , authMiddlewawre , getUserDataController)
     router.get('/getAllUsers' , authMiddlewawre , getAllUsersDataController)
     router.get('/getSearchUser/:user' , authMiddlewawre , getSearchUserController)
     router.post('/addProfile' , authMiddlewawre , addProfileController)

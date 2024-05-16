@@ -14,6 +14,7 @@ import { LogoutFunction } from "../../../utils/api/methods";
 import { clearToken } from "../../../utils/ReduxStore/Slice/tokenSlice";
 import { toast } from "sonner";
 import { persistor } from "../../../utils/ReduxStore/Store/Store";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 const NewSideBar = ({ setOpenNotification, setOpenSearch }: any) => {
   const location = useLocation();
   const Navigate = useNavigate();
@@ -168,7 +169,7 @@ const NewSideBar = ({ setOpenNotification, setOpenSearch }: any) => {
                       userData?.profile.startsWith("https://graph")
                         ? profile
                         : userData?.profile
-                        ? `https://meta-media.in/api/user/profile/${userData?.profile}`
+                        ? `${img_User_baseUrl}${userData?.profile}`
                         : profile
                     }
                     className="rounded-full w-full h-full border-2 border-[#C1506D] object-fill"

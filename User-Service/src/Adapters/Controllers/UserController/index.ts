@@ -7,7 +7,7 @@ import getUsersDataByIdController from "./getUsersDataByIdController";
 import getAllUsersDataController from "./getAllUsersDataController";
 import getSearchUserController from "./getSearchUserController";
 import followUserController from "./followUserController";
-import ChangeUserStatusController from "./changeUserStatusController";
+import ChangeUserStatusController from "./ChangeUserStatusController";
 import BlockAndUnblockUserController from "./BlockAndUnblockUserController";
 import savePostController from "./savePostController";
 import suggetionController from "./suggetionController";

@@ -8,7 +8,7 @@ const expresscofig=(app:Express):void=>{
     app.use(express.static('public/'))
     app.use(
         cors({
-          origin: 'https://meta-media.in',
+          origin: 'http://localhost:5173',
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           credentials: true,
         })
@@ -17,4 +17,4 @@ const expresscofig=(app:Express):void=>{
     
 }
 
-export default expresscofig 
+export default expresscofig

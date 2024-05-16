@@ -1,4 +1,4 @@
-import { verifyPassword } from "../../../Utils";
+import { verifyPassword } from "../../../utils";
 
 export const createUserUsecase = (dependencies: any) => {
     console.log("55createUserUsecase");

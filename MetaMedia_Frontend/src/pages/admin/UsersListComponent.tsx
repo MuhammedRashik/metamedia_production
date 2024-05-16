@@ -3,6 +3,7 @@ import { getAllUsersDataFunction } from "../../utils/api/methods/UserService/get
 import { toast } from "sonner";
 import profile from "../../assets/profile.webp";
 import { ChangeUserStatusFunction } from "../../utils/api/methods/AdminService/post";
+import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
 const UsersListComponent = () => {
   const [users, setUsers] = useState<any>([]);
@@ -110,7 +111,7 @@ const UsersListComponent = () => {
                                 )
                                   ? `${data?.profile}`
                                   : data?.profile
-                                  ? `https://meta-media.in/api/user/profile/${data?.profile}`
+                                  ? `${img_User_baseUrl}${data?.profile}`
                                   : `${profile}`
                               }
                               alt=""

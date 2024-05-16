@@ -1,5 +1,5 @@
 import { GetAllStories_Api, GetStories_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const getStoriesFunction = () => {
   try {
