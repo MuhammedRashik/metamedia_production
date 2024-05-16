@@ -6,8 +6,8 @@ import getDb from '../config/db'
 import express ,{Request,Response}from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import {routes} from './Adapters/Routes'
-import dependencies from './Frameworks/Config/dependencies'
+import {routes} from './Adapter/Routes'
+import dependencies from './Framework/Config/dependencies'
 import session, { SessionOptions,MemoryStore,SessionData } from "express-session";
 const store = new MemoryStore();
 const app=express()
@@ -15,6 +15,8 @@ dotenv.config()
 getDb(config)
 const server=http.createServer(app)
 //  authconsumer()
+  
+
  declare module 'express-session' {
   interface Session {
     userData:{
@@ -30,14 +32,13 @@ const server=http.createServer(app)
     Token:string
   }
 }
+console.log('hi from stor service ');
 
  app.use(express.json());
  app.use(express.urlencoded({ extended: false }));
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
  app.use(express.static('public/'))
  app.use('/api/story/story', express.static('public/profile')) 
-
-
 //  const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
  app.use(
     cors({
@@ -60,11 +61,6 @@ const server=http.createServer(app)
     } as SessionOptions)
   );
 
-// app.use("/api/v1/authsetting",(req: Request ,res:Response)=>{
-//   console.log(req.body,"bodyssss");
-//   req.session.Token = req.body.refreshToken
-//   res.status(200).json({status:true})
-// })
-
  app.use('/api',routes(dependencies))
+
 serverConfig(server,config).startServer()

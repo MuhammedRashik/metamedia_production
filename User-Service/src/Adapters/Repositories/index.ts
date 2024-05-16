@@ -1,6 +1,6 @@
-import {profileRepository} from './profilerepository'
-import { userRepository } from './userrepository'
-import {suggetionRepo} from './suggetionrepositry'
+import {profileRepository} from './Profilerepository'
+import { userRepository } from './Userrepository'
+import {suggetionRepo} from './Suggetionrepositry'
 export{
     profileRepository,
     userRepository,

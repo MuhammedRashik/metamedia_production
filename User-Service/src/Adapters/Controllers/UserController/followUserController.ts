@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userProducer } from "../../../events/userProducer";
+import { userProducer } from "../../../Events/userProducer";
 
 export default (dependecies: any) => {
   const { followUser_Usecase } = dependecies.useCase;

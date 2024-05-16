@@ -1,2 +1,2 @@
-import {verifyPassword} from './passwordCompair'
+import {verifyPassword} from './PasswordCompair'
 export {verifyPassword} 

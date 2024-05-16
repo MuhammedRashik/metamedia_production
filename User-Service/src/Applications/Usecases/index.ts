@@ -1,5 +1,5 @@
-import {addProfileUsecase,editUserUsecase,AddProfileImageUsecase} from './profile'
-import {chooseInterest_Usecase,BlockAndUnblockUser_Usecase,followUser_Usecase,ChangeUserStatus_Usecase,getSearchUser_Usecase,getAllUsersData_usecase,getUserData_Usecase,getAllUsers_usecasse,getUsersById_Usecase,getUsersByName_Usecase,getUsersDataById_Usecase,SavePost_Usecase,Suggetion_Usecase,genarateVapidKeys_useCase,subscribeToAwsSNS_useCase} from './user'
+import {addProfileUsecase,editUserUsecase,AddProfileImageUsecase} from './Profile'
+import {chooseInterest_Usecase,BlockAndUnblockUser_Usecase,followUser_Usecase,ChangeUserStatus_Usecase,getSearchUser_Usecase,getAllUsersData_usecase,getUserData_Usecase,getAllUsers_usecasse,getUsersById_Usecase,getUsersByName_Usecase,getUsersDataById_Usecase,SavePost_Usecase,Suggetion_Usecase,genarateVapidKeys_useCase,subscribeToAwsSNS_useCase} from './User'
 
 
 export {

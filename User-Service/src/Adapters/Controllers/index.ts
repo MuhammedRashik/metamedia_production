@@ -1,5 +1,5 @@
-import userController from './userController'
-import profileController from './profileController'
+import userController from './UserController'
+import profileController from './ProfileController'
 export {
     userController,
     profileController,
