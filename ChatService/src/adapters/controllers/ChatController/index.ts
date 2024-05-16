@@ -1,4 +1,4 @@
-import Conversation from "./Conversation";
+import Conversation from "./conversations";
 import getConversations from "./getConversations";
 import getMessages from "./getMessagesController";
 import message from "./message";
