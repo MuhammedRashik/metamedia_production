@@ -1,5 +1,5 @@
 import express from 'express'
-import { ChatController, } from '../../Controllers'
+import { ChatController, } from '../../controllers'
 import { upload } from '../../../Utils/multer/multer'
 import authMiddleware from '../../../Utils/Middleware/authMiddleware'
 export default (dependencies:any)=> {
