@@ -18,10 +18,11 @@ jobs:
         env:
           SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}
           COOKIEPARSERSECRET: ${{ secrets.COOKIEPARSERSECRET }}
-
+          ACCESS_SECRET_KEY: ${{ secrets.ACCESS_SECRET_KEY }}
         run: |
           echo "SESSION_SECRET_KEY=${SESSION_SECRET_KEY}" >> PostService/.env
           echo "COOKIEPARSERSECRET=${COOKIEPARSERSECRET}" >> PostService/.env
+          echo "ACCESS_SECRET_KEY=${ACCESS_SECRET_KEY}" >> PostService/.env
 
       - run: cd PostService/ && docker build -t metamedia/meta-post-service .
 
