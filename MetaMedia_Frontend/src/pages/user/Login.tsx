@@ -205,13 +205,11 @@ const Login = () => {
 
   //form data set in
   const formsubmit = async (Data: LoginFormData) => {
-    const userExist: any = await LoginFuntion({ ...Data });
+    const userExist: any = await LoginFuntion({ ...Data });    
+    console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
     if (userExist.data.status == false) {
-     
       toast.error(userExist?.data?.message);
     } else {
-     
-      console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
       if(userExist.data.admin){
         const userEmail = { email: userExist?.data?.user?.email };
         const response: any = await GetUserDataFunction(userEmail);
@@ -228,10 +226,8 @@ const Login = () => {
         localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
       const userEmail:any = {email: userExist?.data?.user?.email };
-     
       const response: any = await GetUserDataFunction(userEmail);
       console.log(response,"responseresponseresponse");
-      
       const userData: ResponseData = {
         email: response.data.user?.email ?? "",
         name: response.data.user?.name ?? "",
