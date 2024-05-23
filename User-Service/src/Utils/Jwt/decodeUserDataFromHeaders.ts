@@ -1,6 +1,7 @@
 export const decodeDataFromHeaders = (headers: any) => {
   const { decodedTokenData } = headers;
-    if (decodedTokenData.user.status) {
+  console.log(decodedTokenData,"decodedTokenData");
+    if (decodedTokenData.user) {
     const userId = decodedTokenData?.user?.user?._id ||  decodedTokenData?.user?.response?._id;
     if(userId){
       return userId

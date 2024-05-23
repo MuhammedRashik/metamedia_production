@@ -40,7 +40,8 @@ const SearchComponent = ({ setOpenSearch,setRender,render }: any) => {
       setUserLoading(true);
       setNoUserFound(false);
       const getData = setTimeout(async () => {
-        const response = await GetSearchUserDataFunction(searchUser);        
+        const response = await GetSearchUserDataFunction(searchUser);  
+        console.log(response,"responseSearch");
         if (response.status) {
           setsearchedUsers(response?.data);
         } else {

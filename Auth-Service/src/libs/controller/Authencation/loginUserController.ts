@@ -66,7 +66,6 @@ export default (dependecies: any) => {
         httpOnly: true,
         secure: true,
       });
-console.log(userWithOutpassword,"userWithOutpassword");
 
       res.status(201).json({
         status: true,
