@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config()
     const authMiddleware=(req: Request,res: Response,next: NextFunction)=>{
-        
+        console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
+
         if(!req.headers.authorization){
             res.status(401).json('Authorization header required');
         }else{
