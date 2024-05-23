@@ -3,10 +3,9 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config()
     const authMiddleware=(req: Request,res: Response,next: NextFunction)=>{
-        console.log("POST");
-        console.log(req,"REQ");
-        
+        console.log("POST");        
         console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
+console.log(process.env.ACCESS_SECRET_KEY,"process.env.ACCESS_SECRET_KEYprocess.env.ACCESS_SECRET_KEY");
 
         if(!req.headers.authorization){
             res.status(401).json('Authorization header required');

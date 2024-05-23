@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 dotenv.config()
     const authMiddlewawre=(req: Request,res: Response,next: NextFunction)=>{
         console.log("AUTH MIDDLEWARE")
-        console.log("STORYYYY")
-        console.log(req,"REQQ");
-        
+        console.log("STORYYYY")        
         console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
+        console.log(process.env.ACCESS_SECRET_KEY,"process.env.ACCESS_SECRET_KEY");
+        
         if(!req.headers.authorization){
             res.status(401).json('Authorization header required');
         }else{
