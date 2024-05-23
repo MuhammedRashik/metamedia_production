@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config()
     const authMiddleware=(req: Request,res: Response,next: NextFunction)=>{
+        console.log("POST");
+        console.log(req,"REQ");
+        
         console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
 
         if(!req.headers.authorization){
