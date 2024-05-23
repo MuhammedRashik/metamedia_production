@@ -155,7 +155,7 @@ const GroupMessageComponent = ({
   const userData = useSelector((state: any) => state.persisted.user.userData);
 
   useEffect(() => {
-    setSocket(io("http://localhost:8081"));
+    setSocket(io("https://meta-media.in"));
   }, []);
   useEffect(() => {
     if (socket && group_id != "index") {

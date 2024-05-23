@@ -56,7 +56,7 @@ build:
     context: ./3dService
     sync:
      manual:
-     - src: ./src/**/*.tsx
+     - src: ./src/**/*.ts
        dest: .
     docker:
       dockerfile: Dockerfile

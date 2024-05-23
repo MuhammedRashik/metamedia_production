@@ -12,6 +12,7 @@ import express, { Express,Request,Response } from "express";
 import cors from "cors";
 import path from 'path'
 import session, { SessionOptions, MemoryStore } from "express-session";
+import socketConfig from './socket'
     
 const app=express()
 const server=http.createServer(app)
@@ -19,13 +20,14 @@ dotenv.config()
 connectDB(config)
 const store = new MemoryStore();
 expresscofig(app)
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser(process.env.COOKIEPARSERSECRET));
+export const io: any = require('socket.io')(server, {
+  cors: { origin: ["https://meta-media.in",'http://localhost:5173'] }
+});
+socketConfig(io)
 
 app.use(
     cors({
-      origin:"https://meta-media.in",
+      origin: ["https://meta-media.in",'http://localhost:5173'],
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true,
     })

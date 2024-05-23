@@ -1,15 +1,9 @@
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-srv
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/websocket-services: "trip-service"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.org/websocket-services: trip-service
-    nginx.ingress.kubernetes.io/secure-backends: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -79,4 +73,3 @@ spec:
                 name: client-srv
                 port:
                   number: 5173
-          

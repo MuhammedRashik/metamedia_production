@@ -48,3 +48,4 @@ app.use('/api/post/img', express.static('public/img'))
 
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()
+  

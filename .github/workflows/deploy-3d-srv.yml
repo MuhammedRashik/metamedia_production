@@ -1,4 +1,4 @@
-name: deploy-auth-srv
+name: deploy-3d-srv
 
 on:
   push:
