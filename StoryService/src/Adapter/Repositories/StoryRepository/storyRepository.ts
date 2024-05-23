@@ -60,6 +60,8 @@ export default {
 
   getStories: async (userId: any) => {
     try {  
+      console.log(userId,"userId");
+      
       const response:any = await schema.Story.findOne({ userId: userId, 'content.story': { $elemMatch: { status: true } } });  
       if (response) {
         const filteredStories = response?.content?.story?.filter((story:any) => story.status === true);        
@@ -69,7 +71,7 @@ export default {
         return { status: false, message: "stories not found", data: false };
       }
     } catch (error) {
-      console.log(error, "ER");
+      console.log(error, "getStories");
       return { error };
     }
   },

@@ -3,7 +3,7 @@ import express from 'express'
 import { upload } from '../../../Util/Multer/multer'
 import storyController from '../../Controllers/StoryController'
 import authMiddlewawre from '../../../Util/Middleware/authMiddleware'
-export default (dependencies:any)=> {
+export default  (dependencies:any)=> {
     const router = express()
     const {AddStoryController,DeleteStoryController,getSignatureController,getTheNumberOfStoriesController,AddVideoController,getStoriesController,getAllStoriesController,GetMyAllStoriesForHighLighController} = storyController(dependencies)
 
