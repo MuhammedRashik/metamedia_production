@@ -7,6 +7,9 @@ export const createAccessToken = (
   Expiration: string
 ) => {
 console.log(user,"useruser");
+console.log(Expiration,"Expiration");
+console.log(process.env.ACCESS_EXPIRY);
+
 
   const token = jwt.sign({ user }, AccessTokensecretkey, {
     expiresIn: Expiration,

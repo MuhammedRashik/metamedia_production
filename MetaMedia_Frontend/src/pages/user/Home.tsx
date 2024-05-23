@@ -63,6 +63,8 @@ const Home = ({ render, setRender }: any) => {
     const fetchData = async () => {
       try {
         const response = await getUserByIdFuntion(userData.userId);
+        console.log(response,"response");
+        
         if (response?.status) {
           dispatch(editUser(response.data.socialConections));
         } else {

@@ -46,9 +46,9 @@ const Login = () => {
     e.preventDefault();
     await FacebookAuth().then(async (data: any) => {
       const userData = {
-        profile: data.user.photoURL,
-        email: data.user.email,
-        name: data.user.displayName,
+        profile: data.user?.photoURL,
+        email: data.user?.email,
+        name: data.user?.displayName,
         isGoogle: false,
         isFacebook: true,
       };
@@ -61,19 +61,19 @@ const Login = () => {
           //   SaveUserDataInRedux(response);
           // }, 3000);
           const data: ResponseData = {
-            email: response.data.user.email ?? "",
-            name: response.data.user.name ?? "",
-            userName: response.data.user.userName ?? "",
-            userId: response.data.user._id ?? "",
-            profile: response.data.user.profile ?? "",
-            isGoogle: response.data.user.isGoogle ?? "",
-            isFacebook: response.data.user.isFacebook ?? "",
-            dateOfBirth: response.data.user.dateOfBirth ?? "",
-            gender: response.data.user.gender ?? "",
-            location: response.data.user.location ?? "",
-            phoneNumber: response.data.user.phoneNumber ?? "",
-            interests: response.data.user.interests ?? [],
-            bio: response.data.user.bio ?? "",
+            email: response.data.user?.email ?? "",
+            name: response.data.user?.name ?? "",
+            userName: response.data.user?.userName ?? "",
+            userId: response.data.user?._id ?? "",
+            profile: response.data.user?.profile ?? "",
+            isGoogle: response.data.user?.isGoogle ?? "",
+            isFacebook: response.data.user?.isFacebook ?? "",
+            dateOfBirth: response.data.user?.dateOfBirth ?? "",
+            gender: response.data.user?.gender ?? "",
+            location: response.data.user?.location ?? "",
+            phoneNumber: response.data.user?.phoneNumber ?? "",
+            interests: response.data.user?.interests ?? [],
+            bio: response.data.user?.bio ?? "",
           };
 
           dispatch(clearUser());
@@ -230,20 +230,22 @@ const Login = () => {
       const userEmail:any = {email: userExist?.data?.user?.email };
      
       const response: any = await GetUserDataFunction(userEmail);
+      console.log(response,"responseresponseresponse");
+      
       const userData: ResponseData = {
-        email: response.data.user.email ?? "",
-        name: response.data.user.name ?? "",
-        userName: response.data.user.userName ?? "",
-        userId: response.data.user._id ?? "",
-        profile: response.data.user.profile ?? "",
-        isGoogle: response.data.user.isGoogle ?? "",
-        isFacebook: response.data.user.isFacebook ?? "",
-        dateOfBirth: response.data.user.dateOfBirth ?? "",
-        gender: response.data.user.gender ?? "",
-        location: response.data.user.location ?? "",
-        phoneNumber: response.data.user.phoneNumber ?? "",
-        interests: response.data.user.interests ?? [],
-        bio: response.data.user.bio ?? "",
+        email: response.data.user?.email ?? "",
+        name: response.data.user?.name ?? "",
+        userName: response.data.user?.userName ?? "",
+        userId: response.data.user?._id ?? "",
+        profile: response.data.user?.profile ?? "",
+        isGoogle: response.data.user?.isGoogle ?? "",
+        isFacebook: response.data.user?.isFacebook ?? "",
+        dateOfBirth: response.data.user?.dateOfBirth ?? "",
+        gender: response.data.user?.gender ?? "",
+        location: response.data.user?.location ?? "",
+        phoneNumber: response.data.user?.phoneNumber ?? "",
+        interests: response.data.user?.interests ?? [],
+        bio: response.data.user?.bio ?? "",
       };
       dispatch(clearUser());
       dispatch(addUser(userData));

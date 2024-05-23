@@ -35,9 +35,7 @@ export default (dependecies: any) => {
       };
       req.session.refreshToken = refreshtoken;
       
-      const expirationDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
       res.cookie("accessToken", accesstoken, {
-        expires: expirationDate,
         httpOnly: true,
         secure: true,
       });
@@ -64,9 +62,7 @@ export default (dependecies: any) => {
       };
       req.session.refreshToken = refreshtoken;
       console.log(req.session.refreshToken ,"req.session.refreshToken ");
-      const expirationDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
       res.cookie("accessToken", accesstoken, {
-        expires: expirationDate,
         httpOnly: true,
         secure: true,
       });
