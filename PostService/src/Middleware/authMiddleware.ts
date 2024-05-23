@@ -19,7 +19,7 @@ console.log(process.env.ACCESS_SECRET_KEY,"process.env.ACCESS_SECRET_KEYprocess.
                     res.status(400).json('Token not found');
                 }
                 console.log("Token verified")
-                next();
+                next(); 
             }catch(err){
                 console.log("Catch in authMiddleware ==>",err);
                 res.status(401).json('Invalid access token');
