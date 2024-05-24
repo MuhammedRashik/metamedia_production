@@ -26,6 +26,21 @@ error => {
 }
 );
 
+axiosFormDataInstance.interceptors.request.use(
+  config => {
+    const accessToken = localStorage.getItem('accesstoken')
+    console.log(accessToken,"axiosFormDataInstance");
+    
+  if (accessToken) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return config;
+},
+error => {
+  return Promise.reject(error);
+}
+);
+
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -62,20 +77,6 @@ axiosInstance.interceptors.response.use(
 
     // For Images
 
-axiosFormDataInstance.interceptors.request.use(
-  config => {
-    const accessToken = localStorage.getItem('accesstoken')
-    console.log("accessToken,axiosFormDataInstance");
-    
-  if (accessToken) {
-    config.headers['Authorization'] = `Bearer ${accessToken}`;
-  }
-  return config;
-},
-error => {
-  return Promise.reject(error);
-}
-);
 
 axiosFormDataInstance.interceptors.response.use(
   (response) => {

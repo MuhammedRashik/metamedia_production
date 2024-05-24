@@ -34,7 +34,7 @@ export const CreateConversationFunction = (data: any) => {
 
 export const CreateNewGroupFuntion = async (data: any) => {
   try {
-    const responce = await axios.create({withCredentials:true}).post(CreateNewGroup_Api, data);
+    const responce = await axiosFormDataInstance.post(CreateNewGroup_Api, data);
     return responce.data;
   } catch (error) {
     return error;
@@ -52,7 +52,7 @@ export const SendGroupMessageFunction = async (data: any) => {
 
 export const SendVoiceNoteFunction = async (data: any) => {
   try {
-    const responce = await axios.create({withCredentials:true}).post(
+    const responce = await axiosFormDataInstance.post(
       SendVoiceMessge_Api,
       data
     );
@@ -63,7 +63,7 @@ export const SendVoiceNoteFunction = async (data: any) => {
 };
 export const SendVoiceFunction = async (data: any) => {
   try {
-    const responce = await axios.create({withCredentials:true}).post(SendVoice_Api, data);
+    const responce = await axiosFormDataInstance.post(SendVoice_Api, data);
     return responce.data;
   } catch (error) {
     return error;
@@ -72,7 +72,7 @@ export const SendVoiceFunction = async (data: any) => {
 
 export const SendFileMessageFunction = async (data: any) => {
   try {
-    const responce = await axios.create({withCredentials:true}).post(
+    const responce = await axiosFormDataInstance.post(
       sendFileMessage_Api,
       data
     );
@@ -91,7 +91,7 @@ export const BlockAndUnblockUserFunction = (data: any) => {
 
 export const SendFileForMessageFunction = async (data: any) => {
   try {
-    const responce = await axios.create({withCredentials:true}).post(
+    const responce = await axiosFormDataInstance.post(
       SendFileForMessage_Api,
       data
     );

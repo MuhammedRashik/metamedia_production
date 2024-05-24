@@ -1,6 +1,5 @@
 import { AddHighlight_Api, AddStory_Api, AddVideos_Api, DeleteStory_Api, getMyAllStoriesForHighLightList_Api } from "../../../endpoints/common";
 import {axiosFormDataInstance, axiosInstance} from "../../../../costumHook/constumHook";
-import axios from "axios";
 
 export const addHighlightFunction = (data: any) => {
   try {
@@ -16,7 +15,7 @@ export const AddStoryFunction = async (data: { image: FormData, caption: string 
     data.image.append('caption', data.caption);
     data.image.append('profile', data.profile);
 
-    const response = await axios.create({withCredentials:true}).post(AddStory_Api, data.image)
+    const response = await axiosFormDataInstance.post(AddStory_Api, data.image)
     return response.data;
   } catch (error) {
     console.error("Error adding profile image:", error);

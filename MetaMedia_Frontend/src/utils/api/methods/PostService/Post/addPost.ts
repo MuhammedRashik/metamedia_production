@@ -1,6 +1,5 @@
 import { AddPost_Api } from "../../../endpoints/common";
 import { axiosFormDataInstance } from "../../../../costumHook/constumHook";
-import axios from "axios";
 
 export const AddPostFuntion = async (data: any) => {
   try {
@@ -28,7 +27,7 @@ export const AddPostFuntion = async (data: any) => {
     formData.append("showLikes", showLikes);
     formData.append("tags", tags);
 
-    const response = await axios.create({withCredentials:true}).post(AddPost_Api, formData);
+    const response = await axiosFormDataInstance.post(AddPost_Api, formData);
     return response.data;
   } catch (err) {
     return err;
