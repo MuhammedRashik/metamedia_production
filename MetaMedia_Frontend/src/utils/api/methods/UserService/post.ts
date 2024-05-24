@@ -11,6 +11,7 @@ import {
   getuserById_Api,
 } from "../../endpoints/common";
 import {axiosFormDataInstance, axiosInstance} from "../../../costumHook/constumHook";
+import axios from "axios";
 
 export const EditProfileFunction = (data: any) => {
   try {
@@ -30,7 +31,7 @@ export const AddProfileFunction = async (data: any) => {
 
 export const addProfileImageFunction = async (formData: FormData) => {
   try {
-    const response = await axiosFormDataInstance.post(AddProfileImage_Api, formData)
+    const response = await axios.create({withCredentials:true}).post(AddProfileImage_Api, formData)
     return response.data;
   } catch (error) {
     console.error("Error adding profile image:", error);
