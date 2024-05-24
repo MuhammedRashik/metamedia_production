@@ -47,7 +47,6 @@ console.log('hi from stor service ');
       credentials: true,
     })
   );
-
   app.use(
     session({
       secret: "1234666",

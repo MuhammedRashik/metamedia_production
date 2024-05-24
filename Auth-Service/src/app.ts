@@ -57,7 +57,6 @@ app.use(
   );
   
 expresscofig(app)
-
 authConsumer(dependencies)
 
 app.use('/api',routes(dependencies))
