@@ -23,6 +23,8 @@ export default (dependecies: any) => {
     );    
     //access token
     if (!response.status) {
+      console.log(response.admin,"response.admin");
+      
       res.json({ message: response?.message, status: false });
     }else if(response.admin){
       
@@ -48,8 +50,7 @@ export default (dependecies: any) => {
         user: adminWithOutpassword,
         message: message,
       });
-    } 
-    else {
+    } else {
       const { accesstoken, refreshtoken, user, message,admin } = response;
       const userWithOutpassword = {
         _id: user._id,
@@ -66,6 +67,7 @@ export default (dependecies: any) => {
         httpOnly: true,
         secure: true,
       });
+console.log("Login Success Response");
 
       res.status(201).json({
         status: true,

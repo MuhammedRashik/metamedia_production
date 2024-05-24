@@ -18,6 +18,8 @@ export const LoginFuntion = async (data: any) => {
   try {
     return axios.create({ withCredentials: true }).post(Login_Api, data);
   } catch (error) {
+    console.log(error,"eerrtt");
+    
     return error;
   }
 };

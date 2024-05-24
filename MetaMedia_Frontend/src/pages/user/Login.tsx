@@ -205,6 +205,7 @@ const Login = () => {
 
   //form data set in
   const formsubmit = async (Data: LoginFormData) => {
+    console.log("Calling LoginFuntion");
     const userExist: any = await LoginFuntion({ ...Data });    
     console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
     if (userExist.data.status == false) {
