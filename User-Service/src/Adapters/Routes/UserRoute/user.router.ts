@@ -14,7 +14,7 @@ export default (dependencies:any)=>{
     router.post('/addProfile' , authMiddleware , addProfileController)
     router.post('/editProfile' , authMiddleware , editProfileController)
     router.post('/chooseInterest' , authMiddleware , chooseInterestController)
-    router.post('/addProfileImage' , upload.single("file") , authMiddleware , addProfileImageController)
+    router.post('/addProfileImage' , authMiddleware , upload.single("file") , addProfileImageController)
     router.post("/followUser" , authMiddleware , followUserController)
     router.get("/getAllUsersForChat" , authMiddleware , getAllUserForChatController)
     router.post('/getUsersByname' , authMiddleware , getUsersByNameController)

@@ -3,8 +3,8 @@ export const decodeDataFromHeaders = (headers: any) => {
   console.log(decodedTokenData,"decodedTokenData");
   
     if (decodedTokenData.user) {
-      const userId = decodedTokenData?.user?._id ||  decodedTokenData?.user?.response?._id;    
-      return userId
+      const userId = decodedTokenData?.user?._id ||  decodedTokenData?.user?.user?._id;
+            return userId
   }else{
     return {status:false , message:"user Not Exist"}
   }

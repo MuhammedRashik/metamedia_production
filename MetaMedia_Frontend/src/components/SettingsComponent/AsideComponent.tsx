@@ -59,6 +59,8 @@ const Aside = ({
       console.log(formData, "FORMDATA");
 
       const response = await addProfileImageFunction(formData);
+      console.log(response,"responseprofile");
+      
       if (response?.status) {
         const data = {
           profile: response?.data?.profile?.profileUrl,

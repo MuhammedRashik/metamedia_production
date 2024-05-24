@@ -65,6 +65,8 @@ axiosInstance.interceptors.response.use(
 axiosFormDataInstance.interceptors.request.use(
   config => {
     const accessToken = localStorage.getItem('accesstoken')
+    console.log("accessToken,axiosFormDataInstance");
+    
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
