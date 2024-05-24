@@ -203,9 +203,7 @@ const MainBody = ({
   // Add scroll event listener when the component mounts
   useEffect(() => {
     const container:any = document.querySelector('.scroll-container');
-    if (container) {
-      console.log("YOYO");
-      
+    if (container) {      
       container.addEventListener('scroll', handleScroll);
     }
     return () => {

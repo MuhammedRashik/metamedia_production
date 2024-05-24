@@ -59,39 +59,8 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     }
   };
   return (
-    <div className="flex flex-col h-[400px] relative">
-      <div className="w-[600px hidden md:flex">
-        <Cropper
-          image={imageUrl}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          onCropChange={setCrop}
-          onCropComplete={onCropComplete}
-          onZoomChange={setZoom}
-          style={{
-              containerStyle: {
-                  width: "100%",
-                  height: "500px",
-                  overflow: "hidden",
-                  backgroundColor: "black",
-                },
-                mediaStyle: {
-                    width: "",
-                    height: "",
-                    display: "block",
-                },
-                cropAreaStyle: {
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                },
-            }}
-        /> 
-
-      </div>
-      <div className="w-[600px md:hidden flex">
+    <div className="flex flex-col h-[400px] md:h-[590px] relative">
+      <div className="w-[600px]  flex">
         <Cropper
           image={imageUrl}
           crop={crop}

@@ -357,6 +357,12 @@ const SinglePostModal = ({ render, setRender }: any) => {
                   </div>
                 </>
               )}
+              <div className="w-full border h-14 flex items-center justify-center font-medium text-sm">
+                Go to Post
+              </div>
+              <div className="w-full border h-14 flex items-center justify-center font-medium text-sm">
+                Share To
+              </div>
               <div
                 className="w-full border h-14 flex items-center justify-center font-medium text-sm"
                 onClick={handleDot}

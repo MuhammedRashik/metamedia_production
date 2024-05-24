@@ -5,7 +5,7 @@ import {
   Bookmark,
   SendHorizonal,
 } from "lucide-react";
-
+import profile from "../../assets/profile.webp";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByIdFuntion } from "../../utils/api/methods/UserService/post";
@@ -103,7 +103,9 @@ const PostScroll = ({ data, render, setRender }: any) => {
               src={
                 data.userData?.profile?.profileUrl.startsWith("https://graph")
                   ? data.userData?.profile?.profileUrl
-                  : `${img_User_baseUrl}${data.userData?.profile?.profileUrl}`
+                  : data.userData?.profile?.profileUrl ? 
+                  `${img_User_baseUrl}${data.userData?.profile?.profileUrl}`
+                  :profile
               }
               alt=""
             />
