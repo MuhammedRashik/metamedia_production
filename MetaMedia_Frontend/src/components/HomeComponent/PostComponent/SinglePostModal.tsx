@@ -19,6 +19,7 @@ import {
   addPostData,
   isSinglePostModalOpen,
 } from "../../../utils/ReduxStore/Slice/singlePostSlice";
+import profile from "../../../assets/profile.webp";
 import { LikePostFuntion } from "../../../utils/api/methods/PostService/Post/likePost";
 import { toast } from "sonner";
 import { AddCommentFunction } from "../../../utils/api/methods/PostService/Post/addComment";
@@ -356,12 +357,6 @@ const SinglePostModal = ({ render, setRender }: any) => {
                   </div>
                 </>
               )}
-              <div className="w-full border h-14 flex items-center justify-center font-medium text-sm">
-                Go to Post
-              </div>
-              <div className="w-full border h-14 flex items-center justify-center font-medium text-sm">
-                Share To
-              </div>
               <div
                 className="w-full border h-14 flex items-center justify-center font-medium text-sm"
                 onClick={handleDot}
@@ -524,7 +519,11 @@ const SinglePostModal = ({ render, setRender }: any) => {
                         NavigateToUserProfile(postUser.basicInformation.userId)
                       }
                       className="w-8 h-8 md:w-12 md:h-12 border-2 border-black rounded-full"
-                      src={`${img_User_baseUrl}${postUser?.profile?.profileUrl}`}
+                      src={
+                        postUser?.profile?.profileUrl ?
+                        `${img_User_baseUrl}${postUser?.profile?.profileUrl}`
+                      : profile
+                      }
                       alt=""
                     />
                   </div>
@@ -562,7 +561,11 @@ const SinglePostModal = ({ render, setRender }: any) => {
                                 <div className="h-full w-1/6  flex justify-center items-start p-1">
                                   <img
                                     className="w-6 md:w-10 h-6 md:h-10 rounded-full"
-                                    src={`${img_User_baseUrl}${item?.profile}`}
+                                    src={
+                                      item?.profile ?
+                                      `${img_User_baseUrl}${item?.profile}`
+                                    : profile
+                                    }
                                     alt=""
                                   />
                                 </div>
@@ -624,7 +627,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
                                               <div className=" h-10  ml-5 w-8/12   flex justify-between border p-2 rounded-md">
                                                 <div className="w-5/12 flex justify-start items-center">
                                                   <img
-                                                    src="https://i.pinimg.com/736x/ae/ea/57/aeea57bf10e83de82769db03e9210a17.jpg"
+                                                    src={profile}
                                                     className="w-8 h-8 object-cover rounded-full border "
                                                     alt=""
                                                   />
@@ -728,11 +731,16 @@ const SinglePostModal = ({ render, setRender }: any) => {
                       className="w-full h-full p-2 outline-none "
                       placeholder="Add a comment.. "
                       value={isReplay ? `${replayUserName} ${text}` : text}
-                      onChange={(e) =>
-                        setText(
-                          e.target.value.replace(`${replayUserName} `, "")
-                        )
-                      }
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (isReplay) {
+                          // Remove replayUserName and extra space from the input
+                          const textWithoutReplayUserName = value.replace(`${replayUserName} `, "");
+                          setText(textWithoutReplayUserName);
+                        } else {
+                          setText(value);
+                        }
+                      }}
                     />
                     {isReplay ? (
                       <>
