@@ -44,6 +44,8 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     
         const croppedImageBase64:any = canvas.toDataURL('image/jpeg');
         setTrimVideo(true)
+        console.log(croppedImageBase64,"croppedImageBase64croppedImageBase64");
+        
         setCroppedImage(croppedImageBase64)
   }
 
@@ -59,59 +61,71 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     }
   };
   return (
-    <div className="flex justify-center h-[400px] md:h-[600px]">
-    <div
-      className="flex justify-center items-center h-full w-full"
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
-    >
-      <div className="rounded-lg shadow-lg w-[500px] h-[450px] flex border border-black flex-col justify-between relative p-8">
-       {selectedFile && <X size={26} className="absolute right-2 top-2 text-black" onClick={()=>setSelectedFile(null)}/>}
-        {!selectedFile && <p className="text-center text-black">Drag photos and videos here</p> }
-        {!selectedFile && <ImagePlus width={80} height={200} className="self-center text-black"/>}
-        {selectedFile ? (
-          <>
-            <p className="mb-4 text-black">File: {selectedFile.name}</p>
-            {selectedFile.type?.startsWith("image") ? (
-              <div className="flex justify-center">
+    <div className="flex flex-col h-[400px] md:h-[590px] relative">
+    <div className="w-[600px]  flex">
+      <Cropper
+        image={imageUrl}
+        crop={crop}
+        zoom={zoom}
+        aspect={aspect}
+        onCropChange={setCrop}
+        onCropComplete={onCropComplete}
+        onZoomChange={setZoom}
+        style={{
+            containerStyle: {
+                width: "100%",
+                height: "80%",
+                overflow: "hidden",
+                backgroundColor: "black",
+              },
+              mediaStyle: {
+                  width: "",
+                  height: "",
+                  display: "block",
+              },
+              cropAreaStyle: {
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+              },
+          }}
+      /> 
 
-                <img
-                  src={URL.createObjectURL(selectedFile)}
-                  alt="Selected"
-                  className=" w-72 h-80"
-                />
-              </div>
-            ) : selectedFile.type?.startsWith("video") ? (
-              <video
-                src={URL.createObjectURL(selectedFile)}
-                controls
-                className="max-w-full h-auto"
-              />
-            ) : (
-              <p className="text-red-800">Unsupported file type</p>
-            )}
-          </>
-        ) : (
-          <div className="flex justify-center">
-
-          <label
-            htmlFor="fileInput"
-            className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 text-center bg-[#C1506D] bottom-0 text-white font-semibold px-1 w-40 py-2 rounded-lg"
-          >
-            Choose File
-          </label>
-          </div>
-        )}
-        <input
-          type="file"
-          id="fileInput"
-          className="hidden"
-          accept="image/*,video/*"
-          onChange={handleFileChange}
-        />
-      </div>
     </div>
-
+    <div className="w-full h-20 rounded absolute bottom-0">
+      <div className="flex justify-center items-center">
+      <ZoomOut className="text-black mt-2" onClick={handleZoomOut} />
+      <input
+        type="range"
+        value={zoom}
+        min={1}
+        max={3}
+        step={0.1}
+        aria-labelledby="Zoom"
+        onChange={(e: any) => {
+          setZoom(e.target.value);
+        }}
+        className="zoom-range "
+      />
+      <ZoomIn className="text-black mt-2" onClick={handleZoomIn} />
+      </div>
+          <div className=" flex justify-center w-full h-12 border rounded p-1.5">
+            <div
+              className="p-2 w-14  md:w-24 flex justify-center border rounded text-black "
+              onClick={() => setAspect([1 / 1])}
+            >
+              1:1
+            </div>
+            <div
+              className="p-2 w-14 md:w-24 flex justify-center border rounded text-black"
+              onClick={() => setAspect([4 / 5])}
+            >
+              4:5
+            </div>
+          </div>
+          <button className= "text-[#C1506D] absolute focus:outline-none focus:ring-2 focus:ring-offset-2 bottom-3 right-5 font-bold border border-black px-3 rounded-full" onClick={cropImage}>Crop</button>
+    </div>
   </div>
   );
 };
