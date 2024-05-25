@@ -25,7 +25,7 @@ useEffect(() => {
         toast.success('User list updated');
         setUsers(users);
       });
-
+ 
       socket.on("userPositionUpdated", ({ userId, position }:any) => {
         console.log('getiing',position);
         
