@@ -60,17 +60,18 @@ if(socket){
      
   
   <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
-   {users && users.length>0 && (
+  <WhiteTshirtGirlModel />
+   {/* {users && users.length>0 && (
     <>
     {users.map((user:any)=>{
         return (
             <>
- <WhiteTshirtGirlModel key={user.userId}/>
+
             </>
         )
     })}
     </>
-   )}
+   )} */}
 
    
      <HomeTownModel />
