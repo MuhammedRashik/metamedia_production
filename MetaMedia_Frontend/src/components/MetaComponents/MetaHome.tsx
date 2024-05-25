@@ -93,7 +93,7 @@ useEffect(() => {
      
   
   <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
-  <WhiteTshirtGirlModel />
+  {/* <WhiteTshirtGirlModel /> */}
   {users.map((user) => (
             <Box position={user.position} />
             ))}
