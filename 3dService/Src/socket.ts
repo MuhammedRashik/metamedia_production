@@ -1,46 +1,54 @@
 import { Server, Socket } from 'socket.io';
-import dependencies from './Frameworks/Config/Dependencies';
 
+const socketConfig = (io:any) => {
+  let users:any = [];
 
-const socketConfig = (io:any)=>{
- let users:any=[];
- io.on("connection",(socket:Socket)=>{
+  io.on("connection", (socket:Socket) => {
 
-    //adding new user to virtual world
-    socket.on("addNewUserToMeta", (data: any) => {
-        const { userId } = data;
-        const isUserExist = users.find((user: any) => user.userId === userId);
+    // Adding new user to virtual world
+    socket.on("addNewUserToMeta", (data:any) => {
+      const { userId } = data;
+      const isUserExist = users.find((user:any) => user.userId === userId);
+      
+      if (!isUserExist) {
+        const user = { userId, socketId: socket.id, position: { x: 0, y: 0, z: 0 } };
+        users.push(user);
+        console.log("adding new user", user);
+      } else {
+        isUserExist.socketId = socket.id;
+        console.log("updating socket ID for existing user", isUserExist);
+      }
+
+      // Notify all users about the new user
+   
+   
+        io.emit("updateUsers", users);
+  
+    });
+
+    // Set position for the user
+    socket.on("setUserPosition", (data:any) => {
+        console.log(data,'--');
         
-        if (!isUserExist) {
-            const user = { userId, socketId: socket.id };
-            console.log("adding new user", user);
-            users.push(user);
-        } else {
-            isUserExist.socketId = socket.id;
-            console.log("updating socket ID for existing user", isUserExist);
-        }
+      const { userId, position } = data;
+      const user = users.find((user:any) => user.userId === userId);
+      console.log(user);
+      
+      if (user) {
+        console.log('here');
+        
+        user.position = position;
+     
+        io.emit("userPositionUpdated", { userId, position });
+      }
     });
 
-
-    //set possition for the user
-    socket.on("setUserPossition",(data:any)=>{
-        // const {}
-    })
-
-
-
-
-
-
-
-
-
-
+    // Handle user disconnection
     socket.on("disconnect", () => {
-        users = users.filter((user:any) => user.socketId !== socket.id);
+      users = users.filter((user:any) => user.socketId !== socket.id);
+      io.emit("updateUsers", users);
     });
- })
-
+  });
 }
 
-export default socketConfig
+export default socketConfig;
