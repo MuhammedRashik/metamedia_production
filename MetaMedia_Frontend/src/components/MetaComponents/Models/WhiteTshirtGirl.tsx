@@ -63,7 +63,7 @@ const directionOffset=({forward,backword,left,right}:any)=>{
 
 export function WhiteTshirtGirlModel(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null)
-  const { nodes, materials, animations } = useGLTF('../Models/whiteTshirtGirl.gltf') as GLTFResult
+  const { nodes, materials, animations } = useGLTF('../../../../Models/whiteTshirtGirl.gltf') as GLTFResult
   const { actions } = useAnimations(animations, group)
   const { backword, forward, left, right, shift } = useInput()
   const currentAction = useRef<ActionName>('idle')
@@ -193,4 +193,4 @@ updateCamaraTarget(moveX,moveZ)
   )
 }
 
-useGLTF.preload('../Models/whiteTshirtGirl.gltf')
+useGLTF.preload('../../../../Models/whiteTshirtGirl.gltf')
