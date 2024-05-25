@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "randomcolor": "^0.6.2"
-  },
-  "devDependencies": {
-    "@types/randomcolor": "^0.5.9"
-  }
-}
