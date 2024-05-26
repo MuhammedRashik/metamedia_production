@@ -63,7 +63,7 @@ const MetaHome = () => {
                 <WhiteTshirtGirlModel
               key={user.userId}
               position={new THREE.Vector3(user.position.x, user.position.y, user.position.z)}
-              setPosition={user.userId === userData.userId ? setPosition : undefined}
+              setPosition={setPosition}
             />
                 </>
             )
