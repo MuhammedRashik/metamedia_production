@@ -14,16 +14,6 @@ const MetaHome = () => {
   const socket: any = useSocket()
   const [position, setPosition] = useState(new THREE.Vector3(0, 0, 0))
 
-  useEffect(() => {
-    console.log(position, '=====')
-    if(socket){
-        const payload={
-            userId:userData.userId,
-            position:position
-        }
-        socket.emit('setUserPosition',payload)
-    }
-  }, [position])
 
   useEffect(() => {
     if (socket) {
@@ -68,7 +58,13 @@ const MetaHome = () => {
          {users.map((user:any)=>{
             return(
                 <>
-                 <WhiteTshirtGirlModel key={user.userId} position={user.position} setPosition={setPosition} />
+                
+               
+                <WhiteTshirtGirlModel
+              key={user.userId}
+              position={new THREE.Vector3(user.position.x, user.position.y, user.position.z)}
+              setPosition={user.userId === userData.userId ? setPosition : undefined}
+            />
                 </>
             )
          })}
