@@ -69,7 +69,7 @@ useEffect(() => {
     
    if(socket){
     console.log(newPosition);
-    socket.emit("setUserPosition", { userId: userId, position: newPosition });
+    socket.emit("setUserPosition", { userId: userData.userId, position: newPosition });
    }
   };
 
