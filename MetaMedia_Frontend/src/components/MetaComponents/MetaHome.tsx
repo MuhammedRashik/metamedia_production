@@ -62,7 +62,7 @@ const MetaHome = () => {
             return(
                 <>
                
-                 <BalckManModel key={user.userId} position={new THREE.Vector3(user.position.x,user.position.y,user.position.z)} setPosition={setPosition}  camaraPosition={camaraPosition} setCamaraPosition={setCamaraPosition}/>
+                 <BalckManModel key={user.userId} position={user.position} setPosition={setPosition}  camaraPosition={camaraPosition} setCamaraPosition={setCamaraPosition}/>
                 </>
             )
          })}

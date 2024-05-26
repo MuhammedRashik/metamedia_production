@@ -123,20 +123,20 @@ export function BalckManModel({position,setPosition,camaraPosition,setCamaraPosi
     }
   }, [backword, forward, left, right, shift, actions])
 
-  useEffect(() => {
-    if (socket) {
-      socket.on("userPositionUpdated", ({ userId, position }) => {
-        if (userId === userData.userId) {
-          setPosition(new THREE.Vector3(position.x, position.y, position.z))
+  // useEffect(() => {
+  //   if (socket) {
+  //     socket.on("userPositionUpdated", ({ userId, position }) => {
+  //       if (userId === userData.userId) {
+  //         setPosition(new THREE.Vector3(position.x, position.y, position.z))
          
-        }
-      })
+  //       }
+  //     })
 
-      return () => {
-        socket.off("userPositionUpdated")
-      }
-    }
-  }, [socket, userData.userId])
+  //     return () => {
+  //       socket.off("userPositionUpdated")
+  //     }
+  //   }
+  // }, [socket, userData.userId])
 
   return (
    <>
