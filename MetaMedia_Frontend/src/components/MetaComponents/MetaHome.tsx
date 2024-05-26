@@ -7,13 +7,16 @@ import { useSocket } from '../../utils/costumHook/useSoket'
 import { WhiteTshirtGirlModel } from './Models/WhiteTshirtGirl'
 import { HomeTownModel } from './Models/Home'
 import * as THREE from 'three'
-
+import {BalckManModel} from '../MetaComponents/Models/BlackMan'
 const MetaHome = () => {
   const [users, setUsers] = useState([])
   const userData = useSelector((state: any) => state.persisted.user.userData)
+// const userData={
+//     userId:"hi"
+// }
   const socket: any = useSocket()
   const [position, setPosition] = useState(new THREE.Vector3(0, 0, 0))
-
+  const [camaraPosition,setCamaraPosition]=useState(new THREE.Vector3(0,0,0))
 
   useEffect(() => {
     if (socket) {
@@ -55,16 +58,11 @@ const MetaHome = () => {
         <ambientLight intensity={2} />
         <directionalLight />
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
-         {users.map((user:any)=>{
+         {users.map((user)=>{
             return(
                 <>
-                
                
-                <WhiteTshirtGirlModel
-              key={user.userId}
-              position={new THREE.Vector3(user.position.x, user.position.y, user.position.z)}
-              setPosition={setPosition}
-            />
+                 <BalckManModel key={user.userId} position={new THREE.Vector3(user.position.x,user.position.y,user.position.z)} setPosition={setPosition}  camaraPosition={camaraPosition} setCamaraPosition={setCamaraPosition}/>
                 </>
             )
          })}

@@ -1,11 +1,10 @@
 import * as THREE from 'three'
-import React, { useEffect, useRef } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations, OrbitControls } from '@react-three/drei'
 import { useThree, useFrame } from 'react-three-fiber'
 import { useInput } from '../../../utils/costumHook/useInpute'
 import { useSocket } from '../../../utils/costumHook/useSoket'
-import { useSelector } from 'react-redux'
-
+import { log } from 'console'
 let walkDirection = new THREE.Vector3();
 let rotationAngle = new THREE.Vector3(0, 1, 0)
 let rotationQuarternion = new THREE.Quaternion()
@@ -60,7 +59,9 @@ const directionOffset = ({ forward, backword, left, right }: any) => {
 
 export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.IntrinsicElements['group']) {
   const socket = useSocket()
-  const userData = useSelector((state: any) => state.persisted.user.userData)
+  const userData = {
+    userId: "hi"
+  }
   const group = useRef<THREE.Group>(null)
   const { nodes, materials, animations } = useGLTF('../../../../Models/whiteTshirtGirl.gltf') as GLTFResult
   const { actions } = useAnimations(animations, group)
@@ -70,6 +71,8 @@ export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.
   const { camera } = useThree()
 
   const updateCamaraTarget = (moveX: number, moveZ: number) => {
+   
+    
     camera.position.x += moveX
     camera.position.z += moveZ
 
@@ -138,15 +141,42 @@ export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.
       const moveX = walkDirection.x * velocity * delta
       const moveZ = walkDirection.z * velocity * delta
 
-      setPosition((prev: any) => {
-        const newPosition = new THREE.Vector3(prev.x + moveX, prev.y, prev.z + moveZ)
-       if(socket) socket.emit('setUserPosition', { userId: userData.userId, position: newPosition }) // Emit position update
-        return newPosition
-      })
+      const newPosition = {
+        x: position.x + moveX,
+        y: position.y,
+        z: position.z + moveZ
+      }
 
+      const move={
+        moveX,
+        moveZ
+      }
+
+      // setPosition(new THREE.Vector3(newPosition.x, newPosition.y, newPosition.z))
+      // updateCamaraTarget(move.moveX, move.moveZ)
+      setPosition((prev:any) => new THREE.Vector3(prev.x + moveX, prev.y, prev.z + moveZ))
       updateCamaraTarget(moveX, moveZ)
+      // if(socket)socket.emit("setUserPosition", { userId: userData.userId, position: newPosition , move })
+      // Commented out the direct update, will update via socket response
+      
     }
   })
+
+  // Listen for position updates from the server
+  useEffect(() => {
+    if (socket) {
+      socket.on("userPositionUpdated", ({ userId, position, move }: any) => {
+        if (userId === userData.userId) {
+          setPosition(new THREE.Vector3(position.x, position.y, position.z))
+          updateCamaraTarget(move.moveX,move.moveZ) // Adjust as needed
+        }
+      })
+
+      return () => {
+        socket.off("userPositionUpdated")
+      }
+    }
+  }, [socket, userData.userId])
 
   return (
     <>
