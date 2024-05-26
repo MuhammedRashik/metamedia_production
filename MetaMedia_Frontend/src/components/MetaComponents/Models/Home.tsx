@@ -10244,3 +10244,5 @@ export function HomeTownModel(props: JSX.IntrinsicElements['group']) {
 }
 
 useGLTF.preload('../Models/home.gltf')
+
+

@@ -7,15 +7,16 @@ const socketConfig = (io:any) => {
 
     // Adding new user to virtual world
     socket.on("addNewUserToMeta", (data:any) => {
-      const { userId } = data;
+      const { userId,position} = data;
       const isUserExist = users.find((user:any) => user.userId === userId);
       
       if (!isUserExist) {
-        const user = { userId, socketId: socket.id, position: { x: 0, y: 0, z: 0 } };
+        const user = { userId, socketId: socket.id, position: position };
         users.push(user);
         console.log("adding new user", user);
       } else {
         isUserExist.socketId = socket.id;
+        isUserExist.position=position
         console.log("updating socket ID for existing user", isUserExist);
       }
 

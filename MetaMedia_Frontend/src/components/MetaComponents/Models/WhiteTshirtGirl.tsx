@@ -1,15 +1,14 @@
 import * as THREE from 'three'
-import React, { forwardRef, useEffect, useRef } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations, OrbitControls } from '@react-three/drei'
 import { useThree, useFrame } from 'react-three-fiber'
 import { useInput } from '../../../utils/costumHook/useInpute'
 import { useBox } from '@react-three/cannon'
 
-let walkDirection=new THREE.Vector3();
-let rotationAngle=new THREE.Vector3(0,1,0)
-let rotationQuarternion=new THREE.Quaternion()
-let camaraTarget=new THREE.Vector3()
-
+let walkDirection = new THREE.Vector3();
+let rotationAngle = new THREE.Vector3(0, 1, 0)
+let rotationQuarternion = new THREE.Quaternion()
+let camaraTarget = new THREE.Vector3()
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -33,35 +32,32 @@ interface GLTFAction extends THREE.AnimationClip {
   name: ActionName
 }
 
+const directionOffset = ({ forward, backword, left, right }: any) => {
+  var directionOffset = 0;
+  if (forward) {
+    if (left) {
+      directionOffset = Math.PI / 4
+    } else if (right) {
+      directionOffset = -Math.PI / 4
+    }
+  } else if (backword) {
+    if (left) {
+      directionOffset = Math.PI / 4 + Math.PI / 2
+    } else if (right) {
+      directionOffset = -Math.PI / 4 - Math.PI / 2
+    } else {
+      directionOffset = Math.PI
+    }
+  } else if (left) {
+    directionOffset = Math.PI / 2
+  } else if (right) {
+    directionOffset = -Math.PI / 2
+  }
 
-const directionOffset=({forward,backword,left,right}:any)=>{
- var directionOffset=0;
- if(forward){
-   if(left){
-    directionOffset= Math.PI /4
-   }else if(right){
-    directionOffset= -Math.PI /4
-
-   }
- }else if(backword){
-  if(left){
-    directionOffset= Math.PI / 4 + Math.PI/2
-   }else if(right){
-    directionOffset= -Math.PI / 4 - Math.PI/2
-
-   }else{
-    directionOffset=Math.PI
-   }
- }else if(left){
-  directionOffset= Math.PI/2
- }else if(right){
-  directionOffset= -Math.PI /2
- }
-
- return directionOffset
+  return directionOffset
 }
 
-export function WhiteTshirtGirlModel(props: JSX.IntrinsicElements['group']) {
+export function WhiteTshirtGirlModel({position,setPosition}:any,props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null)
   const { nodes, materials, animations } = useGLTF('../../../../Models/whiteTshirtGirl.gltf') as GLTFResult
   const { actions } = useAnimations(animations, group)
@@ -69,39 +65,24 @@ export function WhiteTshirtGirlModel(props: JSX.IntrinsicElements['group']) {
   const currentAction = useRef<ActionName>('idle')
   const controlRef = useRef<typeof OrbitControls>()
   const { camera } = useThree()
- 
 
+  const updateCamaraTarget = (moveX: number, moveZ: number) => {
+    camera.position.x += moveX
+    camera.position.z += moveZ
 
+    camaraTarget.x = position.x
+    camaraTarget.y = position.y + 2
+    camaraTarget.z = position.z
 
-
-
-  const updateCamaraTarget=(moveX:number,moveZ:number)=>{
-    camera.position.x +=moveX
-    camera.position.z +=moveZ
-
-   if(group.current){
-    
-    
-    camaraTarget.x = group.current?.position.x
-    camaraTarget.y = group.current?.position.y + 2
-    camaraTarget.z = group.current?.position.z
-
-    if(controlRef.current) {
-     
-
-      
+    if (controlRef.current) {
       controlRef.current.target = camaraTarget
     }
+  }
 
+  useEffect(() => {
+    actions.idle?.reset().play()
+  }, [])
 
-   }
-
-  } 
-
-//insial rendering for user
-  useEffect(()=>{
- actions.idle?.reset().play()
-  },[])
   useEffect(() => {
     let action: ActionName = 'idle'
     if (forward || backword || left || right) {
@@ -127,56 +108,43 @@ export function WhiteTshirtGirlModel(props: JSX.IntrinsicElements['group']) {
   }, [backword, forward, left, right, shift, actions])
 
   useFrame((state, delta) => {
-   
-    
     if (currentAction.current === 'run' || currentAction.current === 'walk') {
-      if (group.current) {
-        let angleYCamaraDirection=Math.atan2(
-          camera.position.x - group.current.position.x,
-          camera.position.z - group.current.position.z
-        )
+      let angleYCamaraDirection = Math.atan2(
+        camera.position.x - position.x,
+        camera.position.z - position.z
+      )
 
-let newDirectionOffset=directionOffset({
-  forward,backword,left,right
-})
+      let newDirectionOffset = directionOffset({
+        forward, backword, left, right
+      })
 
-rotationQuarternion.setFromAxisAngle(
-  rotationAngle,
-  angleYCamaraDirection + newDirectionOffset
-)
+      rotationQuarternion.setFromAxisAngle(
+        rotationAngle,
+        angleYCamaraDirection + newDirectionOffset
+      )
 
-group.current.quaternion.rotateTowards(rotationQuarternion,0.2)
+      group.current.quaternion.rotateTowards(rotationQuarternion, 0.2)
 
+      camera.getWorldDirection(walkDirection)
+      walkDirection.y = 0;
+      walkDirection.normalize()
+      walkDirection.applyAxisAngle(rotationAngle, newDirectionOffset)
 
-camera.getWorldDirection(walkDirection)
-walkDirection.y=0;
-walkDirection.normalize()
-walkDirection.applyAxisAngle(rotationAngle,newDirectionOffset)
+      const velocity = currentAction.current === 'run' ? 10 : 5
 
+      const moveX = walkDirection.x * velocity * delta
+      const moveZ = walkDirection.z * velocity * delta
 
-const velocity=currentAction.current=='run' ? 10: 5
+      setPosition((prev:any) => new THREE.Vector3(prev.x + moveX, prev.y, prev.z + moveZ))
 
-const moveX=walkDirection.x * velocity *delta
-const moveZ=walkDirection.z * velocity *delta
-
-group.current.position.x += moveX
-group.current.position.z += moveZ
-
-updateCamaraTarget(moveX,moveZ)
-
-      }
-
-
-      
+      updateCamaraTarget(moveX, moveZ)
     }
-
-
   })
 
   return (
     <>
       <OrbitControls ref={controlRef} />
-      <group ref={group} {...props} dispose={null}>
+      <group ref={group} position={position} {...props} dispose={null}>
         <group name="Scene" >
           <group name="Armature002" position={[0, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.012}>
             <primitive object={nodes.mixamorig2Hips} />
