@@ -94,9 +94,13 @@ useEffect(() => {
   
   <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
   {/* <WhiteTshirtGirlModel /> */}
-  {users.map((user) => (
-            <Box position={user.position} />
-            ))}
+  {users && users.map((user:any) => {
+    return (
+        <>
+        <Box position={user.position} />
+        </>
+    )
+  })}
 
    
      <HomeTownModel />
