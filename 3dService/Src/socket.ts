@@ -1,53 +1,57 @@
 import { Server, Socket } from 'socket.io';
 
-const socketConfig = (io: any) => {
-  let users: any[] = [];
+interface User {
+  userId: string;
+  socketId: string;
+  position: { x: number; y: number; z: number };
+}
 
-  io.on("connection", (socket: Socket) => {
+const socketConfig = (io: Server) => {
+  let users: User[] = [];
+
+  io.on('connection', (socket: Socket) => {
     console.log(`User connected: ${socket.id}`);
 
-    // Adding new user to virtual world
-    socket.on("addNewUserToMeta", (data: any) => {
+    socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number } }) => {
       const { userId, position } = data;
-      const isUserExist = users.find((user: any) => user.userId === userId);
+      const isUserExist = users.find((user) => user.userId === userId);
 
       if (!isUserExist) {
-        const user = { userId, socketId: socket.id, position: position };
+        const user: User = { userId, socketId: socket.id, position };
         users.push(user);
-        console.log("Adding new user", user);
+        console.log('Adding new user', user);
       } else {
-        isUserExist.socketId = socket.id; 
+        isUserExist.socketId = socket.id;
         isUserExist.position = position;
-        console.log("Updating socket ID and position for existing user", isUserExist);
+        console.log('Updating socket ID and position for existing user', isUserExist);
       }
 
-      // Notify all users about the new user
-      io.emit("updateUsers", users);
+      io.emit('updateUsers', users);
     });
 
-    // Set position for the user
-    socket.on("setUserPosition", (data: any) => {
+    socket.on('setUserPosition', (data: { userId: string; position: { x: number; y: number; z: number } }) => {
       const { userId, position } = data;
-      const user = users.find((user: any) => user.userId === userId);
+      const user = users.find((user) => user.userId === userId);
 
       if (user) {
         user.position = position;
-        console.log("User position updated", user);
-
-        // Notify all users about the updated position
-        io.emit("updateUsers", users);
+        console.log('User position updated', user);
+        io.emit('updateUsers', users);
       }
     });
 
-    // Handle user disconnection
-    socket.on("disconnect", () => {
-      users = users.filter((user: any) => user.socketId !== socket.id);
-      console.log(`User disconnected: ${socket.id}`);
+    socket.on('signal', (data) => {
+      const { signal, to, from } = data;
+      console.log('Signal received from:', from, 'to:', to, 'signal:', signal);
+      io.to(to).emit('signal', { signal, from });
+    });
 
-      // Notify all users about the updated list
-      io.emit("updateUsers", users);
+    socket.on('disconnect', () => {
+      users = users.filter((user) => user.socketId !== socket.id);
+      console.log(`User disconnected: ${socket.id}`);
+      io.emit('updateUsers', users);
     });
   });
-}
+};
 
 export default socketConfig;
