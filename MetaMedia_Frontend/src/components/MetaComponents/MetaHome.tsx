@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { Physics } from '@react-three/cannon'
 import { useSelector } from 'react-redux'
@@ -8,6 +8,8 @@ import { WhiteTshirtGirlModel } from './Models/WhiteTshirtGirl'
 import { HomeTownModel } from './Models/Home'
 import * as THREE from 'three'
 import {BalckManModel} from '../MetaComponents/Models/BlackMan'
+import randomColor from 'randomcolor';
+import { OrbitControls } from '@react-three/drei'
 const MetaHome = () => {
   const [users, setUsers] = useState([])
   const userData = useSelector((state: any) => state.persisted.user.userData)
@@ -60,13 +62,7 @@ const MetaHome = () => {
         <directionalLight />
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
           {users.map((user) => (
-            <BalckManModel
-              key={user.userId}
-              position={new THREE.Vector3(user.position.x, user.position.y, user.position.z)}
-              setPosition={setPosition}
-              camaraPosition={camaraPosition}
-              setCamaraPosition={setCamaraPosition}
-            />
+           <Box position={user.position}/>
           ))}
           <HomeTownModel />
         </Physics>
@@ -76,3 +72,14 @@ const MetaHome = () => {
 }
 
 export default MetaHome
+const Box = ({ position }:any) => {
+    const color = useRef(randomColor()).current; // Ensure color stays consistent
+    return (
+      <mesh position={[position.x, position.y, position.z]} >
+        <OrbitControls />
+        
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial color={color} />
+      </mesh>
+    );
+  }
