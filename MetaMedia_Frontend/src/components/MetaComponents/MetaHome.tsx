@@ -9,9 +9,10 @@ import { HomeTownModel } from './Models/Home'
 import * as THREE from 'three'
 import {BalckManModel} from '../MetaComponents/Models/BlackMan'
 import { OrbitControls } from '@react-three/drei'
+import { group } from 'console'
 
 const MetaHome = () => {
-  const [users, setUsers] = useState([])
+ 
   const userData = useSelector((state: any) => state.persisted.user.userData)
 // const userData={
 //     userId:"hi"
@@ -19,7 +20,7 @@ const MetaHome = () => {
   const socket: any = useSocket()
   const [position, setPosition] = useState(new THREE.Vector3(0, 0, 0))
   const [camaraPosition,setCamaraPosition]=useState(new THREE.Vector3(0,0,0))
-
+  const [users, setUsers]:any = useState([])
   useEffect(() => {
     if (socket) {
       const dataPayload = { 
@@ -64,8 +65,10 @@ console.log(users,'USERSS');
         <ambientLight intensity={2} />
         <directionalLight />
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
-          {users.map((user) => (
-        <BalckManModel key={user.userId} position={user.position}  />
+          {users &&  users.map((user) => (
+            <group key={user.userId}>
+            <BalckManModel  position={new THREE.Vector3(user.position.x,user.position.y,user.position.z)}  />
+            </group>
           ))}
           <HomeTownModel />
         </Physics>
