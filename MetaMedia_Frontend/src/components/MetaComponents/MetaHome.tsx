@@ -56,7 +56,7 @@ const MetaHome = () => {
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
           {users.map((user) => (
             <group key={user.userId}>
-              <BalckManModel position={user.position} />
+              <BalckManModel position={new THREE.Vector3(user.position.x,user.position.y,user.position.z)} />
             </group>
           ))}
           <HomeTownModel />
