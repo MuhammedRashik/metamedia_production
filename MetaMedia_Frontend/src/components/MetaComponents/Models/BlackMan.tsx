@@ -33,7 +33,7 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
 
 
 let camaraTarget = new THREE.Vector3()
-export function BalckManModel({position,setPosition,camaraPosition,setCamaraPosition}:any,props: JSX.IntrinsicElements['group']) {
+export function BalckManModel({position}:any,props: JSX.IntrinsicElements['group']) {
   const socket = useSocket()
    const userData = useSelector((state: any) => state.persisted.user.userData);
   // const userData={
@@ -155,7 +155,7 @@ export function BalckManModel({position,setPosition,camaraPosition,setCamaraPosi
    <>
 
   <OrbitControls ref={controlRef} />
-    <group ref={group} {...props} position={position} dispose={null}>
+    <group ref={group} {...props} position={[position.x,position.y,position.z]} dispose={null}>
       <group name="Scene" >
         <group name="Armature" position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
           <primitive object={nodes.mixamorigHips} />

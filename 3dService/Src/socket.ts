@@ -21,6 +21,8 @@ const socketConfig = (io:any) => {
         }
   
         // Notify all users about the new user
+        console.log(users,'THIS IS UPDATED USERS');
+        
         io.emit("updateUsers", users);
       });
 

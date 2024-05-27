@@ -57,7 +57,6 @@ const MetaHome = () => {
 
   useEffect(()=>{
 console.log(users,'USERSS');
-
   },[users])
   return (
     <div className="w-screen h-screen fixed">
@@ -66,7 +65,7 @@ console.log(users,'USERSS');
         <directionalLight />
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
           {users.map((user) => (
-        <BalckManModel key={user.userId} position={position} setPosition={setPosition} camaraPosition={camaraPosition} setCamaraPosition={setCamaraPosition} />
+        <BalckManModel key={user.userId} position={user.position}  />
           ))}
           <HomeTownModel />
         </Physics>
