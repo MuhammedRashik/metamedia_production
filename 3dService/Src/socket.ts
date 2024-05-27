@@ -32,8 +32,11 @@ const socketConfig = (io:any) => {
         
         if (user) {
             console.log(user,'00');
-            
-          user.position = position;
+            user.position =position
+           
+
+
+        //   user.position = position;
           io.emit("userPositionUpdated", { userId, position });
         }
       });

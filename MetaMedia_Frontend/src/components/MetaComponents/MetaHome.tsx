@@ -10,7 +10,7 @@ import * as THREE from 'three'
 import {BalckManModel} from '../MetaComponents/Models/BlackMan'
 const MetaHome = () => {
   const [users, setUsers] = useState([])
- const userData = useSelector((state: any) => state.persisted.user.userData)
+  const userData = useSelector((state: any) => state.persisted.user.userData)
 // const userData={
 //     userId:"hi"
 // }
@@ -34,10 +34,11 @@ const MetaHome = () => {
       })
 
       socket.on("userPositionUpdated", ({ userId, position }: any) => {
-        console.log('getting', position)
+
         if (userId === userData.userId) {
           setPosition(new THREE.Vector3(position.x, position.y, position.z))
         }
+        // const newPosition=new THREE.Vector3(user.position.x,user.position.y,user.position.z)
         setUsers((prevUsers: any) =>
           prevUsers.map((user: any) =>
             user.userId === userId ? { ...user, position } : user
@@ -58,13 +59,15 @@ const MetaHome = () => {
         <ambientLight intensity={2} />
         <directionalLight />
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
-         {users.map((user)=>{
-            return(
-                <>
-                 <BalckManModel key={user.userId} position={new THREE.Vector3(user.position.x,user.position.y,user.position.z)}  setPosition={setPosition}  camaraPosition={camaraPosition} setCamaraPosition={setCamaraPosition}/>
-                </>
-            )
-         })}
+          {users.map((user) => (
+            <BalckManModel
+              key={user.userId}
+              position={new THREE.Vector3(user.position.x, user.position.y, user.position.z)}
+              setPosition={setPosition}
+              camaraPosition={camaraPosition}
+              setCamaraPosition={setCamaraPosition}
+            />
+          ))}
           <HomeTownModel />
         </Physics>
       </Canvas>

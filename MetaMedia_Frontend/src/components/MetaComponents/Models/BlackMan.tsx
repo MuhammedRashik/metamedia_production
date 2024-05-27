@@ -69,7 +69,17 @@ export function BalckManModel({position,setPosition,camaraPosition,setCamaraPosi
 
   useEffect(() => {
     const handleKeyDown = (event:any) => {
-      const moveDistance = 0.1;
+
+    let moveDistance 
+    if(currentAction.current=='walk'){
+      moveDistance=0.2
+    }else if(currentAction.current=='run'){
+      moveDistance=0.6
+    }else{
+      moveDistance=0.2
+    }
+
+
       let newPosition = { ...position };
       switch (event.key) {
         case 'ArrowUp':
