@@ -10,7 +10,7 @@ import {
   getUsersByName_Api,
   getuserById_Api,
 } from "../../endpoints/common";
-import {axiosFormDataInstance, axiosInstance} from "../../../../utils/costumHook/constumHook";
+import {axiosFormDataInstance, axiosInstance} from "../../../costumHook/constumHook";
 
 export const EditProfileFunction = (data: any) => {
   try {
@@ -67,6 +67,7 @@ export const getUserByIdFuntion = async (data: any) => {
       .post(getuserById_Api, datas);
     return response.data;
   } catch (error) {
+    console.log("Eroor froom getUserByIdFuntion", error);
     return error;
   }
 };

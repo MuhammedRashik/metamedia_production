@@ -21,7 +21,7 @@ getDb(config)
 const server=http.createServer(app)
 dotenv.config()
 
-
+  
 
 
 // app.use(body().trim().escape());
@@ -67,7 +67,7 @@ declare module 'express-session' {
       credentials: true,
     })
   ); 
-  
+    
   app.use(
     session({
       secret: "1234666",
@@ -102,7 +102,6 @@ declare module 'express-session' {
 // });    
 
  userconsumer(dependencies)
-
 app.use('/api',routes(dependencies))
 
 serverConfig(server,config).startServer()

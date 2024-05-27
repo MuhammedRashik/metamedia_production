@@ -31,6 +31,7 @@ import { toast } from "sonner";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { addSocketData } from "../../../utils/ReduxStore/Slice/videoCallSlice";
 import VoiceRecorder from "./VoiceRecorder";
+import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const DropDownComponent = ({
   setMessageDeleted,
@@ -118,7 +119,7 @@ const MessageListComponent = ({
   const [currentUsers, setCurentUsers] = useState<any>(null);
 
   useEffect(() => {
-    setSocket(io("https://meta-media.in"));  
+    setSocket(io("http://localhost:8081"));
     if (messages) {
       dispatch(addSocketData(socket));
     }
@@ -348,9 +349,9 @@ const MessageListComponent = ({
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
         let messageType: string;
-        if (file.type?.startsWith("image/")) {
+        if (file.type.startsWith("image/")) {
           messageType = "image";
-        } else if (file.type?.startsWith("video/")) {
+        } else if (file.type.startsWith("video/")) {
           messageType = "video";
         } else {
           messageType = "file";
@@ -383,6 +384,7 @@ const MessageListComponent = ({
               conversationId: messages?.data?.conversationId,
               lastUpdate: Date.now(),
             });
+
             setIsSendMessage(!isSendMessage);
             toast.success("File(s) uploaded successfully!");
           } else {
@@ -533,7 +535,7 @@ const MessageListComponent = ({
                 messages?.data?.profile?.startsWith("https://")
                   ? `${messages?.data?.profile}`
                   : messages?.data?.profile
-                  ? `https://meta-media.in/api/user/profile/${messages?.data?.profile}`
+                  ? `${img_User_baseUrl}${messages?.data?.profile}`
                   : `${profile}`
               }
               alt=""
@@ -635,7 +637,7 @@ const MessageListComponent = ({
                         {data?.type == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -646,7 +648,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -661,7 +663,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                                src={`${img_Chat_baseUrl}${data.message}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(data?.time)}
@@ -675,7 +677,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                                src={`${img_Chat_baseUrl}${data.message}`}
                               />
                               <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
                                 {DateToTime(data?.time)}
@@ -688,7 +690,7 @@ const MessageListComponent = ({
                         ) : data?.type == "voice_note" ? (
                           <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -699,7 +701,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "voice_note" ? (
                           <span className="px-4 py-2 rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -728,7 +730,7 @@ const MessageListComponent = ({
                         messages?.data?.profile?.startsWith("https://")
                           ? `${messages?.data?.profile}`
                           : messages?.data?.profile
-                          ? `https://meta-media.in/api/user/profile/${messages?.data?.profile}`
+                          ? `${img_User_baseUrl}${messages?.data?.profile}`
                           : `${profile}`
                       }
                       alt="My profile"
@@ -744,7 +746,7 @@ const MessageListComponent = ({
                         {data?.type == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -769,7 +771,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "image" ? (
                           <span className="rounded-lg relative text-sm md:text-base w-48 h-48 md:w-80 md:h-80  border border-[#C1506D] text-white flex items-center justify-center">
                             <img
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               alt=""
                               className="relative rounded-lg object-cover w-full h-full"
                             />
@@ -803,7 +805,7 @@ const MessageListComponent = ({
                               className="relative rounded-lg object-cover w-full h-full"
                             >
                               <source
-                                src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                                src={`${img_Chat_baseUrl}${data.message}`}
                               />
                               <ChevronDown
                                 className="absolute top-0 right-0 size-5"
@@ -850,7 +852,7 @@ const MessageListComponent = ({
                                 />
                               )}
                               <source
-                                src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                                src={`${img_Chat_baseUrl}${data.message}`}
                               />
                             </video>
                             <p className="absolute bottom-0 right-1 text-gray-200 text-xs">
@@ -860,7 +862,7 @@ const MessageListComponent = ({
                         ) : data?.type == "voice_note" ? (
                           <span className="px-4 py-2 relative rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />
@@ -885,7 +887,7 @@ const MessageListComponent = ({
                         ) : data?.socketType == "voice_note" ? (
                           <span className="px-4 py-2 rounded-lg flex  text-sm md:text-base justify-center items-center  rounded-br-none  text-white gap-2">
                             <AudioPlayer
-                              src={`https://meta-media.in/api/chat/chat/${data.message}`}
+                              src={`${img_Chat_baseUrl}${data.message}`}
                               customAdditionalControls={[]}
                               className="w-[200px] h-[80px] md:w-[300px]"
                             />

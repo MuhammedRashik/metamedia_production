@@ -8,4 +8,3 @@ const expresscofig=(app:Express):void=>{
 }
 
 export default expresscofig
-//hi

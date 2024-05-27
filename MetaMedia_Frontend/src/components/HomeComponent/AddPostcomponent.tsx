@@ -1,5 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { Camera, ImagePlus } from 'lucide-react';
+import Webcam from "react-webcam";
+import { log } from "console";
 
 const AddPostModal = () => {
     const [imgSrc, setImgSrc] = useState(null);

@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { authConsumer } from './events/authConsumer'
 const cookieParser = require('cookie-parser');
-const app=express()    
+const app=express()
 const server=http.createServer(app)
 dotenv.config()
 getDb(config)
@@ -35,15 +35,14 @@ declare module 'express-session' {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIEPARSERSECRET));
-
 app.use(
    cors({
-     origin: "https://meta-media.in",
-     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: "https://meta-media.in",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
      credentials: true,
    })
  );
-
+  
 app.use(
     session({
       secret: process.env.SESSION_SECRET_KEY,
@@ -59,5 +58,6 @@ app.use(
   
 expresscofig(app)
 authConsumer(dependencies)
+
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()

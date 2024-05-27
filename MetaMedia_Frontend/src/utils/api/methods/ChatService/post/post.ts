@@ -14,7 +14,7 @@ import {
 import {
   axiosFormDataInstance,
   axiosInstance,
-} from "../../../../../utils/costumHook/constumHook";
+} from "../../../../costumHook/constumHook";
 
 export const sendMessageFunction = (data: any) => {
   try {

@@ -16,7 +16,7 @@ getDb(config)
 const server=http.createServer(app)
 //  authconsumer()
   
-
+  
  declare module 'express-session' {
   interface Session {
     userData:{
@@ -47,7 +47,6 @@ console.log('hi from stor service ');
       credentials: true,
     })
   );
-
   app.use(
     session({
       secret: "1234666",

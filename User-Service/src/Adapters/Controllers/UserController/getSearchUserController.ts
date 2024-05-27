@@ -6,6 +6,8 @@ export default (dependecies: any) => {
   const getSearchUserController = async (req: Request, res: Response, next:NextFunction) => {  
     try {
       const {user} = req.params
+      console.log(user,"user");
+      
       const userId = await decodeDataFromHeaders(req.headers)    
       if(userId){
       const response = await getSearchUser_Usecase(dependecies).executeFunction(user,userId);

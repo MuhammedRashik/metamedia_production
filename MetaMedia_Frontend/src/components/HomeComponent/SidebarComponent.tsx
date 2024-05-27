@@ -11,14 +11,16 @@ import {
   ImagePlusIcon,
   Film,
   Radio,
+  Menu,
   User,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { toast } from "sonner";
+import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
-
-const Sidebar = ({ open,setAddStory,setIsAddPost }: any) => {
+const Sidebar = ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
   const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +67,7 @@ const Sidebar = ({ open,setAddStory,setIsAddPost }: any) => {
           open ? "w-60" : "w-20 "
         } bg-[#07312E] h-screen p-5 z-30  rounded-tr-lg rounded-br-lg pt-8 relative duration-300 `}
       >
-        {/* <Menu/> */}
+        {/* <Menu/> */}\
         <svg
           id="bar"
           xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +417,7 @@ const Sidebar = ({ open,setAddStory,setIsAddPost }: any) => {
                     userData.profile?.startsWith("https://graph.facebook.com/")
                       ? `${userData.profile}`
                       : userData.profile
-                        ? `https://meta-media.in/api/user/profile/${userData.profile}`
+                        ?  `${img_User_baseUrl}${userData?.profile}`
                         : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                   }
                 />

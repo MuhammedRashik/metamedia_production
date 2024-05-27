@@ -44,6 +44,8 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     
         const croppedImageBase64:any = canvas.toDataURL('image/jpeg');
         setTrimVideo(true)
+        console.log(croppedImageBase64,"croppedImageBase64croppedImageBase64");
+        
         setCroppedImage(croppedImageBase64)
   }
 
@@ -59,103 +61,72 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     }
   };
   return (
-    <div className="flex flex-col h-[400px] relative">
-      <div className="w-[600px hidden md:flex">
-        <Cropper
-          image={imageUrl}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          onCropChange={setCrop}
-          onCropComplete={onCropComplete}
-          onZoomChange={setZoom}
-          style={{
-              containerStyle: {
-                  width: "100%",
-                  height: "500px",
-                  overflow: "hidden",
-                  backgroundColor: "black",
-                },
-                mediaStyle: {
-                    width: "",
-                    height: "",
-                    display: "block",
-                },
-                cropAreaStyle: {
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                },
-            }}
-        /> 
-
-      </div>
-      <div className="w-[600px md:hidden flex">
-        <Cropper
-          image={imageUrl}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          onCropChange={setCrop}
-          onCropComplete={onCropComplete}
-          onZoomChange={setZoom}
-          style={{
-              containerStyle: {
-                  width: "100%",
-                  height: "80%",
-                  overflow: "hidden",
-                  backgroundColor: "black",
-                },
-                mediaStyle: {
-                    width: "",
-                    height: "",
-                    display: "block",
-                },
-                cropAreaStyle: {
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                },
-            }}
-        /> 
-
-      </div>
-      <div className="w-full h-20 rounded absolute bottom-0">
-        <div className="flex justify-center items-center">
-        <ZoomOut className="text-black mt-2" onClick={handleZoomOut} />
-        <input
-          type="range"
-          value={zoom}
-          min={1}
-          max={3}
-          step={0.1}
-          aria-labelledby="Zoom"
-          onChange={(e: any) => {
-            setZoom(e.target.value);
+    <div className="flex flex-col bg-red-900 h-[400px] md:h-[690px] relative">
+    <div className="w-[600px] flex">
+      <Cropper
+        image={imageUrl}
+        crop={crop}
+        zoom={zoom}
+        aspect={aspect}
+        onCropChange={setCrop}
+        onCropComplete={onCropComplete}
+        onZoomChange={setZoom}
+        style={{
+            containerStyle: {
+                width: "100%",
+                height: "500",
+                overflow: "hidden",
+                backgroundColor: "black",
+              },
+              mediaStyle: {
+                  width: "",
+                  height: "",
+                  display: "block",
+              },
+              cropAreaStyle: {
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+              },
           }}
-          className="zoom-range "
-        />
-        <ZoomIn className="text-black mt-2" onClick={handleZoomIn} />
-        </div>
-            <div className=" flex justify-center w-full h-12 border rounded p-1.5">
-              <div
-                className="p-2 w-14  md:w-24 flex justify-center border rounded text-black "
-                onClick={() => setAspect([1 / 1])}
-              >
-                1:1
-              </div>
-              <div
-                className="p-2 w-14 md:w-24 flex justify-center border rounded text-black"
-                onClick={() => setAspect([4 / 5])}
-              >
-                4:5
-              </div>
-            </div>
-            <button className= "text-[#C1506D] absolute focus:outline-none focus:ring-2 focus:ring-offset-2 bottom-3 right-5 font-bold border border-black px-3 rounded-full" onClick={cropImage}>Crop</button>
-      </div>
+      /> 
+
     </div>
+    <div className="w-full h-20 bg-green-800 rounded absolute bottom-0">
+      <div className="flex justify-center items-center">
+      <ZoomOut className="text-black mt-2" onClick={handleZoomOut} />
+      <input
+        type="range"
+        value={zoom}
+        min={1}
+        max={3}
+        step={0.1}
+        aria-labelledby="Zoom"
+        onChange={(e: any) => {
+          setZoom(e.target.value);
+        }}
+        className="zoom-range "
+      />
+      <ZoomIn className="text-black mt-2" onClick={handleZoomIn} />
+      </div>
+          <div className=" flex justify-center w-full h-12 border rounded p-1.5">
+            <div
+              className="p-2 w-14  md:w-24 flex justify-center border rounded text-black "
+              onClick={() => setAspect([1 / 1])}
+            >
+              1:1
+            </div>
+            <div
+              className="p-2 w-14 md:w-24 flex justify-center border rounded text-black"
+              onClick={() => setAspect([4 / 5])}
+            >
+              4:5
+            </div>
+          </div>
+          <button className= "text-[#C1506D] absolute focus:outline-none focus:ring-2 focus:ring-offset-2 bottom-3 right-5 font-bold border border-black px-3 rounded-full" onClick={cropImage}>Crop</button>
+    </div>
+  </div>
   );
 };
 

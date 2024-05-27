@@ -14,7 +14,6 @@ const ChangePasswordComponent = ({ changePassword,setChangePassword }: any) => {
   const [showConfirmPassword, setConfirmShowPassword] = useState(false);
   const wrapperRef: any = useRef(null);
   const userData=useSelector((state:any)=>state.persisted.user.userData)
-
   const { errors, handleSubmit, register } = useChangePasswordValidation();
   const formSubmit = async (Data: ChangePasswordFormData) => {
     const response: any = await ChangePasswordFunction({ ...Data,email:userData.email });

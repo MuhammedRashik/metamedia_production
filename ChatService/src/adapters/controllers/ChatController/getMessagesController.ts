@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { decodeDataFromHeaders } from "../../../Utils/jwt/jwt";
+import { decodeDataFromHeaders } from "../../../utils/jwt/jwt";
 
 export default (dependencies: any) => {
   const {

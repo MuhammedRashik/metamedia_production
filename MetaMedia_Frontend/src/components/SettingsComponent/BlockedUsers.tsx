@@ -5,6 +5,7 @@ import profile from "../../assets/profile.webp";
 import { BlockAndUnblockUserFunction } from "../../utils/api/methods/ChatService/post/post";
 import { editUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { toast } from "sonner";
+import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
 const BlockedUsers = ({ setBlockedUsers }: any) => {
   const [searchUser, setSearchUser] = useState("");
@@ -86,7 +87,7 @@ const BlockedUsers = ({ setBlockedUsers }: any) => {
                           val.profile?.startsWith("https://graph.facebook.com/")
                             ? `${val.profile}`
                             : val.profile
-                            ? `https://meta-media.in/api/user/profile/${val.profile}`
+                            ? `${img_User_baseUrl}${val.profile}`
                             : profile
                         }
                         alt=""

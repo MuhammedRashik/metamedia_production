@@ -46,9 +46,9 @@ const Login = () => {
     e.preventDefault();
     await FacebookAuth().then(async (data: any) => {
       const userData = {
-        profile: data.user.photoURL,
-        email: data.user.email,
-        name: data.user.displayName,
+        profile: data.user?.photoURL,
+        email: data.user?.email,
+        name: data.user?.displayName,
         isGoogle: false,
         isFacebook: true,
       };
@@ -61,19 +61,19 @@ const Login = () => {
           //   SaveUserDataInRedux(response);
           // }, 3000);
           const data: ResponseData = {
-            email: response.data.user.email ?? "",
-            name: response.data.user.name ?? "",
-            userName: response.data.user.userName ?? "",
-            userId: response.data.user._id ?? "",
-            profile: response.data.user.profile ?? "",
-            isGoogle: response.data.user.isGoogle ?? "",
-            isFacebook: response.data.user.isFacebook ?? "",
-            dateOfBirth: response.data.user.dateOfBirth ?? "",
-            gender: response.data.user.gender ?? "",
-            location: response.data.user.location ?? "",
-            phoneNumber: response.data.user.phoneNumber ?? "",
-            interests: response.data.user.interests ?? [],
-            bio: response.data.user.bio ?? "",
+            email: response.data.user?.email ?? "",
+            name: response.data.user?.name ?? "",
+            userName: response.data.user?.userName ?? "",
+            userId: response.data.user?._id ?? "",
+            profile: response.data.user?.profile ?? "",
+            isGoogle: response.data.user?.isGoogle ?? "",
+            isFacebook: response.data.user?.isFacebook ?? "",
+            dateOfBirth: response.data.user?.dateOfBirth ?? "",
+            gender: response.data.user?.gender ?? "",
+            location: response.data.user?.location ?? "",
+            phoneNumber: response.data.user?.phoneNumber ?? "",
+            interests: response.data.user?.interests ?? [],
+            bio: response.data.user?.bio ?? "",
           };
 
           dispatch(clearUser());
@@ -82,7 +82,6 @@ const Login = () => {
           localStorage.setItem('accesstoken',response.data.accesstoken)
 
           if (response?.data?.newUser) {
-            toast.success(response?.data?.message);
             Navigate("/chooseinterest", { replace: true });
           } else {
             const userEmail = { email: response?.data?.user?.email };
@@ -112,7 +111,6 @@ const Login = () => {
             localStorage.setItem('accesstoken',response.data.accesstoken)
 
             // await SaveUserDataInRedux(userData)
-            toast.success(response?.data?.message);
             Navigate("/", { replace: true });
           }
         } else {
@@ -163,7 +161,6 @@ const Login = () => {
           dispatch(addToken(response.data.accesstoken));
           localStorage.setItem('accesstoken',response.data.accesstoken)
           if (response?.data?.newUser) {
-            toast.success(response?.data?.message);
             Navigate("/chooseinterest", { replace: true });
           } else {
             const userEmail = { email: response?.data?.user?.email };
@@ -192,7 +189,6 @@ const Login = () => {
             dispatch(addToken(response.data.accesstoken));
             localStorage.setItem('accesstoken',response.data.accesstoken)
             // await SaveUserDataInRedux(userData)
-            toast.success(response?.data?.message);
             Navigate("/", { replace: true });
           }
         } else {
@@ -209,12 +205,12 @@ const Login = () => {
 
   //form data set in
   const formsubmit = async (Data: LoginFormData) => {
-    const userExist: any = await LoginFuntion({ ...Data });
+    console.log("Calling LoginFuntion");
+    const userExist: any = await LoginFuntion({ ...Data });    
+    console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
     if (userExist.data.status == false) {
-     
       toast.error(userExist?.data?.message);
     } else {
-      console.log(userExist,"userExistuserExistuserExistuserExistuserExist");
       if(userExist.data.admin){
         const userEmail = { email: userExist?.data?.user?.email };
         const response: any = await GetUserDataFunction(userEmail);
@@ -227,41 +223,31 @@ const Login = () => {
         dispatch(clearAdmin());
         dispatch(addAdminData(adminData));
         dispatch(addAdminToken(userExist.data.accesstoken));
-        toast.success(response?.data?.data?.message);
         Navigate("/admin", { replace: true });
-        console.log(userExist.data,"userExist.data");
-        
         localStorage.setItem('accesstoken',userExist.data.accesstoken)
       }else{
-        console.log("I AM ELSE");
-        
       const userEmail:any = {email: userExist?.data?.user?.email };
-     
       const response: any = await GetUserDataFunction(userEmail);
-      console.log(response,"response");
-      
+      console.log(response,"responseresponseresponse");
       const userData: ResponseData = {
-        email: response.data.user.email ?? "",
-        name: response.data.user.name ?? "",
-        userName: response.data.user.userName ?? "",
-        userId: response.data.user._id ?? "",
-        profile: response.data.user.profile ?? "",
-        isGoogle: response.data.user.isGoogle ?? "",
-        isFacebook: response.data.user.isFacebook ?? "",
-        dateOfBirth: response.data.user.dateOfBirth ?? "",
-        gender: response.data.user.gender ?? "",
-        location: response.data.user.location ?? "",
-        phoneNumber: response.data.user.phoneNumber ?? "",
-        interests: response.data.user.interests ?? [],
-        bio: response.data.user.bio ?? "",
+        email: response.data.user?.email ?? "",
+        name: response.data.user?.name ?? "",
+        userName: response.data.user?.userName ?? "",
+        userId: response.data.user?._id ?? "",
+        profile: response.data.user?.profile ?? "",
+        isGoogle: response.data.user?.isGoogle ?? "",
+        isFacebook: response.data.user?.isFacebook ?? "",
+        dateOfBirth: response.data.user?.dateOfBirth ?? "",
+        gender: response.data.user?.gender ?? "",
+        location: response.data.user?.location ?? "",
+        phoneNumber: response.data.user?.phoneNumber ?? "",
+        interests: response.data.user?.interests ?? [],
+        bio: response.data.user?.bio ?? "",
       };
       dispatch(clearUser());
       dispatch(addUser(userData));
       dispatch(addToken(userExist.data.accesstoken));
-      console.log(userExist.data.accesstoken,"userExist.data.accesstoken");
-      
       localStorage.setItem('accesstoken',userExist.data.accesstoken)
-      toast.success(response?.data?.data?.message);
       Navigate("/", { replace: true });
     }
     }

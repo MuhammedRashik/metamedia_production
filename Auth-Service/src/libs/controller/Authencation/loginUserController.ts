@@ -21,10 +21,10 @@ export default (dependecies: any) => {
       email,
       password
     );    
-    console.log(response,"response");
-    
     //access token
     if (!response.status) {
+      console.log(response.admin,"response.admin");
+      
       res.json({ message: response?.message, status: false });
     }else if(response.admin){
       
@@ -37,9 +37,7 @@ export default (dependecies: any) => {
       };
       req.session.refreshToken = refreshtoken;
       
-      const expirationDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
       res.cookie("accessToken", accesstoken, {
-        expires: expirationDate,
         httpOnly: true,
         secure: true,
       });
@@ -52,8 +50,7 @@ export default (dependecies: any) => {
         user: adminWithOutpassword,
         message: message,
       });
-    } 
-    else {
+    } else {
       const { accesstoken, refreshtoken, user, message,admin } = response;
       const userWithOutpassword = {
         _id: user._id,
@@ -66,13 +63,11 @@ export default (dependecies: any) => {
       };
       req.session.refreshToken = refreshtoken;
       console.log(req.session.refreshToken ,"req.session.refreshToken ");
-      const expirationDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
       res.cookie("accessToken", accesstoken, {
-        expires: expirationDate,
         httpOnly: true,
         secure: true,
       });
-console.log(userWithOutpassword,"userWithOutpassword");
+console.log("Login Success Response");
 
       res.status(201).json({
         status: true,

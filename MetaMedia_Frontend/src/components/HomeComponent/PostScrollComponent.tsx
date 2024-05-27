@@ -5,7 +5,7 @@ import {
   Bookmark,
   SendHorizonal,
 } from "lucide-react";
-
+import profile from "../../assets/profile.webp";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByIdFuntion } from "../../utils/api/methods/UserService/post";
@@ -22,6 +22,7 @@ import { SavePostFunction } from "../../utils/api/methods/PostService/Post/saveP
 import { useState } from "react";
 import { AddCommentFunction } from "../../utils/api/methods/PostService/Post/addComment";
 import { useNavigate } from "react-router-dom";
+import { img_Post_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl";
 
 const PostScroll = ({ data, render, setRender }: any) => {
   const [comment, setComment] = useState("");
@@ -100,9 +101,11 @@ const PostScroll = ({ data, render, setRender }: any) => {
               className="lg:w-10 lg:h-10 font-roboto rounded-full lg:ml-6 lg:mt-1 md:ml-3  md:border-2 border-amber-100 border-2 lg:border-2 w-10 h-10 md:w-12 md:h-12 "
               onClick={()=>NavigateToUserProfile(data.userData.basicInformation.userId)}
               src={
-                data.userData?.profile?.profileUrl?.startsWith("https://graph")
+                data.userData?.profile?.profileUrl.startsWith("https://graph")
                   ? data.userData?.profile?.profileUrl
-                  : `https://meta-media.in/api/user/profile/${data.userData?.profile?.profileUrl}`
+                  : data.userData?.profile?.profileUrl ? 
+                  `${img_User_baseUrl}${data.userData?.profile?.profileUrl}`
+                  :profile
               }
               alt=""
             />
@@ -119,7 +122,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
               <>
                 <img
                   className="w-full h-full "
-                  src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`}
+                  src={`${img_Post_baseUrl}${data.mediaUrl[0]}`}
                   alt=""
                   loading="lazy"
                 />
@@ -132,7 +135,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
                   controls
                 >
                   <source
-                    src={`https://meta-media.in/api/post/img/${data.mediaUrl[0]}`} // Provide the source URL of the video
+                    src={`${img_Post_baseUrl}${data.mediaUrl[0]}`} // Provide the source URL of the video
                     type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                   />
                 </video>

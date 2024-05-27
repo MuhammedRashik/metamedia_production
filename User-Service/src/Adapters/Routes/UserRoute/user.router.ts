@@ -1,7 +1,7 @@
 import express from 'express'
 import {profileController, userController} from '../../Controllers'
 import { upload } from '../../../Utils/Multer/multer'
-import authMiddlewawre from '../../../Utils/Middleware/authMiddleware'
+import authMiddleware from '../../../Utils/Middleware/authMiddleware'
 
 export default (dependencies:any)=>{
     const router=express()
@@ -9,23 +9,23 @@ export default (dependencies:any)=>{
     const {addProfileController,editProfileController,addProfileImageController}=profileController(dependencies)
 
     router.post('/getUserData' , getUserDataController)
-    router.get('/getAllUsers' , authMiddlewawre , getAllUsersDataController)
-    router.get('/getSearchUser/:user' , authMiddlewawre , getSearchUserController)
-    router.post('/addProfile' , authMiddlewawre , addProfileController)
-    router.post('/editProfile' , authMiddlewawre , editProfileController)
-    router.post('/chooseInterest' , authMiddlewawre , chooseInterestController)
-    router.post('/addProfileImage' , upload.single("file") , authMiddlewawre , addProfileImageController)
-    router.post("/followUser" , authMiddlewawre , followUserController)
-    router.get("/getAllUsersForChat" , authMiddlewawre , getAllUserForChatController)
-    router.post('/getUsersByname' , authMiddlewawre , getUsersByNameController)
-    router.post('/getUserById' , authMiddlewawre , getUserById_Controller)
-    router.post('/getUsersDataById' , authMiddlewawre , getUsersDataByIdController)
-    router.post('/changeUserStatus' , authMiddlewawre , ChangeUserStatusController)
-    router.post('/savePost' , authMiddlewawre , savePostController)
-    router.get('/suggetions' , authMiddlewawre , suggetionController)
-    router.post('/BlockAndUnblockUser' , authMiddlewawre , BlockAndUnblockUserController)
-    router.post("/vapidKeys" , authMiddlewawre , generatevapidKeysController)
-    router.post("/subscribe" , authMiddlewawre , SubcribeToAwsSNSController)
+    router.get('/getAllUsers' , authMiddleware , getAllUsersDataController)
+    router.get('/getSearchUser/:user' , authMiddleware , getSearchUserController)
+    router.post('/addProfile' , authMiddleware , addProfileController)
+    router.post('/editProfile' , authMiddleware , editProfileController)
+    router.post('/chooseInterest' , authMiddleware , chooseInterestController)
+    router.post('/addProfileImage' , authMiddleware , upload.single("file") , addProfileImageController)
+    router.post("/followUser" , authMiddleware , followUserController)
+    router.get("/getAllUsersForChat" , authMiddleware , getAllUserForChatController)
+    router.post('/getUsersByname' , authMiddleware , getUsersByNameController)
+    router.post('/getUserById' , authMiddleware , getUserById_Controller)
+    router.post('/getUsersDataById' , authMiddleware , getUsersDataByIdController)
+    router.post('/changeUserStatus' , authMiddleware , ChangeUserStatusController)
+    router.post('/savePost' , authMiddleware , savePostController)
+    router.get('/suggetions' , authMiddleware , suggetionController)
+    router.post('/BlockAndUnblockUser' , authMiddleware , BlockAndUnblockUserController)
+    router.post("/vapidKeys" , authMiddleware , generatevapidKeysController)
+    router.post("/subscribe" , authMiddleware , SubcribeToAwsSNSController)
 
     return router
 }

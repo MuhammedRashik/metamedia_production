@@ -3,8 +3,6 @@ import schema from '../Database/schema'
 export default {
   findUser: async (userId: any) => {
     try {
-      console.log(userId, "userId");
-
       const response = await schema.Story.findOne({userId:userId });
       console.log(response,"responseresponseresponse");
       if (response) {
@@ -13,7 +11,7 @@ export default {
         return { status: false, message: "user not found", user: false };
       }
     } catch (error) {
-      console.log(error, "ER");
+      console.log(error, "FIND USER ERROR");
       return { error };
     }
   },
@@ -62,6 +60,7 @@ export default {
 
   getStories: async (userId: any) => {
     try {  
+      console.log(userId,"userIduserIduserIduserId");
       const response:any = await schema.Story.findOne({ userId: userId, 'content.story': { $elemMatch: { status: true } } });  
       if (response) {
         const filteredStories = response?.content?.story?.filter((story:any) => story.status === true);        
@@ -71,7 +70,7 @@ export default {
         return { status: false, message: "stories not found", data: false };
       }
     } catch (error) {
-      console.log(error, "ER");
+      console.log(error, "getStories");
       return { error };
     }
   },
@@ -90,8 +89,7 @@ export default {
   getAllStories: async (userId:string) => {
     try {      
       const allStories = await schema.Story.find({ userId: { $ne: userId } });
-
-      
+      console.log(allStories,"allStories");
       if (allStories) {
         const userStoriesMap:any = {};
         allStories.forEach(story => {
@@ -128,7 +126,7 @@ export default {
         return { status: false, message: "No stories found" };
       }
     } catch (error) {
-      console.log(error, "Error");
+      console.log(error, "Get All stories Error");
       return { status: false, message: "An error occurred" };
     }
   },

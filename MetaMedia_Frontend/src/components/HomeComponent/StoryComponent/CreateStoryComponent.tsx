@@ -8,7 +8,6 @@ import React from 'react';
     );
   };
   const CreateStoryComponent = ({ croppedImage, caption, setCaption }:any) => {
-    console.log(croppedImage,"croppedImagecroppedImage");
     
     return (
       <div>

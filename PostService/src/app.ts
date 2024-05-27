@@ -22,7 +22,6 @@ expresscofig(app)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIEPARSERSECRET));
-
 app.use(
     cors({
       origin:"https://meta-media.in",
@@ -48,3 +47,4 @@ app.use('/api/post/img', express.static('public/img'))
 
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()
+  

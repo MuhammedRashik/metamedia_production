@@ -1,5 +1,5 @@
 import { likePost_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../../utils/costumHook/constumHook";
+import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const LikePostFuntion = async (data: any) => {
   try {

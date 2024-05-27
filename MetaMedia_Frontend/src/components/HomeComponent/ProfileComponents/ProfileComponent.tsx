@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { CheckUser } from "../../../utils/Helper/CheckUserFollows";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import StoryProfileShimmer from "../../../pages/shimmer/StoryProfileShimmer";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 
 
@@ -145,7 +146,7 @@ const checkUser = useMemo(
                     userData.profile?.startsWith("https://graph.facebook.com/")
                       ? `${currentUser?.profile?.profileUrl}`
                       : currentUser?.profile?.profileUrl
-                      ? `https://meta-media.in/api/user/profile/${currentUser?.profile?.profileUrl}`
+                      ? `${img_User_baseUrl}${currentUser?.profile?.profileUrl}`
                       : `${profile}`
                   }
                   alt="Profile"

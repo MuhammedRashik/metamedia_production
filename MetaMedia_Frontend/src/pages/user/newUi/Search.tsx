@@ -8,6 +8,7 @@ import { followUserFunction, getUserByIdFuntion } from "../../../utils/api/metho
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { toast } from "sonner";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const SearchComponent = ({ setOpenSearch,setRender,render }: any) => {
   const [searchUser, setSearchUser] = useState("");
@@ -39,7 +40,8 @@ const SearchComponent = ({ setOpenSearch,setRender,render }: any) => {
       setUserLoading(true);
       setNoUserFound(false);
       const getData = setTimeout(async () => {
-        const response = await GetSearchUserDataFunction(searchUser);        
+        const response = await GetSearchUserDataFunction(searchUser);  
+        console.log(response,"responseSearch");
         if (response.status) {
           setsearchedUsers(response?.data);
         } else {
@@ -121,7 +123,7 @@ const SearchComponent = ({ setOpenSearch,setRender,render }: any) => {
                             data.profile?.startsWith("https://graph.facebook.com/")
                               ? `${data.profile}`
                               : data.profile
-                                ? `https://meta-media.in/api/user/profile/${data.profile}`
+                                ? `${img_User_baseUrl}${data.profile}`
                                 : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                           }
                         className="w-14 h-14 rounded-full object-fill  border-2  border-[#C1506D]"

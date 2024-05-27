@@ -55,20 +55,20 @@ const MainBody = ({
     });
   }
 
-  // function generateVapidKeys(data: any) {
-  //   return new Promise((resolve, reject) => {
-  //     GenarateVapIdKeysFunction(data)
-  //       .then((response) => {
-  //         if (response.status) {
-  //           resolve(response.data);
-  //         } else {
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         reject("Error generating VAPID keys: " + error);
-  //       });
-  //   });
-  // }
+  function generateVapidKeys(data: any) {
+    return new Promise((resolve, reject) => {
+      GenarateVapIdKeysFunction(data)
+        .then((response) => {
+          if (response.status) {
+            resolve(response.data);
+          } else {
+          }
+        })
+        .catch((error) => {
+          reject("Error generating VAPID keys: " + error);
+        });
+    });
+  }
 
   function subscribeUserToSNS(data: any) {
     return new Promise((resolve: any, reject) => {
@@ -203,9 +203,7 @@ const MainBody = ({
   // Add scroll event listener when the component mounts
   useEffect(() => {
     const container:any = document.querySelector('.scroll-container');
-    if (container) {
-      console.log("YOYO");
-      
+    if (container) {      
       container.addEventListener('scroll', handleScroll);
     }
     return () => {

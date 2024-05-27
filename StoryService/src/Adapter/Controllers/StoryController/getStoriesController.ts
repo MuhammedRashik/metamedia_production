@@ -4,7 +4,11 @@ import { decodeDataFromHeaders } from '../../../Util/Jwt';
 export default (dependencies:any)=>{
     const {useCase:{getStories_Usecase}}=dependencies
     const GetStoriesController=async(req:Request,res:Response)=>{
-    const userId = await decodeDataFromHeaders(req.headers)    
+      console.log(req.headers,"req.headers");
+      
+    const userId = await decodeDataFromHeaders(req.headers)  
+    console.log(userId,"userIdmmm");
+      
     if(userId){
         const response=await getStories_Usecase(dependencies).executeFunction(userId)
         if(response){

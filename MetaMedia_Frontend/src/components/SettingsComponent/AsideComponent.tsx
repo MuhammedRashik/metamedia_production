@@ -8,6 +8,7 @@ import { addProfileImageFunction } from "../../utils/api/methods/UserService/pos
 import { addProfileImage, clearUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { persistor } from "../../utils/ReduxStore/Store/Store";
 import profile from "../../assets/profile.webp";
+import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
 const Aside = ({
   blockedUsers,
@@ -58,6 +59,8 @@ const Aside = ({
       console.log(formData, "FORMDATA");
 
       const response = await addProfileImageFunction(formData);
+      console.log(response,"responseprofile");
+      
       if (response?.status) {
         const data = {
           profile: response?.data?.profile?.profileUrl,
@@ -89,7 +92,7 @@ const Aside = ({
                       )
                         ? `${userData.profile}`
                         : userData.profile
-                        ? `https://meta-media.in/api/user/profile/${userData?.profile}`
+                        ? `${img_User_baseUrl}${userData?.profile}`
                         : `${profile}`
                     }
                     alt="Profile Picture"
@@ -176,4 +179,3 @@ const Aside = ({
 };
 
 export default Aside;
- 

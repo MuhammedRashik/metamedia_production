@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
+import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 const Notification = ({ setOpenNotification }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [notifications, setNotifications]: any = useState([]);
@@ -78,7 +79,7 @@ const Notification = ({ setOpenNotification }: any) => {
                         >
                           <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
                             <img
-                              src={`https://meta-media.in/api/user/profile/${item?.senderUserData.profile?.profileUrl}`}
+                              src={`${img_User_baseUrl}${item?.senderUserData.profile?.profileUrl}`}
                               className="w-10 h-10 md:w-[50px] md:h-[50px]  rounded-full border border-[#C1506D]"
                               alt=""
                             />
@@ -107,7 +108,7 @@ const Notification = ({ setOpenNotification }: any) => {
                           </div>
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
                             <img
-                              src={`https://meta-media.in/api/post/img/${item.action_details.post_image}`}
+                              src={`${img_Post_baseUrl}${item.action_details.post_image}`}
                               className="w-full h-5/6 object-cover"
                               alt=""
                             />
@@ -125,7 +126,7 @@ const Notification = ({ setOpenNotification }: any) => {
                         >
                           <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
                             <img
-                              src={`https://meta-media.in/api/user/profile/${item?.senderUserData.profile?.profileUrl}`}
+                              src={`${img_User_baseUrl}${item?.senderUserData.profile?.profileUrl}`}
                               className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#C1506D]"
                               alt=""
                             />
@@ -160,7 +161,7 @@ const Notification = ({ setOpenNotification }: any) => {
                           </div>
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
                             <img
-                              src={`https://meta-media.in/api/post/img/${item.action_details.post_image}`}
+                              src={`${img_Post_baseUrl}${item.action_details.post_image}`}
                               className="w-full h-5/6 object-cover"
                               alt=""
                             />

@@ -9,6 +9,7 @@ import {
   isSinglePostModalOpen,
   setPostUserData,
 } from "../../utils/ReduxStore/Slice/singlePostSlice";
+import { img_Post_baseUrl } from "../../utils/common/baseUrl";
 
 const Post = () => {
   const [posts, setPosts]: any = useState([]);
@@ -52,7 +53,7 @@ const Post = () => {
                         <>
                           <img
                             className="w-full h-full object-cover "
-                            src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`}
+                            src={`${img_Post_baseUrl}${item.mediaUrl[0]}`}
                             alt=""
                           />
                         </>
@@ -66,7 +67,7 @@ const Post = () => {
                             loop
                           >
                             <source
-                              src={`https://meta-media.in/api/post/img/${item.mediaUrl[0]}`} // Provide the source URL of the video
+                              src={`${img_Post_baseUrl}${item.mediaUrl[0]}`} // Provide the source URL of the video
                               type="video/mp4" // Set the type of the video file (replace 'mp4' with the actual video format)
                             />
                           </video>

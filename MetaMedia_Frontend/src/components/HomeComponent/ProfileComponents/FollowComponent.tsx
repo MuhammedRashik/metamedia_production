@@ -6,6 +6,7 @@ import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { followUserFunction, getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import profile from '../../../assets/profile.webp'
 import { Link, useNavigate } from "react-router-dom";
+import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 const FollowComponent = ({
   users,
@@ -51,7 +52,7 @@ const FollowComponent = ({
   useEffect(()=>{    
     (async()=>{
     if(searchUser.length && searchUser.trim()!==""){
-        const searchedUsers = users.filter((item:any) => item.fullName.toLowerCase()?.startsWith(searchUser));
+        const searchedUsers = users.filter((item:any) => item.fullName.toLowerCase().startsWith(searchUser));
         setfollowing(searchedUsers)
         setfollowers(searchedUsers)
     }else{      
@@ -147,7 +148,7 @@ const FollowComponent = ({
                         )
                           ? `${val.profile}`
                           : val.profile
-                          ? `https://meta-media.in/api/user/profile/${val.profile}`
+                          ? `${img_User_baseUrl}${val.profile}`
                           : profile
                       }
                       alt=""
@@ -181,7 +182,7 @@ const FollowComponent = ({
                         )
                           ? `${val.profile}`
                           : val.profile
-                          ? `https://meta-media.in/api/user/profile/${val.profile}`
+                          ? `${img_User_baseUrl}${val.profile}`
                           : profile
                       }
                       alt=""

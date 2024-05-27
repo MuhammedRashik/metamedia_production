@@ -11,6 +11,7 @@ import axios from "axios";
 import { AddVideoToStoryFunction } from "../../../utils/api/methods/StoryService/Story/post";
 import TrimVideoComponent from "./TrimVideoComponent";
 import { clearVideos } from "../../../utils/ReduxStore/Slice/postSlice";
+import { axiosInstance } from "../../../utils/costumHook/constumHook";
 
 const StoryModal = ({ setAddStory }: any) => {
   const [caption, setCaption] = useState("");
@@ -80,7 +81,7 @@ const uploadFile = async ( timestamp:any, signature:any) => {
     const cloudName="dton3lr3o"
     let resourceType='video'
     let api = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`
-    const res = await axios.post(api, data)
+    const res = await axiosInstance.post(api, data)
     const { secure_url } = res.data;
     console.log("File upload success ...");
     return secure_url;

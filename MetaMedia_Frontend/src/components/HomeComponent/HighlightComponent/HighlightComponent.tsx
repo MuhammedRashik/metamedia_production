@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react';
-import React from 'react'
+import { img_Story_baseUrl } from '../../../utils/common/baseUrl';
+
 
 const Highlight = ({setOpenHighlight, index, highlight, extra, setAddHighlight }:any) => {
   
@@ -9,7 +10,7 @@ const Highlight = ({setOpenHighlight, index, highlight, extra, setAddHighlight }
       <div className="highlight-item" onClick={()=>setOpenHighlight(index)}>
         <img
           className="rounded-full border-2 border-black w-14 h-14 sm:w-16 sm:h-16 md:h-20 md:w-20 lg:w-24 lg:h-24 opacity-90"
-          src={`https://meta-media.in/api/story/story/$${highlight?.media[0]}`}
+          src={`${img_Story_baseUrl}${highlight?.media[0]}`}
           alt="HL"
         />
       </div>

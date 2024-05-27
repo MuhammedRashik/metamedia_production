@@ -1,6 +1,8 @@
-
+import { useState } from "react";
+import StoryCard from "./storycardComponent";
 import { useSelector } from "react-redux";
 import profile from '../../assets/profile.webp'
+import { img_Story_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl";
 
 
 // const [stories,setStories]=useState([])
@@ -27,15 +29,15 @@ const Story = ({setShowStory,setAddStory}:any) => {
                             : setShowStory(userData.userId)
                         }
                         src={
-                          userData?.profile?.startsWith('https://graph') ?
+                          userData?.profile.startsWith('https://graph') ?
                           profile
-                          :myStory?.[0]?.[0]?.storyUrl?.startsWith('https://') ? 
-                        `https://meta-media.in/api/user/profile/${userData?.profile}`
+                          :myStory?.[0]?.[0]?.storyUrl.startsWith('https://') ? 
+                        `${img_User_baseUrl}${userData?.profile}`
                         :
                           myStory?.[0]?.[0]?.storyUrl
-                            ? `https://meta-media.in/api/story/story/${myStory?.[0]?.[0]?.storyUrl}`
+                            ? `${img_Story_baseUrl}${myStory?.[0]?.[0]?.storyUrl}`
                             : userData?.profile ?
-                            `https://meta-media.in/api/user/profile/${userData?.profile}`
+                            `${img_User_baseUrl}${userData?.profile}`
                             : profile
                         }
                         alt="S"
@@ -46,17 +48,17 @@ const Story = ({setShowStory,setAddStory}:any) => {
                 {stories[0]?.length !== 0 &&
                 stories[0]?.map((value: any,index:number) => {
                   return(
-                <div key={index}  className="w-16 h-16 sm:w-20 sm:h-20 border-2 rounded-full border-[#C1506D] justify-center mr-2 sm:mr-7">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 border-2 rounded-full border-[#C1506D] justify-center mr-2 sm:mr-7">
                   <div className="w-full h-full flex justify-center items-center">
                     <div className="w-[58px] h-[58px] sm:w-[72px] sm:h-[72px] border flex justify-center items-center rounded-full">
                       <img
                         className="w-[58px] h-[58px] sm:w-[72px] sm:h-[72px] rounded-full"
                         onClick={() => setShowStory(value.userId)}
                         src={`${
-                          stories && !value.data[0]?.storyUrl?.startsWith('https://')
-                            ? `https://meta-media.in/api/story/story/${value.data[0]?.storyUrl}`
+                          stories && !value.data[0]?.storyUrl.startsWith('https://')
+                            ? `${img_Story_baseUrl}${value.data[0]?.storyUrl}`
                             : value?.profile ?
-                             `https://meta-media.in/api/user/profile/${value?.profile}`
+                             `${img_User_baseUrl}${value?.profile}`
                              : profile
                         }`}
                         alt="S"

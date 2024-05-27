@@ -108,8 +108,8 @@ const PostListComponents = () => {
                               className="object-cover w-full h-full rounded-sm"
                               src={
                                 data.mediaUrl[0]
-                                ? `https://meta-media.in/api/post/img/${data?.mediaUrl[0]}`
-                                : ``
+                                  ? `https://meta-media.in/api/post/img/${data?.mediaUrl[0]}`
+                                  : ``
                               }
                               alt=""
                               loading="lazy"

@@ -1,4 +1,3 @@
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -6,9 +5,9 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/websocket-services: "trip-service"
+    nginx.ingress.kubernetes.io/websocket-services: "meta-3d-service"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.org/websocket-services: trip-service
+    nginx.org/websocket-services: meta-3d-service
     nginx.ingress.kubernetes.io/secure-backends: "true"
 spec:
   ingressClassName: nginx
@@ -65,13 +64,20 @@ spec:
                 name: meta-3d-service
                 port:
                   number: 3006
+          # - path: /socket.io/
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: meta-chat-service
+          #       port:
+          #         number: 8081
           - path: /socket.io/
             pathType: Prefix
             backend:
               service:
-                name: meta-chat-service
+                name: meta-3d-service
                 port:
-                  number: 8081
+                  number: 3006
           - path: /?(.*)
             pathType: Prefix
             backend:
@@ -79,4 +85,3 @@ spec:
                 name: client-srv
                 port:
                   number: 5173
-          
