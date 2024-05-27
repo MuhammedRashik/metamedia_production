@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import 'global';
+import { Buffer } from 'buffer';
+global.Buffer = Buffer;
 import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
