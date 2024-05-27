@@ -31,6 +31,8 @@ const socketConfig = (io:any) => {
         const user = users.find((user: any) => user.userId === userId);
         
         if (user) {
+            console.log(user,'00');
+            
           user.position = position;
           io.emit("userPositionUpdated", { userId, position });
         }
