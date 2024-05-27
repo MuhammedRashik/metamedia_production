@@ -77,7 +77,6 @@ const Box = ({ position }:any) => {
     return (
       <mesh position={[position.x, position.y, position.z]} >
         <OrbitControls />
-        
         <boxGeometry args={[1, 1, 1]} />
         <meshBasicMaterial color={color} />
       </mesh>
