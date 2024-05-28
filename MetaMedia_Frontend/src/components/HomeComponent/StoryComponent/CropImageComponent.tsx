@@ -61,7 +61,7 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     }
   };
   return (
-    <div className="flex flex-col h-[400px] md:h-[600px] relative">
+    <div className="flex flex-col h-[400px] md:h-[550px] relative">
     <div className="w-[600px] flex">
       <Cropper
         image={imageUrl}
@@ -74,7 +74,7 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
         style={{
             containerStyle: {
                 width: "100%",
-                height: "500",
+                height: "400",
                 overflow: "hidden",
                 backgroundColor: "black",
               },
@@ -93,7 +93,7 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
       /> 
 
     </div>
-    <div className="w-full h-20 rounded absolute bottom-0">
+    <div className="w-full h-20 rounded absolute bottom-0 bg-blue-500">
       <div className="flex justify-center items-center">
       <ZoomOut className="text-black mt-2" onClick={handleZoomOut} />
       <input
