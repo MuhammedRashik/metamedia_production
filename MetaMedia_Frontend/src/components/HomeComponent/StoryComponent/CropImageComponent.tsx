@@ -61,7 +61,7 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
     }
   };
   return (
-    <div className="flex flex-col h-[400px] md:h-[600px] relative">
+    <div className="flex bg-white flex-col h-[400px] md:h-[600px] relative">
     <div className="w-[600px] flex">
       <Cropper
         image={imageUrl}
@@ -93,8 +93,8 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
       /> 
 
     </div>
-    <div className="w-full h-20 rounded absolute bottom-0">
-      <div className="flex justify-center items-center">
+    <div className="w-full h-20 rounded bg-white absolute bottom-0">
+      <div className="flex justify-center bg-white items-center">
       <ZoomOut className="text-black mt-2" onClick={handleZoomOut} />
       <input
         type="range"
@@ -110,7 +110,7 @@ const CropImageComponent = ({ selectedFile ,imageUrl,setCroppedImage,setTrimVide
       />
       <ZoomIn className="text-black mt-2" onClick={handleZoomIn} />
       </div>
-          <div className=" flex justify-center w-full h-12 border rounded p-1.5">
+          <div className=" flex justify-center bg-white w-full h-12 border rounded p-1.5">
             <div
               className="p-2 w-14  md:w-24 flex justify-center border rounded text-black "
               onClick={() => setAspect([1 / 1])}
