@@ -128,18 +128,15 @@ export default {
   },
 
   followUser: async (currentUserId: string, followedUserId: string) => {
+    console.log(currentUserId,"currentUserIdl");
+    
     const user: any = await User.findOne({
       "basicInformation.userId": currentUserId,
     });
-    // const story = await User.findOne({ userId: currentUserId }).populate('basicInformation.fullName').exec();
-
     const userAlreadyFollows = user.socialConections.following.some(
       (connection: any) => connection.userId === followedUserId
     );
-    console.log(
-      userAlreadyFollows,
-      "userAlreadyFollowsuserAlreadyFollowsuserAlreadyFollows"
-    );
+    console.log(userAlreadyFollows,"userAlready");
     if (userAlreadyFollows) {
       const updatedUser = await User.findOneAndUpdate(
         { "basicInformation.userId": currentUserId },
@@ -156,9 +153,14 @@ export default {
         return { status: false, message: "Failed" };
       }
     } else {
+      console.log(followedUserId,"followedUserId");
+      
       const userDetails: any = await User.findOne({
         "basicInformation.userId": followedUserId,
       });
+      console.log(userDetails,"userDetails");
+      console.log(currentUserId,"currentUserId");
+      
       const updatedUser = await User.findOneAndUpdate(
         { "basicInformation.userId": currentUserId },
         {
@@ -166,7 +168,7 @@ export default {
             "socialConections.following": {
               userId: followedUserId,
               profile: userDetails?.profile.profileUrl,
-              fullName: userDetails.basicInformation.fullName,
+              fullName: userDetails.basicInformation?.fullName,
             },
           },
         }
@@ -178,7 +180,7 @@ export default {
             "socialConections.followers": {
               userId: currentUserId,
               profile: user.profile.profileUrl,
-              fullName: user.basicInformation.fullName,
+              fullName: user.basicInformation?.fullName,
             },
           },
         }
