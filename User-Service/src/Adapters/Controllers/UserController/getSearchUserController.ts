@@ -5,10 +5,15 @@ export default (dependecies: any) => {
   const { getSearchUser_Usecase } = dependecies.useCase;
   const getSearchUserController = async (req: Request, res: Response, next:NextFunction) => {  
     try {
-      const {user} = req.params
-      console.log(user,"user");
+      console.log("getSearchUserController");
+      console.log(req.params,"req.params");
       
-      const userId = await decodeDataFromHeaders(req.headers)    
+      const {user} = req.params
+      console.log(user,"userSEARCHED");
+      
+      const userId = await decodeDataFromHeaders(req.headers)  
+      console.log(userId,"deco userId");
+        
       if(userId){
       const response = await getSearchUser_Usecase(dependecies).executeFunction(user,userId);
       console.log(response,"responceresponce");

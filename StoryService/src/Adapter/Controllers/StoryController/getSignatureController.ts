@@ -8,15 +8,10 @@ cloudinary.config({
   secure: true,
 });
 
-
 export default (dependencies: any) => {
   const getSignatureController = (req: Request, res: Response) => {
-    console.log(req.body,"req.bodyreq.body");
-    
+    console.log(req.body, "req.bodyreq.body");
     const { folder } = req.body;
-    console.log(folder,"folderfolder");
-    
-
     try {
       const timestamp = Math.round(new Date().getTime() / 1000);
       const cloudinaryApiSecret: any = process.env.CLOUDINARY_API_SECRET;
@@ -28,7 +23,7 @@ export default (dependencies: any) => {
         },
         cloudinaryApiSecret
       );
-console.log(timestamp, signature ,"timestamp, signature ");
+      console.log(timestamp, signature, "timestamp, signature ");
 
       res.status(200).json({ status: true, timestamp, signature });
     } catch (error) {

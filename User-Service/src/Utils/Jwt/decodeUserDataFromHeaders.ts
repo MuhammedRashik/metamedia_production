@@ -3,7 +3,7 @@ export const decodeDataFromHeaders = (headers: any) => {
   console.log(decodedTokenData,"decodedTokenData");
     if (decodedTokenData.user) {
       const userId = decodedTokenData?.user?._id ||  decodedTokenData?.user?.user?._id || decodedTokenData?.user?.response?._id
-      console.log(userId,'________');
+      console.log(userId,'Gotted');
       
           if(userId){
       return userId
