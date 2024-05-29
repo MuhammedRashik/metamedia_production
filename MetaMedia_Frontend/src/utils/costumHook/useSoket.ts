@@ -7,7 +7,6 @@ export const useSocket = (): Socket<any>| null => {
 
     useEffect(() => {
         const newSocket = io("https://meta-media.in/", {
-        // const newSocket = io("http://localhost:3006", {
             reconnection: true,
             secure: true,
             transports: ['polling', 'websocket'], 

@@ -119,7 +119,7 @@ const MessageListComponent = ({
   const [currentUsers, setCurentUsers] = useState<any>(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:8081"));
+    setSocket(io("https://meta-media.in/"));
     if (messages) {
       dispatch(addSocketData(socket));
     }

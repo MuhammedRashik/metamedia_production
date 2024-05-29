@@ -39,7 +39,6 @@ console.log('hi from stor service ');
  app.use(cookieParser(process.env.COOKIEPARSERSECRET));
  app.use(express.static('public/'))
  app.use('/api/story/story', express.static('public/story')) 
-//  const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"];
  app.use(
     cors({
       origin:"https://meta-media.in",
