@@ -5,13 +5,13 @@ dotenv.config()
     const authMiddleware=(req: Request,res: Response,next: NextFunction)=>{
         console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
         console.log(req.cookies,"COOK");
-        console.log(req?.cookies?.accessToken,"kkkkk");
+        console.log(req.cookies.accessToken,"kkkkk");
         
-        if(!req.headers.authorization){
+        if(!req.cookies.accessToken){
             res.status(401).json('Authorization header required');
         }else{
             try{
-                const token = req.headers.authorization.split(' ')[1];
+                const token = req.cookies.accessToken
                 if(!token){
                     res.status(400).json('Token not found');
                 }
