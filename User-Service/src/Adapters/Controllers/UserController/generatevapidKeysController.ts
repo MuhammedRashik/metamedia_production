@@ -4,8 +4,6 @@ export default (dependecies: any) => {
   const { genarateVapidKeys_useCase } = dependecies.useCase;
   const genarateVapidKeysController = async (req: Request, res: Response) => {  
     
-
-    console.log('IN HEREEEEEEEEEEEEE');
     
     const {userId} = req.body;
 
