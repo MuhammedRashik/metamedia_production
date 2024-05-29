@@ -17,7 +17,6 @@ const LogOut = () => {
   
   const logoutFunction = async () => {
     console.log("logoutFunctionlogoutFunction");
-    
     const response: any = await LogoutFunction();
     console.log(response?.data,"response?.data");
     
