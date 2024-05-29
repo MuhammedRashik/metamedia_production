@@ -1,6 +1,6 @@
 
 export const followUser_Usecase = (dependecies: any) => {
-    console.log("I am chooseInterest_Usecase" );
+    console.log("I am followUser_Usecase" );
     
   const {repository: { userRepository }} = dependecies;
   const executeFunction = async (currentUserId:string , followedUserId: string) => {

@@ -63,11 +63,14 @@ const checkUser = useMemo(
   }, [checkUser]);
 
   const FollowUser = async (id: string) => {
+    console.log(id,"id");
+    
     const data = {
       currentUserId: userData.userId,
       followedUserId: id,
     };
     const response: any = await followUserFunction(data);
+console.log(data,"datadatadata");
 
     if (response.data.status) {
       try {

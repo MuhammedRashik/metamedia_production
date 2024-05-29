@@ -19,10 +19,14 @@ const LogOut = () => {
     console.log("logoutFunctionlogoutFunction");
     
     const response: any = await LogoutFunction();
+    console.log(response?.data,"response?.data");
+    
     if (response?.data?.status) {
       dispatch(clearToken());
       dispatch(clearUser());
-      localStorage.removeItem("accesstoken");
+      console.log("Before removal:", localStorage.getItem("accesstoken"));
+      localStorage.removeItem('accesstoken');
+      console.log("After removal:", localStorage.getItem("accesstoken"));    
       toast.success(response?.data?.message);
       navigate("/login");
     } else {

@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 const ProtectedAuthRoute = ({ children }: { children: any }) => {
-  const token = localStorage.getItem('accesstoken')
+  const token = cook.getItem('accesstoken')
     if (token) {
       return children
     }else{
