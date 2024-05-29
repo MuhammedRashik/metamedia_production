@@ -2,6 +2,7 @@ import {Request,Response} from 'express'
 export default (dependencies:any)=>{
     const { useCase: { refreshTokenUsecase }} = dependencies;
 const refreshToken=async(req:Request,res:Response)=>{
+    console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
 console.log("I AM refreshToken");
     const reference=await refreshTokenUsecase(dependencies)
     const {executeFunction}=reference

@@ -15,6 +15,8 @@ const axiosFormDataInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
+    console.log("I AM AXIOS REQ");
+    
     const accessToken = localStorage.getItem('accesstoken')    
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
@@ -28,6 +30,8 @@ error => {
 
 axiosFormDataInstance.interceptors.request.use(
   config => {
+    console.log("I AM AXIOSFORM REQ");
+
     const accessToken = localStorage.getItem('accesstoken')
     console.log(accessToken,"axiosFormDataInstance");
     
@@ -46,7 +50,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log("Axiox ERROR");        
+    console.log("Axiox hhhh");
+    console.log("I AM AXIOS REs");
+        
     console.log(error.response.data.errMessage,"error.responseerror.response");
     
     const originalRequest = error.config;
@@ -83,6 +89,8 @@ axiosFormDataInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log("I AM AXIOSFORM REQ");
+
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
