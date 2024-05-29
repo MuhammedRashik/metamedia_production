@@ -79,6 +79,7 @@ const Login = () => {
           dispatch(clearUser());
           dispatch(addUser(data));
           dispatch(addToken(response.data.accesstoken));
+          
           localStorage.setItem('accesstoken',response.data.accesstoken)
 
           if (response?.data?.newUser) {

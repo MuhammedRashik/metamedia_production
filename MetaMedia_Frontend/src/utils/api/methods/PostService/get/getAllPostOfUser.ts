@@ -1,8 +1,8 @@
 import { getUserPosts_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../costumHook/constumHook";
+import axios from "axios"
 export const getAllPostOfUserFunction = (userId: any) => {
   try {
-    return axiosInstance.get(`${getUserPosts_Api}?id=${userId}`);
+    return axios.get(`${getUserPosts_Api}?id=${userId}`);
   } catch (error) {
     return error;
   }

@@ -7,12 +7,10 @@ import {
   GetGroupData_Api,
   GetNotificationOfUser_Api,
 } from "../../../endpoints/common";
-import { toast } from "sonner";
-import { axiosInstance } from "../../../../costumHook/constumHook";
 
 export const GetConversationsFunction = () => {
   try {
-    return axiosInstance.get(GetConversations_Api);
+    return axios.get(GetConversations_Api);
   } catch (error) {
     return error;
   }
@@ -21,7 +19,7 @@ export const GetConversationsFunction = () => {
 export const getMessagesFunction = (data: any) => {
   let convId = data?.conversationId ? data?.conversationId : "new";
   try {
-    return axiosInstance.get(
+    return axios.get(
       `${GetMessages_Api}/${convId}?receiverId=${data.receiverId}`
     );
   } catch (error) {
@@ -31,7 +29,7 @@ export const getMessagesFunction = (data: any) => {
 
 export const GetAllGroupsOfuser = async (userId: any) => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axios.get(
       `${GetAllGroupsOfUser_Api}?id=${userId}`
     );
     return response.data;
@@ -42,7 +40,7 @@ export const GetAllGroupsOfuser = async (userId: any) => {
 
 export const GetGroupMessagesFunction = async (groupId: any) => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axios.get(
       `${getGroupMessages_Api}?groupId=${groupId}`
     );
     return response.data;
@@ -53,7 +51,7 @@ export const GetGroupMessagesFunction = async (groupId: any) => {
 
 export const GetGroupDataByIdFunction = async (groupId: any) => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axios.get(
       `${GetGroupData_Api}?groupId=${groupId}`
     );
     return response.data;
@@ -64,7 +62,7 @@ export const GetGroupDataByIdFunction = async (groupId: any) => {
 
 export const GetNotificationOfUserFunction = async (userId: any) => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axios.get(
       `${GetNotificationOfUser_Api}?userId=${userId}`
     );
     return response.data;

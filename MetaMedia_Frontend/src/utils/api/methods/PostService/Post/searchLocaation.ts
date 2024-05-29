@@ -1,11 +1,11 @@
 import { SearchLocation_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../costumHook/constumHook";
+import axios from "axios"
 export const searchLocationFuntion = async (data: string) => {
   const bakendData = {
     data: data,
   };
 
-  const response = await axiosInstance.post(SearchLocation_Api, bakendData);
+  const response = await axios.post(SearchLocation_Api, bakendData);
 
   return response.data;
 };

@@ -1,9 +1,9 @@
 import { AddComent_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../costumHook/constumHook";
+import axios from "axios"
 
 export const AddCommentFunction = async (data: any) => {
   try {
-    const response = await axiosInstance.post(AddComent_Api, data);
+    const response = await axios.post(AddComent_Api, data);
     return response.data;
   } catch (error) {
     return error;

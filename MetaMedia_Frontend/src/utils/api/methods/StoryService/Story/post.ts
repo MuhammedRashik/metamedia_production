@@ -1,9 +1,11 @@
 import { AddHighlight_Api, AddStory_Api, AddVideos_Api, DeleteStory_Api, getMyAllStoriesForHighLightList_Api } from "../../../endpoints/common";
-import {axiosFormDataInstance, axiosInstance} from "../../../../costumHook/constumHook";
+import {axiosFormDataInstance} from "../../../../costumHook/constumHook";
+import axios from "axios"
+
 
 export const addHighlightFunction = (data: any) => {
   try {
-    return axiosInstance.post(AddHighlight_Api, data);
+    return axios.post(AddHighlight_Api, data);
   } catch (error) {
     return error;
   }
@@ -25,7 +27,7 @@ export const AddStoryFunction = async (data: { image: FormData, caption: string 
 
 export const deleteStoryFunction = async (data:{})=>{
   try {
-    return axiosInstance.post(DeleteStory_Api, data);
+    return axios.post(DeleteStory_Api, data);
   } catch (error) {
     return error;
   }
@@ -33,14 +35,14 @@ export const deleteStoryFunction = async (data:{})=>{
 
 export const getMyAllStoriesForHighLightListFunction = async ()=>{
   try {
-    return axiosInstance.get(getMyAllStoriesForHighLightList_Api);
+    return axios.get(getMyAllStoriesForHighLightList_Api);
   } catch (error) {
     return error;
   }
 }
 export const AddVideoToStoryFunction = async (data:any)=>{
   try {
-    return axiosInstance.post(AddVideos_Api,data);
+    return axios.post(AddVideos_Api,data);
   } catch (error) {
     return error;
   }

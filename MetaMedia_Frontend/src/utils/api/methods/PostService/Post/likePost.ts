@@ -1,9 +1,9 @@
 import { likePost_Api } from "../../../endpoints/common";
-import { axiosInstance } from "../../../../costumHook/constumHook";
+import axios from "axios"
 
 export const LikePostFuntion = async (data: any) => {
   try {
-    const response = await axiosInstance.post(likePost_Api, data);
+    const response = await axios.post(likePost_Api, data);
     return response.data;
   } catch (error) {
     return error;

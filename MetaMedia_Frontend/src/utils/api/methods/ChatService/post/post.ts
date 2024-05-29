@@ -11,14 +11,11 @@ import {
   DeleteMessage_Api,
   SendVoice_Api,
 } from "../../../endpoints/common";
-import {
-  axiosFormDataInstance,
-  axiosInstance,
-} from "../../../../costumHook/constumHook";
+import {axiosFormDataInstance} from "../../../../costumHook/constumHook";
 
 export const sendMessageFunction = (data: any) => {
   try {
-    return axiosInstance.post(SendMessage_Api, data);
+    return axios.post(SendMessage_Api, data);
   } catch (error) {
     return error;
   }
@@ -26,7 +23,7 @@ export const sendMessageFunction = (data: any) => {
 
 export const CreateConversationFunction = (data: any) => {
   try {
-    return axiosInstance.post(CreateConversation_Api, data);
+    return axios.post(CreateConversation_Api, data);
   } catch (error) {
     return error;
   }
@@ -43,7 +40,7 @@ export const CreateNewGroupFuntion = async (data: any) => {
 
 export const SendGroupMessageFunction = async (data: any) => {
   try {
-    const responce = await axiosInstance.post(SendGroupMessage_Api, data);
+    const responce = await axios.post(SendGroupMessage_Api, data);
     return responce.data;
   } catch (error) {
     return error;
@@ -83,7 +80,7 @@ export const SendFileMessageFunction = async (data: any) => {
 };
 export const BlockAndUnblockUserFunction = (data: any) => {
   try {
-    return axiosInstance.post(BlockAndUnblockUser_Api, data);
+    return axios.post(BlockAndUnblockUser_Api, data);
   } catch (error) {
     return error;
   }
@@ -103,7 +100,7 @@ export const SendFileForMessageFunction = async (data: any) => {
 
 export const DeleteMessageFunction = async (messageId: string) => {
   try {
-    const responce = await axiosInstance.delete(
+    const responce = await axios.delete(
       `${DeleteMessage_Api}/${messageId}`
     );
     return responce.data;

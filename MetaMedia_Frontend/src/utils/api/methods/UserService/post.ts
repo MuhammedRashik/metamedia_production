@@ -10,11 +10,13 @@ import {
   getUsersByName_Api,
   getuserById_Api,
 } from "../../endpoints/common";
-import {axiosFormDataInstance, axiosInstance} from "../../../costumHook/constumHook";
+import {axiosFormDataInstance} from "../../../costumHook/constumHook";
+import axios from "axios"
+
 
 export const EditProfileFunction = (data: any) => {
   try {
-    return axiosInstance.post(EditProfile_Api, data);
+    return axios.post(EditProfile_Api, data);
   } catch (error) {
     return error;
   }
@@ -22,7 +24,7 @@ export const EditProfileFunction = (data: any) => {
 
 export const AddProfileFunction = async (data: any) => {
   try {
-    return axiosInstance.post(AddProfile_Api, data);
+    return axios.post(AddProfile_Api, data);
   } catch (error) {
     console.log(error, "err");
   }
@@ -40,7 +42,7 @@ export const addProfileImageFunction = async (formData: FormData) => {
 
 export const ChooseInterestFunction = (data: any) => {
   try {
-    return axiosInstance
+    return axios
       .post(ChooseInterest_Api, data);
   } catch (error) {
     return error;
@@ -52,7 +54,7 @@ export const getUsersByNameFunction = async (data: string) => {
     const body = {
       name: data,
     };
-    const response = await axiosInstance
+    const response = await axios
       .post(getUsersByName_Api, body);
     return response.data;
   } catch (error) {
@@ -63,7 +65,7 @@ export const getUsersByNameFunction = async (data: string) => {
 export const getUserByIdFuntion = async (data: any) => {
   try {
     const datas = { id: data };    
-    const response = await axiosInstance
+    const response = await axios
       .post(getuserById_Api, datas);
     return response.data;
   } catch (error) {
@@ -74,7 +76,7 @@ export const getUserByIdFuntion = async (data: any) => {
 
 export const GetUsersDataByIdFunction = async (data: any) => {
   try {
-    return axiosInstance.post(GetUsersData_Api, data);
+    return axios.post(GetUsersData_Api, data);
   } catch (error) {
     console.log(error,"err");
   }
@@ -82,7 +84,7 @@ export const GetUsersDataByIdFunction = async (data: any) => {
 
 export const followUserFunction = async (data: any) => {
   try {
-    return axiosInstance.post(FollowUser_Api, data);
+    return axios.post(FollowUser_Api, data);
   } catch (error) {
     console.log(error,"err");
   }
@@ -90,7 +92,7 @@ export const followUserFunction = async (data: any) => {
 
 export const GenarateVapIdKeysFunction = async (data:any) => {
   try {
-    const response = await axiosInstance
+    const response = await axios
       .post(`${GenarateVapIdKeys_Api}`,data);
     return response.data;
   } catch (error) {
@@ -100,7 +102,7 @@ export const GenarateVapIdKeysFunction = async (data:any) => {
 
 export const SubcribeUserToSNSFunction = async (data:any) => {
   try {
-    const response = await axiosInstance
+    const response = await axios
       .post(`${SubcribeUserToSNS_Api}`,data);
     return response.data;
   } catch (error) {

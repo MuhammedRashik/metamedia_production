@@ -10,6 +10,10 @@ console.log("I AM refreshToken");
          const NewAccessToken=await executeFunction(token)
          console.log(NewAccessToken,"NewAccessTokenNewAccessToken");
          if(!NewAccessToken.status) return res.status(203).json(NewAccessToken.message)
+            res.cookie("accessToken", NewAccessToken.accessToken, {
+                httpOnly: true,
+                secure: true,
+              });
          res.status(200).json({status:true,token:NewAccessToken.accessToken})
 }
 
