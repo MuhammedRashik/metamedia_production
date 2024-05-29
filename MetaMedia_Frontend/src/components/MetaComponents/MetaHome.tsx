@@ -17,8 +17,8 @@ const generateUniqueId = () => {
 
 const MetaHome = () => {
 
-  const [userId] = useState(generateUniqueId());
-//   const userId = useSelector((state: any) => state.persisted.user.userData.userId);
+//   const [userId] = useState(generateUniqueId());
+  const userId = useSelector((state: any) => state.persisted.user.userData.userId);
   const socket = useSocket();
   const [users, setUsers] = useState([]);
   const [position, setPosition] = useState({ x: 0, y: 0, z: 0 });
