@@ -25,7 +25,8 @@ export default defineConfig({
     port: 5173, 
   },
   define:{
-    global:{}
+    global:{},
+    
   }
   
 })

@@ -2,7 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import 'global';
 import { Buffer } from 'buffer';
+import crypto from 'crypto'
 global.Buffer = Buffer;
+window.global=window
+window.Buffer = Buffer;
+
+
+import.meta.env
 import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";

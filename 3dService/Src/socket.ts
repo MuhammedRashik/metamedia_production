@@ -40,11 +40,7 @@ const socketConfig = (io: Server) => {
       }
     });
 
-    socket.on('signal', (data) => {
-      const { signal, to, from } = data;
-      console.log('Signal received from:', from, 'to:', to, 'signal:', signal);
-      io.to(to).emit('signal', { signal, from });
-    });
+    
 
     socket.on('disconnect', () => {
       users = users.filter((user) => user.socketId !== socket.id);
