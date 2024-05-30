@@ -7,8 +7,8 @@ const ProtectedAuthRoute = ({ children }: { children: any }) => {
 
   useEffect(() => {
     // Get the cookie value by its name
-    const token = Cookies.get('accessToken');
-    console.log(token,"cook");
+    const token = localStorage.getItem('accesstoken')
+    console.log(token,"tokk");
     
     setCookieValue(token);
   }, []);
