@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedAuthRoute = ({ children }: { children: any }) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem('accesstoken');
 console.log(token,"yyy");
 
   if (!token) {
