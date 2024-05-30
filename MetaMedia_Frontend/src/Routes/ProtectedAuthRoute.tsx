@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 const ProtectedAuthRoute = ({ children }: { children: any }) => {
-  const cookieValue = Cookies.get('authToken'); // Replace 'authToken' with your cookie name
+  const token = localStorage.getItem('accessToken');
+console.log(token,"yyy");
 
-  if (!cookieValue) {
+  if (!token) {
     console.log("ProtectedAuthRoute to login");
     return <Navigate to="/login" replace />;
   }
 
-
-  if (cookieValue) {
-    console.log(cookieValue, "cookieValue");
+  if (token) {
+    console.log(token, "localStorage token");
     return children;
   } else {
     console.log("ProtectedAuthRoute to login");
