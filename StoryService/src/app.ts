@@ -53,7 +53,7 @@ console.log('hi from stor service ');
       saveUninitialized: false,
       cookie: {
         maxAge: 30 * 60 * 60 * 1000,
-        httpOnly: true,
+        httpOnly: false,
       },
       store: store,
     } as SessionOptions)

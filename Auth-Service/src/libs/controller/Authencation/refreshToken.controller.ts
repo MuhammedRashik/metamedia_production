@@ -12,7 +12,7 @@ console.log("I AM refreshToken");
          console.log(NewAccessToken,"NewAccessTokenNewAccessToken");
          if(!NewAccessToken.status) return res.status(203).json(NewAccessToken.message)
             res.cookie("accessToken", NewAccessToken.accessToken, {
-                httpOnly: true,
+                httpOnly: false,
                 secure: true,
               });
          res.status(200).json({status:true,token:NewAccessToken.accessToken})

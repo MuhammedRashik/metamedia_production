@@ -26,7 +26,7 @@ export const clearAccessTokenFromCookie = (
   res: Response
 ) => {
   res.cookie(cookieName, {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     signed: false,
     maxAge: 0,

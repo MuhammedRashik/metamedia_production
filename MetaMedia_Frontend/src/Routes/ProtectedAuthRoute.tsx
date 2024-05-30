@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const ProtectedAuthRoute = ({ children }: { children: any }) => {
-  const [cookieValue, setCookieValue] = useState('');
+  const cookieValue = Cookies.get('authToken'); // Replace 'authToken' with your cookie name
 
-  useEffect(() => {
-    const token = localStorage.getItem('accesstoken');
-    console.log(token, "tokk");
-    setCookieValue(token);
-  }, []);
+  if (!cookieValue) {
+    console.log("ProtectedAuthRoute to login");
+    return <Navigate to="/login" replace />;
+  }
+
 
   if (cookieValue) {
     console.log(cookieValue, "cookieValue");

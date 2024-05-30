@@ -24,7 +24,7 @@ export default (dependencies: any) => {
       const expirationDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
       res.cookie('accessToken',accesstoken,{
        expires:expirationDate,
-       httpOnly:true,
+       httpOnly:false,
        secure:true
       })
       if(response.newUser){
