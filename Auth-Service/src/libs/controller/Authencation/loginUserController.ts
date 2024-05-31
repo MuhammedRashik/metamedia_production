@@ -38,7 +38,7 @@ export default (dependecies: any) => {
       req.session.refreshToken = refreshtoken;
       
       res.cookie("accessToken", accesstoken, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
       });
 
@@ -64,7 +64,7 @@ export default (dependecies: any) => {
       req.session.refreshToken = refreshtoken;
       console.log(req.session.refreshToken ,"req.session.refreshToken ");
       res.cookie("accessToken", accesstoken, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
       });
 console.log("Login Success Response");

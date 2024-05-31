@@ -28,7 +28,7 @@ const UserRouter = () => {
     <>
     {isSinglePostModal && ( <> <SinglePostModal setRender={setRender} render={render} /> </> )}
     <Routes>
-      <Route path="/*" element={<ProtectedAuthRoute> <Home setRender={setRender} render={render}/> </ProtectedAuthRoute> }/>
+    <Route path="/*" element={<ProtectedAuthRoute><Home setRender={setRender} render={render} /></ProtectedAuthRoute>} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/verifyOtp" element={<VerifyOtp />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />

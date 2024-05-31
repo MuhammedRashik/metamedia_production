@@ -21,8 +21,6 @@ getDb(config)
 const server=http.createServer(app)
 dotenv.config()
 
-  
-
 
 // app.use(body().trim().escape());
 
@@ -75,7 +73,7 @@ declare module 'express-session' {
       saveUninitialized: false,
       cookie: {
         maxAge: 30 * 60 * 60 * 1000,
-        httpOnly: true,
+        httpOnly: false,
       },
       store: store,
     } as SessionOptions)

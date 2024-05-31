@@ -1,14 +1,22 @@
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedAuthRoute = ({ children }: { children: any }) => {
-  const token = localStorage.getItem('accesstoken')
-    if (token) {
-      return children
-    }else{
-      return <Navigate to="/login" replace />
-     
-    }
+  const token = localStorage.getItem('accesstoken');
+console.log(token,"yyy");
 
-  };
-  
-  export default ProtectedAuthRoute;
+  if (!token) {
+    console.log("ProtectedAuthRoute to login");
+    return <Navigate to="/login" replace />;
+  }
+
+  if (token) {
+    console.log(token, "localStorage token");
+    return children;
+  } else {
+    console.log("ProtectedAuthRoute to login");
+    return <Navigate to="/login" replace />;
+  }
+};
+
+export default ProtectedAuthRoute;
