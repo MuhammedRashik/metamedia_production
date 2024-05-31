@@ -4,6 +4,7 @@ interface User {
   userId: string;
   socketId: string;
   position: { x: number; y: number; z: number };
+  peerId: string;
 }
 
 const socketConfig = (io: Server) => {
@@ -12,19 +13,19 @@ const socketConfig = (io: Server) => {
   io.on('connection', (socket: Socket) => {
     console.log(`User connected: ${socket.id}`);
 
-    socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number },peerId:string }) => {
-      const { userId, position ,peerId} = data;
+    socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number }, peerId: string }) => {
+      const { userId, position, peerId } = data;
       const isUserExist = users.find((user) => user.userId === userId);
-console.log(peerId,'PEER ID');
 
       if (!isUserExist) {
-        const user: User = { userId, socketId: socket.id, position };
+        const user: User = { userId, socketId: socket.id, position, peerId };
         users.push(user);
         console.log('Adding new user', user);
       } else {
         isUserExist.socketId = socket.id;
         isUserExist.position = position;
-        console.log('Updating socket ID and position for existing user', isUserExist);
+        isUserExist.peerId = peerId;
+        console.log('Updating socket ID, position, and peer ID for existing user', isUserExist);
       }
 
       io.emit('updateUsers', users);
@@ -40,16 +41,6 @@ console.log(peerId,'PEER ID');
         io.emit('updateUsers', users);
       }
     });
-
-
-    socket.on("peerConnection",(data:any)=>{
-        const {peerId}=data
-        console.log(data);
-        
-        socket.emit("NewPeerConnection",{peerId})
-    })
-
-    
 
     socket.on('disconnect', () => {
       users = users.filter((user) => user.socketId !== socket.id);

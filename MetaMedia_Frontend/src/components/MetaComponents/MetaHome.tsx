@@ -7,43 +7,55 @@ import { OrbitControls } from '@react-three/drei';
 import randomColor from 'randomcolor';
 import Peer from 'peerjs';
 import { Mic, MicOff } from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 const generateUniqueId = () => {
   return crypto.randomUUID();
 };
 
-const   MetaHome = () => {
-  const [userId] = useState(generateUniqueId());
+const MetaHome = () => {
+  // const [userId] = useState(generateUniqueId());
+  const userId = useSelector((state: any) => state.persisted.user.userData.userId);
   const socket = useSocket();
   const [users, setUsers] = useState([]);
   const [position, setPosition] = useState({ x: 0, y: 0, z: 0 });
   const [audioEnabled, setAudioEnabled] = useState(false);
   const peerRef:any = useRef(null);
   const localStreamRef:any = useRef(null);
-  const [myPeer,setMyPeer]:any=useState()
+  const connectionsRef:any = useRef({});
+  const [myPeer, setMyPeer] = useState(null);
 
   useEffect(() => {
-  
+    const peer = new Peer(userId);
+    peerRef.current = peer;
+    setMyPeer(peer);
 
-    const peer=new Peer(userId)
-    setMyPeer(peer)
+    peer.on('open', id => {
+      console.log('My peer ID is: ' + id);
+      socket.emit('addNewUserToMeta', { userId, position, peerId: id });
+    });
 
-    try {
-        
+    peer.on('call', call => {
+      if (localStreamRef.current) {
+        call.answer(localStreamRef.current);
+      }
+      call.on('stream', remoteStream => {
+        const audio = new Audio();
+        audio.srcObject = remoteStream;
+        audio.play();
+      });
+    });
 
-    } catch (error) {
-        console.log(error,"ERROR FROM PEEER CONECTION");
-        
-    }
-
-  }, [userId,audioEnabled]);
+    return () => {
+      if (peerRef.current) {
+        peerRef.current.destroy();
+      }
+    };
+  }, [userId, socket, position]);
 
   useEffect(() => {
     if (socket) {
-       
-      socket.emit('addNewUserToMeta', { userId, position });
-
-      socket.on('updateUsers', (updatedUsers) => {
+      socket.on('updateUsers', updatedUsers => {
         setUsers(updatedUsers);
       });
 
@@ -51,7 +63,7 @@ const   MetaHome = () => {
         socket.off('updateUsers');
       };
     }
-  }, [socket, userId, position]);
+  }, [socket]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -85,46 +97,54 @@ const   MetaHome = () => {
     };
   }, [position, userId, socket]);
 
-  const callUser = (remoteUserId) => {
-    if (audioEnabled && peerRef.current && !peerRef.current.destroyed) {
+  useEffect(() => {
+    if (audioEnabled) {
       navigator.mediaDevices.getUserMedia({ video: false, audio: true })
         .then((stream) => {
           localStreamRef.current = stream;
-          const call = peerRef.current.call(remoteUserId, stream);
 
-          if (call) {
-            call.on('stream', (remoteStream) => {
-              const audio = new Audio();
-              audio.srcObject = remoteStream;
-              audio.play();
+          users.forEach(user => {
+            if (user.userId !== userId && !connectionsRef.current[user.userId]) {
+              callUser(user.userId, user.peerId);
+            }
+          });
+
+          setInterval(() => {
+            users.forEach(user => {
+              if (user.userId !== userId && !connectionsRef.current[user.userId]) {
+                callUser(user.userId, user.peerId);
+              }
             });
-          } else {
-            console.error('Failed to establish a call');
-          }
+          }, 5000);
         })
         .catch((err) => console.error('Failed to get local stream', err));
-    } else {
-      console.warn('PeerJS instance is not ready or destroyed');
+    } else if (localStreamRef.current) {
+      localStreamRef.current.getTracks().forEach(track => track.stop());
+      localStreamRef.current = null;
+      Object.values(connectionsRef.current).forEach(conn => conn.close());
+      connectionsRef.current = {};
+    }
+  }, [audioEnabled, users]);
+
+  const callUser = (remoteUserId, remotePeerId) => {
+    if (audioEnabled && peerRef.current && remotePeerId && !peerRef.current.destroyed) {
+      const call = peerRef.current.call(remotePeerId, localStreamRef.current);
+      connectionsRef.current[remoteUserId] = call;
+
+      call.on('stream', (remoteStream) => {
+        const audio = new Audio();
+        audio.srcObject = remoteStream;
+        audio.play();
+      });
+
+      call.on('close', () => {
+        delete connectionsRef.current[remoteUserId];
+      });
     }
   };
 
   const toggleAudio = () => {
-    setAudioEnabled((prevAudioEnabled) => {
-      const newAudioEnabled = !prevAudioEnabled;
-
-      if (newAudioEnabled) {
-        navigator.mediaDevices.getUserMedia({ video: false, audio: true })
-          .then((stream) => {
-            localStreamRef.current = stream;
-          })
-          .catch((err) => console.error('Failed to get local stream', err));
-      } else if (localStreamRef.current) {
-        localStreamRef.current.getTracks().forEach(track => track.stop());
-        localStreamRef.current = null;
-      }
-
-      return newAudioEnabled;
-    });
+    setAudioEnabled((prevAudioEnabled) => !prevAudioEnabled);
   };
 
   return (
@@ -135,7 +155,7 @@ const   MetaHome = () => {
         <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
           <OrbitControls />
           {users.map(user => (
-            <Box key={user.userId} position={user.position} callUser={()=>callUser(userId)} userId={user.userId} />
+            <Box key={user.userId} position={user.position} userId={user.userId} />
           ))}
           <HomeTownModel />
         </Physics>
@@ -151,11 +171,11 @@ const   MetaHome = () => {
   );
 };
 
-const Box = ({ position, callUser, userId }) => {
+const Box = ({ position, userId }) => {
   const color = useRef(randomColor()).current;
 
   return (
-    <mesh position={[position.x, position.y, position.z]} onClick={() => callUser(userId)}>
+    <mesh position={[position.x, position.y, position.z]}>
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={color} />
     </mesh>
