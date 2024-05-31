@@ -15,11 +15,11 @@ const app=express()
 expressConfig(app)  
 dotenv.config()
 getDb(config) 
-export const io: Server = require('socket.io')(8081, {
+const server=http.createServer(app)
+export const io: Server = require('socket.io')(server, {
   cors: { origin: 'https://meta-media.in' }
 });  
 socketConfig()
-const server=http.createServer(app)
  chatConsumer(dependencies)
  
  app.use('/api/chat/chat', express.static('Public/Chat')) 

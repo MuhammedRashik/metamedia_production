@@ -12,9 +12,10 @@ const socketConfig = (io: Server) => {
   io.on('connection', (socket: Socket) => {
     console.log(`User connected: ${socket.id}`);
 
-    socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number } }) => {
-      const { userId, position } = data;
+    socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number },peerId:string }) => {
+      const { userId, position ,peerId} = data;
       const isUserExist = users.find((user) => user.userId === userId);
+console.log(peerId,'PEER ID');
 
       if (!isUserExist) {
         const user: User = { userId, socketId: socket.id, position };
@@ -39,6 +40,14 @@ const socketConfig = (io: Server) => {
         io.emit('updateUsers', users);
       }
     });
+
+
+    socket.on("peerConnection",(data:any)=>{
+        const {peerId}=data
+        console.log(data);
+        
+        socket.emit("NewPeerConnection",{peerId})
+    })
 
     
 
