@@ -8,14 +8,15 @@ import randomColor from 'randomcolor';
 import Peer from 'peerjs';
 import { Mic, MicOff } from 'lucide-react';
 import { useSelector } from 'react-redux';
-
+import RedRacerModel from './Models/Redracer';
+import WhiteManModel from './Models/WhiteMan'
 const generateUniqueId = () => {
   return crypto.randomUUID();
 };
 
 const MetaHome = () => {
-  // const [userId] = useState(generateUniqueId());
-  const userId = useSelector((state: any) => state.persisted.user.userData.userId);
+  const [userId] = useState(generateUniqueId());
+  // const userId = useSelector((state: any) => state.persisted.user.userData.userId);
   const socket = useSocket();
   const [users, setUsers] = useState([]);
   const [position, setPosition] = useState({ x: 0, y: 0, z: 0 });
@@ -66,7 +67,7 @@ const MetaHome = () => {
   }, [socket]);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event:any) => {
       let moveDistance = 0.3;
       let newPosition = { ...position };
 
@@ -103,14 +104,14 @@ const MetaHome = () => {
         .then((stream) => {
           localStreamRef.current = stream;
 
-          users.forEach(user => {
+          users.forEach((user:any) => {
             if (user.userId !== userId && !connectionsRef.current[user.userId]) {
               callUser(user.userId, user.peerId);
             }
           });
 
           setInterval(() => {
-            users.forEach(user => {
+            users.forEach((user:any) => {
               if (user.userId !== userId && !connectionsRef.current[user.userId]) {
                 callUser(user.userId, user.peerId);
               }
@@ -119,19 +120,19 @@ const MetaHome = () => {
         })
         .catch((err) => console.error('Failed to get local stream', err));
     } else if (localStreamRef.current) {
-      localStreamRef.current.getTracks().forEach(track => track.stop());
+      localStreamRef.current.getTracks().forEach((track:any) => track.stop());
       localStreamRef.current = null;
-      Object.values(connectionsRef.current).forEach(conn => conn.close());
+      Object.values(connectionsRef.current).forEach((conn:any) => conn.close());
       connectionsRef.current = {};
     }
   }, [audioEnabled, users]);
 
-  const callUser = (remoteUserId, remotePeerId) => {
+  const callUser = (remoteUserId:any, remotePeerId:any) => {
     if (audioEnabled && peerRef.current && remotePeerId && !peerRef.current.destroyed) {
       const call = peerRef.current.call(remotePeerId, localStreamRef.current);
       connectionsRef.current[remoteUserId] = call;
 
-      call.on('stream', (remoteStream) => {
+      call.on('stream', (remoteStream:any) => {
         const audio = new Audio();
         audio.srcObject = remoteStream;
         audio.play();
@@ -147,18 +148,28 @@ const MetaHome = () => {
     setAudioEnabled((prevAudioEnabled) => !prevAudioEnabled);
   };
 
+ 
   return (
     <div className="w-screen h-screen fixed">
       <Canvas shadows>
         <ambientLight intensity={2} />
         <directionalLight />
-        <Physics gravity={[0, -6.003, 0]} allowSleep={false} broadphase="SAP">
+      
           <OrbitControls />
-          {users.map(user => (
-            <Box key={user.userId} position={user.position} userId={user.userId} />
-          ))}
+          {users.map((user:any,i) => (
+           
+             //<Box key={i} position={user.position} userId={user.userId} />
+             <RedRacerModel key={user.userId} position={user.position} /> 
+          
+
+
+           
+         ))}  
+     
+           
+      
           <HomeTownModel />
-        </Physics>
+       
       </Canvas>
       <button
         onClick={toggleAudio}
@@ -171,7 +182,7 @@ const MetaHome = () => {
   );
 };
 
-const Box = ({ position, userId }) => {
+const Box = ({ position, userId }:{position:{x:number,y:number,z:number},userId:string}) => {
   const color = useRef(randomColor()).current;
 
   return (

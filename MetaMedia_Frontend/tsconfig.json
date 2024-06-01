@@ -29,6 +29,6 @@
     "esModuleInterop": true
 
   },
-  "include": ["src", "serviceWorker.ts"],
+  "include": ["src", "serviceWorker.ts", "Army.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

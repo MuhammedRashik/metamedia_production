@@ -4,7 +4,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 
 function WhiteManModel({ position }) {
   const group = useRef<THREE.Group>();
-  const { nodes, materials, animations } = useGLTF('../../../../Models/whiteMan.glb');
+  const { nodes, materials, animations } = useGLTF('../../../Models/whiteMan.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -31,6 +31,6 @@ function WhiteManModel({ position }) {
   );
 }
 
-useGLTF.preload('../../../../Models/whiteMan.glb');
+useGLTF.preload('../../../Models/whiteMan.glb');
 
 export default WhiteManModel;

@@ -19,7 +19,7 @@ const app=express()
 
 
 
-const PEER_PATH = '/myapp';
+
 
 
 const server=http.createServer(app)
@@ -33,23 +33,6 @@ export const io: any = require('socket.io')(server, {
 
 
 
-
-const peerServer = ExpressPeerServer(server, {
-  path:'/peerjs'
-});
-
-
-peerServer.on('connection', (client) => {
-  console.log('PEER IS CONNECTED',client);
-});
-
-peerServer.on('disconnect', (client) => {
-  console.log('PEER IS DISCONNECTED',client);
-});
-
-peerServer.on('error', (error) => {
-  console.log('PEER HAS ERROR:', error);
-});
 
 
 
@@ -84,7 +67,7 @@ app.use(
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('public/'))
 
-app.use('/peerjs', peerServer);
+
 
 app.use('/api',routes(dependencies))
 serverConfig(server,config).startServer()

@@ -3258,7 +3258,7 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
 
 export function HomeTownModel(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>()
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
+ 
   const { nodes, materials, animations } = useGLTF('../Models/home.gltf') as GLTFResult
   const { actions } = useAnimations(animations, group)
   return (

@@ -154,29 +154,15 @@ export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.
 
       // setPosition(new THREE.Vector3(newPosition.x, newPosition.y, newPosition.z))
       // updateCamaraTarget(move.moveX, move.moveZ)
-      setPosition((prev:any) => new THREE.Vector3(prev.x + moveX, prev.y, prev.z + moveZ))
-      updateCamaraTarget(moveX, moveZ)
+   
+      // updateCamaraTarget(moveX, moveZ)
       // if(socket)socket.emit("setUserPosition", { userId: userData.userId, position: newPosition , move })
       // Commented out the direct update, will update via socket response
       
     }
   })
 
-  // Listen for position updates from the server
-  useEffect(() => {
-    if (socket) {
-      socket.on("userPositionUpdated", ({ userId, position, move }: any) => {
-        if (userId === userData.userId) {
-          setPosition(new THREE.Vector3(position.x, position.y, position.z))
-          updateCamaraTarget(move.moveX,move.moveZ) // Adjust as needed
-        }
-      })
 
-      return () => {
-        socket.off("userPositionUpdated")
-      }
-    }
-  }, [socket, userData.userId])
 
   return (
     <>
