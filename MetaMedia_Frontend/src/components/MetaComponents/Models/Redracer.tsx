@@ -4,10 +4,10 @@
 // */
 
 import * as THREE from 'three'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-
+import { Vector3 } from 'three'
 type GLTFResult = GLTF & {
   nodes: {
     Ch20: THREE.SkinnedMesh
@@ -20,20 +20,21 @@ type GLTFResult = GLTF & {
 }
 
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['skinnedMesh'] | JSX.IntrinsicElements['bone']>>
+function RedRacerModel({position}:any,props: JSX.IntrinsicElements['group']) {
+  const { nodes, materials } = useGLTF('./Models/redracer.glb') as GLTFResult
+  console.log(position,'--');
 
-export function RedRacerModel({position}:any,props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('../../../../Models/redracer.glb') as GLTFResult
   return (
-    <group {...props} position={[position.x,position.y,position.z]} dispose={null}>
+    <group {...props} position={new THREE.Vector3(position.x,position.y,position.z)} dispose={null}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <primitive object={nodes.mixamorig6Hips} />
-        <skinnedMesh geometry={nodes.Ch20.geometry} material={materials.Ch20_body} skeleton={nodes.Ch20.skeleton} />
+        <skinnedMesh geometry={nodes.Ch20.geometry} position={new THREE.Vector3(position.x,position.y,position.z)} material={materials.Ch20_body} skeleton={nodes.Ch20.skeleton} />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('../../../../Models/redracer.glb')
+useGLTF.preload('./Models/redracer.glb')
 
 
 

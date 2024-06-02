@@ -10,6 +10,9 @@ import { Mic, MicOff } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import RedRacerModel from './Models/Redracer';
 import WhiteManModel from './Models/WhiteMan'
+
+import ArmyModel from '../../../Army';
+import ArmysModel from '../../../armysModel'
 const generateUniqueId = () => {
   return crypto.randomUUID();
 };
@@ -156,16 +159,23 @@ const MetaHome = () => {
         <directionalLight />
       
           <OrbitControls />
-          {users.map((user:any,i) => (
+          {/* {users.map((user:any, i) => (
+          <React.Fragment key={user.userId}> */}
            
-             //<Box key={i} position={user.position} userId={user.userId} />
-             <RedRacerModel key={user.userId} position={user.position} /> 
-          
+          <mesh position={[0,0,0]}>
+          <ArmyModel/>
+          </mesh>
+          <mesh position={[1,0,0]}>
+          <ArmysModel/>
+          </mesh>
+         
+            <Box position={{x:1,y:0,z:1}} userId={userId} />
+            <RedRacerModel position={{x:4,y:0,z:1}} />
+            <Box position={{x:4,y:0,z:1}} userId={userId} />
 
 
-           
-         ))}  
-     
+          {/* </React.Fragment>
+        ))} */}
            
       
           <HomeTownModel />
