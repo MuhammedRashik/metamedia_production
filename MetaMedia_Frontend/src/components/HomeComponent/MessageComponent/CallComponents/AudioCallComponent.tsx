@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 
 const AudiCall=()=>{
     
-    let { callId }: any = useParams();
+    let { roomId }: any = useParams();
     const containerRef = useRef(null);
     const userData = useSelector((state: any) => state.persisted.user.userData)
     const userID = userData.userId;
@@ -21,12 +21,12 @@ const AudiCall=()=>{
         if (!containerRef.current) return; 
         const MyAudioCallMeet = async () => { 
             try {
-                const appID = 162876950;
-                const serverSecret = "0db746a382bd06442f99610401bea5b1";
+                const appID = 1876044134;
+                const serverSecret = "22d3e800214e22bd94e4003f0e23824a";
                 const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest( 
                     appID,
                     serverSecret,
-                    callId,
+                    roomId,
                     Date.now().toString(),
                     userName
                 );
@@ -48,7 +48,7 @@ const AudiCall=()=>{
             }
         }
         MyAudioCallMeet();
-    }, [callId, userID, userName, navigate]);
+    }, [roomId, userID, userName, navigate]);
     return (
         <>
        <div className="w-full h-full bg-red-500" ref={containerRef} />

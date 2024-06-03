@@ -31,7 +31,10 @@ import { toast } from "sonner";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { addSocketData } from "../../../utils/ReduxStore/Slice/videoCallSlice";
 import VoiceRecorder from "./VoiceRecorder";
-import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
+import {
+  img_Chat_baseUrl,
+  img_User_baseUrl,
+} from "../../../utils/common/baseUrl";
 
 const DropDownComponent = ({
   setMessageDeleted,
@@ -155,13 +158,13 @@ const MessageListComponent = ({
               lastUpdate: response.data.data[index].lastUpdate,
             };
             users.push(userDetails);
-          });          
+          });
           users.sort((a: any, b: any) => b.lastUpdate - a.lastUpdate);
           setConversations(users);
         }
       }
       setOnlineUser(false);
-    };    
+    };
     fetchConversations();
   }, [
     isSendMessage,
@@ -176,11 +179,11 @@ const MessageListComponent = ({
 
   useEffect(() => {}, [incomingCall]);
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      setRerender(!rerender)
-    },500)
-  },[newState]);
+  useEffect(() => {
+    setTimeout(() => {
+      setRerender(!rerender);
+    }, 500);
+  }, [newState]);
 
   const handleSubmitForm = useCallback(
     (receiverId: any) => {
@@ -236,13 +239,13 @@ const MessageListComponent = ({
         console.log("activeUsers :>> ", users);
         setCurentUsers(users);
       });
-      
+
       socket?.on("getMessage", (data: any) => {
         setMessages((prev: any) => ({
           ...prev,
           messages: [...prev.messages, data],
-        }));  
-          setNewState(!newState);        
+        }));
+        setNewState(!newState);
       });
       socket.on("AudioCallResponse", (data: any) => {
         setAudioCallRoomId(data.roomId);
@@ -253,13 +256,12 @@ const MessageListComponent = ({
         setJoinVideocall(true);
       });
     }
-  }, [socket,newState]);
+  }, [socket, newState]);
 
   useEffect(() => {
     messageRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  
   useEffect(() => {
     (async () => {
       if (user_id) {
@@ -276,7 +278,9 @@ const MessageListComponent = ({
           }
         }
       }
-      setLastOnline(messages?.messages[messages?.messages?.length - 1]?.time || 0);
+      setLastOnline(
+        messages?.messages[messages?.messages?.length - 1]?.time || 0
+      );
     })();
   }, [
     user_id,
@@ -299,7 +303,7 @@ const MessageListComponent = ({
       receiverId: messages?.data?.receiverId,
       lastUpdate: Date.now(),
     };
-    const response = await sendMessageFunction(data);    
+    const response = await sendMessageFunction(data);
     if (response) {
       setMessage("");
       socket?.emit("sendMessage", {
@@ -312,7 +316,6 @@ const MessageListComponent = ({
       });
       setIsSendMessage(!isSendMessage);
     }
-
   };
 
   const BlockAndUnblockUser = async (userId: string) => {
@@ -346,12 +349,12 @@ const MessageListComponent = ({
 
   const sendFiles = async (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("sendFilessendFiles");
-    
+
     const files: FileList | null = e.target.files;
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
-        console.log(file,"filefilefile");
-        
+        console.log(file, "filefilefile");
+
         let messageType: string;
         if (file.type.startsWith("image/")) {
           messageType = "image";
@@ -370,7 +373,7 @@ const MessageListComponent = ({
           receiverId: messages?.data?.receiverId,
           lastUpdate: Date.now(),
         };
-console.log(data,"datadata");
+        console.log(data, "datadata");
 
         const formData = new FormData();
         formData.append("file", data.content);
@@ -380,11 +383,11 @@ console.log(data,"datadata");
         formData.append("type", data.type);
         try {
           const response = await SendFileForMessageFunction(formData);
-          console.log(response,"responseresponse");
-          
+          console.log(response, "responseresponse");
+
           if (response.status) {
             console.log("emitemiting");
-            
+
             socket?.emit("sendMessage", {
               senderId: userData?.userId,
               receiverId: messages?.data?.receiverId,
@@ -462,8 +465,8 @@ console.log(data,"datadata");
     formData.append("lastUpdate", data.lastUpdate);
 
     const response = await SendVoiceFunction(formData);
-    
-    if (response.status) {      
+
+    if (response.status) {
       socket?.emit("sendMessage", {
         senderId: userData?.userId,
         receiverId: messages?.data?.receiverId,
@@ -488,27 +491,27 @@ console.log(data,"datadata");
     return result;
   }
   const handleAudioCall = () => {
-    const callId = randomID(10);
+    const roomId = randomID(10);
     const emitData = {
       receiverId: messages?.data?.receiverId,
-      roomId: callId,
+      roomId: roomId,
     };
-    console.log(emitData,"emitData");
-    
+    console.log(emitData, "emitData");
+
     socket.emit("AudioCallRequest", emitData);
-    navigate(`/audioCall/${callId}`);
+    navigate(`/audioCall/${roomId}`);
   };
   const handleJoinAudioCallRoom = () => {
     navigate(`/audioCall/${audioCallRoomId}`);
   };
   const handleVideoCall = () => {
-    const callId = randomID(10);
+    const roomId = randomID(10);
     const emitData = {
       receiverId: messages?.data?.receiverId,
-      roomId: callId,
+      roomId: roomId,
     };
     socket.emit("VideoCallRequest", emitData);
-    navigate(`/videoCall/${callId}`);
+    navigate(`/videoCall/${roomId}`);
   };
   const handleJoinVideoCallRoom = () => {
     navigate(`/videoCall/${videoCallRoomId}`);
@@ -985,7 +988,7 @@ console.log(data,"datadata");
                   />
 
                   <VoiceRecorder
-                  backgroundColor="white"
+                    backgroundColor="white"
                     onRecordingComplete={addAudioElement}
                     setRecordedAudioBlob={setRecordedAudioBlob}
                     //  sendFiles={sendFiles}
