@@ -154,9 +154,9 @@ const Home = ({ render, setRender }: any) => {
             />
             <Route path="/settings/*" element={<Settings />} />
             <Route path="/room/:roomId" element={<Golive />} />
-            <Route path="/audioCall/:callId" element={<AudioCallComponent />} />
+            <Route path="/audioCall/:roomId" element={<AudioCallComponent />} />
             <Route
-              path="/videoCall/:callId"
+              path="/videoCall/:roomId"
               element={<VIdeoCallZegoComponent />}
             />
             <Route
