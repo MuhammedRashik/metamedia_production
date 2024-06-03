@@ -8,7 +8,7 @@ const ProtectedAuthRoute = ({ children }: { children: any }) => {
 console.log(userData,"userData");
 console.log(!userData.userId,"!userData.userId");
 
-  if (!token && !userData.userId) {
+  if (!token || !userData.userId) {
     console.log("ProtectedAuthRoute to login");
     return <Navigate to="/login" replace />;
   }else{
