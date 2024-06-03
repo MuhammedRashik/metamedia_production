@@ -493,6 +493,8 @@ console.log(data,"datadata");
       receiverId: messages?.data?.receiverId,
       roomId: callId,
     };
+    console.log(emitData,"emitData");
+    
     socket.emit("AudioCallRequest", emitData);
     navigate(`/audioCall/${callId}`);
   };

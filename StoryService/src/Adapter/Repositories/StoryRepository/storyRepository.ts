@@ -78,7 +78,6 @@ export default {
   getTheNumberOfStories: async () => {
     try {  
       const response:any = await schema.Story.find({'content.story': { $elemMatch: { status: true } } }).countDocuments();  
-      console.log(response,"responseresponseresponseresponseresponse");
         // const filteredStories = response?.content?.story?.filter((story:any) => story.status === true); 
         return { status: true, message: "Stories found", data: response };
     } catch (error) {
