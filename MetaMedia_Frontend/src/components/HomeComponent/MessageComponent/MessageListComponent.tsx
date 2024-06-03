@@ -443,6 +443,7 @@ const MessageListComponent = ({
       receiverId: messages?.data?.receiverId,
       lastUpdate: Date.now(),
     };
+console.log(data,"data");
 
     const formData = new FormData();
     formData.append("audio", audioFile);
@@ -453,7 +454,11 @@ const MessageListComponent = ({
     formData.append("lastUpdate", data.lastUpdate);
 
     const response = await SendVoiceFunction(formData);
+    console.log(response,"AUDIO response");
+    
     if (response.status) {
+      console.log("emiting");
+      
       socket?.emit("sendMessage", {
         senderId: userData?.userId,
         receiverId: messages?.data?.receiverId,
