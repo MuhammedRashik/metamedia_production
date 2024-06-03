@@ -345,9 +345,13 @@ const MessageListComponent = ({
   };
 
   const sendFiles = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("sendFilessendFiles");
+    
     const files: FileList | null = e.target.files;
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
+        console.log(file,"filefilefile");
+        
         let messageType: string;
         if (file.type.startsWith("image/")) {
           messageType = "image";
@@ -366,6 +370,7 @@ const MessageListComponent = ({
           receiverId: messages?.data?.receiverId,
           lastUpdate: Date.now(),
         };
+console.log(data,"datadata");
 
         const formData = new FormData();
         formData.append("file", data.content);
@@ -376,6 +381,8 @@ const MessageListComponent = ({
         try {
           const response = await SendFileForMessageFunction(formData);
           if (response.status) {
+            console.log("emitemiting");
+            
             socket?.emit("sendMessage", {
               senderId: userData?.userId,
               receiverId: messages?.data?.receiverId,
@@ -443,7 +450,6 @@ const MessageListComponent = ({
       receiverId: messages?.data?.receiverId,
       lastUpdate: Date.now(),
     };
-console.log(data,"data");
 
     const formData = new FormData();
     formData.append("audio", audioFile);
@@ -454,11 +460,8 @@ console.log(data,"data");
     formData.append("lastUpdate", data.lastUpdate);
 
     const response = await SendVoiceFunction(formData);
-    console.log(response,"AUDIO response");
     
-    if (response.status) {
-      console.log("emiting");
-      
+    if (response.status) {      
       socket?.emit("sendMessage", {
         senderId: userData?.userId,
         receiverId: messages?.data?.receiverId,
