@@ -2,8 +2,8 @@ import express ,{Express} from 'express'
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
 const expresscofig=(app:Express):void=>{
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
+    app.use(express.json({limit:'1000mb'}));
+    app.use(express.urlencoded({ extended: false, limit:'1000mb', parameterLimit:50000 }));
     app.use(cookieParser(process.env.COOKIEPARSERSECRET));
     app.use(express.static('public/'))
     app.use(
