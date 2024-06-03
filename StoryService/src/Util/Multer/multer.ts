@@ -1,22 +1,15 @@
 import multer from "multer";
-import fs from "fs";
+import { Request } from 'express';
 import path from "path";
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const dir = path.join(__dirname, "public/story");
-
-    // Check if the directory exists
-    if (!fs.existsSync(dir)) {
-      // Create the directory if it does not exist
-      fs.mkdirSync(dir, { recursive: true });
-    }
-
-    cb(null, dir);
+const storage: multer.StorageEngine = multer.diskStorage({
+  destination: function (req: Request, file: Express.Multer.File, callback: (error: Error | null, destination: string) => void) {
+      console.log('hiiiiiiiiiiiii');
+      
+      callback(null, path.join(__dirname, '../../../public/story'));
   },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + file.originalname);
-  },
+  filename: function (req: Request, file: Express.Multer.File, callback: (error: Error | null, filename: string) => void) {
+      callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
 });
 
 export const upload = multer({
