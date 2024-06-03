@@ -94,6 +94,8 @@ export const SendFileForMessageFunction = async (data: any) => {
     );
     return responce.data;
   } catch (error) {
+    console.log(error,"errorerror");
+    
     return error;
   }
 };

@@ -380,6 +380,8 @@ console.log(data,"datadata");
         formData.append("type", data.type);
         try {
           const response = await SendFileForMessageFunction(formData);
+          console.log(response,"responseresponse");
+          
           if (response.status) {
             console.log("emitemiting");
             

@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config()
     const authMiddleware=(req: Request,res: Response,next: NextFunction)=>{
+        console.log("CHat authMiddleware");
+        
         console.log(`API Endpoint: ${req?.path}, Method: ${req?.method}`);
         
         if(!req.cookies.accessToken){
