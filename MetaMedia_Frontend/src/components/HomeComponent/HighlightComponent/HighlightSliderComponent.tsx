@@ -129,10 +129,10 @@ const HighlightSliderComponent = ({
         <img
           className={`w-10 absolute h-10 top-5 left-2 border-2 border-black rounded-full  text-black  `}
           src={
-            userData.profile?.startsWith("https://graph.facebook.com/")
-              ? `${userData.profile}`
-              : userData.profile
-              ? `${img_User_baseUrl}${userData.profile}`
+            userData?.profile?.startsWith("https://graph.facebook.com/")
+              ? `${userData?.profile}`
+              : userData?.profile
+              ? `${img_User_baseUrl}${userData?.profile}`
               : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
           }
         />

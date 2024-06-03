@@ -21,10 +21,10 @@ export default (dependencies:any)=>{
                 gender:response.userData.basicInformation.gender,
                 phoneNumber:response.userData.basicInformation.phoneNumber,
                 userName:response.userData.basicInformation.userName,
-                location:response.userData.profile.location,
-                interests:response.userData.profile.interests,
-                profile:response.userData.profile.profileUrl,
-                bio:response.userData.profile.bio,
+                location:response.userData?.profile?.location,
+                interests:response.userData?.profile?.interests,
+                profile:response.userData?.profile?.profileUrl,
+                bio:response.userData?.profile?.bio,
             }
             res.json({status:response?.status , message:response?.message, user:data})
         }else{

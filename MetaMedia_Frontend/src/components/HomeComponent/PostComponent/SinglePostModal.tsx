@@ -127,7 +127,7 @@ const SinglePostModal = ({ render, setRender }: any) => {
         userId: userData.userId,
         content: text,
         userName: userData.userName,
-        userProfile: userData.profile,
+        userProfile: userData?.profile,
       };
 
       const responce = await AddCommentFunction(data);

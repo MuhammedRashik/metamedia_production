@@ -50,12 +50,12 @@ const AddProfile = () => {
                 <div className="w-20 h-20 md:w-28 md:h-28 flex justify-center mt-5 rounded-full overflow-hidden">
                   <img
                     src={
-                      userData.profile?.startsWith(
+                      userData?.profile?.startsWith(
                         "https://graph.facebook.com/"
                       )
-                        ? `${userData.profile}`
-                        : userData.profile
-                        ? `${img_User_baseUrl}${userData.profile}`
+                        ? `${userData?.profile}`
+                        : userData?.profile
+                        ? `${img_User_baseUrl}${userData?.profile}`
                         : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                     }
                     alt="Your Image"

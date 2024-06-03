@@ -336,12 +336,12 @@ const AddPostDetailsBody = ({
                       <img
                         className="w-10 h-10 rounded-full "
                         src={
-                          user.userData.profile?.startsWith(
+                          user.userData?.profile?.startsWith(
                             "https://graph.facebook.com/"
                           )
-                            ? `${user.userData.profile}`
-                            : user.userData.profile
-                            ? `${img_User_baseUrl}${user.userData.profile}`
+                            ? `${user.userData?.profile}`
+                            : user.userData?.profile
+                            ? `${img_User_baseUrl}${user.userData?.profile}`
                             : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                         }
                         alt=""

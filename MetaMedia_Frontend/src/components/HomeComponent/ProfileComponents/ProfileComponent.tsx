@@ -146,7 +146,7 @@ console.log(data,"datadatadata");
                 <img
                   className=" w-full h-full rounded-full border border-black"
                   src={
-                    userData.profile?.startsWith("https://graph.facebook.com/")
+                    userData?.profile?.startsWith("https://graph.facebook.com/")
                       ? `${currentUser?.profile?.profileUrl}`
                       : currentUser?.profile?.profileUrl
                       ? `${img_User_baseUrl}${currentUser?.profile?.profileUrl}`

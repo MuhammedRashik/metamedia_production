@@ -96,7 +96,7 @@ const uploadFile = async ( timestamp:any, signature:any) => {
         const { timestamp: videoTimestamp, signature: videoSignature } = await getSignatureForUpload('stories');
         const videoUrl = await uploadFile( videoTimestamp, videoSignature);
         const data={
-          profile:userData.profile,
+          profile:userData?.profile,
           caption:caption,
           imageUrl:videoUrl
         }        
@@ -115,7 +115,7 @@ const uploadFile = async ( timestamp:any, signature:any) => {
         const fileName = "image.jpg";
         const fileType = "image/jpeg";
         const formData = base64StringToFormDataImageFile(croppedImage, fileName, fileType);
-        const response: any = await AddStoryFunction({ image: formData, caption: caption, profile: userData.profile });
+        const response: any = await AddStoryFunction({ image: formData, caption: caption, profile: userData?.profile });
         if(response?.status){
           setCropImage(true)
           setCroppedImage(null)

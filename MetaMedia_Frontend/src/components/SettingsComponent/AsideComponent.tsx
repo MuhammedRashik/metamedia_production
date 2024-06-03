@@ -87,11 +87,11 @@ const Aside = ({
                     onClick={addImage}
                     className="w-32 h-32 sm:w-24 sm:h-24 md:w-32 self-center md:h-32 border border-black rounded-full mt-5"
                     src={
-                      userData.profile?.startsWith(
+                      userData?.profile?.startsWith(
                         "https://graph.facebook.com/"
                       )
-                        ? `${userData.profile}`
-                        : userData.profile
+                        ? `${userData?.profile}`
+                        : userData?.profile
                         ? `${img_User_baseUrl}${userData?.profile}`
                         : `${profile}`
                     }

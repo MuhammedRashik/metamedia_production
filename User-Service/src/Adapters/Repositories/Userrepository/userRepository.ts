@@ -401,7 +401,7 @@ return {status:false,message:`Error :${error}`}
     const userData: any = await User.findOne({ "basicInformation.userId": userId });
     const myData: any = await User.findOne({ "basicInformation.userId": myId });
     
-    const profile = userData.profile?.profileUrl || null;
+    const profile = userData?.profile?.profileUrl || null;
     const fullName = userData.basicInformation.fullName;
     const isBlocked = await myData.socialConections.blockedUsers.some((user:any) => user.userId === userId);    
     let response:any;

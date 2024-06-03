@@ -414,9 +414,9 @@ const Sidebar = ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
                 <img
                   className={`w-8 h-8 rounded-full text-black  `}
                   src={
-                    userData.profile?.startsWith("https://graph.facebook.com/")
-                      ? `${userData.profile}`
-                      : userData.profile
+                    userData?.profile?.startsWith("https://graph.facebook.com/")
+                      ? `${userData?.profile}`
+                      : userData?.profile
                         ?  `${img_User_baseUrl}${userData?.profile}`
                         : "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
                   }

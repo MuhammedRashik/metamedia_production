@@ -75,7 +75,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
         userId: userData.userId,
         content: comment,
         userName: userData.userName,
-        userProfile: userData.profile,
+        userProfile: userData?.profile,
       };
 
       const response = await AddCommentFunction(messageData);      
