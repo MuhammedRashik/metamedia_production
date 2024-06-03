@@ -8,7 +8,6 @@ export default (dependencies: any) => {
     try {
     clearAccessTokenFromCookie("accessToken",res)
     res.clearCookie('accessToken');
-    localStorage.removeItem('accesstoken')
       res.json({ status: true, message: "Logout success" });
     } catch (err) {
         console.log(err,"er");

@@ -40,12 +40,13 @@ const NewSideBar = ({ setOpenNotification, setOpenSearch }: any) => {
     e.preventDefault();
     const response: any = await LogoutFunction();
     if (response?.data?.status) {
+      localStorage.removeItem('accesstoken')
       dispatch(clearToken());
       Navigate("/login");
+      persistor.purge();
     } else {
       toast.error("Logout error");
     }
-    persistor.purge();
   };
 
   return (
