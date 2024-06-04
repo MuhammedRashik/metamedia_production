@@ -17,6 +17,8 @@ const socketConfig=()=>{
          const user = { userId, socketId: socket.id };        
          users.push(user);
          io.emit('getUsers', users);
+     }else{
+      isUserExist.socketId=socket.id
      }
    });  
  

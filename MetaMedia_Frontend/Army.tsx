@@ -29,7 +29,7 @@ type GLTFResult = GLTF & {
 
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['skinnedMesh'] | JSX.IntrinsicElements['bone']>>
 
- function ArmyModel(props: JSX.IntrinsicElements['group']) {
+ const ArmyModel=React.memo((props: JSX.IntrinsicElements['group'])=> {
   const { nodes, materials } = useGLTF('/Models/army.glb') as GLTFResult
  
   
@@ -45,7 +45,7 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
       </group>
     </group>
   )
-}
+})
 
 useGLTF.preload('/Models/army.glb')
 

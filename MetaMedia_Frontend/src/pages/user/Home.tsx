@@ -27,6 +27,8 @@ import JistyVedioCall from "../../components/HomeComponent/MessageComponent/jits
 import GroupVedioCall from "../../components/HomeComponent/MessageComponent/CallComponents/ZegoVideocall";
 import GroupAudioCallRoom from "../../components/HomeComponent/MessageComponent/CallComponents/ZegoAudioMeet";
 import VIdeoCallZegoComponent from "../../components/HomeComponent/MessageComponent/CallComponents/VIdeoCallZegoComponent";
+import { io } from "socket.io-client";
+
 
 export interface SetSidebarOpenFunction {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,6 +48,20 @@ const Home =React.memo( ({ render, setRender }: any) => {
   const location = useLocation();
   const currentRoute = location.pathname;
   const userData = useSelector((state: any) => state.persisted.user.userData);
+  const [socket, setSocket] = useState<any>(null);
+
+
+
+
+  useEffect(() => {
+    setSocket(io("https://meta-media.in"));
+  }, []);
+
+  useEffect(()=>{
+if(socket){
+  socket.emit("addUser",{userId:userData.userId})
+}
+  },[socket])
 
   useEffect(() => {
     (async () => {
@@ -110,7 +126,7 @@ const Home =React.memo( ({ render, setRender }: any) => {
             />
           )}
           {openNotification && (
-            <Notification setOpenNotification={setOpenNotification} />
+            <Notification setOpenNotification={setOpenNotification} socket={socket} />
           )}
           {isAddPost && (
             <MainModalBorderPost

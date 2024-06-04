@@ -7,9 +7,9 @@ export const useSocket = (): Socket<any>| null => {
 
     useEffect(() => {
 
-        const newSocket = io("http://localhost:3006", {
+        // const newSocket = io("http://localhost:3006", {
 
-        // const newSocket = io("https://meta-media.in/", {
+        const newSocket = io("https://meta-media.in/", {
 
             reconnection: true,
             secure: true,
