@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GetNotificationOfUserFunction } from "../../../utils/api/methods/ChatService/get/get";
 import { toast } from "sonner";
 
-import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
+import { followUserFunction, getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
+import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 const Notification = ({ setOpenNotification }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [notifications, setNotifications]: any = useState([]);
-
+  const dispatch = useDispatch()
   const wrapperRef: any = useRef(null);
   const handleClickOutside = (event: any) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -54,6 +55,28 @@ const Notification = ({ setOpenNotification }: any) => {
     fetchNotificationOfUser();
   }, [userData]);
 
+  const FollowUser = async (id: string) => {
+    const data = {
+      currentUserId: userData.userId,
+      followedUserId: id,
+    };
+    const response: any = await followUserFunction(data);    
+    if (response.data.status) {
+      toast.success(response.data.message);
+      try {
+        const response = await getUserByIdFuntion(userData.userId);
+        if (response?.status) {
+          dispatch(editUser(response.data.socialConections));
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }else{
+      toast.error(response.data.message);
+    }
+  };
   useEffect(() => {
   }, [notifications]);
   return (
@@ -207,11 +230,10 @@ const Notification = ({ setOpenNotification }: any) => {
                             </div>
                           </div>
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
-                            {/* <img
-                              src={`${img_Post_baseUrl}${item.action_details.post_image}`}
-                              className="w-full h-5/6 object-cover"
-                              alt=""
-                            /> */}
+                          <button className="w-16 h-6 border border-[#C1506D] rounded-lg flex justify-center items-center font-semibold text-[12px] text-[#C1506D] "
+                         onClick={()=>FollowUser(item?.senderUserData.basicInformation.userId)}>
+                        {item?.senderUserData?.socialConections.following.includes(userData.userId)?"Following":"Follow"}
+                      </button>
                           </div>
                         </div>
                         {/* one notification ------------ */}
