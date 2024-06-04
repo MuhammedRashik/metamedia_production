@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React, { useRef, useEffect } from 'react'; // Import useRef and useEffect
 
 
-const GroupAudioCallRoom=  React.memo(()=>{
+const GroupAudioCallRoom=  ()=>{
     let { roomId }: any = useParams();
     const containerRef = useRef(null);
     const userData = useSelector((state: any) => state.persisted.user.userData)
@@ -54,6 +54,6 @@ const GroupAudioCallRoom=  React.memo(()=>{
        <div className="w-full h-full bg-red-500" ref={containerRef} />
         </>
     )
-})
+}
 
 export default GroupAudioCallRoom

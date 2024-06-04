@@ -26,30 +26,25 @@ const FollowComponent =  React.memo(({
   const userData = useSelector((state: any) => state.persisted.user.userData);
 
   const RemoveFollowingUser = async(id:string)=>{
-    console.log(id,"RemoveFollowingUser");
     
     const data = {
       currentUserId: userData.userId,
       followedUserId: id,
     };
-    console.log(data,"dataggg");
     
     const response: any = await followUserFunction(data);
-    console.log(response.data);
     
     toast.success(response.data.message);
 
     if (response.data.status) {
       try {
         const response = await getUserByIdFuntion(userData.userId);
-        console.log(response,"respon");
         if (response?.status) {
           dispatch(editUser(response.data.socialConections));
         } else {
           throw new Error("Failed to fetch user data");
         }
       } catch (error) {
-        console.error(error);
       }
     }
   }
@@ -96,7 +91,6 @@ const FollowComponent =  React.memo(({
           throw new Error("Failed to fetch user data");
         }
       } catch (error) {
-        console.error(error);
       }
         setFollowUser(!followUser)
     }else{

@@ -99,9 +99,7 @@ const ShowCamera = React.memo( ({ capture, webcamRef, setImgSrc, imgSrc, onSelec
     };
 
     const selectImage = () => {
-        onSelect(imgSrc);
-        console.log(imgSrc,'yhis iisss');
-        
+        onSelect(imgSrc);        
         setImgSrc(null); 
         setShowCamera(null)
         

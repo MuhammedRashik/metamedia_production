@@ -23,7 +23,6 @@ const GroupDetails =  React.memo(({ setISGroupDetais }: any) => {
     (async () => {
       const response = await GetGroupDataByIdFunction(group_id);
       if (response.status) {
-        console.log('Grop data');
         
         setGroupData(response.data);
       } else {
@@ -37,7 +36,6 @@ const GroupDetails =  React.memo(({ setISGroupDetais }: any) => {
     (async () => {
       const response = await GetGroupMessagesFunction(group_id);
       if (response.status) {
-        console.log('MES');
         
         setMessages(response.data);
       } else {
@@ -71,7 +69,6 @@ const GroupDetails =  React.memo(({ setISGroupDetais }: any) => {
 
   useEffect(()=>{
  
-    console.log(userDetails,'UUSER');
     
   },[userDetails])
 

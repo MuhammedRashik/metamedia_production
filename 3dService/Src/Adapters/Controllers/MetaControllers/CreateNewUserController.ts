@@ -7,7 +7,6 @@ export default (dependecies: any) => {
     const data = { userId};
 
     const response = await createNewUserUseCase(dependecies).executeFunction(data);
-    console.log(response,'HI----');
     
     if (response.status) {
       res.status(200).json({ status: true, data: response.data });

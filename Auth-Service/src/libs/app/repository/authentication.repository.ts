@@ -8,10 +8,7 @@ export default {
       });
       return responce;
     } catch (error) {
-      console.log(
-        "error in repositery authencation repo in userEmailexist",
-        error
-      );
+       return error
     }
   },
 
@@ -43,20 +40,14 @@ export default {
         return { status: false };
       }
     } catch (error) {
-      console.log(
-        "error in repositery authencation repo in userEmailexist",
-        error
-      );
+      return error
     }
   },
   changePassword: async (email: string, hashedPassword: string,oldPassword:string) => {
-    console.log(oldPassword,"oldPassword");
     
     const user:any = await schema.Auth.findOne(
       { "basicInformation.email": email });
-      console.log(user,"useruseruser");
       const isVerified = await verifyHashPassword(oldPassword,user?.basicInformation?.password)
-      console.log(isVerified,"isVerifiedisVerified");
       if(isVerified){
         const passwordChange = await schema.Auth.findOneAndUpdate(
           { "basicInformation.email": email },
@@ -75,8 +66,6 @@ export default {
 
   createInterest: async (data: any, id: string) => {
     try {
-      console.log(id, "ID");
-      console.log(data, "data");
 
       const createInterest = await schema.Auth.findOneAndUpdate(
         { _id: id },
@@ -87,7 +76,6 @@ export default {
       }
       return { status: false, message: "Internal error" };
     } catch (error) {
-      console.log(error, "er");
 
       return error;
     }
@@ -102,14 +90,12 @@ export default {
         return { status: false };
       }
     } catch (error) {
-      console.log(error, "ERRR");
 
       return { status: false, error };
     }
   },
 
   ChangeUserStatus: async (userId: string, status: boolean) => {
-    console.log("I am ChangeUserStatus");
     const user: any = await schema.Auth.findById(userId);
 
     if (user) {
@@ -119,7 +105,6 @@ export default {
         { new: true }
       );
 
-      console.log(response, "responseresponse");
     }
   },
 };

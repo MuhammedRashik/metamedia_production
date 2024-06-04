@@ -8,6 +8,7 @@ import GroupMessageComponent from "./GroupMessageComponent";
 import GroupDetails from "./GroupDetails";
 const   MessageComponent = ({setIsVideoCall}:any) => {
   const [conversations, setConversations] = useState<any>();
+  const [render, setRender] = useState<any>();
   const [newGroup,setewGroup]=useState(0)
   const [aside,setAside]=useState(0)
   const [isMore,setIsMore]=useState(false)
@@ -33,10 +34,10 @@ const   MessageComponent = ({setIsVideoCall}:any) => {
     {newGroup == 2 && (<SelectFriendsModal setewGroup={setewGroup}/>)}
 
     <div className=" flex h-full w-full overflow-hidden bg-white">
-      {aside==0 && <Aside conversations={conversations} setewGroup={setewGroup} setIsMore={setIsMore} isMore={isMore} setAside={setAside} setIsGroupChat={setIsGroupChat}/>}
+      {aside==0 && <Aside conversations={conversations} setewGroup={setewGroup} setIsMore={setIsMore} isMore={isMore} setAside={setAside} render={render} setIsGroupChat={setIsGroupChat}/>}
       {aside==1 && <GroupChatAside setIsMore={setIsMore} isMore={isMore} setewGroup={setewGroup} setIsGroupChat={setIsGroupChat} setAside={setAside} setClik={setClik} click={click}/>}
 
-      {isGroupChat && aside==1 ? (<GroupMessageComponent isGroupChat={isGroupChat} aside={aside} setClik={setClik} click={click} setIsVideoCall={setIsVideoCall} setISGroupDetais={setISGroupDetais}/>):  (<MessageListComponent conversations={conversations} setConversations={setConversations} aside={aside} isGroupChat={isGroupChat}/>)}
+      {isGroupChat && aside==1 ? (<GroupMessageComponent isGroupChat={isGroupChat} aside={aside} setClik={setClik} click={click} setIsVideoCall={setIsVideoCall} setISGroupDetais={setISGroupDetais}/>):  (<MessageListComponent conversations={conversations} setConversations={setConversations} setRender={setRender} render={render} aside={aside} isGroupChat={isGroupChat}/>)}
 
       
     </div>

@@ -5,9 +5,7 @@ import { toast } from "sonner";
 
 const VideoCall =  React.memo(() => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
-  console.log(userData, "HHHHHDDDAA");
   const token = localStorage.getItem("accesstoken");
-  console.log(token, "LLLOO");
 
   const apiRef: any = useRef();
   const [logItems, updateLog]: any = useState([]);

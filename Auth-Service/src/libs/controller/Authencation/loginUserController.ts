@@ -9,7 +9,6 @@ export default (dependecies: any) => {
 
   const loginusercontroller = async (req: Request, res: Response) => {
     const { email, password } = req.body;
-    console.log("loginusercontroller");
     
     //check any validation errro
     const errors = validationResult(req);
@@ -23,7 +22,6 @@ export default (dependecies: any) => {
     );    
     //access token
     if (!response.status) {
-      console.log(response.admin,"response.admin");
       
       res.json({ message: response?.message, status: false });
     }else if(response.admin){
@@ -62,12 +60,10 @@ export default (dependecies: any) => {
         interest: user.profile.interests || [],
       };
       req.session.refreshToken = refreshtoken;
-      console.log(req.session.refreshToken ,"req.session.refreshToken ");
       res.cookie("accessToken", accesstoken, {
         httpOnly: false,
         secure: true,
       });
-console.log("Login Success Response");
 
       res.status(201).json({
         status: true,

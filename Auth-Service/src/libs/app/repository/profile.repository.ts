@@ -3,7 +3,6 @@ import schema from "../database/schema"
 export default {
     
   addProfile: async (data: any, id: string) => {
-    console.log(id,"USerID from add profile");
     
     const response = await schema.Auth.findOneAndUpdate(
       { _id: id },
@@ -20,7 +19,6 @@ export default {
       },
       { new: true }
     );
-    console.log(response,"DAta");
     
 
     if (response) {

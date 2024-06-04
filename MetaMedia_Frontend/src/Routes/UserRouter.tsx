@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
 import { isSinglePostModalClose } from "../utils/ReduxStore/Slice/singlePostSlice";
 import SinglePostModal from "../components/HomeComponent/PostComponent/SinglePostModal";
 
-const UserRouter = React.memo(() => {
+const UserRouter = () => {
   const isSinglePostModal = useSelector((state: any) => state.persisted.singlePost.isSinglePostModal);
   const dispach=useDispatch()
   const [render,setRender]:any=useState(false)
@@ -41,6 +41,6 @@ const UserRouter = React.memo(() => {
     </Routes>
     </>
   );
-});
+};
 
 export default UserRouter;

@@ -4,12 +4,17 @@ import { Link, useParams } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import React, { useEffect } from "react";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
+<<<<<<< HEAD
 const AsideComponent =  ({
+=======
+const AsideComponent = ({
+>>>>>>> 96cfaac92e66ddf8019483038e5125e0dac5c195
   conversations,
   setewGroup,
   setIsMore,
   isMore,
   setAside,
+  render,
   setIsGroupChat,
 }: any) => {
   const { user_id } = useParams();
@@ -24,7 +29,10 @@ const AsideComponent =  ({
   };
   
   useEffect(()=>{    
-  },[conversations])
+    console.log(conversations,"CONVERSATIONS");
+    console.log(conversations?.length,"conversations?.length");
+    
+  },[conversations,render])
 
   const handleMoreOption = () => {
     setIsMore(!isMore);
@@ -68,6 +76,8 @@ const AsideComponent =  ({
         <div className="overflow-auto scrollbar-hide ">
           {conversations?.length
             ? conversations.map((data: any, index: number) => {
+              console.log(data,"datadata");
+              
                 if (data.email) {
                   return (
                     <div

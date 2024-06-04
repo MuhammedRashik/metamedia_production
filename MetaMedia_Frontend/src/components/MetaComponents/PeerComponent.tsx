@@ -31,17 +31,14 @@ const PeerComponent = React.memo(() => {
     // Set peer ID on open
     peer.on('open', id => {
       setPeerId(id);
-      console.log('My peer ID is: ' + id);
     });
 
     // Handle incoming connections
     peer.on('connection', conn => {
-      console.log('Incoming connection from: ' + conn.peer);
       setIncoming(prev => [...prev, conn.peer]);
       setConnections(prev => [...prev, conn]);
 
       conn.on('data', data => {
-        console.log('Received:', data);
         setMessages(prevMessages => [...prevMessages, { sender: conn.peer, text: data }]);
       });
 
@@ -81,7 +78,6 @@ const PeerComponent = React.memo(() => {
         }
       })
       .catch(err => {
-        console.error('Failed to get local stream', err);
       });
   }, []);
 
@@ -90,7 +86,6 @@ const PeerComponent = React.memo(() => {
       const conn = peerRef.current.connect(remotePeerId);
 
       conn.on('open', () => {
-        console.log('Connected to: ' + remotePeerId);
         setOutgoing(prev => [...prev, remotePeerId]);
         setConnections(prev => [...prev, conn]);
         conn.send('Hello from ' + peerId);
@@ -107,7 +102,6 @@ const PeerComponent = React.memo(() => {
       });
 
       conn.on('data', data => {
-        console.log('Received:', data);
         setMessages(prevMessages => [...prevMessages, { sender: conn.peer, text: data }]);
       });
     }

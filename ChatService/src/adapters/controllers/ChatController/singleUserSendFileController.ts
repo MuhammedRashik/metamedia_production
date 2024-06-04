@@ -5,8 +5,6 @@ export default (dependencies: any) => {
     useCase: { singleUserSendFile_Usecase },
   } = dependencies;
   const singleUserSendFileController = async (req: any, res: Response) => {
-    console.log(req.body, "req.body");
-    console.log(req.file, "req.body");
 
     const { conversationId, senderId, type, receiverId } =
       req.body;
@@ -17,7 +15,6 @@ export default (dependencies: any) => {
       receiverId,
       filename:req.file.filename
     };
-    console.log(data,"datadatadata");
     
     const response = await singleUserSendFile_Usecase(
       dependencies

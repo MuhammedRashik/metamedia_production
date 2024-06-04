@@ -10,16 +10,12 @@ export default {
 
       if (postData) {
 
-console.log('1');
 
       const isuserLikedAlredy =  postData.likes.includes(userId)
-console.log(isuserLikedAlredy);
       
 if(isuserLikedAlredy){
-console.log('2');
 
   const index = postData.likes.indexOf(userId);
-  console.log(index,'INdex');
   
   if (index !== -1) {
       postData.likes.splice(index, 1);
@@ -45,7 +41,6 @@ console.log('2');
         return { status: false, message: "No posts found for the user" };
       }}
      catch (error) {
-      console.error("Error from the getAllPostOfUser repository:", error);
       return {
         status: false,
         message: "An error occurred while fetching user posts",

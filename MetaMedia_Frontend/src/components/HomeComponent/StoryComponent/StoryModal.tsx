@@ -29,7 +29,6 @@ const StoryModal = ({ setAddStory }: any) => {
 
   useEffect(()=>{
     if(selectedFile?.type?.startsWith('video/') && back==false){
-      console.log("setIsVideosetIsVideosetIsVideo");
       setIsVideo(true)
       setCroppedImage(selectedFile)
       setCropImage(true)
@@ -64,7 +63,6 @@ const getSignatureForUpload = async (folder:string) => {
     const res = await axios.post("https://meta-media.in/api/story/getSignature", { folder });
     return res.data;
   } catch (error) {
-    console.error(error);
   }
 }
 
@@ -82,10 +80,8 @@ const uploadFile = async ( timestamp:any, signature:any) => {
     let api = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`
     const res = await axios.post(api, data)
     const { secure_url } = res.data;
-    console.log("File upload success ...");
     return secure_url;
   } catch (error) {
-    console.log(error,"er");
   }
 }
 
