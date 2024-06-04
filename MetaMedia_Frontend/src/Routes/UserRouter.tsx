@@ -11,11 +11,11 @@ import Home from "../pages/user/Home";
 import Mods from "../pages/user/Mods";
 import ProtectedAuthRoute from "./ProtectedAuthRoute";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { isSinglePostModalClose } from "../utils/ReduxStore/Slice/singlePostSlice";
 import SinglePostModal from "../components/HomeComponent/PostComponent/SinglePostModal";
 
-const UserRouter = () => {
+const UserRouter = React.memo(() => {
   const isSinglePostModal = useSelector((state: any) => state.persisted.singlePost.isSinglePostModal);
   const dispach=useDispatch()
   const [render,setRender]:any=useState(false)
@@ -41,6 +41,6 @@ const UserRouter = () => {
     </Routes>
     </>
   );
-};
+});
 
 export default UserRouter;

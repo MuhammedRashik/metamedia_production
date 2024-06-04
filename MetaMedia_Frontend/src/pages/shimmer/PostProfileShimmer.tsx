@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PostProfileShimmer = () => {
+const PostProfileShimmer =React.memo( () => {
   return (
     <>
     <div className="animate-pulse bg-gray-300 rounded-md w-64 h-64"> </div>
@@ -8,6 +8,6 @@ const PostProfileShimmer = () => {
     <div className="animate-pulse bg-gray-300 rounded-md w-64 h-64"> </div>
     </>
   )
-}
+})
 
 export default PostProfileShimmer

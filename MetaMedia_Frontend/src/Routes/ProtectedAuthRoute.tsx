@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
-const ProtectedAuthRoute = ({ children }: { children: any }) => {
+const ProtectedAuthRoute =React.memo( ({ children }: { children: any }) => {
   const token = localStorage.getItem('accesstoken');
   const userData=useSelector((state:any)=>state.persisted.user.userData)
 console.log(userData,"userData");
@@ -16,6 +16,6 @@ console.log(!userData.userId,"!userData.userId");
     console.log(token, "localStorage token");
     return children;
   }
-};
+})
 
 export default ProtectedAuthRoute;

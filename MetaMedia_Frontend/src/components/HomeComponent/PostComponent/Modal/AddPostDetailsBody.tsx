@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { getUsersByNameFunction } from "../../../../utils/api/methods/UserService/post";
 import profile from "../../../../assets/profile.webp";
 import { img_User_baseUrl } from "../../../../utils/common/baseUrl";
-const AddPostDetailsBody = ({
+const AddPostDetailsBody = React.memo( ({
   setIsAddPost,
   setPostState,
   addPost,
@@ -685,6 +685,6 @@ const AddPostDetailsBody = ({
       </div>
     </>
   );
-};
+})
 
 export default AddPostDetailsBody;

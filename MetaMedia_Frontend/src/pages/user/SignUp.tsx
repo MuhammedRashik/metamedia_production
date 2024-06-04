@@ -13,11 +13,11 @@ import {
   SignUpFunction,
 } from "../../utils/api/methods/AuthService/post";
 import { ResponseData } from "src/utils/interface/userInterface";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 
-const SignUp = () => {
+const SignUp = React.memo(() => {
   const [showPassword,setShowPassword]=useState(false)
   const dispatch = useDispatch()
   const Navigate = useNavigate();
@@ -290,5 +290,5 @@ const SignUp = () => {
       </div>
     </>
   );
-};
+})
 export default SignUp;

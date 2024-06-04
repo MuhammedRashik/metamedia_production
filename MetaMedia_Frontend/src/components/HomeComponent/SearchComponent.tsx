@@ -1,6 +1,7 @@
+import React from "react"
 import { SetSidebarOpenFunction } from "src/pages/user/Home"
 
-const Search: React.FC<SetSidebarOpenFunction> = ({setSidebarOpen}) => {
+const Search: React.FC<SetSidebarOpenFunction> =  React.memo(({setSidebarOpen}) => {
     setSidebarOpen(true)
     return (
 
@@ -13,6 +14,6 @@ const Search: React.FC<SetSidebarOpenFunction> = ({setSidebarOpen}) => {
 
 
     )
-}
+})
 
 export default Search

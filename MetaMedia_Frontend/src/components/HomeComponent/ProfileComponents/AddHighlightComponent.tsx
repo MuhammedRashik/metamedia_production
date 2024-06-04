@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
+import React from "react";
 
-const AddHighlightComponent = ({
+const AddHighlightComponent = React.memo( ({
   highlightName,
   setHighlightName,
   setHighlightList,
@@ -48,6 +49,6 @@ const AddHighlightComponent = ({
       </div>
     </div>
   );
-};
+})
 
 export default AddHighlightComponent;

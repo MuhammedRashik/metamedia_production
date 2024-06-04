@@ -8,7 +8,7 @@ import profile from '../../../assets/profile.webp'
 import { Link, useNavigate } from "react-router-dom";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const FollowComponent = ({
+const FollowComponent =  React.memo(({
   users,
   openFollowers,
   openFollowings,
@@ -212,6 +212,6 @@ const FollowComponent = ({
       </div>
     </div>
   );
-};
+})
 
 export default FollowComponent;

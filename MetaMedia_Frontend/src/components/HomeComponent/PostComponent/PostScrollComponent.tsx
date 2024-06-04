@@ -1,7 +1,8 @@
 
 import { Heart, MessageCircle, Send, Bookmark } from "lucide-react";
+import React from "react";
 
-const PostScroll = () => {
+const PostScroll = React.memo( () => {
   return (
     <>
 
@@ -79,6 +80,6 @@ const PostScroll = () => {
       </div>
     </>
   );
-};
+})
 
 export default PostScroll;

@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { ResponseData } from "../../utils/interface/userInterface";
 import { editUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
-const EditProfile = () => {
+const EditProfile = React.memo( () => {
   const dispatch = useDispatch();
   const Navigate=useNavigate()
   const userData = useSelector((state: any) => state.persisted.user.userData);
@@ -132,6 +133,6 @@ const EditProfile = () => {
       </div>
     </>
   );
-};
+})
 
 export default EditProfile;

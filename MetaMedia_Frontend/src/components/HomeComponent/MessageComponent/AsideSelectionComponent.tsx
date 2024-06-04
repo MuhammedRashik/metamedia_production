@@ -1,7 +1,8 @@
+import React from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-const AsideSelectionComponent=({setAside,setIsGroupChat}:any)=>{
+const AsideSelectionComponent= React.memo(({setAside,setIsGroupChat}:any)=>{
 
 const userData=useSelector((state:any)=>state.persisted.user.userData)
     const naviagte=useNavigate()
@@ -26,5 +27,5 @@ const userData=useSelector((state:any)=>state.persisted.user.userData)
  </div>
         </>
     )
-}
+})
 export default AsideSelectionComponent

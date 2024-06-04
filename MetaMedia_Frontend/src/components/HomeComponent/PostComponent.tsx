@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { showAllPostFuntion } from "../../utils/api/methods/PostService/get/showAllPost";
 import { getUserByIdFuntion } from "../../utils/api/methods/UserService/post";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import {
 } from "../../utils/ReduxStore/Slice/singlePostSlice";
 import { img_Post_baseUrl } from "../../utils/common/baseUrl";
 
-const Post = () => {
+const Post =  React.memo(() => {
   const [posts, setPosts]: any = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -81,6 +81,6 @@ const Post = () => {
       </div>
     </>
   );
-};
+})
 
 export default Post;

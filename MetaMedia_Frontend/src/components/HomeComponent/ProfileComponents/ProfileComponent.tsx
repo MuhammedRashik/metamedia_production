@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import PostsComponent from "../PostComponent/PostsComponent";
 import { Edit } from "lucide-react";
 import Highlight from "../HighlightComponent/HighlightComponent";
@@ -26,7 +26,7 @@ import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
 
 
-const Profile = ({ render, setRender }: any) => {
+const Profile = React.memo( ({ render, setRender }: any) => {
   const [addHighlight, setAddHighlight] = useState(false);
   const [deleteHighlight, setDeleteHighlight] = useState(false);
   const [openFollowings, setOpenFollowings] = useState(false);
@@ -341,6 +341,6 @@ console.log(data,"datadatadata");
       </div>
     </>
   );
-};
+})
 
 export default Profile;

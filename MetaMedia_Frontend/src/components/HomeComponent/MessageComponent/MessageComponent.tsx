@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Aside from "./AsideComponent";
 import MessageListComponent from "./MessageListComponent";
 import CreateNewGroupModal from "./CreateNewGropModal";
@@ -6,7 +6,7 @@ import SelectFriendsModal from "./selectFriendsModal";
 import GroupChatAside from "./groupChatAside";
 import GroupMessageComponent from "./GroupMessageComponent";
 import GroupDetails from "./GroupDetails";
-const   MessageComponent = ({setIsVideoCall}:any) => {
+const   MessageComponent = React.memo( ({setIsVideoCall}:any) => {
   const [conversations, setConversations] = useState<any>();
   const [newGroup,setewGroup]=useState(0)
   const [aside,setAside]=useState(0)
@@ -42,6 +42,6 @@ const   MessageComponent = ({setIsVideoCall}:any) => {
     </div>
     </>
   );
-};
+})
 
 export default MessageComponent;

@@ -3,8 +3,9 @@ import PostListComponents from "./PostListComponents";
 import { Route, Routes } from "react-router-dom";
 import AsideComponent from "../../pages/admin/AsideComponent";
 import DashBoardComponent from "./DashBoard";
+import React from "react";
 
-const HomeComponent = () => {
+const HomeComponent =React.memo( () => {
   return (
     <>
       <div className="fixed w-screen h-screen bg-[#ece9f0] flex justify-center items-center ">
@@ -19,7 +20,7 @@ const HomeComponent = () => {
       </div>
     </>
   );
-};
+})
 
 
 export default HomeComponent

@@ -6,7 +6,7 @@ import {
   PlayToggle,
 } from "video-react";
 import "video-react/dist/video-react.css";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL, fetchFile } from "@ffmpeg/util";
@@ -21,7 +21,7 @@ import {
 function sliderValueToVideoTime(duration: any, sliderValue: any) {
   return Math.round((duration * sliderValue) / 100);
 }
-const TrimVedio = ({ setPostState }: any) => {
+const TrimVedio = React.memo( ({ setPostState }: any) => {
   const post = useSelector((state: any) => state.persisted.post);
   const ffmpegRef = useRef(new FFmpeg());
   const ffmpeg = ffmpegRef.current;
@@ -179,7 +179,7 @@ const TrimVedio = ({ setPostState }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default TrimVedio;
 

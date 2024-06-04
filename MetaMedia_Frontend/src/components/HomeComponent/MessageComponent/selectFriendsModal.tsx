@@ -1,12 +1,12 @@
 import { X, Search } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { addMembers } from "../../../utils/ReduxStore/Slice/newGropSlice";
 import { CreateNewGroupFuntion } from "../../../utils/api/methods/ChatService/post/post";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
-const SelectFriendsModal = ({ setewGroup }: any) => {
+const SelectFriendsModal = React.memo( ({ setewGroup }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const GroupData = useSelector((state: any) => state.persisted.group);
   const [friends, setFriends] = useState<any[]>([]);
@@ -198,6 +198,6 @@ const SelectFriendsModal = ({ setewGroup }: any) => {
       </div>
     </div>
   );
-};
+})
 
 export default SelectFriendsModal;

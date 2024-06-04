@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt, ZegoUser } from '@zegocloud/zego-uikit-prebuilt';
 import { useSelector } from "react-redux";
 import { X } from "lucide-react";
 import { toast } from "sonner";
 
-const Golive = () => {
+const Golive = React.memo( () => {
 
     const { roomId }:any = useParams();
 
@@ -71,7 +71,7 @@ useEffect(() => {
       },
       sharedLinks,
       onLeaveRoom: handleBack,
-      onUserJoin: (users: ZegoUser[]) => {()=>hanldeUser(users)} 
+      // onUserJoin: (users: ZegoUser[]) => {()=>hanldeUser(users)} 
       
     });
 
@@ -97,6 +97,6 @@ const handleBack=()=>{
         </div>
       </>
     );
-};
+})
 
 export default Golive;

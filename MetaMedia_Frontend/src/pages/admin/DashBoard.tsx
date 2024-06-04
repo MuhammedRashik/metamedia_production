@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Clapperboard, Users, Aperture, ShieldBanIcon } from "lucide-react";
 import Chart from "./Graph";
 import { showAllPostFuntion } from "../../utils/api/methods/PostService/get/showAllPost";
@@ -6,7 +6,7 @@ import { getAllUsersDataFunction } from "../../utils/api/methods/UserService/get
 import PostMapChart from "./PostMapChart";
 import UserOnlineChart from "./UserOnlineChart";
 import { getTheNumberOfStoriesFuntion } from "../../utils/api/methods/PostService/get/getTheNumberOfStoriesFuntion";
-const DashBoardComponent = () => {
+const DashBoardComponent = React.memo( () => {
   const [postData, setPostData]: any = useState([]);
   const [storiesData, setStoriesData]: any = useState(0);
   const [userData, setUserData]: any = useState([]);
@@ -160,6 +160,6 @@ const DashBoardComponent = () => {
       {/* the side 2 part  */}
     </div>
   );
-};
+})
 
 export default DashBoardComponent;

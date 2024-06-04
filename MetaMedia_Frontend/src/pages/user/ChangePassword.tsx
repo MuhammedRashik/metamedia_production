@@ -6,9 +6,9 @@ import { ChangePasswordFunction } from "../../utils/api/methods/AuthService/post
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const ChangePassword = () => {
+const ChangePassword =React.memo( () => {
   const [showPassword,setShowPassword]=useState(false)
   const [showConfirmPassword,setConfirmShowPassword]=useState(false)
   const Navigate = useNavigate();
@@ -88,6 +88,6 @@ const ChangePassword = () => {
       </div>
     </div>
   );
-};
+})
 
 export default ChangePassword;

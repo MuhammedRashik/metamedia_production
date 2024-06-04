@@ -1,7 +1,8 @@
 import { X } from 'lucide-react'
 import HighlightSliderComponent from './HighlightSliderComponent'
+import React from 'react'
 
-const OpenHighlightComponent = ({openHighlight , setOpenHighlight, setHighlightList, setHighlightName,setDeleteHighlight}:any) => {
+const OpenHighlightComponent = React.memo( ({openHighlight , setOpenHighlight, setHighlightList, setHighlightName,setDeleteHighlight}:any) => {
   return (
     <div className="fixed z-20 inset-0 w-full h-full backdrop-blur bg-opacity-50 bg-black flex flex-col p-5 ">
         <div className="flex justify-end">
@@ -20,6 +21,6 @@ const OpenHighlightComponent = ({openHighlight , setOpenHighlight, setHighlightL
       </div>
     </div>
   )
-}
+})
 
 export default OpenHighlightComponent

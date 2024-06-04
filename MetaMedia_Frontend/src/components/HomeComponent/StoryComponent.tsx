@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import StoryCard from "./storycardComponent";
 import { useSelector } from "react-redux";
 import profile from '../../assets/profile.webp'
@@ -6,7 +6,7 @@ import { img_Story_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl"
 
 
 // const [stories,setStories]=useState([])
-const Story = ({setShowStory,setAddStory}:any) => {
+const Story =  React.memo(({setShowStory,setAddStory}:any) => {
   
   const myStory = useSelector((state: any) => state.persisted.story.storyData);
   const userData = useSelector((state: any) => state.persisted.user.userData);
@@ -84,6 +84,6 @@ const Story = ({setShowStory,setAddStory}:any) => {
       </div> */}
     </>
   );
-};
+})
 
 export default Story;

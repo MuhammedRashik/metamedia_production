@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import { X } from "lucide-react";
 import {
@@ -8,7 +8,7 @@ import {
   clearVideos,
 } from "../../../../utils/ReduxStore/Slice/postSlice";
 import { useDispatch } from "react-redux";
-const CreatePostModalBody = ({ setIsAddPost, setPostState }: any) => {
+const CreatePostModalBody = React.memo( ({ setIsAddPost, setPostState }: any) => {
   console.log("I am In CreatePostModalBody");
 
   const [CamaraOn, setCamaraOn] = useState(false);
@@ -141,11 +141,11 @@ const CreatePostModalBody = ({ setIsAddPost, setPostState }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default CreatePostModalBody;
 
-const CamaraModal = ({ imgSrc, setImgSrc, setCamaraOn, setPostState }: any) => {
+const CamaraModal = React.memo( ({ imgSrc, setImgSrc, setCamaraOn, setPostState }: any) => {
   const dispatch = useDispatch();
   const closeTheCamara = () => {
     setCamaraOn(false);
@@ -232,4 +232,4 @@ const CamaraModal = ({ imgSrc, setImgSrc, setCamaraOn, setPostState }: any) => {
       {/* </div> */}
     </>
   );
-};
+})

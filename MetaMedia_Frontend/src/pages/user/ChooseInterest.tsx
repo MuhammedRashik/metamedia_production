@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { UserCheck, MessageCircleHeart, BookUser } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { ChooseInterestFunction } from "../../utils/api/methods";
 
-const ChooseInterest = () => {
+const ChooseInterest = React.memo(() => {
   console.log("Enter to ChooseInterest");
 
   const Navigate = useNavigate();
@@ -300,6 +300,6 @@ const ChooseInterest = () => {
       </div>
     </div>
   );
-};
+})
 
 export default ChooseInterest;

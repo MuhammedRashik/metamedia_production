@@ -1,9 +1,9 @@
 import { JitsiMeeting } from "@jitsi/react-sdk";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 
-const VideoCall = () => {
+const VideoCall =  React.memo(() => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   console.log(userData, "HHHHHDDDAA");
   const token = localStorage.getItem("accesstoken");
@@ -122,6 +122,6 @@ const VideoCall = () => {
       </div>
     </>
   );
-};
+})
 
 export default VideoCall;

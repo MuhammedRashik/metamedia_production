@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useMediaQuery from "../../utils/costumHook/mediaqueri";
 import PostScroll from "./PostScrollComponent";
 import Story from "./StoryComponent";
@@ -19,7 +19,7 @@ interface MainBodyProps {
   setAddStory: (value: boolean) => void;
   // other props if any
 }
-const MainBody = ({
+const MainBody = React.memo( ({
   setSidebarOpen,
   setShowStory,
   setAddStory,
@@ -117,6 +117,6 @@ const MainBody = ({
 
     </>
   );
-};
+})
 
 export default MainBody;

@@ -3,14 +3,14 @@ import {
   ChevronRight,
   MoreVertical,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DeleteHighlightFunction } from "../../../utils/api/methods/StoryService/Highlight/post";
 import { toast } from "sonner";
-import { img_Story_baseUrl } from "../../../utils/common/baseUrl";
+import { img_Story_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const HighlightSliderComponent = ({
+const HighlightSliderComponent =  React.memo(({
   openHighlight,
   setOpenHighlight,
   durationPerImage,
@@ -198,6 +198,6 @@ const HighlightSliderComponent = ({
       ))}
     </div>
   );
-};
+})
 
 export default HighlightSliderComponent;

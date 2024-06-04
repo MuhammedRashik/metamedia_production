@@ -2,9 +2,9 @@ import { MoreVertical, Users } from "lucide-react";
 import profile from "../../../assets/profile.webp";
 import { Link, useParams } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
-const AsideComponent = ({
+const AsideComponent =  React.memo(({
   conversations,
   setewGroup,
   setIsMore,
@@ -125,6 +125,6 @@ const AsideComponent = ({
       </div>
     </>
   );
-};
+})
 
 export default AsideComponent;

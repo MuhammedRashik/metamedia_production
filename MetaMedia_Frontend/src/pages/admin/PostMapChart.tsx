@@ -2,7 +2,7 @@
 
 
 import { Chart } from "react-google-charts";
-const PostMapChart=()=>{
+const PostMapChart=React.memo(()=>{
     const data = [
         ["Country", "Popularity"],
         ["Germany", 200],
@@ -46,6 +46,6 @@ const PostMapChart=()=>{
 
         </>
     )
-}
+})
 
 export default PostMapChart

@@ -7,7 +7,7 @@ import React from 'react';
       <video src={videoUrl} controls />
     );
   };
-  const CreateStoryComponent = ({ croppedImage, caption, setCaption }:any) => {
+  const CreateStoryComponent = React.memo( ({ croppedImage, caption, setCaption }:any) => {
     
     return (
       <div>
@@ -33,6 +33,6 @@ import React from 'react';
         </div>
       </div>
     );
-  };
+  })
   
   export default CreateStoryComponent;

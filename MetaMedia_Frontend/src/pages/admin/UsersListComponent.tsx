@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllUsersDataFunction } from "../../utils/api/methods/UserService/get";
 import { toast } from "sonner";
 import profile from "../../assets/profile.webp";
 import { ChangeUserStatusFunction } from "../../utils/api/methods/AdminService/post";
 import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const UsersListComponent = () => {
+const UsersListComponent =React.memo( () => {
   const [users, setUsers] = useState<any>([]);
   const [currentUsers, setCurrentUsers] = useState<any>();
   const [searchUser, setSearchUser] = useState<string>("");
@@ -163,6 +163,6 @@ const UsersListComponent = () => {
       </div>
     </section>
   );
-};
+})
 
 export default UsersListComponent;

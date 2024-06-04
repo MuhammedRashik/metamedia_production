@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getUserByIdFuntion } from "../../utils/api/methods/UserService/post";
 import { toast } from "sonner";
 
-const AccountInformation = () => {
+const AccountInformation = React.memo( () => {
   const [user, setUser] = useState<any>();
   const userData = useSelector((state: any) => state.persisted.user.userData);
   
@@ -87,6 +87,6 @@ const AccountInformation = () => {
       </div>
     </div>
   );
-};
+})
 
 export default AccountInformation;

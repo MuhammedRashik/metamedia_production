@@ -1,4 +1,6 @@
-const Posts = () => {
+import React from "react";
+
+const Posts = React.memo(() => {
   return (
     <>
       <div className=" scrollbar-hide w-full h-full   justify-start items-start sm:p-5 pt-10  overflow-y-auto gap-2">
@@ -77,6 +79,6 @@ const Posts = () => {
       </div>
     </>
   );
-};
+})
 
 export default Posts;

@@ -1,5 +1,5 @@
 import { MoreVertical, Users } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GetAllGroupsOfuser } from "../../../utils/api/methods/ChatService/get/get";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import { img_Chat_baseUrl } from "../../../utils/common/baseUrl";
 
-const GroupChatAside = ({
+const GroupChatAside = React.memo( ({
   setIsMore,
   isMore,
   setewGroup,
@@ -118,6 +118,6 @@ const GroupChatAside = ({
       </div>
     </>
   );
-};
+})
 
 export default GroupChatAside;

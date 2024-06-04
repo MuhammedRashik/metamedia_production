@@ -1,4 +1,6 @@
-const SuggestOneFriend=()=>{
+import React from "react"
+
+const SuggestOneFriend= React.memo(()=>{
     return (
         <>
     <div className="flex  rounded-md lg:h-12 mt-3 ">
@@ -16,5 +18,5 @@ const SuggestOneFriend=()=>{
         
         </>
     )
-}
+})
 export default SuggestOneFriend

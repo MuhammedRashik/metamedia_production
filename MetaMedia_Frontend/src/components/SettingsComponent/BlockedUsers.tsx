@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import profile from "../../assets/profile.webp";
 import { BlockAndUnblockUserFunction } from "../../utils/api/methods/ChatService/post/post";
@@ -7,7 +7,7 @@ import { editUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { toast } from "sonner";
 import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const BlockedUsers = ({ setBlockedUsers }: any) => {
+const BlockedUsers =  React.memo(({ setBlockedUsers }: any) => {
   const [searchUser, setSearchUser] = useState("");
   const [statusChange, setStatusChange] = useState(false);
   const [blockedSearchUsers,setBlockedSearchUsers] = useState([]) 
@@ -117,6 +117,6 @@ const BlockedUsers = ({ setBlockedUsers }: any) => {
       </div>
     </div>
   );
-};
+})
 
 export default BlockedUsers;

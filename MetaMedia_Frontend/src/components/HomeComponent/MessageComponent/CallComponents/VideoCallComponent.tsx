@@ -11,7 +11,7 @@ import ReactPlayer from "react-player";
 import peer from "../../../../utils/WebRTC/peer";
 import { useCallback, useEffect, useState } from "react";
 
-const VideoCallComponent: React.FC = () => {
+const VideoCallComponent: React.FC = React.memo( () => {
   console.log("VideoCallComponent");
   
   const [remoteSocketId, setRemoteSocketId] = useState(null);
@@ -278,6 +278,6 @@ const VideoCallComponent: React.FC = () => {
       </main>
     </>
   );
-};
+})
 
 export default VideoCallComponent;

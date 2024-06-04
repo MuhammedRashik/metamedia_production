@@ -1,9 +1,9 @@
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Camera, ImagePlus } from 'lucide-react';
 import Webcam from "react-webcam";
 import { log } from "console";
 
-const AddPostModal = () => {
+const AddPostModal =  React.memo(() => {
     const [imgSrc, setImgSrc] = useState(null);
     const webcamRef:any = useRef(null);
     const [showCamera, setShowCamera] = useState(false);
@@ -85,9 +85,9 @@ const AddPostModal = () => {
             </div>
         </>
     );
-};
+})
 
-const ShowCamera = ({ capture, webcamRef, setImgSrc, imgSrc, onSelect ,setShowCamera}:any) => {
+const ShowCamera = React.memo( ({ capture, webcamRef, setImgSrc, imgSrc, onSelect ,setShowCamera}:any) => {
     const takePicture = () => {
         capture(); // Call the capture function from props
         const imageSrc = webcamRef.current.getScreenshot();
@@ -141,6 +141,6 @@ const ShowCamera = ({ capture, webcamRef, setImgSrc, imgSrc, onSelect ,setShowCa
             </div>
         </>
     );
-};
+})
 
 export default AddPostModal;

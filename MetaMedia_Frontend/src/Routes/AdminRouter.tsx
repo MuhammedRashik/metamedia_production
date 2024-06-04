@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router-dom";
 
 import HomeComponent from "../pages/admin/HomeComponent";
 import ProtectedAuthRoute from "./ProtectedAuthRoute";
+import React from "react";
 
 
-const AdminRouter = () => {
+const AdminRouter = React.memo(() => {
   return (
     <>
       <Routes>
@@ -12,6 +13,6 @@ const AdminRouter = () => {
       </Routes>
     </>
   );
-};
+})
 
 export default AdminRouter;

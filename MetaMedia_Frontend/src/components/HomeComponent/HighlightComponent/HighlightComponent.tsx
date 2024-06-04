@@ -1,8 +1,9 @@
 import { Plus } from 'lucide-react';
 import { img_Story_baseUrl } from '../../../utils/common/baseUrl';
+import React from 'react';
 
 
-const Highlight = ({setOpenHighlight, index, highlight, extra, setAddHighlight }:any) => {
+const Highlight = React.memo( ({setOpenHighlight, index, highlight, extra, setAddHighlight }:any) => {
   
     return (
         <>
@@ -23,6 +24,6 @@ const Highlight = ({setOpenHighlight, index, highlight, extra, setAddHighlight }
      }
     </>
     );
-  };
+  })
 
 export default Highlight
