@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import { img_Chat_baseUrl } from "../../../utils/common/baseUrl";
 
-const GroupChatAside = React.memo( ({
+const GroupChatAside = ({
   setIsMore,
   isMore,
   setewGroup,
@@ -118,6 +118,6 @@ const GroupChatAside = React.memo( ({
       </div>
     </>
   );
-})
+}
 
 export default GroupChatAside;

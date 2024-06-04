@@ -89,7 +89,7 @@ const DropDownComponent = ({
   );
 };
 
-const MessageListComponent =  React.memo(({
+const MessageListComponent = ({
   conversations,
   setConversations,
   aside,
@@ -1027,6 +1027,6 @@ const MessageListComponent =  React.memo(({
       )}
     </>
   );
-})
+}
 
 export default MessageListComponent;

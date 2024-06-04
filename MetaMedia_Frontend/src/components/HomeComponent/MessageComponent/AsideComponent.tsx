@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import React, { useEffect } from "react";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
-const AsideComponent =  React.memo(({
+const AsideComponent = ({
   conversations,
   setewGroup,
   setIsMore,
@@ -125,6 +125,6 @@ const AsideComponent =  React.memo(({
       </div>
     </>
   );
-})
+}
 
 export default AsideComponent;

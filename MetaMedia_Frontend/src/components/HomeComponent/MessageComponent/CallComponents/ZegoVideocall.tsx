@@ -2,7 +2,7 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useRef, useEffect } from 'react'; // Import useRef and useEffect
-const GroupVedioCall = React.memo( () => {
+const GroupVedioCall = () => {
     let { roomId }: any = useParams();
     const containerRef = useRef(null);
     const userData = useSelector((state: any) => state.persisted.user.userData)
@@ -54,5 +54,4 @@ const GroupVedioCall = React.memo( () => {
         </>
     );
 }
-)
 export default GroupVedioCall;

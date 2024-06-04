@@ -29,7 +29,7 @@ import VoiceRecorder from "./VoiceRecorder";
 import profile from "../../../assets/profile.webp";
 import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const GroupMessageComponent = React.memo( ({
+const GroupMessageComponent =  ({
   isGroupChat,
   aside,
   setClik,
@@ -654,5 +654,5 @@ const GroupMessageComponent = React.memo( ({
       </div>
     </>
   );
-})
+}
 export default GroupMessageComponent;
