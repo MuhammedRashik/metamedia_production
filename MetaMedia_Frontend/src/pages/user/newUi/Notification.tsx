@@ -170,6 +170,53 @@ const Notification = ({ setOpenNotification }: any) => {
                         {/* one notification ------------ */}
                       </>
                     )}
+                   {item.action_type == "follow" && (
+                      <>
+                        {/* one notification ------------ */}
+                        <div
+                          className="w-full h-20  flex justify-between  border rounded-md flex-none"
+                          key={item._id}
+                        >
+                          <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
+                            <img
+                              src={`${img_User_baseUrl}${item?.senderUserData.profile?.profileUrl}`}
+                              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#C1506D]"
+                              alt=""
+                            />
+                          </div>
+                          <div className="h-full w-full  flex flex-col">
+                            <div className="w-full h-1/2  flex pl-2 justify-start items-end">
+                              <p className="font-semibold">
+                                {
+                                  item?.senderUserData?.basicInformation
+                                    ?.fullName
+                                }
+                              </p>
+                            </div>
+                            <div className="w-full h-1/2   items-start flex flex-col pl-3">
+                              <>
+                                <p className="text-sm flex flex-wrap">
+                                 Started Following you
+                                </p>
+                              </>
+
+                              <p className="text-[10px]">
+                                
+                                {moment(item.timestamp).fromNow()}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="h-full w-3/12  p-2 flex justify-center items-center">
+                            {/* <img
+                              src={`${img_Post_baseUrl}${item.action_details.post_image}`}
+                              className="w-full h-5/6 object-cover"
+                              alt=""
+                            /> */}
+                          </div>
+                        </div>
+                        {/* one notification ------------ */}
+                      </>
+                    )}
                   </>
                 );
               })}
