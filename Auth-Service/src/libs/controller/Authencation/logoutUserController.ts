@@ -10,7 +10,7 @@ export default (dependencies: any) => {
     res.clearCookie('accessToken');
       res.json({ status: true, message: "Logout success" });
     } catch (err) {
-        console.log(err,"er");
+        console.log(err,"Logout error");
       res.json(err);
     }
   };

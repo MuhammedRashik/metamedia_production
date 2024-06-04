@@ -23,7 +23,6 @@ export default {
         return { status: false, message: "Error occur" };
       }
     } catch (error) {
-      console.log(error, "ER");
       return { error };
     }
   },
@@ -72,7 +71,6 @@ export default {
         return { status: false, message: "receivers not Found", data: false };
       }
     } catch (error) {
-      console.log(error, "ER");
       return { status: false, message: error, data: false };
     }
   },
@@ -112,7 +110,6 @@ export default {
     receiverId: string
   ) => {
     try {
-      console.log("I MA getMessages");
       const checkMessages = async (conversationId: string) => {
         const messages = await schema.Messages.find({ conversationId });
         const messageUserData = Promise.all(
@@ -152,13 +149,11 @@ export default {
         return await checkMessages(conversationId);
       }
     } catch (error) {
-      console.log(error, "ERR");
       return { status: false, data: true };
     }
   },
 
   CreateNewgroup: async (data: any) => {
-    console.log(data,'THIS IS SDATAAA_________');
     
     const { title, description, membersData, admin, image, adminName } = data;
 
@@ -172,7 +167,6 @@ if(GroupExist){
 }
 
 
-console.log(updatedMembers,'--------LLLLLLLLL_____');
 
 
       const Group = new schema.GroupChat({
@@ -214,7 +208,6 @@ console.log(updatedMembers,'--------LLLLLLLLL_____');
         return { status: false, message: "New Group Creation failed" };
       }
     } catch (error) {
-      console.log("EROOR :", error);
 
       return { status: false, message: `Error :${error}` };
     }
@@ -232,7 +225,6 @@ console.log(updatedMembers,'--------LLLLLLLLL_____');
         return { status: false, message: "Group Data Not found.." };
       }
     } catch (error) {
-      console.log("EROOR", error);
 
       return { status: false, message: `Error :${error}` };
     }
@@ -314,10 +306,8 @@ console.log(updatedMembers,'--------LLLLLLLLL_____');
 
   singleUserSendFile: async (data:any,conv:any) => {
       try {
-        console.log(data,"convconvconvconvconvconvconv");
         
         const {senderId,type,filename} = data
-        console.log(type,"YTTTPPE");
         
         const response = await schema.Messages.create({
           conversationId:conv,
@@ -329,7 +319,6 @@ console.log(updatedMembers,'--------LLLLLLLLL_____');
           const data = await schema.Conversation.findByIdAndUpdate(conv, {
             lastUpdate: Date.now(),
           });
-          console.log(data,"datadatadatadatadata");
           
           return { status: true, message: "Message sent successfully",data:filename };
         } else {

@@ -4,9 +4,7 @@ import { sentOtp } from "../../../helper";
 export default (dependencies: any) => {
 
   const resendOtpController = async (req:any, res: Response) => {
-    const {email} =req.body
-    console.log(email,"emailemail");
-    
+    const {email} =req.body    
     if(!email) return res.json({ status: false, message: "Email not found"});
     const response = await sentOtp(email)
     if (response.status) {

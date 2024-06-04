@@ -18,7 +18,6 @@ export default (dependencies:any) => {
     if (otp) {    
       if (otp == req.session.Otp) {     
         const data=req.session.userData  
-        console.log(data,"req.session.userData");
               
         const hashedPassword=await hashPassword(data.password)        
         data.password=hashedPassword
@@ -50,7 +49,6 @@ export default (dependencies:any) => {
             res.json({status:false , message:"UserData error"})
         }
       } else {
-        console.log("I AM ELSEEEEEE");
         res.json({status:false , message:"Wrong otp"})
       }
     }else{

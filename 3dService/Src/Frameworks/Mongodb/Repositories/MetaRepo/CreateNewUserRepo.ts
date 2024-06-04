@@ -4,7 +4,6 @@ export default {
   
     createNewUser:async(data:any)=>{
         const {userId}=data
-        console.log(userId,'KK');
         
       try {
         const userexist=await Meta.findOne({userId})

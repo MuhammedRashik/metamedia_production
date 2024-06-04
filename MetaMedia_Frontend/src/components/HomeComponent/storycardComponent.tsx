@@ -14,12 +14,7 @@ const StoryCard =  React.memo(({ setShowStory, setAddStory }: any) => {
   const stories = useSelector(
     (state: any) => state.persisted.story.otherUsersStoryData
   );
-  console.log(myStory,"myStory");
-  console.log(myStory?.[0]?.[0]?.storyUrl.startsWith('https://'),"myStory?.[0]?.[0]?.storyUrl.startsWith('video/'");
-  console.log(userData?.profile.startsWith('https://graph'),"userData?.profile");
   
-  console.log(myStory?.[0]?.[0]?.storyUrl,":myStory?.[0]?.[0]?.storyUrlmyStory?.[0]?.[0]?.storyUrl");
-  console.log(myStory?.[0]?.[0]?.storyUrl.startsWith('https://graph'),"myStory?.[0]?.[0]?.storyUrl.startsWith('https://graph')");
   
 
   const renderSidebar = () => {

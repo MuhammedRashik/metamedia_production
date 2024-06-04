@@ -3,10 +3,8 @@ export const Conversation_UseCase = (dependencies: any) => {
   
     const executeFunction = async (senderId:string, receiverId:string) => {
       const conversationExist = await chatRepository.isConversationExist(senderId, receiverId);
-      console.log(conversationExist,"conversationExistconversationExist");
       
       if(!conversationExist.status){
-        console.log("Not exist");
         
         const response = await chatRepository.addNewConversation(senderId, receiverId);
         if (response) {

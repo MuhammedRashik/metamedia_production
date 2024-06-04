@@ -51,7 +51,6 @@ const HighlightSliderComponent =  React.memo(({
 
   useEffect(() => {
     if (!isOpen) {
-      console.log(loading, "loadingloading");
       const interval = setInterval(() => {
         setLoading((prevIndex) => (prevIndex == 100 ? 0 : prevIndex + 5.5));
       }, 250);
@@ -78,7 +77,6 @@ const HighlightSliderComponent =  React.memo(({
 
   const addNewHighlight = async () => {
     const name = highlights[openHighlight].name;
-    console.log(name, "namename");
 
     setHighlightList(true);
     setHighlightName(name);

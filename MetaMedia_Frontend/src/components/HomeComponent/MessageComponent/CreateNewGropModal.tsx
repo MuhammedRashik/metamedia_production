@@ -37,7 +37,6 @@ const CreateNewGroupModal = React.memo( ({ setewGroup }: any) => {
   const changeProfile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
-      console.log(file);
 
       try {
         // Ensure that the file object has the required properties
@@ -48,7 +47,6 @@ const CreateNewGroupModal = React.memo( ({ setewGroup }: any) => {
         setSelectedFile(file);
         setErrors({});
       } catch (error: any) {
-        console.log(error, "THIS IS ERROR");
 
         setErrors({ name: "Required", type: "Required" });
       }

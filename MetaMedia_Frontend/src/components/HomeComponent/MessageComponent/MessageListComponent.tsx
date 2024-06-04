@@ -353,12 +353,10 @@ const MessageListComponent = ({
   };
 
   const sendFiles = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("sendFilessendFiles");
 
     const files: FileList | null = e.target.files;
     if (files && files.length > 0) {
       Array.from(files).forEach(async (file: File) => {
-        console.log(file, "filefilefile");
 
         let messageType: string;
         if (file.type.startsWith("image/")) {
@@ -378,7 +376,6 @@ const MessageListComponent = ({
           receiverId: messages?.data?.receiverId,
           lastUpdate: Date.now(),
         };
-        console.log(data, "datadata");
 
         const formData = new FormData();
         formData.append("file", data.content);
@@ -388,10 +385,8 @@ const MessageListComponent = ({
         formData.append("type", data.type);
         try {
           const response = await SendFileForMessageFunction(formData);
-          console.log(response, "responseresponse");
 
           if (response.status) {
-            console.log("emitemiting");
 
             socket?.emit("sendMessage", {
               senderId: userData?.userId,
@@ -501,7 +496,6 @@ const MessageListComponent = ({
       receiverId: messages?.data?.receiverId,
       roomId: roomId,
     };
-    console.log(emitData, "emitData");
 
     socket.emit("AudioCallRequest", emitData);
     navigate(`/audioCall/${roomId}`);
@@ -648,7 +642,7 @@ const MessageListComponent = ({
           className="flex flex-col pb-16 space-y-4 p-3 overflow-y-auto scrollbar-hide"
         >
           {messages?.messages?.length > 0 ? (
-            messages.messages.map((data: any, index: number) => {
+            messages?.messages?.map((data: any, index: number) => {
               return data.senderId !== userData.userId ? (
                 <div className="chat-message" key={data.id}>
                   <div className="flex items-end">

@@ -9,7 +9,6 @@ import {
 } from "../../../../utils/ReduxStore/Slice/postSlice";
 import { useDispatch } from "react-redux";
 const CreatePostModalBody = React.memo( ({ setIsAddPost, setPostState }: any) => {
-  console.log("I am In CreatePostModalBody");
 
   const [CamaraOn, setCamaraOn] = useState(false);
   const [imgSrc, setImgSrc] = useState(null);
@@ -20,7 +19,6 @@ const CreatePostModalBody = React.memo( ({ setIsAddPost, setPostState }: any) =>
     if (fileInput) {
       fileInput.click();
     } else {
-      console.error("File input element not found");
     }
   };
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +38,6 @@ const CreatePostModalBody = React.memo( ({ setIsAddPost, setPostState }: any) =>
 
           reader.onload = (e: any) => {
             const imageDataURL = e.target.result;
-            console.log("this is imgage data url", imageDataURL);
 
             dispatch(addImage(imageDataURL));
           };
@@ -50,14 +47,12 @@ const CreatePostModalBody = React.memo( ({ setIsAddPost, setPostState }: any) =>
         }
         // Check if the file is a video
         else if (file.type.startsWith("video/")) {
-          console.log(file, "THIS SIS VEDIO FILE");
 
           dispatch(addVideo(file));
 
           setPostState(4);
         } else {
           // Handle invalid file types
-          console.error("Invalid file type:", file.type);
           continue; // Skip to the next file
         }
 
@@ -164,7 +159,6 @@ const CamaraModal = React.memo( ({ imgSrc, setImgSrc, setCamaraOn, setPostState 
     setImgSrc(imageSrc);
   };
   const selectImage = () => {
-    console.log(imgSrc, "KKKK");
 
     //add url to redux and open the next page
     dispatch(clearImages());

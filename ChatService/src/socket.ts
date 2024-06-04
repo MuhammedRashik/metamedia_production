@@ -23,17 +23,15 @@ const socketConfig=()=>{
    socket.on('sendMessage', async ({ senderId, receiverId, message, conversationId, lastUpdate, socketType }) => {
      const receiver = users.find((user:any) => user.userId === receiverId);
      const sender = users.find((user:any) => user.userId === senderId);
-     console.log('sender :>> ', sender);
-     console.log('receiver :>> ', receiver);
      if (receiver) {
-       io.to(receiver?.socketId).to(sender.socketId).emit('getMessage', {senderId,message,conversationId,receiverId,socketType,lastUpdate});
+       io.to(receiver?.socketId).to(sender?.socketId).emit('getMessage', {senderId,message,conversationId,receiverId,socketType,lastUpdate});
      } else {
        io.to(sender?.socketId)?.emit('getMessage', {senderId,message,conversationId,receiverId,socketType,lastUpdate});
      }
    });
  
    socket.on('disconnect', () => {
-     users = users.filter((user:any) => user.socketId !== socket.id);
+     users = users.filter((user:any) => user?.socketId !== socket.id);
      io.emit('getUsers', users);
    });
  
@@ -49,7 +47,6 @@ const socketConfig=()=>{
    })
    socket.on('room:audio:join', (data) => {
      const { name, room, receiverId, senderId } = data;
-     console.log(name, room, receiverId, senderId,"name, room, receiverId, senderId");
      const receiver = users.find((user:any) => user.userId === receiverId);
      io.to(receiver?.socketId).emit('callingToAudioRoom', senderId, receiverId, room, name);
      emailToSocketIdMap.set(name, socket.id);
@@ -79,7 +76,6 @@ const socketConfig=()=>{
     try {
         const { group_id, userId } = data;
         socket.join(group_id);
-        console.log('Connected to the group', group_id, 'by user', userId);
         socket.to(group_id).emit("joinGroupResponse", { message: "Successfully joined the group" });
     } catch (error) {
         console.error('Error occurred while joining group:', error);
@@ -100,7 +96,6 @@ socket.on("GroupMessage",async(data:any)=>{
   const {SendGroupMessage_UseCase}=dependencies.useCase
 const response=await SendGroupMessage_UseCase(dependencies).executeFunction(data)
 if(response.status){
-  console.log('TEXT MESAGE CREATEDD??????????');
   const emitpayload=response.data
   io.to(group_id).emit("responseGroupMessage",emitpayload)
 }
@@ -126,31 +121,21 @@ socket.on("GroupAudioCallRequest",(data:any)=>{
   })
 
   socket.on("AudioCallRequest", (data: any) => {
-    console.log(data.roomId, "dataaasdanjdaa");
-    console.log(data.receiverId, "receiverId");
     const emitdata = {
       roomId: data.roomId,
       receiverId:data.receiverId
     };
     io.emit("AudioCallResponse", emitdata);
-    console.log("ENITTED");
     
   });
   socket.on("VideoCallRequest", (data: any) => {
-    console.log(data.roomId, "dataaasdanjdaa");
-    console.log(data.receiverId, "receiverId");
     const emitdata = {
       roomId: data.roomId,
       receiverId:data.receiverId
     };
-    io.emit("VideoCallResponse", emitdata);
-    console.log("ENITTED");
-    
+    io.emit("VideoCallResponse", emitdata);    
   });
  });
-
- 
- 
 }
 
 

@@ -11,7 +11,6 @@ const socketConfig = (io: Server) => {
   let users: User[] = [];
 
   io.on('connection', (socket: Socket) => {
-    console.log(`User connected: ${socket.id}`);
 
     socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number }, peerId: string }) => {
       const { userId, position, peerId } = data;
@@ -20,12 +19,10 @@ const socketConfig = (io: Server) => {
       if (!isUserExist) {
         const user: User = { userId, socketId: socket.id, position, peerId };
         users.push(user);
-        console.log('Adding new user', user);
       } else {
-        isUserExist.socketId = socket.id;
+        isUserExist?.socketId = socket.id;
         isUserExist.position = position;
         isUserExist.peerId = peerId;
-        console.log('Updating socket ID, position, and peer ID for existing user', isUserExist);
       }
 
       io.emit('updateUsers', users);
@@ -37,14 +34,12 @@ const socketConfig = (io: Server) => {
 
       if (user) {
         user.position = position;
-        console.log('User position updated', user);
         io.emit('updateUsers', users);
       }
     });
 
     socket.on('disconnect', () => {
       users = users.filter((user) => user.socketId !== socket.id);
-      console.log(`User disconnected: ${socket.id}`);
       io.emit('updateUsers', users);
     });
   });

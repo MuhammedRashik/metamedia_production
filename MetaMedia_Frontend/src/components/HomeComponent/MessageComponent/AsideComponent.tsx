@@ -68,6 +68,8 @@ const AsideComponent = ({
         <div className="overflow-auto scrollbar-hide ">
           {conversations?.length
             ? conversations.map((data: any, index: number) => {
+              console.log(data,"datadata");
+              
                 if (data.email) {
                   return (
                     <div
