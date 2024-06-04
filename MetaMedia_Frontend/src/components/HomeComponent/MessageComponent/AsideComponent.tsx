@@ -4,11 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import AsideSelectionComponent from "./AsideSelectionComponent";
 import React, { useEffect } from "react";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
-<<<<<<< HEAD
-const AsideComponent =  ({
-=======
+
 const AsideComponent = ({
->>>>>>> 96cfaac92e66ddf8019483038e5125e0dac5c195
   conversations,
   setewGroup,
   setIsMore,
