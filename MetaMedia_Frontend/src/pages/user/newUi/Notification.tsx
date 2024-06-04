@@ -234,15 +234,14 @@ const Notification = React.memo(({ setOpenNotification }: any) => {
                             </div>
                           </div>
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
-                          <button className="w-16 h-6 border border-[#C1506D] rounded-lg flex justify-center items-center font-semibold text-[12px] text-[#C1506D] "
-                         onClick={()=>FollowUser(item?.senderUserData?.basicInformation?.userId)}>
-                          
-                        {item?.senderUserData?.socialConections?.following.some((follower:any) => {
-console.log(follower.userId,'follower.userI',userData.userId,'userData.userId');
-return follower.userId === userData.userId?"Unfollow":"Follow"
+                          <button className="w-16 h-6 border border-[#C1506D] rounded-lg flex justify-center items-center font-semibold text-[12px] text-[#C1506D]"
+    onClick={() => FollowUser(item?.senderUserData?.basicInformation?.userId)}>
+    {item?.senderUserData?.socialConections?.following.some((follower: any) => {
+        console.log(follower.userId, 'follower.userId', userData.userId, 'userData.userId');
+        return follower.userId === userData.userId ? "Unfollow" : "Follow";
+    })}
+</button>
 
-                        })}
-                      </button>
                           </div>
                         </div>
                         {/* one notification ------------ */}
