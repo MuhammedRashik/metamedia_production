@@ -10,6 +10,7 @@ const AsideComponent = ({
   setIsMore,
   isMore,
   setAside,
+  render,
   setIsGroupChat,
 }: any) => {
   const { user_id } = useParams();
@@ -27,8 +28,7 @@ const AsideComponent = ({
     console.log(conversations,"CONVERSATIONS");
     console.log(conversations?.length,"conversations?.length");
     
-    
-  },[conversations])
+  },[conversations,render])
 
   const handleMoreOption = () => {
     setIsMore(!isMore);

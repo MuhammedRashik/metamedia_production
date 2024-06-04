@@ -92,6 +92,8 @@ const DropDownComponent = ({
 const MessageListComponent = ({
   conversations,
   setConversations,
+  setRender,
+  render,
   aside,
   isGroupChat,
 }: any) => {
@@ -151,9 +153,7 @@ const MessageListComponent = ({
           const userId = { ids: response.data.data };
           const userData: any = await GetUsersDataByIdFunction(userId);
           const users: any = [];
-          userData.data.data.map((data: any, index: number) => {       
-                 console.log(response.data.data[index].newMessageCount,"response.data.data[index].newMessageCount");
-                 
+          userData.data.data.map((data: any, index: number) => {                        
             const userDetails: any = {
               conversationId: data.conversationId,
               name: data.user.fullName,
@@ -166,6 +166,7 @@ const MessageListComponent = ({
           });
           users.sort((a: any, b: any) => b.lastUpdate - a.lastUpdate);
           setConversations(users);
+          setRender(!render)
         }
       }
       setOnlineUser(false);
