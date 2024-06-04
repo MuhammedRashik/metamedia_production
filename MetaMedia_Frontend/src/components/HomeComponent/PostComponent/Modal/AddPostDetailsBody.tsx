@@ -4,7 +4,7 @@ import {
   ArrowLeft,
   MapPin,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearImages } from "../../../../utils/ReduxStore/Slice/postSlice";
 import { toast } from "sonner";
