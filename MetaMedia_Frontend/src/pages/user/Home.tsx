@@ -31,7 +31,7 @@ import VIdeoCallZegoComponent from "../../components/HomeComponent/MessageCompon
 export interface SetSidebarOpenFunction {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Home =React.memo( ({ render, setRender }: any) => {
+const Home =({ render, setRender }: any) => {
   const [addStories, setAddStories] = useState<boolean>(false);
   const [deleteStory, setDeleteStory] = useState<boolean>(false);
   const [showStory, setShowStory] = useState("");
@@ -174,6 +174,6 @@ const Home =React.memo( ({ render, setRender }: any) => {
       </div>
     </>
   );
-})
+}
 
 export default Home;

@@ -15,7 +15,7 @@ import { clearToken } from "../../../utils/ReduxStore/Slice/tokenSlice";
 import { toast } from "sonner";
 import { persistor } from "../../../utils/ReduxStore/Store/Store";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
-const NewSideBar =React.memo( ({ setOpenNotification, setOpenSearch }: any) => {
+const NewSideBar ={ setOpenNotification, setOpenSearch }: any) => {
   const location = useLocation();
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -224,6 +224,6 @@ const NewSideBar =React.memo( ({ setOpenNotification, setOpenSearch }: any) => {
       </div>
     </>
   );
-})
+}
 
 export default NewSideBar;

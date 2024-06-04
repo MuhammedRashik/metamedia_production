@@ -33,7 +33,7 @@ import { DeleteReplayFunction } from "../../../utils/api/methods/PostService/Pos
 import { SavePostFunction } from "../../../utils/api/methods/PostService/Post/savePost";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const SinglePostModal =  React.memo(({ render, setRender }: any) => {
+const SinglePostModal =  ({ render, setRender }: any) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const singlePost = useSelector(
@@ -815,6 +815,6 @@ const SinglePostModal =  React.memo(({ render, setRender }: any) => {
       </div>
     </>
   );
-})
+}
 
 export default SinglePostModal;

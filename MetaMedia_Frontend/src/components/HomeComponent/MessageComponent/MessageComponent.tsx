@@ -6,7 +6,7 @@ import SelectFriendsModal from "./selectFriendsModal";
 import GroupChatAside from "./groupChatAside";
 import GroupMessageComponent from "./GroupMessageComponent";
 import GroupDetails from "./GroupDetails";
-const   MessageComponent = React.memo( ({setIsVideoCall}:any) => {
+const   MessageComponent = ({setIsVideoCall}:any) => {
   const [conversations, setConversations] = useState<any>();
   const [newGroup,setewGroup]=useState(0)
   const [aside,setAside]=useState(0)
@@ -42,6 +42,6 @@ const   MessageComponent = React.memo( ({setIsVideoCall}:any) => {
     </div>
     </>
   );
-})
+}
 
 export default MessageComponent;

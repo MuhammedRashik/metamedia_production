@@ -22,7 +22,7 @@ interface MainBodyProps {
 
   // other props if any
 }
-const MainBody = React.memo(({
+const MainBody = ({
   setShowStory,
   setAddStory,
   setIsAddPost,
@@ -290,5 +290,5 @@ const MainBody = React.memo(({
       {/* main div ------------------------- */}
     </>
   );
-})
+}
 export default MainBody;

@@ -24,7 +24,7 @@ import { AddCommentFunction } from "../../utils/api/methods/PostService/Post/add
 import { useNavigate } from "react-router-dom";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const PostScroll =  React.memo(({ data, render, setRender }: any) => {
+const PostScroll =  ({ data, render, setRender }: any) => {
   const [comment, setComment] = useState("");
 
   const dispatch = useDispatch();
@@ -226,6 +226,6 @@ const PostScroll =  React.memo(({ data, render, setRender }: any) => {
       </div>
     </>
   );
-})
+}
 
 export default PostScroll;

@@ -12,7 +12,7 @@ import { AddVideoToStoryFunction } from "../../../utils/api/methods/StoryService
 import TrimVideoComponent from "./TrimVideoComponent";
 import { clearVideos } from "../../../utils/ReduxStore/Slice/postSlice";
 
-const StoryModal = React.memo( ({ setAddStory }: any) => {
+const StoryModal = ({ setAddStory }: any) => {
   const [caption, setCaption] = useState("");
   const [selectedFile, setSelectedFile] = useState<any | null>(null);
   const [cropImage,setCropImage] = useState(false)
@@ -154,6 +154,6 @@ const uploadFile = async ( timestamp:any, signature:any) => {
       </div>
     </div>
   );
-})
+}
 
 export default StoryModal;

@@ -89,7 +89,7 @@ const DropDownComponent = ({
   );
 };
 
-const MessageListComponent =  React.memo(({
+const MessageListComponent = ({
   conversations,
   setConversations,
   aside,
@@ -130,7 +130,7 @@ const MessageListComponent =  React.memo(({
 
   useEffect(() => {
     const fetchConversations = async () => {
-      const response: any = await GetConversationsFunction();
+      const response: any = await GetConversationsFunction();      
       let userExist;
       if (response.data.status) {
         userExist = response?.data?.data?.find(
@@ -148,7 +148,8 @@ const MessageListComponent =  React.memo(({
           const userId = { ids: response.data.data };
           const userData: any = await GetUsersDataByIdFunction(userId);
           const users: any = [];
-          userData.data.data.map((data: any, index: number) => {
+          userData.data.data.map((data: any, index: number) => {       
+                 
             const userDetails: any = {
               conversationId: data.conversationId,
               name: data.user.fullName,
@@ -156,15 +157,16 @@ const MessageListComponent =  React.memo(({
               profile: data.user.profile,
               receiverId: data.user.receiverId,
               lastUpdate: response.data.data[index].lastUpdate,
+              newMessageCount: response.data.data[index].newMessageCount,
             };
             users.push(userDetails);
-          });
+          });          
           users.sort((a: any, b: any) => b.lastUpdate - a.lastUpdate);
           setConversations(users);
         }
       }
       setOnlineUser(false);
-    };
+    };    
     fetchConversations();
   }, [
     isSendMessage,
@@ -175,6 +177,7 @@ const MessageListComponent =  React.memo(({
     rerender,
     aside,
     isGroupChat,
+    onlineUser,
   ]);
 
   useEffect(() => {}, [incomingCall]);
@@ -278,9 +281,11 @@ const MessageListComponent =  React.memo(({
           }
         }
       }
-      setLastOnline(
-        messages?.messages[messages?.messages?.length - 1]?.time || 0
-      );
+      if(messages?.messages){
+        setLastOnline(
+          messages?.messages[messages?.messages?.length - 1]?.time || 0
+        );
+      }
     })();
   }, [
     user_id,
@@ -1022,6 +1027,6 @@ const MessageListComponent =  React.memo(({
       )}
     </>
   );
-})
+}
 
 export default MessageListComponent;

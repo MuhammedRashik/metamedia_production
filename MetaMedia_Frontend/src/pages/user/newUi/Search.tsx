@@ -10,7 +10,7 @@ import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { toast } from "sonner";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const SearchComponent =React.memo( ({ setOpenSearch,setRender,render }: any) => {
+const SearchComponent =({ setOpenSearch,setRender,render }: any) => {
   const [searchUser, setSearchUser] = useState("");
   const [userLoading, setUserLoading] = useState<any>("");
   const [searchedUsers, setsearchedUsers] = useState<any>([]);
@@ -157,6 +157,6 @@ const SearchComponent =React.memo( ({ setOpenSearch,setRender,render }: any) => 
       </div>
     </>
   );
-})
+}
 
 export default SearchComponent;
