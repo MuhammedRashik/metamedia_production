@@ -284,9 +284,11 @@ const MessageListComponent = ({
           }
         }
       }
-      setLastOnline(
-        messages?.messages[messages?.messages?.length - 1]?.time || 0
-      );
+      if(messages){
+        setLastOnline(
+          messages?.messages[messages?.messages?.length - 1]?.time || 0
+        );
+      }
     })();
   }, [
     user_id,
