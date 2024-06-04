@@ -24,6 +24,10 @@ const AsideComponent = ({
   };
   
   useEffect(()=>{    
+    console.log(conversations,"CONVERSATIONS");
+    console.log(conversations?.length,"conversations?.length");
+    
+    
   },[conversations])
 
   const handleMoreOption = () => {
