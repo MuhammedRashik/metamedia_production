@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Footer = () => {
+const Footer =  React.memo(() => {
   const userData=useSelector((state:any)=>state.persisted.user.userData)
   return (
     <>
@@ -32,6 +32,6 @@ const Footer = () => {
       </div>
     </>
   );
-};
+})
 
 export default Footer;

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AllActivity,ChangePassword,BlockedUsers,Aside,EditProfile,AccountInformation } from "../../components/SettingsComponent";
 import { ErrorComponent } from "../../components/ErrorComponents/ErrorComponent";
-const Settings = (  ) => {
+const Settings = React.memo((  ) => {
   const [blockedUsers,setBlockedUsers] = useState(false)
   const [allActivity,setAllActivity] = useState(false)
   const [changePassword,setChangePassword] = useState(false)
@@ -26,6 +26,6 @@ const Settings = (  ) => {
       </div>
     </>
   );
-};
+})
 
 export default Settings;

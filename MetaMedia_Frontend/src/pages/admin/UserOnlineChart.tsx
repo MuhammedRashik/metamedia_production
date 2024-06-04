@@ -1,6 +1,7 @@
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const UserOnlineChart = () => {
+const UserOnlineChart =React.memo( () => {
     const series = [44, 55];
     const options = {
         chart: {
@@ -28,6 +29,6 @@ const UserOnlineChart = () => {
             <ReactApexChart options={options} series={series} type="donut" />
         </div>
     );
-}
+})
 
 export default UserOnlineChart;

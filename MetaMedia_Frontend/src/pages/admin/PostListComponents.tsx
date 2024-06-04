@@ -1,9 +1,9 @@
-import  { useEffect, useState } from "react";
+import  React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { showAllPostFuntion } from "../../utils/api/methods/PostService/get/showAllPost";
 import { ChangePostStatusFunction } from "../../utils/api/methods/AdminService/post";
 
-const PostListComponents = () => {
+const PostListComponents = React.memo(() => {
   const [posts, setPosts] = useState<any>([]);
   const [blockPost, setBlockPost] = useState<boolean>(false);
   const [currentPosts, setCurrentPosts] = useState<any>();
@@ -160,6 +160,6 @@ const PostListComponents = () => {
       </div>
     </section>
   );
-};
+})
 
 export default PostListComponents;

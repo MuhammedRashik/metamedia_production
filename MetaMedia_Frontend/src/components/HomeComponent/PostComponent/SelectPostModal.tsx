@@ -1,7 +1,7 @@
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import { X } from "lucide-react";
-const SelectPostModal = () => {
+const SelectPostModal = React.memo( () => {
   const [CamaraOn, setCamaraOn] = useState(false);
   const [imgSrc, setImgSrc] = useState(null);
 
@@ -87,11 +87,11 @@ const SelectPostModal = () => {
       )}
     </>
   );
-};
+})
 
 export default SelectPostModal;
 
-const CamaraModal = ({ imgSrc, setImgSrc, setCamaraOn }: any) => {
+const CamaraModal = React.memo( ({ imgSrc, setImgSrc, setCamaraOn }: any) => {
   const closeTheCamara = () => {
     setCamaraOn(false);
   };
@@ -163,4 +163,4 @@ const CamaraModal = ({ imgSrc, setImgSrc, setCamaraOn }: any) => {
       </div>
     </>
   );
-};
+})

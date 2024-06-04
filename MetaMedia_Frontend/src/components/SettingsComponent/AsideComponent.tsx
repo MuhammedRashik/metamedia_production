@@ -10,7 +10,7 @@ import { persistor } from "../../utils/ReduxStore/Store/Store";
 import profile from "../../assets/profile.webp";
 import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const Aside = ({
+const Aside = React.memo( ({
   blockedUsers,
   setBlockedUsers,
   changePassword,
@@ -176,6 +176,6 @@ const Aside = ({
       </div>
     </div>
   );
-};
+})
 
 export default Aside;

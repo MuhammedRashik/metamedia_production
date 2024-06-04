@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({ path, element }: any) => {
+const ProtectedRoute =React.memo( ({ path, element }: any) => {
     console.log("I AM PROTECTED ROUTE");
     const token = localStorage.getItem('accesstoken')
         const Navigate = useNavigate();
@@ -16,6 +16,6 @@ const ProtectedRoute = ({ path, element }: any) => {
         )}
       </React.Fragment>
     );
-  };
+  })
 
 export default ProtectedRoute;

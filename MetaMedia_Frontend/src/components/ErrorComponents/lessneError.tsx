@@ -1,7 +1,9 @@
 // import { propsType } from "../../utils/types/types";
 
+import React from "react";
 
-const LessoneFormError = (props:any) => {
+
+const LessoneFormError =  React.memo((props:any) => {
   return (
     <>
     
@@ -50,6 +52,6 @@ const LessoneFormError = (props:any) => {
       )}
     </>
   );
-};
+})
 
 export default LessoneFormError;

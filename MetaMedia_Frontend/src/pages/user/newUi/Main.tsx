@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllStoriesFunction } from "../../../utils/api/methods/StoryService/Story/get";
 import { addOtherUserStories } from "../../../utils/ReduxStore/Slice/storySlice";
@@ -22,7 +22,7 @@ interface MainBodyProps {
 
   // other props if any
 }
-const MainBody = ({
+const MainBody = React.memo(({
   setShowStory,
   setAddStory,
   setIsAddPost,
@@ -290,5 +290,5 @@ const MainBody = ({
       {/* main div ------------------------- */}
     </>
   );
-};
+})
 export default MainBody;

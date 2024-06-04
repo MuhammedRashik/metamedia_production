@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchUserShimmer = () => {
+const SearchUserShimmer = React.memo(() => {
   return (
     <>
     <div className="w-full h-20  flex rounded-md border">
@@ -65,6 +65,6 @@ const SearchUserShimmer = () => {
     </div>
     </>
   );
-};
+})
 
 export default SearchUserShimmer;

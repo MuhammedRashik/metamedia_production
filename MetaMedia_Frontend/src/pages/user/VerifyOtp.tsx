@@ -16,7 +16,7 @@ import { addUser, clearUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { addToken } from "../../utils/ReduxStore/Slice/tokenSlice";
 import { ResponseData } from "../../utils/interface/userInterface";
 
-const VerifyOtp: React.FC = () => {
+const VerifyOtp: React.FC = React.memo(() => {
 
 const dispatch=useDispatch()
 
@@ -180,7 +180,7 @@ const dispatch=useDispatch()
       </div>
     </div>
   );
-};
+})
 
 
 export default VerifyOtp;

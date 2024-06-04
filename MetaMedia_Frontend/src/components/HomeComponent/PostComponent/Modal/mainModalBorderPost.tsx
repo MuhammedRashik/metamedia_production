@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import AddPostDetailsBody from "./AddPostDetailsBody"
 import CreatePostModalBody from "./CreatePostmodalBody"
 import CropImageBody from "./CropimageBody"
 import TrimVedio from "./TrimVideo";
-const MainModalBorderPost=({setIsAddPost,addPost,setAddPost,render,setRender}:any)=>{
+const MainModalBorderPost= React.memo(({setIsAddPost,addPost,setAddPost,render,setRender}:any)=>{
     const [postState,setPostState]=useState(1)
 
     return (
@@ -17,6 +17,6 @@ const MainModalBorderPost=({setIsAddPost,addPost,setAddPost,render,setRender}:an
 </div>
         </>
     )
-}
+})
 
 export default MainModalBorderPost

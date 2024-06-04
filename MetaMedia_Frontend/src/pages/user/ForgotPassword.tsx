@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ForgotPasswordFunction } from "../../utils/api/methods/AuthService/post";
 import { toast } from "sonner";
 
-const ForgotPassword = () => {
+const ForgotPassword =React.memo( () => {
   const Navigate=useNavigate()
   const { errors, handleSubmit, register } = useForgotPasswordValidaion();
 
@@ -67,6 +67,6 @@ const ForgotPassword = () => {
       </div>
     </>
   );
-};
+})
 
 export default ForgotPassword;

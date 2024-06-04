@@ -1,6 +1,7 @@
+import React from "react";
 import { AudioRecorder } from "react-audio-voice-recorder";
 
-const VoiceRecorder = ({ onRecordingComplete, setRecordedAudioBlob }: any) => {
+const VoiceRecorder = React.memo( ({ onRecordingComplete, setRecordedAudioBlob }: any) => {
   const addAudioElement = (blob: any) => {
     setRecordedAudioBlob(blob);
     onRecordingComplete(blob);
@@ -20,6 +21,6 @@ const VoiceRecorder = ({ onRecordingComplete, setRecordedAudioBlob }: any) => {
       />
     </>
   );
-};
+})
 
 export default VoiceRecorder;

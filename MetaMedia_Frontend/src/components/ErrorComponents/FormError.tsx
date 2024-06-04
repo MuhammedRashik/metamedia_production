@@ -1,6 +1,7 @@
+import React from "react";
 import { propsType } from "../../utils/types/types";
 
-const FormEror = (props: propsType) => {
+const FormEror = React.memo( (props: propsType) => {
   return (
     <>
     
@@ -39,6 +40,6 @@ const FormEror = (props: propsType) => {
       )}
     </>
   );
-};
+})
 
 export default FormEror;

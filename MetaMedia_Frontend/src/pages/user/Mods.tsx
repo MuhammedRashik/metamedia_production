@@ -1,5 +1,6 @@
+import React from "react";
 
-const Mods = () => {
+const Mods =React.memo( () => {
   return (
     <div className="flex justify-around ml-20 mt-24 flex-wrap text-black cursor-pointer">
       <div className="bg-amber-50 border-amber-100 border w-80 text-center xl:w-[420px] xl:h-[600px] h-[70vh] xl:text-2xl p-5 rounded-xl">
@@ -29,6 +30,6 @@ const Mods = () => {
       </div>
     </div>
   );
-};
+})
 
 export default Mods;

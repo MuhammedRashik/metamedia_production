@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   GetGroupDataByIdFunction,
@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { getUserByIdFuntion } from "../../../utils/api/methods/UserService/post";
 import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const GroupDetails = ({ setISGroupDetais }: any) => {
+const GroupDetails =  React.memo(({ setISGroupDetais }: any) => {
   const { group_id } = useParams();
 
   const [selectIndex, setSelectIndex] = useState(0);
@@ -233,6 +233,6 @@ const GroupDetails = ({ setISGroupDetais }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default GroupDetails;

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 interface JistyVedioCallProps {}
 
-const JistyVedioCall: React.FC<JistyVedioCallProps> = () => {
+const JistyVedioCall: React.FC<JistyVedioCallProps> =  React.memo(() => {
 const userData=useSelector((state:any)=>state.persisted.user.userData)
 const token = localStorage.getItem('accesstoken')
 
@@ -113,7 +113,7 @@ const user={
             
         </>
     );
-}
+})
 
 export default JistyVedioCall;
 

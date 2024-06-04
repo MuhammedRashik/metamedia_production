@@ -6,7 +6,7 @@ import {
   Video,
   Files,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -29,7 +29,7 @@ import VoiceRecorder from "./VoiceRecorder";
 import profile from "../../../assets/profile.webp";
 import { img_Chat_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const GroupMessageComponent = ({
+const GroupMessageComponent = React.memo( ({
   isGroupChat,
   aside,
   setClik,
@@ -654,5 +654,5 @@ const GroupMessageComponent = ({
       </div>
     </>
   );
-};
+})
 export default GroupMessageComponent;

@@ -1,10 +1,11 @@
 
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const Chart = ({userData,postData}:any) => {
+const Chart =  React.memo(({userData,postData}:any) => {
   
 
-  const getUserCountsByMonth = () => {
+  const getUserCountsByMonth =() => {
     const userCounts = Array(12).fill(0); 
     userData.forEach((user:any) => {
         console.log(user,'-----------');
@@ -53,6 +54,6 @@ const Chart = ({userData,postData}:any) => {
       )}
     </div>
   );
-}
+})
 
 export default Chart;

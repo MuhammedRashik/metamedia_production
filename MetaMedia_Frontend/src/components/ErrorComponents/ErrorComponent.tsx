@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 // import { ErrorComponentProps } from "../../utils/types/types";
 interface ErrorData {
@@ -8,7 +9,7 @@ interface ErrorComponentProps {
   data: ErrorData;
 }
 
-export const ErrorComponent = (props: ErrorComponentProps) => {
+export const ErrorComponent =  React.memo((props: ErrorComponentProps) => {
   const { path, Message } = props.data;
   return (
     <div className="flex pt-5 justify-center h-full w-[100%] fixed backdrop-blur bg-opacity-50 bg-black ">
@@ -46,4 +47,4 @@ export const ErrorComponent = (props: ErrorComponentProps) => {
       </div>
     </div>
   );
-};
+})

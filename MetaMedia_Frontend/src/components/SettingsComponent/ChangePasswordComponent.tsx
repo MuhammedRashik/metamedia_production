@@ -5,10 +5,10 @@ import {
 import { ChangePasswordFunction } from "../../utils/api/methods/AuthService/post";
 import { toast } from "sonner";
 import { Eye, EyeOff, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
-const ChangePasswordComponent = ({ changePassword,setChangePassword }: any) => {
+const ChangePasswordComponent = React.memo( ({ changePassword,setChangePassword }: any) => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setConfirmShowPassword] = useState(false);
@@ -143,6 +143,6 @@ const ChangePasswordComponent = ({ changePassword,setChangePassword }: any) => {
       </div>
     </div>
   );
-};
+})
 
 export default ChangePasswordComponent;

@@ -16,7 +16,7 @@ import {
 } from "../../utils/formValidation/LoginValidation";
 import { FacebookAuth, GoogleAuth } from "../../utils/firebase/firebase";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { clearAdmin,addAdminData } from "../../utils/ReduxStore/Slice/adminSlice";
 import { addAdminToken } from "../../utils/ReduxStore/Slice/adminTokenSlice";
 
@@ -36,7 +36,7 @@ interface ResponseData {
   isFacebook: boolean;
 }
 
-const Login = () => {
+const Login =React.memo( () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
@@ -356,5 +356,5 @@ const Login = () => {
       </div>
     </>
   );
-};
+})
 export default Login;

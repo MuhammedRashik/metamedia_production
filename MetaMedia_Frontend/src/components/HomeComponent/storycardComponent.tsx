@@ -2,8 +2,9 @@ import useMediaQuery from "../../utils/costumHook/mediaqueri";
 import { useSelector } from "react-redux";
 import profile from '../../assets/profile.webp'
 import { img_Story_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl";
+import React from "react";
 
-const StoryCard = ({ setShowStory, setAddStory }: any) => {
+const StoryCard =  React.memo(({ setShowStory, setAddStory }: any) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
   const isLaptop = useMediaQuery("(min-width: 1025px)");
@@ -162,6 +163,6 @@ const StoryCard = ({ setShowStory, setAddStory }: any) => {
   };
 
   return renderSidebar();
-};
+})
 
 export default StoryCard;

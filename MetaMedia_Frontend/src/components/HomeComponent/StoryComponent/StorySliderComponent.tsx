@@ -6,7 +6,7 @@ import {
   MoreVertical,
 } from "lucide-react";
 import { ThreeDots } from "react-loader-spinner";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteStoryFunction } from "../../../utils/api/methods";
@@ -20,7 +20,7 @@ interface ImageSliderProps {
   showStory: string;
 }
 
-const StorySliderComponent = ({
+const StorySliderComponent = React.memo( ({
   showStory,
   setShowStory,
   deleteStory,
@@ -336,6 +336,6 @@ const StorySliderComponent = ({
       })}
     </div>
   );
-};
+})
 
 export default StorySliderComponent;

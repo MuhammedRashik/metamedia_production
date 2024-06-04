@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import AudioPlayer from "react-h5-audio-player";
@@ -89,7 +89,7 @@ const DropDownComponent = ({
   );
 };
 
-const MessageListComponent = ({
+const MessageListComponent =  React.memo(({
   conversations,
   setConversations,
   aside,
@@ -133,6 +133,7 @@ const MessageListComponent = ({
       
       const response: any = await GetConversationsFunction();      
       console.log(response.data,"response.data");
+
       let userExist;
       if (response.data.status) {
         userExist = response?.data?.data?.find(
@@ -160,16 +161,15 @@ const MessageListComponent = ({
               profile: data.user.profile,
               receiverId: data.user.receiverId,
               lastUpdate: response.data.data[index].lastUpdate,
-              newMessageCount: response.data.data[index].newMessageCount,
             };
             users.push(userDetails);
-          });          
+          });
           users.sort((a: any, b: any) => b.lastUpdate - a.lastUpdate);
           setConversations(users);
         }
       }
       setOnlineUser(false);
-    };    
+    };
     fetchConversations();
   }, [
     isSendMessage,
@@ -180,7 +180,6 @@ const MessageListComponent = ({
     rerender,
     aside,
     isGroupChat,
-    onlineUser,
   ]);
 
   useEffect(() => {}, [incomingCall]);
@@ -276,7 +275,7 @@ const MessageListComponent = ({
         );
         if (response) {
           const message: any = await getMessagesFunction(response[0]);
-          if (message.data?.status) {
+          if (message.data.status) {
             setMessages({
               messages: message.data.data,
               data: response[0],
@@ -329,7 +328,7 @@ const MessageListComponent = ({
       userId,
     };
     const response: any = await BlockAndUnblockUserFunction(data);
-    if (response.data?.status) {
+    if (response.data.status) {
       dispatch(editUser(response.data.data));
     } else {
       toast.error(response.data.message);
@@ -379,6 +378,7 @@ const MessageListComponent = ({
           receiverId: messages?.data?.receiverId,
           lastUpdate: Date.now(),
         };
+        console.log(data, "datadata");
 
         const formData = new FormData();
         formData.append("file", data.content);
@@ -388,8 +388,10 @@ const MessageListComponent = ({
         formData.append("type", data.type);
         try {
           const response = await SendFileForMessageFunction(formData);
+          console.log(response, "responseresponse");
 
-          if (response?.status) {
+          if (response.status) {
+            console.log("emitemiting");
 
             socket?.emit("sendMessage", {
               senderId: userData?.userId,
@@ -469,7 +471,7 @@ const MessageListComponent = ({
 
     const response = await SendVoiceFunction(formData);
 
-    if (response?.status) {
+    if (response.status) {
       socket?.emit("sendMessage", {
         senderId: userData?.userId,
         receiverId: messages?.data?.receiverId,
@@ -1025,6 +1027,6 @@ const MessageListComponent = ({
       )}
     </>
   );
-};
+})
 
 export default MessageListComponent;

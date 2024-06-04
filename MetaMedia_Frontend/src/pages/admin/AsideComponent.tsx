@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Home,
   Clapperboard,
@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { persistor } from "../../utils/ReduxStore/Store/Store";
 import { clearAdminToken } from "../../utils/ReduxStore/Slice/adminTokenSlice";
 import { clearAdmin } from "../../utils/ReduxStore/Slice/adminSlice";
-const NewSideBar = () => {
+const NewSideBar =  React.memo(() => {
   const location = useLocation();
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -157,6 +157,6 @@ const NewSideBar = () => {
       {/* sidebar --------------------------*/}
     </>
   );
-};
+})
 
 export default NewSideBar;

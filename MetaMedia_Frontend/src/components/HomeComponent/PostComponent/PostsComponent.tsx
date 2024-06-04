@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { getAllPostOfUserFunction } from "../../../utils/api/methods/PostService/get/getAllPostOfUser";
@@ -14,7 +14,7 @@ import {
 import PostProfileShimmer from "../../../pages/shimmer/PostProfileShimmer";
 import { img_Post_baseUrl } from "../../../utils/common/baseUrl";
 
-const PostsComponent = ({ postLength, render, setRender }: any) => {
+const PostsComponent = React.memo( ({ postLength, render, setRender }: any) => {
   const [posts, setPosts] = useState([]);
   const [tagged, setTagged] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -173,6 +173,6 @@ const PostsComponent = ({ postLength, render, setRender }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default PostsComponent;

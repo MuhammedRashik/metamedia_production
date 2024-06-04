@@ -9,9 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ResponseData } from "../../utils/interface/userInterface";
 import { editUser } from "../../utils/ReduxStore/Slice/userSlice";
 import { img_User_baseUrl } from "../../utils/common/baseUrl";
+import React from "react";
 // import React from "react";
 
-const AddProfile = () => {
+const AddProfile = React.memo(() => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -192,6 +193,6 @@ const AddProfile = () => {
       </div>
     </div>
   );
-};
+})
 
 export default AddProfile;

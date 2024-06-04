@@ -14,13 +14,13 @@ import {
   Menu,
   User,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const Sidebar = ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
+const Sidebar = React.memo( ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
   const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -438,6 +438,6 @@ const Sidebar = ({ open,setAddStory,setIsAddPost,isAddPost }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default Sidebar;

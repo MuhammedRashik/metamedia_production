@@ -1,9 +1,9 @@
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-const AudiCall=()=>{
+const AudiCall= React.memo(()=>{
     
     let { roomId }: any = useParams();
     const containerRef = useRef(null);
@@ -54,6 +54,6 @@ const AudiCall=()=>{
        <div className="w-full h-full bg-red-500" ref={containerRef} />
         </>
     )
-}
+})
 
 export default AudiCall

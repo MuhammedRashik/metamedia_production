@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   addNewHighlightFunction,
 } from "../../../utils/api/methods";
@@ -7,7 +7,7 @@ import { getMyAllStoriesForHighLightListFunction } from "../../../utils/api/meth
 import { useSelector } from "react-redux";
 import { img_Story_baseUrl } from "../../../utils/common/baseUrl";
 
-const HighlightListComponent = ({
+const HighlightListComponent =  React.memo(({
   highlightName,
   setHighlightList,
   setHighlightName,
@@ -110,6 +110,6 @@ const HighlightListComponent = ({
       </div>
     </div>
   );
-};
+})
 
 export default HighlightListComponent;

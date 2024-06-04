@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import profile from '../../assets/profile.webp'
 import { img_User_baseUrl } from '../../utils/common/baseUrl';
 
-const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
+const CreateMediaComponent =  React.memo(({setAddStory,setIsAddPost,setIsAddLive}:any) => {
   const [currentMedia, setCurrentMedia] = useState<any>("");
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const setMedia=(media:string)=>{
@@ -102,6 +102,6 @@ const CreateMediaComponent = ({setAddStory,setIsAddPost,setIsAddLive}:any) => {
             </div> 
     </>
   )
-}
+})
 
 export default CreateMediaComponent

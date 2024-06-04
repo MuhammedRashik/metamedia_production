@@ -19,12 +19,12 @@ import {
 import { toast } from "sonner";
 import { LikePostFuntion } from "../../utils/api/methods/PostService/Post/likePost";
 import { SavePostFunction } from "../../utils/api/methods/PostService/Post/savePost";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AddCommentFunction } from "../../utils/api/methods/PostService/Post/addComment";
 import { useNavigate } from "react-router-dom";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../utils/common/baseUrl";
 
-const PostScroll = ({ data, render, setRender }: any) => {
+const PostScroll =  React.memo(({ data, render, setRender }: any) => {
   const [comment, setComment] = useState("");
 
   const dispatch = useDispatch();
@@ -226,6 +226,6 @@ const PostScroll = ({ data, render, setRender }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default PostScroll;

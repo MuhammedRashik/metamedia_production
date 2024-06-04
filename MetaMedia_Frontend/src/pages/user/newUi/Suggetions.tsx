@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { suggetionFuntion } from "../../../utils/api/methods/UserService/get";
 import { toast } from "sonner";
@@ -7,7 +7,7 @@ import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
 import { useNavigate } from "react-router-dom";
 import { img_User_baseUrl } from "../../../utils/common/baseUrl";
 
-const Suggetions = () => {
+const Suggetions = React.memo(() => {
   const [followUser,setFollowUser] = useState(false)
   const [suggetions, setSuggetions]: any = useState([]);
   const dispatch = useDispatch()
@@ -122,6 +122,6 @@ const Suggetions = () => {
       {/* suggetions  */}
     </>
   );
-};
+})
 
 export default Suggetions;

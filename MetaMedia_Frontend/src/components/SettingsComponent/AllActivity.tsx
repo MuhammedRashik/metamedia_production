@@ -3,7 +3,7 @@ import {
   Heart,
   MessageCircle,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { GetLikedAndComentedPostFunction } from "../../utils/api/methods/PostService/get/GetLikedAndComentedPost";
@@ -18,7 +18,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { img_Post_baseUrl } from "../../utils/common/baseUrl";
 
-const AllActivity = () => {
+const AllActivity =  React.memo(() => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [saved, setSaved] = useState<any>();
   const [posts, setPosts] = useState<any>();
@@ -187,6 +187,6 @@ const AllActivity = () => {
       </div>
     </>
   );
-};
+})
 
 export default AllActivity;

@@ -1,7 +1,8 @@
 import { X } from "lucide-react";
 import StorySliderComponent from "./StorySliderComponent";
+import React from "react";
 
-const ShowStoryComponent = ({
+const ShowStoryComponent = React.memo( ({
   showStory,
   setShowStory,
   deleteStory,
@@ -26,6 +27,6 @@ const ShowStoryComponent = ({
       </div>
     </div>
   );
-};
+})
 
 export default ShowStoryComponent;

@@ -2,7 +2,7 @@ import { ImagePlus, X } from 'lucide-react';
 import React from 'react'
 import { toast } from 'sonner';
 
-const ChooseImageComponent = ({selectedFile,setSelectedFile,setImageUrl}:any) => {
+const ChooseImageComponent =  React.memo(({selectedFile,setSelectedFile,setImageUrl}:any) => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file: any = e?.target?.files?.[0];
@@ -117,6 +117,6 @@ const ChooseImageComponent = ({selectedFile,setSelectedFile,setImageUrl}:any) =>
 
   </div>
   )
-}
+})
 
 export default ChooseImageComponent

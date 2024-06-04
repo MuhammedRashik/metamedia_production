@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import Cropper from "react-easy-crop";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   clearImages,
   addImage,
@@ -11,7 +11,7 @@ import { Scaling, ZoomIn, ZoomOut } from "lucide-react";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 
-const CropImageBody = ({ setPostState }: any) => {
+const CropImageBody = React.memo( ({ setPostState }: any) => {
   const post = useSelector((state: any) => state.persisted.post);
 
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -292,6 +292,6 @@ const CropImageBody = ({ setPostState }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default CropImageBody;

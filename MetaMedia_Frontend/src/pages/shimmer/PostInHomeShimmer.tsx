@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PostInHomeShimmer = () => {
+const PostInHomeShimmer = React.memo(() => {
     const items:any=["a","b","c","d"]
   return (
     <>
@@ -59,6 +59,6 @@ const PostInHomeShimmer = () => {
     ))}
     </>
   )
-}
+})
 
 export default PostInHomeShimmer

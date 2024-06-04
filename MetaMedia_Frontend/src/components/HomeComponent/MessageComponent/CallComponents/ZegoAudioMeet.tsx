@@ -1,10 +1,10 @@
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRef, useEffect } from 'react'; // Import useRef and useEffect
+import React, { useRef, useEffect } from 'react'; // Import useRef and useEffect
 
 
-const GroupAudioCallRoom=()=>{
+const GroupAudioCallRoom=  React.memo(()=>{
     let { roomId }: any = useParams();
     const containerRef = useRef(null);
     const userData = useSelector((state: any) => state.persisted.user.userData)
@@ -54,6 +54,6 @@ const GroupAudioCallRoom=()=>{
        <div className="w-full h-full bg-red-500" ref={containerRef} />
         </>
     )
-}
+})
 
 export default GroupAudioCallRoom

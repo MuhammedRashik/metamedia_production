@@ -6,7 +6,7 @@ import {
     PlayToggle,
   } from "video-react";
   import "video-react/dist/video-react.css";
-  import { useEffect, useRef, useState } from "react";
+  import React, { useEffect, useRef, useState } from "react";
   import { useDispatch } from "react-redux";
   import { FFmpeg } from "@ffmpeg/ffmpeg";
   import { toBlobURL, fetchFile } from "@ffmpeg/util";
@@ -20,7 +20,7 @@ import { addVideo, clearVideos } from "../../../utils/ReduxStore/Slice/postSlice
     return Math.round((duration * sliderValue) / 100);
   }
 
-const TrimVideoComponent=({croppedImage}:any)=>{
+const TrimVideoComponent= React.memo(({croppedImage}:any)=>{
     const ffmpegRef = useRef(new FFmpeg());
     const ffmpeg = ffmpegRef.current;
     const [ffmpegLoaded, setFFmpegLoaded] = useState(false);
@@ -166,7 +166,7 @@ useEffect(() => {
       </div>
     </>
   );
-};
+})
 
 
 export default TrimVideoComponent;

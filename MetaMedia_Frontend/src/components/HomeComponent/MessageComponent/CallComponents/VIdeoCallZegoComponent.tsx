@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRef, useEffect } from 'react'; // Import useRef and useEffect
 
-const VIdeoCallZegoComponent = () => {
+const VIdeoCallZegoComponent = React.memo( () => {
         let { roomId }: any = useParams();
         const containerRef = useRef(null);
         const userData = useSelector((state: any) => state.persisted.user.userData)
@@ -54,6 +54,6 @@ const VIdeoCallZegoComponent = () => {
             </>
         );
         
-}
+})
 
 export default VIdeoCallZegoComponent

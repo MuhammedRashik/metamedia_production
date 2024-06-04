@@ -1,6 +1,7 @@
+import React from "react"
 import SuggestOneFriend from "./SuggestOneFriendComponent"
 
-const Suggestion=()=>{
+const Suggestion= React.memo(()=>{
     return (
         <>
         <div className="mt-3 ">
@@ -45,7 +46,7 @@ const Suggestion=()=>{
 
         </>
     )
-}
+})
 
 
 export default Suggestion
