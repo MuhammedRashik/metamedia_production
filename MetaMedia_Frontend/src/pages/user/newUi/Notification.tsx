@@ -93,6 +93,8 @@ const Notification = ({ setOpenNotification }: any) => {
               {notifications.map((item: any) => {
                 return (
                   <>
+                  {console.log(item,'THIS IS FULL NOTIIFICATIONDATA')
+                  }
                     {item.action_type == "like" && (
                       <>
                         {/* one notification ------------ */}
