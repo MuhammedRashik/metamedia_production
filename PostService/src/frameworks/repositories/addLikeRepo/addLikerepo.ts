@@ -34,6 +34,8 @@ console.log('2');
   const responce = await postData.save();
 
        if (responce) {
+        //make a kafka call to the chat service
+        
         return { status: true, data: responce };
       } else {
         return { status: false ,message:"no data"};

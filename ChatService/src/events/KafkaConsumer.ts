@@ -40,8 +40,8 @@ export const chatConsumer = async (dependencies: any) => {
               }    
         }else if(messagetype=='followUserNotification'){
           console.log(jsondata.data,'HHIHIHIHI');
-          
-          const response=await FollowNotification_usecase(jsondata.data)
+      
+          const response=await FollowNotification_usecase(dependencies).executeFunction(jsondata.data)
           console.log(response,'))))999999999999');
           
           if(response.status){

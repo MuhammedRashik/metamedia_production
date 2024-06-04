@@ -20,7 +20,6 @@ const notificationSchema: Schema<Notification> = new Schema({
  sender_id: {
     type: String,
     
-   
   },
   receiver_id:{
     type: String,

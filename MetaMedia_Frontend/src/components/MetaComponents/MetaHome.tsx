@@ -159,25 +159,11 @@ const MetaHome = () => {
         <directionalLight />
       
           <OrbitControls />
-          {/* {users.map((user:any, i) => (
-          <React.Fragment key={user.userId}> */}
-           
-          <mesh position={[0,0,0]}>
-          <ArmyModel/>
-          </mesh>
-          <mesh position={[1,0,0]}>
-          <ArmysModel/>
-          </mesh>
-         
-            <Box position={{x:1,y:0,z:1}} userId={userId} />
-            <RedRacerModel position={{x:4,y:0,z:1}} />
-            <Box position={{x:4,y:0,z:1}} userId={userId} />
-
-
-          {/* </React.Fragment>
-        ))} */}
-           
-      
+           {users.map((user:any, i) => (
+          <React.Fragment key={user.userId}> 
+            <Box position={user.position} userId={user.userId} />
+        </React.Fragment>
+        ))} 
           <HomeTownModel />
        
       </Canvas>

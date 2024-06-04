@@ -12,7 +12,7 @@ export const postProducer = async (sendData: any, topic: any, type: any) => {
 
     await producer.connect();
 
-    let messageData;
+    let messageData:any;
 
     if (type === 'likePostNotification') {
         messageData = {
@@ -43,7 +43,7 @@ export const postProducer = async (sendData: any, topic: any, type: any) => {
       offset: DEFAULT_OFFSET
     };
 
-    console.log('Data from the producer:', messageData);
+    console.log('Data from the producer payload:', messagePayload);
 
     const result: any = await producer.send({
       topic,
@@ -53,6 +53,7 @@ export const postProducer = async (sendData: any, topic: any, type: any) => {
     if (result && result[0] && result[0]?.error) {
       throw new Error("Message production failed");
     }
+console.log(result,'THis is result -- from produces');
 
     return result;
   } catch (error) {
