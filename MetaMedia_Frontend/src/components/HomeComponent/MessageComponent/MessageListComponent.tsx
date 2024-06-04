@@ -130,7 +130,9 @@ const MessageListComponent = ({
 
   useEffect(() => {
     const fetchConversations = async () => {
+      
       const response: any = await GetConversationsFunction();      
+      console.log(response.data,"response.data");
       let userExist;
       if (response.data.status) {
         userExist = response?.data?.data?.find(
@@ -149,6 +151,7 @@ const MessageListComponent = ({
           const userData: any = await GetUsersDataByIdFunction(userId);
           const users: any = [];
           userData.data.data.map((data: any, index: number) => {       
+                 console.log(response.data.data[index].newMessageCount,"response.data.data[index].newMessageCount");
                  
             const userDetails: any = {
               conversationId: data.conversationId,
