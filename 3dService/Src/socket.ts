@@ -14,13 +14,13 @@ const socketConfig = (io: Server) => {
 
     socket.on('addNewUserToMeta', (data: { userId: string; position: { x: number; y: number; z: number }, peerId: string }) => {
       const { userId, position, peerId } = data;
-      const isUserExist = users.find((user) => user.userId === userId);
+      const isUserExist:any = users.find((user) => user.userId === userId);
 
       if (!isUserExist) {
         const user: User = { userId, socketId: socket.id, position, peerId };
         users.push(user);
       } else {
-        isUserExist?.socketId = socket.id;
+        isUserExist.socketId = socket.id;
         isUserExist.position = position;
         isUserExist.peerId = peerId;
       }

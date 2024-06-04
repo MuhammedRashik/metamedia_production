@@ -8,11 +8,13 @@ import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
+import { io } from "socket.io-client";
 
-
-const Notification = React.memo(({ setOpenNotification }: any) => {
+const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [notifications, setNotifications]: any = useState([]);
+
+
   const dispatch = useDispatch()
   const wrapperRef: any = useRef(null);
   const handleClickOutside = (event: any) => {
@@ -26,6 +28,21 @@ const Notification = React.memo(({ setOpenNotification }: any) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+
+  useEffect(()=>{
+   console.log('here inside the sokett ');
+
+   socket.on("getLiveNotification",(data:any)=>{
+    // setNotifications()
+    console.log(data,'THIS IS LIVE NOTIFICATION DATA');
+    setNotifications((prevMessages: any) => {
+      const setNewMessage = [...prevMessages, data];
+      return setNewMessage;
+    });
+   })
+  },[socket])
+
 
   useEffect(() => {
     const fetchNotificationOfUser = async () => {
