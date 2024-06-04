@@ -7,7 +7,7 @@ const generateUniqueId = () => {
   return crypto.randomUUID();
 };
 
-const PeerComponent = () => {
+const PeerComponent = React.memo(() => {
   const socket = useSocket();
   const [peerId, setPeerId] = useState('');
   const [remotePeerId, setRemotePeerId] = useState('');
@@ -179,6 +179,6 @@ const PeerComponent = () => {
       </div>
     </div>
   );
-};
+})
 
 export default PeerComponent;

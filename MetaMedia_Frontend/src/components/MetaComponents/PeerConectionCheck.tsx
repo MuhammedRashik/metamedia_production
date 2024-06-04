@@ -1,7 +1,7 @@
 import Peer from "peerjs";
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
-const PeerConectionCheck =()=>{
+const PeerConectionCheck =React.memo(()=>{
 
     const [myPeer,setMyPeer]:any=useState()
     const [stream,setStream]:any=useState()
@@ -45,7 +45,7 @@ const PeerConectionCheck =()=>{
 <audio ref={videoRef} className="w-1/2 h-1/2" autoPlay/>
       </div> 
     )
-}
+})
 
 
 export default PeerConectionCheck

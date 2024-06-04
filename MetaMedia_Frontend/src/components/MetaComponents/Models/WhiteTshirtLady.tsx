@@ -32,7 +32,7 @@ type ContextType = Record<
   React.ForwardRefExoticComponent<JSX.IntrinsicElements['skinnedMesh'] | JSX.IntrinsicElements['bone']>
 >;
 
-export function WhiteTshitLadyModel(props: JSX.IntrinsicElements['group']) {
+export const WhiteTshitLadyModel=React.memo((props: JSX.IntrinsicElements['group']) =>{
   const group = useRef<THREE.Group>();
   const { nodes, materials, animations } = useGLTF('../Models/whiteTshirtLady.gltf') as GLTFResult;
   const { actions, names } = useAnimations(animations, group);
@@ -127,6 +127,6 @@ export function WhiteTshitLadyModel(props: JSX.IntrinsicElements['group']) {
       </group>
     </group>
   );
-}
+})
 
 useGLTF.preload('../Models/whiteTshirtLady.gltf');

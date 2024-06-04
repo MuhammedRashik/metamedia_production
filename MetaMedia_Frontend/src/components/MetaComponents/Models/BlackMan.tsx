@@ -23,7 +23,7 @@ interface GLTFAction extends THREE.AnimationClip {
 
 
 
-export function BalckManModel({position}:any, props: JSX.IntrinsicElements['group']) {
+export const BalckManModel= React.memo(({position}:any, props: JSX.IntrinsicElements['group'])=> {
 
   // const userData = useSelector((state: any) => state.persisted.user.userData);
   const controlRef = useRef<typeof OrbitControls>();
@@ -72,7 +72,7 @@ export function BalckManModel({position}:any, props: JSX.IntrinsicElements['grou
       </mesh>
     </>
   );
-}
+})
 
 useGLTF.preload('../../../../Models/blackMan.gltf');
 

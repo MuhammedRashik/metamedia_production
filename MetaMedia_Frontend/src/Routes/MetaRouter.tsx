@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import MetaHome from "../components/MetaComponents/MetaHome";
 import PeerConectionCheck from "../components/MetaComponents/PeerConectionCheck";
 import PeerComponent from "../components/MetaComponents/PeerComponent";
+import React from "react";
 
 
-const MetaRouter=()=>{
+const MetaRouter=React.memo(()=>{
     return (<>
    
     <Routes>
@@ -18,6 +19,6 @@ const MetaRouter=()=>{
 
 
     </>)
-}
+})
 
 export default MetaRouter

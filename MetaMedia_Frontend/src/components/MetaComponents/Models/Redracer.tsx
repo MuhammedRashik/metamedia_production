@@ -20,7 +20,7 @@ type GLTFResult = GLTF & {
 }
 
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['skinnedMesh'] | JSX.IntrinsicElements['bone']>>
-function RedRacerModel({position}:any,props: JSX.IntrinsicElements['group']) {
+const RedRacerModel=React.memo(({position}:any,props: JSX.IntrinsicElements['group'])=> {
   const { nodes, materials } = useGLTF('./Models/redracer.glb') as GLTFResult
   console.log(position,'--');
 
@@ -32,7 +32,7 @@ function RedRacerModel({position}:any,props: JSX.IntrinsicElements['group']) {
       </group>
     </group>
   )
-}
+})
 
 useGLTF.preload('./Models/redracer.glb')
 

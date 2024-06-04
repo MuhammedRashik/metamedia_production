@@ -3256,7 +3256,7 @@ interface GLTFAction extends THREE.AnimationClip {
 }
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
 
-export function HomeTownModel(props: JSX.IntrinsicElements['group']) {
+export const HomeTownModel=React.memo((props: JSX.IntrinsicElements['group'])=> {
   const group = useRef<THREE.Group>()
  
   const { nodes, materials, animations } = useGLTF('../Models/home.gltf') as GLTFResult
@@ -10241,7 +10241,7 @@ export function HomeTownModel(props: JSX.IntrinsicElements['group']) {
       </group>
     </group>
   )
-}
+})
 
 useGLTF.preload('../Models/home.gltf')
 

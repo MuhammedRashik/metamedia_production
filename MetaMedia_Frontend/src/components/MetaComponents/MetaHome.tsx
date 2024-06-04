@@ -17,7 +17,7 @@ const generateUniqueId = () => {
   return crypto.randomUUID();
 };
 
-const MetaHome = () => {
+const MetaHome =React.memo( () => {
   const [userId] = useState(generateUniqueId());
   // const userId = useSelector((state: any) => state.persisted.user.userData.userId);
   const socket = useSocket();
@@ -176,9 +176,9 @@ const MetaHome = () => {
       </button>
     </div>
   );
-};
+})
 
-const Box = ({ position, userId }:{position:{x:number,y:number,z:number},userId:string}) => {
+const Box = React.memo(({ position, userId }:{position:{x:number,y:number,z:number},userId:string}) => {
   const color = useRef(randomColor()).current;
 
   return (
@@ -187,6 +187,6 @@ const Box = ({ position, userId }:{position:{x:number,y:number,z:number},userId:
       <meshStandardMaterial color={color} />
     </mesh>
   );
-};
+})
 
 export default MetaHome;

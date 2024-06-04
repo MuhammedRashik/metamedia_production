@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetNotificationOfUserFunction } from "../../../utils/api/methods/ChatService/get/get";
 import { toast } from "sonner";
@@ -8,7 +8,9 @@ import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
-const Notification = ({ setOpenNotification }: any) => {
+
+
+const Notification = React.memo(({ setOpenNotification }: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [notifications, setNotifications]: any = useState([]);
   const dispatch = useDispatch()
@@ -234,7 +236,12 @@ const Notification = ({ setOpenNotification }: any) => {
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
                           <button className="w-16 h-6 border border-[#C1506D] rounded-lg flex justify-center items-center font-semibold text-[12px] text-[#C1506D] "
                          onClick={()=>FollowUser(item?.senderUserData?.basicInformation.userId)}>
-                        {item?.senderUserData?.socialConections.following.some((follower:any) => follower.userId === userData.userId)?"Following":"Follow"}
+                          
+                        {item?.senderUserData?.socialConections.following.some((follower:any) => {
+console.log(follower.userI,'follower.userI',userData.userId,'userData.userId');
+return follower.userId === userData.userId?"Unfollow":"Follow"
+
+                        })}
                       </button>
                           </div>
                         </div>
@@ -261,6 +268,6 @@ const Notification = ({ setOpenNotification }: any) => {
       </div>
     </>
   );
-};
+})
 
 export default Notification;

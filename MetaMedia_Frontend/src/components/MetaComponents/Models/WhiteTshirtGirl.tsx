@@ -57,7 +57,7 @@ const directionOffset = ({ forward, backword, left, right }: any) => {
   return directionOffset
 }
 
-export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.IntrinsicElements['group']) {
+export const WhiteTshirtGirlModel=React.memo(({ position, setPosition }: any, props: JSX.IntrinsicElements['group'])=> {
   const socket = useSocket()
   const userData = {
     userId: "hi"
@@ -182,6 +182,5 @@ export function WhiteTshirtGirlModel({ position, setPosition }: any, props: JSX.
       </group>
     </>
   )
-}
-
+})
 useGLTF.preload('../../../../Models/whiteTshirtGirl.gltf')

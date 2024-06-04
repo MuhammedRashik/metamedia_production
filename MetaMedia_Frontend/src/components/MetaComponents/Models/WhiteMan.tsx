@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import React, { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 
-function WhiteManModel({ position }) {
+const WhiteManModel=React.memo(({ position })=> {
   const group = useRef<THREE.Group>();
   const { nodes, materials, animations } = useGLTF('../../../Models/whiteMan.glb');
   const { actions } = useAnimations(animations, group);
@@ -29,7 +29,7 @@ function WhiteManModel({ position }) {
       </group>
     </group>
   );
-}
+})
 
 useGLTF.preload('../../../Models/whiteMan.glb');
 

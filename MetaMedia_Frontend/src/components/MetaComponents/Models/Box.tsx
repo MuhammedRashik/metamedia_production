@@ -5,7 +5,7 @@ import { useThree } from 'react-three-fiber';
 import { useSocket } from '../../../utils/costumHook/useSoket';
 import { useSelector } from 'react-redux';
 
-const Box = ({ userId, user }:{userId:any,user:any}) => {
+const Box = React.memo(({ userId, user }:{userId:any,user:any}) => {
   const socket = useSocket();
   const controlRef = useRef(null);
   const { camera } = useThree();
@@ -51,6 +51,6 @@ const Box = ({ userId, user }:{userId:any,user:any}) => {
       </mesh>
     </>
   );
-};
+})
 
 export default Box;
