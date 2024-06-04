@@ -97,13 +97,24 @@ const AsideComponent = ({
                         <div className="flex flex-col">
                           <span className="font-bold">{data?.name}</span>
                           <span className="font-light text-sm">
-                            {data?.email?.slice(0, 20)}...
+                            {data?.email?.slice(0, 16)}...
                           </span>
                         </div>
                       </Link>
-                      <span className="text-gray-600 text-xs">
-                        {DateToTime(data?.lastUpdate)}
-                      </span>
+                      <div className="flex flex-col">
+                        {data.newMessageCount != 0 &&
+                          data.newMessageCount != undefined &&
+                          data.recereceiverId !== user_id && (
+                            <span className="flex justify-end">
+                              <p className="bg-green-500 w-4 h-4 rounded-full text-center text-xs">
+                                {data.newMessageCount}
+                              </p>
+                            </span>
+                          )}
+                        <span className="text-gray-600 text-end text-xs">
+                          {DateToTime(data?.lastUpdate)}
+                        </span>
+                      </div>
                     </div>
                   );
                 } else {

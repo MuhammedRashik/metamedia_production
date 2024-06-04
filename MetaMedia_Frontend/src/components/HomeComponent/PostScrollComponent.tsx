@@ -98,7 +98,7 @@ const PostScroll = ({ data, render, setRender }: any) => {
         <div className=" flex flex-col justify-center bg-white shadow-md bg-clip-border rounded-lg lg:w-[520px] lg:h-[800px] border w-[300px] md:w-[450px] sm:w-[330px]">
           <div className="flex p-2 sm:p-4 md:p-3 sm:pl-5">
             <img
-              className="lg:w-10 lg:h-10 font-roboto rounded-full lg:ml-6 lg:mt-1 md:ml-3  md:border-2 border-amber-100 border-2 lg:border-2 w-10 h-10 md:w-12 md:h-12 "
+              className="lg:w-10 lg:h-10 font-roboto rounded-full lg:ml-6 lg:mt-1 md:ml-3  md:border-2 border-black border-2 lg:border-2 w-10 h-10 md:w-12 md:h-12 "
               onClick={()=>NavigateToUserProfile(data.userData.basicInformation.userId)}
               src={
                 data.userData?.profile?.profileUrl.startsWith("https://graph")

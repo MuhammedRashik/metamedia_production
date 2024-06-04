@@ -30,8 +30,6 @@ export default {
 
   isConversationExist: async (senderId: string, receiverId: string) => {
     try {
-      console.log(senderId, receiverId, "USER");
-
       const response = await schema.Conversation.findOne({
         members: { $all: [senderId, receiverId] },
       });
@@ -63,6 +61,7 @@ export default {
               id: id,
               conversationId: conversation._id,
               lastUpdate: conversation.lastUpdate,
+              newMessageCount:conversation.newMessageCount?.get(userId)
             });
           })
       );
@@ -87,9 +86,17 @@ export default {
         lastUpdate
       });
       if (response) {
-        await schema.Conversation.findByIdAndUpdate(conversationId, {
-          lastUpdate:lastUpdate,
-        });
+        const conversation:any = await schema.Conversation.findById(conversationId);
+        if (!conversation) {
+            return { status: false, message: "Conversation not found" };
+        }
+        const receiverId = conversation.members.find((member:any) => member !== senderId);
+        if (!conversation.newMessageCount.has(receiverId)) {
+            conversation.newMessageCount.set(receiverId, 0);
+        }
+        conversation.newMessageCount.set(receiverId, conversation.newMessageCount.get(receiverId) + 1);
+        conversation.lastUpdate = new Date();
+        await conversation.save();
         return { status: true, message: "Message sent successfully" };
       } else {
         return { status: false, message: "Message not send" };
@@ -119,7 +126,15 @@ export default {
             };
           })
         );
-
+        const conversation: any = await schema.Conversation.findById(conversationId);
+        if (!conversation) {
+            return { status: false, message: "Conversation not found" };
+        }
+        if (conversation.newMessageCount.has(senderId)) {
+        conversation.newMessageCount.set(senderId, 0);
+        conversation.lastUpdate = new Date();
+        await conversation.save();
+        }
         return { status: true, data: await messageUserData };
       };
 
@@ -138,7 +153,6 @@ export default {
       }
     } catch (error) {
       console.log(error, "ERR");
-
       return { status: false, data: true };
     }
   },
