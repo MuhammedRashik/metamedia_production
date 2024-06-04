@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const conversationSchema = new mongoose.Schema({
     members: {
@@ -7,13 +7,15 @@ const conversationSchema = new mongoose.Schema({
     },
     lastUpdate: {
         type: Date,
-        default:Date.now()
+        default: Date.now,
+    },
+    newMessageCount: {
+        type: Map,
+        of: Number,
+        default: {}
     }
 });
 
 const Conversation = mongoose.model('conversation', conversationSchema);
 
-export{
-    Conversation
-} 
-
+export { Conversation };
