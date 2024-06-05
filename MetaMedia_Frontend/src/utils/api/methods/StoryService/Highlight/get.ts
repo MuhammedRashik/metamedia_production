@@ -1,4 +1,5 @@
 import { GetHighlightData_Api } from "../../../endpoints/common";
+import axios from "axios"
 
 export const GetHighlightData = (userId: string) => {
   try {
