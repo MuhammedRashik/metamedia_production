@@ -8,12 +8,13 @@ import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
+import { useNavigate } from "react-router-dom";
 
 
 const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
   const [notifications, setNotifications]: any = useState([]);
-
+const navigate= useNavigate()
 
   const dispatch = useDispatch()
   const wrapperRef: any = useRef(null);
@@ -99,6 +100,13 @@ const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
   };
   useEffect(() => {
   }, [notifications]);
+
+
+  const handleRedirect =(link:string)=>{
+    console.log(link,'this is link of the live ');
+    
+    navigate(link)
+  }
   return (
     <>
       <div
@@ -265,7 +273,7 @@ const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
                         {/* one notification ------------ */}
                         <div
                           className="w-full h-20  flex justify-between  border rounded-md flex-none"
-                          key={item?._id}
+                        
                         >
                           <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
                             <img
@@ -299,6 +307,7 @@ const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
                           
                           <button 
+                          onClick={()=>handleRedirect(item.link)}
                            className="w-16 h-6 border border-[#C1506D] rounded-md flex justify-center items-center font-semibold text-[13px] text-[#C1506D] ">
                             Join Now
                           </button>

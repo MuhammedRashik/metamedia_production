@@ -47,6 +47,7 @@ const navigate=useNavigate()
             profileUrl:user.profile,
             fullName:user.name,
             timestamp:  Date.now(),
+            action_type:"live",
             link:`room/${id}`
 
         }
