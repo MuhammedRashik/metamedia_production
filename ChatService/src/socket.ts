@@ -144,7 +144,7 @@ socket.on("GroupAudioCallRequest",(data:any)=>{
    
     console.log(data,'THIS IS DATAA');
     
-    socket.emit('liveResponce',data)
+    io.emit('liveResponce',data)
   })
 
 
