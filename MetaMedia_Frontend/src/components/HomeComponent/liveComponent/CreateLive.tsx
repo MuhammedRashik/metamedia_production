@@ -4,7 +4,7 @@ import { toast } from 'sonner'
 import {addLiveName,addLiveUser,clearLiveName,clearLiveUsers,clearLiveId,setLiveId} from '../../../utils/ReduxStore/Slice/liveSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-const CreateLive =  React.memo(({setIsAddLive,setIsGoLive}:any)=>{
+const CreateLive =  React.memo(({setIsAddLive,setIsGoLive,socket}:any)=>{
     const user = useSelector((state: any) => state.persisted.user.userData);
    
     console.log(user,'this is users');
@@ -43,6 +43,14 @@ const navigate=useNavigate()
         dispatch(setLiveId(id))
 
         setIsAddLive(false)
+        const emitPayload={
+            profileUrl:user.profile,
+            fullName:user.name,
+            timestamp:  Date.now(),
+            link:`room/${id}`
+
+        }
+        socket.emit("live",emitPayload)
         navigate(`room/${id}`)
         
     }

@@ -107,7 +107,7 @@ if(socket){
         />
       )}
       {isAddLive && (
-        <CreateLive setIsAddLive={setIsAddLive} setIsGoLive={setIsGoLive} />
+        <CreateLive setIsAddLive={setIsAddLive} socket={socket} setIsGoLive={setIsGoLive} />
       )}
       <div className="fixed w-screen h-screen bg-[#ece9f0] flex justify-center items-center ">
         <div className="w-full h-full flex flex-col-reverse sm:flex-row justify-start overflow-y-auto ">
@@ -169,7 +169,7 @@ if(socket){
               element={<Profile setRender={setRender} render={render} />}
             />
             <Route path="/settings/*" element={<Settings />} />
-            <Route path="/room/:roomId" element={<Golive />} />
+            <Route path="/room/:roomId" element={<Golive  />} />
             <Route path="/audioCall/:roomId" element={<AudioCallComponent />} />
             <Route
               path="/videoCall/:roomId"

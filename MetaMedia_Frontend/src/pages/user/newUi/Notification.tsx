@@ -8,7 +8,7 @@ import { Annoyed, ArrowLeft } from "lucide-react";
 import moment from "moment";
 import { img_Post_baseUrl, img_User_baseUrl } from "../../../utils/common/baseUrl";
 import { editUser } from "../../../utils/ReduxStore/Slice/userSlice";
-import { io } from "socket.io-client";
+
 
 const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
   const userData = useSelector((state: any) => state.persisted.user.userData);
@@ -30,11 +30,12 @@ const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
   }, []);
 
 
+
+
   useEffect(()=>{
    console.log('here inside the sokett ');
 
-   socket.on("getLiveNotification",(data:any)=>{
-    // setNotifications()
+   socket.on("liveResponce",(data:any)=>{
     console.log(data,'THIS IS LIVE NOTIFICATION DATA');
     setNotifications((prevMessages: any) => {
       const setNewMessage = [...prevMessages, data];
@@ -252,6 +253,55 @@ const Notification = React.memo(({ setOpenNotification ,socket}: any) => {
                           </div>
                           <div className="h-full w-3/12  p-2 flex justify-center items-center">
                           
+
+                          </div>
+                        </div>
+                        {/* one notification ------------ */}
+                      </>
+                    )} 
+                    {item.action_type == "live" && (
+                      <>
+                      {/* senderID , profile url ,time stap, sender name  */}
+                        {/* one notification ------------ */}
+                        <div
+                          className="w-full h-20  flex justify-between  border rounded-md flex-none"
+                          key={item?._id}
+                        >
+                          <div className="h-full w-3/12 flex justify-normal items-center p-2 ">
+                            <img
+                              src={`${img_User_baseUrl}${item?.profileUrl}`}
+                              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#C1506D]"
+                              alt=""
+                            />
+                          </div>
+                          <div className="h-full w-full  flex flex-col">
+                            <div className="w-full h-1/2  flex pl-2 justify-start items-end">
+                              <p className="font-semibold">
+                                {
+                                  item?.fullName
+                                    
+                                }
+                              </p>
+                            </div>
+                            <div className="w-full h-1/2   items-start flex flex-col pl-3">
+                              <>
+                                <p className="text-sm flex flex-wrap">
+                                Going live
+                                </p>
+                              </>
+
+                              <p className="text-[10px]">
+                                
+                                {moment(item.timestamp).fromNow()}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="h-full w-3/12  p-2 flex justify-center items-center">
+                          
+                          <button 
+                           className="w-16 h-6 border border-[#C1506D] rounded-md flex justify-center items-center font-semibold text-[13px] text-[#C1506D] ">
+                            Join Now
+                          </button>
 
                           </div>
                         </div>

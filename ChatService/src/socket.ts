@@ -137,8 +137,24 @@ socket.on("GroupAudioCallRequest",(data:any)=>{
     };
     io.emit("VideoCallResponse", emitdata);    
   });
+
+
+  //for live notification
+  socket.on("live",(data:any)=>{
+   
+    console.log(data,'THIS IS DATAA');
+    
+    socket.emit('liveResponce',data)
+  })
+
+
+
  });
+
+
+
 }
+
 
 
 export default socketConfig
