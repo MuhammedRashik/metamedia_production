@@ -414,7 +414,7 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                   <div className="flex justify-end " onClick={imageRightClick}>
                     {images.length > 1 && (
                       <>
-                        <button className="absolute text-black w-6 rounded-full h-6 bg-white p-0.5 bg-opacity-50">
+                        <button className="absolute text-black w-6 rounded-full h-6 bg-white p-0.5 bg-opacity-50 cursor-pointer">
                           <ChevronRight size={20} />
                         </button>
                       </>
@@ -482,20 +482,20 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                               <Heart
                                 style={{ fill: "red" }}
                                 color={"red"}
-                                className="ml-2 h-7 w-7 md:h-8 md:w-9"
+                                className="ml-2 h-7 w-7 md:h-8 md:w-9 cursor-pointer"
                               />
                             </>
                           ) : (
                             <>
-                              <Heart className="ml-2 h-7 w-7 md:h-8 md:w-9" />
+                              <Heart className="ml-2 h-7 w-7 md:h-8 md:w-9 cursor-pointer" />
                             </>
                           )}
                         </div>
                         <div>
-                          <MessageCircle className="ml-2 h-7 w-7 md:h-8 md:w-9" />
+                          <MessageCircle className="ml-2 h-7 w-7 md:h-8 md:w-9 cursor-pointer" />
                         </div>
                         <div>
-                          <Send className="ml-2 h-7 w-6 md:h-8 md:w-9" />
+                          <Send className="ml-2 h-7 w-6 md:h-8 md:w-9 cursor-pointer" />
                         </div>
                       </div>
                     </div>
@@ -507,6 +507,7 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                           fill: singlePost?.saved?.includes(userData.userId)
                             ? "black"
                             : undefined,
+                            cursor:"pointer"
                         }}
                         onClick={hanldeSave}
                       />
@@ -591,12 +592,12 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                                       className="font-medium text-[12px]"
                                       onClick={() => replayClick(item)}
                                     >
-                                      Replay
+                                      Reply
                                     </div>
                                     <div>
                                       {userData.userId == item.userId && (
                                         <MoreHorizontal
-                                          className="w-5 "
+                                          className="w-5 cursor-pointer"
                                           onClick={() =>
                                             handleReplayDot(item._id)
                                           }
@@ -605,9 +606,9 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                                     </div>
                                     {isDotOpen &&
                                       visibleCommentOptions === item._id && (
-                                        <div className="fixed w-16 h-10 bg-white border flex justify-between items-center flex-col mt-5 ml-48 rounded-md">
+                                        <div className="fixed w-16 h-10 bg-white border flex justify-between items-center flex-col mt-5 ml-48 rounded-md cursor-pointer">
                                           <div
-                                            className="w-full h-5 flex justify-center items-center text-sm border-b"
+                                            className="w-full h-5 flex justify-center items-center text-sm border-b cursor-pointer"
                                             onClick={() =>
                                               handleComentEdit(item)
                                             }
@@ -615,7 +616,7 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                                             edit
                                           </div>
                                           <div
-                                            className="w-full h-5 flex justify-center items-center text-sm"
+                                            className="w-full h-5 flex justify-center items-center text-sm cursor-pointer"
                                             onClick={() =>
                                               handleDeleteComment(item)
                                             }
@@ -646,7 +647,7 @@ const SinglePostModal =  ({ render, setRender }: any) => {
                                                   userData.userId && (
                                                   <>
                                                     <div
-                                                      className="border flex justify-center items-center text-sm p-2 rounded-md border-[#]"
+                                                      className="border flex justify-center items-center text-sm p-2 rounded-md border-[#] cursor-pointer"
                                                       onClick={() =>
                                                         deleteReplay(
                                                           item,
