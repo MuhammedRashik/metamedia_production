@@ -196,6 +196,7 @@ const SinglePostModal =  ({ render, setRender }: any) => {
         content: texted,
         userId: userData.userId,
       };
+      
       const responce = await AddReplayToCommentFunction(data);
       if (responce.status) {
         setText("");
