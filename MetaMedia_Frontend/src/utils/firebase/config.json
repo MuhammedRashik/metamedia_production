@@ -1,9 +1,9 @@
 {
-    "apiKey": "AIzaSyACjEOlcq-t5DveBZ9Lp3Cg0La6xG3rW3o",
-    "authDomain": "meta-auth-42258.firebaseapp.com",
-    "projectId": "meta-auth-42258",
-    "storageBucket": "meta-auth-42258.appspot.com",
-    "messagingSenderId": "659790866307",
-    "appId": "1:659790866307:web:b3a1bbc36f6dd5acb278b6",
-    "measurementId": "G-ZB43NB5DG5"
+    "apiKey": "AIzaSyAWoWCbg2E9YSlZsE2KE-axFRfjqZ0ttuY",
+    "authDomain": "meta-production.firebaseapp.com",
+    "projectId": "meta-production",
+    "storageBucket": "meta-production.appspot.com",
+    "messagingSenderId": "1069667192733",
+    "appId": "1:1069667192733:web:5769ab79e6384daad66974",
+    "measurementId": "G-3LYY9VEWRC"
 }
