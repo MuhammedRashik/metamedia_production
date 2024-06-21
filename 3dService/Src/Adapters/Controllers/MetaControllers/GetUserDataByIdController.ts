@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-export default (dependecies: any) => {
-  const { getUserDataByIdUseCase } = dependecies.useCase;
-  const getUserDataBtIdController = async (req: Request, res: Response) => {
 
+export default (dependecies: any) => {
+  const {  getUserDataByIdUseCase } = dependecies.useCase;
+  const getUserDataBtIdController = async (req: Request, res: Response) => {
     const {userId}=req.query
     const data = { userId};
 

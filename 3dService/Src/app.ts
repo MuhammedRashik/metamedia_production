@@ -47,7 +47,7 @@ app.use(
       methods: [  "GET,HEAD,PUT,PATCH,POST,DELETE"], 
     credentials: true
 
-    })
+    }) 
   );
   app.use( 
     session({
